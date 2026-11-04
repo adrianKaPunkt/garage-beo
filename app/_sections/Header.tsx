@@ -15,9 +15,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   return <header className="site-header">
     <div className="container header-inner">
-      <a href="#pocetna" className="wordmark" onClick={() => setMenuOpen(false)} aria-label="Garaža Beograd – početna">
-        <span className="logo-car" aria-hidden="true"><svg viewBox="0 0 230 36"><path d="M8 28 C45 27 53 8 91 7 L158 7 C179 8 194 24 221 28" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round"/><path d="M74 10 L89 26 M151 10 L171 26" fill="none" stroke="currentColor" strokeWidth="3"/></svg></span>
-        <span className="brand-main"><b>GARAŽA</b> BEOGRAD</span>
+      <a href="#pocetna" className="wordmark" onClick={() => setMenuOpen(false)} aria-label="GARAGE BEOGRAD – početna">
+        <span className="brand-main"><b>GARAGE</b> BEOGRAD</span>
         <span className="brand-sub">TEHNIČKI PREGLED</span>
       </a>
       <nav className={menuOpen ? 'nav open' : 'nav'} aria-label="Glavna navigacija">

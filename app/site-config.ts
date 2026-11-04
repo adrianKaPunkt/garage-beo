@@ -1,6 +1,6 @@
 /** ZENTRALE STELLE FÜR ALLE KONTAKTDATEN UND TEXTE. */
 export const site = {
-  name: 'Garaža Beograd',
+  name: 'Garage Beograd',
   subtitle: 'TEHNIČKI PREGLED',
   phone: '', // z.B. '+381...' (leer lassen, bis bestätigt)
   email: '', // echte Geschäftsadresse eintragen
