@@ -13,11 +13,19 @@ const Hero = () => {
         <div className="hero-copy">
           <h1 id="hero-title">TEHNIČKI PREGLED</h1>
           <p className="hero-tagline">
-            <span className="hero-accessible-tagline">Brzo, jasno i na jednom mestu.</span>
             <span className="hero-words" aria-hidden="true">
-              <span>BRZO</span>
-              <span>JASNO</span>
-              <span>NA JEDNOM MESTU</span>
+              <span>
+                <span>BRZO </span>
+                <span className="text-orange">BRE</span>
+              </span>
+              <span>
+                <span>JASNO </span>
+                <span className="text-orange">BRE</span>
+              </span>
+              <span>
+                <span>NA JEDNOM MESTU </span>
+                <span className="text-orange">BRE</span>
+              </span>
             </span>
           </p>
           <a
@@ -28,7 +36,10 @@ const Hero = () => {
           </a>
         </div>
         <div className="hero-car">
-          <AnimatedCar animated={true} sizes="(max-width: 700px) 280px, (max-width: 1000px) 40vw, 460px" />
+          <AnimatedCar
+            animated={true}
+            sizes="(max-width: 700px) 280px, (max-width: 1000px) 40vw, 460px"
+          />
         </div>
       </div>
     </section>

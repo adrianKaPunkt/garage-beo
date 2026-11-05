@@ -24,7 +24,7 @@ export default function Header() {
         >
           <span className="text-2xl">
             <span className="text-green font-bold">GARAGE </span>
-            <span>BEOGRAD</span>
+            <span className="text-orange">BEOGRAD</span>
           </span>
           <span className="w-full font-light text-sm text-center tracking-widest">
             TEHNIČKI PREGLED

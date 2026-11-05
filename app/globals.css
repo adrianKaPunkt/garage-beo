@@ -5,10 +5,13 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 @theme inline {
   --color-green: var(--green);
+  --color-darkgreen: var(--darkgreen);
+  --color-orange: var(--orange);
 }
 :root {
   --green: #399d0e;
   --darkgreen: #1c6d08;
+  --orange: #f5a623;
   --dark: #171a20;
   --muted: #646b73;
   --line: #e5e9eb;
@@ -147,7 +150,9 @@ p {
   min-height: 535px;
   padding-block: 64px;
 }
-.hero-copy { min-width: 0; }
+.hero-copy {
+  min-width: 0;
+}
 .hero-car {
   width: min(100%, 460px);
   justify-self: center;
@@ -175,18 +180,31 @@ p {
   line-height: 1.4;
   margin-bottom: 32px;
 }
-.hero-words { display: grid; }
+.hero-words {
+  display: grid;
+}
 .hero-words > span {
   grid-area: 1 / 1;
   opacity: 0;
   animation: hero-word-fade 9s ease-in-out infinite;
 }
-.hero-words > span:nth-child(2) { animation-delay: 3s; }
-.hero-words > span:nth-child(3) { animation-delay: 6s; }
+.hero-words > span:nth-child(2) {
+  animation-delay: 3s;
+}
+.hero-words > span:nth-child(3) {
+  animation-delay: 6s;
+}
 /* Each 3s slot: 0.5s fade in, 2s hold, 0.5s fade out. */
 @keyframes hero-word-fade {
-  0%, 33.333333%, 100% { opacity: 0; }
-  5.555556%, 27.777778% { opacity: 1; }
+  0%,
+  33.333333%,
+  100% {
+    opacity: 0;
+  }
+  5.555556%,
+  27.777778% {
+    opacity: 1;
+  }
 }
 .hero-accessible-tagline {
   position: absolute;
@@ -640,7 +658,9 @@ p {
     font-size: clamp(20px, 5vw, 28px);
     margin-bottom: 26px;
   }
-  .hero-car { width: min(100%, 280px); }
+  .hero-car {
+    width: min(100%, 280px);
+  }
   .features-grid {
     padding: 24px 0;
     gap: 25px 12px;
