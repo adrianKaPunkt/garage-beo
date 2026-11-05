@@ -40,7 +40,6 @@ const Footer = () => {
         <span>
           © {new Date().getFullYear()} Garage Beograd. Sva prava zadržana.
         </span>
-        <span>Koncept sajta · podaci za proveru pre objavljivanja</span>
       </div>
     </footer>
   );

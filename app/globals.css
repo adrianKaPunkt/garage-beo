@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 :root {
   --green: #399d0e;
   --darkgreen: #1c6d08;
@@ -49,6 +53,7 @@ p {
 }
 .container {
   width: min(1390px, calc(100% - 80px));
+  max-width: none;
   margin-inline: auto;
 }
 .site-header {
@@ -375,26 +380,22 @@ p {
   gap: 7.5%;
   align-items: center;
 }
-.inspection-photo,
-.about-photo {
+.inspection-photo {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
   min-height: 395px;
   box-shadow: 0 15px 36px #1f29271c;
 }
-.inspection-photo img,
-.about-photo img {
+.inspection-photo img {
   object-fit: cover;
 }
 .inspection-copy h2,
-.about-copy h2,
 .contact-grid h2 {
   font-size: clamp(31px, 3.2vw, 46px);
   line-height: 1.2;
 }
 .inspection-copy p,
-.about-copy p,
 .contact-grid p {
   color: #5b646b;
   font-size: 16px;
@@ -426,21 +427,6 @@ p {
   font-weight: 800;
   border-bottom: 2px solid var(--green);
   padding-bottom: 5px;
-}
-.about-section {
-  background: var(--soft);
-}
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.06fr;
-  gap: 8%;
-  align-items: center;
-}
-.about-copy {
-  max-width: 540px;
-}
-.about-photo {
-  min-height: 345px;
 }
 .gallery-section {
   background: white;
@@ -678,8 +664,7 @@ p {
   .footer-main {
     grid-template-columns: repeat(2, 1fr);
   }
-  .inspection-grid,
-  .about-grid {
+  .inspection-grid {
     gap: 4%;
   }
 }
@@ -750,16 +735,12 @@ p {
     top: 161px;
   }
   .inspection-grid,
-  .about-grid,
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 34px;
   }
   .inspection-photo {
     min-height: 280px;
-  }
-  .about-photo {
-    min-height: 275px;
   }
   .gallery-grid {
     grid-template-columns: 1fr;
@@ -781,5 +762,51 @@ p {
   }
   .footer-bottom {
     flex-direction: column;
+  }
+}
+
+/* PaySpot logo: accent color travels clockwise around the mark */
+@keyframes payspot-rotate {
+  0%,
+  35%,
+  100% {
+    fill: var(--payspot-mark);
+  }
+  10%,
+  25% {
+    fill: var(--payspot-accent);
+  }
+}
+
+.payspot-animated .payspot-ne,
+.payspot-animated .payspot-se,
+.payspot-animated .payspot-sw,
+.payspot-animated .payspot-nw {
+  fill: var(--payspot-mark);
+  animation: payspot-rotate 2.4s linear infinite;
+}
+
+.payspot-animated .payspot-se {
+  animation-delay: 0.6s;
+}
+
+.payspot-animated .payspot-sw {
+  animation-delay: 1.2s;
+}
+
+.payspot-animated .payspot-nw {
+  animation-delay: 1.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payspot-animated .payspot-ne,
+  .payspot-animated .payspot-se,
+  .payspot-animated .payspot-sw,
+  .payspot-animated .payspot-nw {
+    animation: none;
+  }
+
+  .payspot-animated .payspot-ne {
+    fill: var(--payspot-accent);
   }
 }

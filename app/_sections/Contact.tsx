@@ -14,33 +14,15 @@ const Contact = () => {
             pre dolaska.
           </p>
           <div className="contact-lines">
-            {site.address ? (
-              <a href={site.mapsUrl || "#kontakt"}>
-                <MapPin /> {site.address}
-              </a>
-            ) : (
-              <span>
-                <MapPin /> Adresa: uneti tačnu adresu
-              </span>
-            )}
-            {site.phone ? (
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`}>
-                <Phone /> {site.phone}
-              </a>
-            ) : (
-              <span>
-                <Phone /> Telefon: uneti broj
-              </span>
-            )}
-            {site.email ? (
-              <a href={`mailto:${site.email}`}>
-                <Mail /> {site.email}
-              </a>
-            ) : (
-              <span>
-                <Mail /> E-mail: uneti adresu
-              </span>
-            )}
+            <a href={site.mapsUrl || "#kontakt"}>
+              <MapPin /> {site.address}
+            </a>
+            <a href={`tel:${site.phone.replace(/\s/g, "")}`}>
+              <Phone /> {site.phone}
+            </a>
+            <a href={`mailto:${site.email}`}>
+              <Mail /> {site.email}
+            </a>
           </div>
         </div>
         <div className="hours-card" id="radno-vreme">
