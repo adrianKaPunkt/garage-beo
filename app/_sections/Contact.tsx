@@ -36,13 +36,6 @@ const Contact = () => {
               <strong>{item.time}</strong>
             </div>
           ))}
-          <Image
-            src="/images/mascot.webp"
-            alt="Vesela maskota garaže"
-            width={185}
-            height={185}
-            className="hours-mascot"
-          />
         </div>
       </div>
     </section>

@@ -1,0 +1,81 @@
+.body,
+.arm {
+  object-fit: contain;
+}
+
+.arm {
+  /* Schulter des winkenden Arms im 1254x1254-Bild */
+  transform-origin: 24% 48%;
+}
+
+.waving {
+  animation: wave 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  from {
+    transform: rotate(-12deg);
+  }
+
+  to {
+    transform: rotate(12deg);
+  }
+}
+
+.eye {
+  object-fit: contain;
+  opacity: 0;
+}
+
+.blinking {
+  animation: blink 4s linear infinite;
+}
+
+/* 4s-Zyklus: 2s offen, 2s geschlossen */
+@keyframes blink {
+  0%,
+  49.9% {
+    opacity: 0;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.thumb {
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.car:hover .thumb {
+  opacity: 1;
+}
+
+/* Blendet den Rest der ruhenden Hand aus, den das Overlay nicht abdeckt */
+.car:hover .body {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 51.04%,
+    92.42% 51.04%,
+    91.23% 52.63%,
+    91.47% 54.23%,
+    92.03% 55.82%,
+    92.50% 57.42%,
+    92.90% 59.01%,
+    93.22% 60.61%,
+    93.54% 62.20%,
+    93.70% 63.80%,
+    93.86% 66.19%,
+    93.78% 68.58%,
+    94.26% 70.97%,
+    94.66% 73.37%,
+    94.74% 75.76%,
+    100% 75.76%,
+    100% 100%,
+    0 100%
+  );
+}

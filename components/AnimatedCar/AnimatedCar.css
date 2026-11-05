@@ -1,0 +1,32 @@
+.body,
+.arm {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.arm {
+  transform-origin: 78% 65%;
+}
+
+.waving {
+  animation: wave 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+  from {
+    transform: rotate(-6deg);
+  }
+
+  to {
+    transform: rotate(6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waving {
+    animation: none;
+  }
+}

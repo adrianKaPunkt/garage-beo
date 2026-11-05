@@ -3,6 +3,9 @@
 @layer theme, base, components, utilities;
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
+@theme inline {
+  --color-green: var(--green);
+}
 :root {
   --green: #399d0e;
   --darkgreen: #1c6d08;
@@ -55,56 +58,6 @@ p {
   width: min(1390px, calc(100% - 80px));
   max-width: none;
   margin-inline: auto;
-}
-.site-header {
-  height: 89px;
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: rgba(255, 255, 255, 0.97);
-  border-bottom: 1px solid #e9eeeb;
-  backdrop-filter: blur(15px);
-}
-.header-inner {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-}
-.wordmark {
-  display: flex;
-  flex-direction: column;
-  width: 245px;
-  flex-shrink: 0;
-  line-height: 1;
-  letter-spacing: -1.1px;
-}
-.logo-car {
-  height: 21px;
-  color: #2e9d14;
-  display: block;
-  width: 195px;
-}
-.logo-car svg {
-  height: 27px;
-  width: 195px;
-}
-.brand-main {
-  font-size: 21px;
-  font-weight: 800;
-  white-space: nowrap;
-}
-.brand-main b {
-  color: var(--green);
-}
-.brand-sub {
-  font-weight: 800;
-  letter-spacing: 3.2px;
-  font-size: 9.5px;
-  margin-top: 5px;
-  text-align: center;
-  max-width: 205px;
 }
 .nav {
   display: flex;

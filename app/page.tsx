@@ -19,7 +19,7 @@ export default function Home() {
         <Inspection />
         <About />
         <Gallery />
-        <Contact />        
+        <Contact />
       </main>
       <Footer />
     </>

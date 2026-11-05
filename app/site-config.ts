@@ -1,4 +1,3 @@
-/** ZENTRALE STELLE FÜR ALLE KONTAKTDATEN UND TEXTE. */
 export const site = {
   name: "Garage Beograd",
   subtitle: "TEHNIČKI PREGLED",
@@ -6,13 +5,13 @@ export const site = {
   email: "info@garagebeograd.rs",
   address: "Nabokovljeva 1a, 11150 Beograd, Srbija",
   mapsUrl:
-    "google.com/maps?vet=10CAAQoqAOahcKEwiwwOWF2u-XAxUAAAAAHQAAAAAQJQ..i&lr=lang_de&rlz=1C1GCEA_enDE1232DE1232&sca_esv=4317535cc7d6f209&udm&fvr=1&pvq=Cg0vZy8xMXYzcTY1MmQz&cs=1&um=1&ie=UTF-8&fb=1&gl=de&sa=X&ftid=0x475a77df1d97ea85:0xe0e00ccd1e82a9e0",
-  bookingUrl: "", // optional: externer Terminbuchungs-Link
+    "http://www.google.com/maps?vet=10CAAQoqAOahcKEwiwwOWF2u-XAxUAAAAAHQAAAAAQJQ..i&lr=lang_de&rlz=1C1GCEA_enDE1232DE1232&sca_esv=4317535cc7d6f209&udm&fvr=1&pvq=Cg0vZy8xMXYzcTY1MmQz&cs=1&um=1&ie=UTF-8&fb=1&gl=de&sa=X&ftid=0x475a77df1d97ea85:0xe0e00ccd1e82a9e0",
+  bookingUrl: "",
   hours: [
     { day: "Ponedeljak – Petak", time: "08:00 – 16:00" },
     { day: "Subota", time: "09:00 – 15:00" },
     { day: "Nedelja", time: "Ne radimo" },
-  ], // anhand der Firmenunterlagen vor Veröffentlichung prüfen
+  ],
   intro:
     "Tehnički pregled, registracija vozila, osiguranje i plaćanje računa – sve na jednom mestu.",
 };
