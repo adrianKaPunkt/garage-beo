@@ -7,6 +7,7 @@ import {
   Wallet,
 } from "lucide-react";
 import Tehnicki from "./Tehnicki";
+import TechnickiBackground from "./TechnickiBackground";
 
 const services = [
   {
@@ -37,14 +38,27 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="section services-section">
-      <Tehnicki />
-      <div className="container">
-        <div className="section-head">
-          <span className="eyebrow">SVE NA JEDNOM MESTU</span>
-          <h2>Naše usluge</h2>
-          <span className="title-rule" />
+    <section className="bg-[#f7f9f8]">
+      <TechnickiBackground>
+        <div className="container">
+          <div className="mt-10 mb-7.5 text-center min-[701px]:mb-9.75">
+            <span className="text-green">SVE NA JEDNOM MESTU</span>
+            <h2 className="mb-3.25 text-[clamp(60px,3vw,65px)]">
+              <span className="text-lime-300">NAŠE </span>
+              <span className="text-white">USLUGE</span>
+            </h2>
+            <span className="mx-auto block h-1 w-16.5 rounded-xs bg-green" />
+          </div>
+          <div className="mx-auto max-w-110 text-center text-lg">
+            <p>
+              Sve što je potrebno vašem vozilu, na jednom mestu. Brzo,
+              jednostavno i bez neprotrebnih komplikacija.
+            </p>
+          </div>
         </div>
+        <Tehnicki />
+      </TechnickiBackground>
+      <div className="container py-15.5 min-[701px]:py-21">
         <div className="services-grid">
           {services.map(({ icon: Icon, title, desc, image }) => (
             <a className="service-card" href="#kontakt" key={title}>

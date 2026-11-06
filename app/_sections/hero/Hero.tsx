@@ -1,7 +1,7 @@
 import CarEntrance from "@/components/AnimatedCar/CarEntrance";
 import AnimatedCar from "@/components/AnimatedCar/AnimatedCar";
-import HeroHeader from "../_components/HeroHeader";
-import HeroSubtitle from "../_components/HeroSubtitle";
+import HeroHeader from "./HeroHeader";
+import HeroSubtitle from "./HeroSubtitle";
 import Button from "@/components/Button";
 
 const Hero = () => {
