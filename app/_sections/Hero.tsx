@@ -5,14 +5,16 @@ import AnimatedCar from "@/components/AnimatedCar/AnimatedCar";
 const Hero = () => {
   return (
     <section
-      className="relative hero"
+      className="relative overflow-hidden hero"
       id="pocetna"
       aria-labelledby="hero-title"
     >
       <div className="container hero-content">
-        <div className="hero-copy">
-          <h1 id="hero-title">TEHNIČKI PREGLED</h1>
-          <p className="hero-tagline">
+        <div className="min-w-0">
+          <h1 className="font-extrabold text-6xl leading-0">
+            TEHNIČKI PREGLED
+          </h1>
+          <p className="text-darkgreen text-4xl mb-16">
             <span className="hero-words" aria-hidden="true">
               <span>
                 <span>BRZO </span>
