@@ -211,7 +211,7 @@ export default function Tehnicki() {
 
         {/* Kontakt-Button */}
         <div className="mt-10 flex justify-center">
-          <Button href="#kontakt" variant="primary" size="large" showArrow>
+          <Button href="#termin" variant="primary" size="large" showArrow>
             Zakažite termin
           </Button>
         </div>

@@ -56,7 +56,7 @@ const Hero = () => {
           <HeroSubtitle />
 
           <div className="flex justify-center lg:justify-start">
-            <Button href="#kontakt" variant="primary" size="large" showArrow>
+            <Button href="#termin" variant="primary" size="large" showArrow>
               Zakažite termin
             </Button>
           </div>

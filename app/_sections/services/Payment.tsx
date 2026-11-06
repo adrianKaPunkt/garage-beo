@@ -313,7 +313,7 @@ export default function Payment() {
             >
               <PaySpotLogo animated />
             </Link>
-            <Button href="#kontakt" variant="primary" size="large" showArrow>
+            <Button href="#termin" variant="primary" size="large" showArrow>
               Kontaktirajte nas
             </Button>
           </div>

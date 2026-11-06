@@ -1,4 +1,5 @@
 import { CarFront, Clock3, ShieldCheck, UsersRound } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   {
@@ -32,6 +33,16 @@ const Features = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="container">
+        <Image
+          className="block h-auto w-full"
+          src="/images/tehnicki.jpg"
+          alt="Kontrolna stanica Garage Beograd sa vozilom na liniji za tehnički pregled"
+          width={1672}
+          height={941}
+          sizes="(max-width: 1470px) 100vw, 1390px"
+        />
       </div>
     </section>
   );

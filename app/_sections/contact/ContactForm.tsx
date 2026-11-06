@@ -90,7 +90,7 @@ const ContactForm = () => {
   });
 
   return (
-    <div className="container relative z-10 mt-6">
+    <div className="container relative z-10 mt-6" id="termin">
       <div className="rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
         <h3 className="m-0 mb-2 text-2xl font-bold">Pošaljite nam poruku</h3>
         <p className="mb-7 text-slate-200">
@@ -207,9 +207,17 @@ const ContactForm = () => {
                 ].join(" ")}
               >
                 {state.status === "success" ? (
-                  <CircleCheck size={22} className="shrink-0" aria-hidden="true" />
+                  <CircleCheck
+                    size={22}
+                    className="shrink-0"
+                    aria-hidden="true"
+                  />
                 ) : (
-                  <CircleAlert size={22} className="shrink-0" aria-hidden="true" />
+                  <CircleAlert
+                    size={22}
+                    className="shrink-0"
+                    aria-hidden="true"
+                  />
                 )}
                 {state.message}
               </p>

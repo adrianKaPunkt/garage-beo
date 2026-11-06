@@ -267,7 +267,7 @@ export default function Insurance() {
 
         {/* Kontakt-Button */}
         <div className="mt-10 flex justify-center">
-          <Button href="#kontakt" variant="primary" size="large" showArrow>
+          <Button href="#termin" variant="primary" size="large" showArrow>
             Kontaktirajte nas
           </Button>
         </div>
