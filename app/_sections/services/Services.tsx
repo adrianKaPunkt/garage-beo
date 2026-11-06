@@ -42,8 +42,8 @@ const Services = () => {
       <TechnickiBackground>
         <div className="container">
           <div className="mt-10 mb-7.5 text-center min-[701px]:mb-9.75">
-            <span className="text-green">SVE NA JEDNOM MESTU</span>
-            <h2 className="mb-3.25 text-[clamp(60px,3vw,65px)]">
+            <p className="text-green mb-4">SVE NA JEDNOM MESTU</p>
+            <h2 className="mb-7 text-[clamp(50px,3vw,55px)] leading-14">
               <span className="text-lime-300">NAŠE </span>
               <span className="text-white">USLUGE</span>
             </h2>
@@ -52,7 +52,7 @@ const Services = () => {
           <div className="mx-auto max-w-110 text-center text-lg">
             <p>
               Sve što je potrebno vašem vozilu, na jednom mestu. Brzo,
-              jednostavno i bez neprotrebnih komplikacija.
+              jednostavno i bez nepotrebnih komplikacija.
             </p>
           </div>
         </div>
