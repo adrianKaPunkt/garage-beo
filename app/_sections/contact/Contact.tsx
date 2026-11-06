@@ -8,6 +8,20 @@ import ContactForm from "./ContactForm";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+// Index wie bei days in site.hours: 0 = Sonntag ... 6 = Samstag
+const DAY_NAMES = [
+  "Nedelja",
+  "Ponedeljak",
+  "Utorak",
+  "Sreda",
+  "Četvrtak",
+  "Petak",
+  "Subota",
+];
+
+// Anzeige beginnt am Montag
+const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0];
+
 // Aktuelle Zeit in Belgrad, unabhängig von der Zeitzone des Besuchers
 function getBelgradeTime() {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -27,18 +41,28 @@ function getBelgradeTime() {
   };
 }
 
-function isOpenAt(day: number, minutes: number) {
+// Ab so vielen Minuten vor Feierabend zeigt das Badge "Uskoro zatvaramo"
+const CLOSING_SOON_MINUTES = 60;
+
+const STATUS = {
+  open: { label: "Otvoreno sada", styles: "bg-lime-300 text-[#14332a]" },
+  closing: { label: "Uskoro zatvaramo", styles: "bg-orange text-[#14332a]" },
+  closed: { label: "Zatvoreno", styles: "bg-red-600 text-white" },
+};
+
+function getStatus(day: number, minutes: number): keyof typeof STATUS {
   const today = site.hours.find((entry) => entry.days.includes(day));
   const match = today?.time.match(/(\d{2}):(\d{2}) – (\d{2}):(\d{2})/);
 
-  if (!match) return false;
+  if (!match) return "closed";
 
   const [, openHour, openMinute, closeHour, closeMinute] = match.map(Number);
+  const opensAt = openHour * 60 + openMinute;
+  const closesAt = closeHour * 60 + closeMinute;
 
-  return (
-    minutes >= openHour * 60 + openMinute &&
-    minutes < closeHour * 60 + closeMinute
-  );
+  if (minutes < opensAt || minutes >= closesAt) return "closed";
+
+  return closesAt - minutes <= CLOSING_SOON_MINUTES ? "closing" : "open";
 }
 
 export default function Contact() {
@@ -55,7 +79,7 @@ export default function Contact() {
     return () => clearInterval(timer);
   }, []);
 
-  const isOpen = now !== null && isOpenAt(now.day, now.minutes);
+  const status = now !== null ? STATUS[getStatus(now.day, now.minutes)] : null;
 
   const mapQuery = encodeURIComponent(site.address);
 
@@ -204,37 +228,32 @@ export default function Contact() {
                   <h3 className="m-0 text-2xl font-bold">Radno vreme</h3>
                 </div>
 
-                {now !== null && (
+                {status && (
                   <span
-                    className={[
-                      "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-bold",
-                      isOpen
-                        ? "border-lime-300/40 bg-lime-300/10 text-lime-300"
-                        : "border-orange/40 bg-orange/10 text-orange",
-                    ].join(" ")}
+                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${status.styles}`}
                   >
                     <span
                       aria-hidden="true"
-                      className={[
-                        "h-2 w-2 rounded-full",
-                        isOpen ? "bg-lime-300" : "bg-orange",
-                      ].join(" ")}
+                      className="h-2 w-2 rounded-full bg-current"
                     />
-                    {isOpen ? "Otvoreno sada" : "Zatvoreno"}
+                    {status.label}
                   </span>
                 )}
               </div>
 
               <div className="space-y-1">
-                {site.hours.map((item) => {
-                  const isToday = now !== null && item.days.includes(now.day);
+                {WEEK_ORDER.map((day) => {
+                  const isToday = now?.day === day;
+                  const time = site.hours.find((entry) =>
+                    entry.days.includes(day),
+                  )?.time;
 
                   return (
                     <div
-                      key={item.day}
+                      key={day}
                       aria-current={isToday ? "date" : undefined}
                       className={[
-                        "flex items-center justify-between gap-4 rounded-xl px-4 py-3",
+                        "flex items-center justify-between gap-4 rounded-xl px-4 py-2",
                         isToday ? "bg-lime-300/10" : "",
                       ].join(" ")}
                     >
@@ -245,11 +264,12 @@ export default function Contact() {
                             : "text-sm text-slate-200"
                         }
                       >
-                        {item.day}
+                        {DAY_NAMES[day]}
+                        {isToday && " (danas)"}
                       </span>
 
                       <strong className="text-right text-sm font-bold text-white">
-                        {item.time}
+                        {time}
                       </strong>
                     </div>
                   );

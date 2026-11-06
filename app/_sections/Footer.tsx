@@ -1,5 +1,6 @@
 import { site } from "@/app/site-config";
 import { ArrowRight, FileCheck2 } from "lucide-react";
+import LegalModal from "@/components/LegalModal";
 
 const Footer = () => {
   return (
@@ -40,7 +41,16 @@ const Footer = () => {
         <span>
           © {new Date().getFullYear()} Garage Beograd. Sva prava zadržana.
         </span>
+        <span className="flex gap-5">
+          <a href="#politika-privatnosti" className="text-inherit hover:underline!">
+            Politika privatnosti
+          </a>
+          <a href="#impresum" className="text-inherit hover:underline!">
+            Impresum
+          </a>
+        </span>
       </div>
+      <LegalModal />
     </footer>
   );
 };

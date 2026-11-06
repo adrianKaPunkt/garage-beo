@@ -20,6 +20,19 @@ export const site = {
     "Plaćanje računa",
     "Drugo",
   ],
+  // Pravni podaci: Leere Felder erscheinen im Modal als [DOPUNITI: ...]
+  legal: {
+    lastUpdated: "6. novembar 2026.",
+    companyName: "",
+    legalForm: "",
+    representative: "",
+    taxNumber: "",
+    registrationNumber: "",
+    activityCode: "",
+    inspectionLicense: "",
+    hostingProvider: "",
+    retentionPeriod: "",
+  },
   intro:
     "Tehnički pregled, registracija vozila, osiguranje i plaćanje računa – sve na jednom mestu.",
 };

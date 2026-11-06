@@ -35,7 +35,7 @@ export default function Insurance() {
         aria-hidden="true"
         className="
           pointer-events-none absolute inset-0
-          h-full w-full opacity-20
+          h-full w-full opacity-7
         "
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMidYMid slice"
@@ -54,7 +54,7 @@ export default function Insurance() {
                 1620 ${130 + i * 48}
             `}
             stroke="white"
-            strokeWidth="1.2"
+            strokeWidth="1"
           />
         ))}
       </svg>

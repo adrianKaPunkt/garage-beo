@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 const About = () => {
   return (
-    <section className="section bg-(--soft)" id="o-nama">
+    <section className="section" id="o-nama">
       <div className="container grid grid-cols-1 items-center gap-8.5 min-[701px]:grid-cols-[1fr_1.06fr] min-[701px]:gap-[4%] min-[1001px]:gap-[8%]">
         <div className="max-w-135">
           <span className="eyebrow">UPOZNAJTE NAS</span>
@@ -18,9 +18,6 @@ const About = () => {
             Pogledajte naš prostor i kontaktirajte nas ako imate pitanja pre
             dolaska.
           </p>
-          <a href="#kontakt" className="button button-outline">
-            Saznajte više <ArrowRight size={18} />
-          </a>
         </div>
         <div className="relative min-h-68.75 overflow-hidden rounded-[18px] shadow-[0_15px_36px_#1f29271c] min-[701px]:min-h-86.25">
           <Image
