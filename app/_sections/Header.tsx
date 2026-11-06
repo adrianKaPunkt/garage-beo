@@ -57,12 +57,12 @@ export default function Header() {
           onClick={() => setMenuOpen(false)}
           aria-label="GARAGE BEOGRAD – početna"
         >
-          <span className="whitespace-nowrap text-lg sm:text-2xl">
+          <span className="whitespace-nowrap text-lg sm:text-2xl leading-6">
             <span className="font-bold text-green">GARAGE </span>
             <span className="text-orange">BEOGRAD</span>
           </span>
-          <span className="text-center text-[10px] font-light tracking-widest sm:text-sm">
-            TEHNIČKI PREGLED
+          <span className="text-left text-[11px] text-gray-900 font-semibold tracking-widest">
+            &nbsp;TEHNIČKI PREGLED
           </span>
         </a>
 

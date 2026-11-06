@@ -96,6 +96,7 @@ export default function HeroHeader() {
         className="
         w-full
         font-extrabold
+        text-gray-900
         text-[3rem]
         sm:text-[3.25rem]
         md:text-[4rem]

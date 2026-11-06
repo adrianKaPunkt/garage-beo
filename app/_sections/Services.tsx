@@ -6,6 +6,7 @@ import {
   ShieldCheck,
   Wallet,
 } from "lucide-react";
+import Tehnicki from "./Tehnicki";
 
 const services = [
   {
@@ -36,7 +37,8 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="section services-section" id="usluge">
+    <section className="section services-section">
+      <Tehnicki />
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">SVE NA JEDNOM MESTU</span>
