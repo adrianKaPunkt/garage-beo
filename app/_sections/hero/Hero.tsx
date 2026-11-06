@@ -7,6 +7,7 @@ import Button from "@/components/Button";
 const Hero = () => {
   return (
     <section
+      id="pocetna"
       className="
         relative isolate overflow-hidden
         bg-[linear-gradient(120deg,#f5faef_0%,#dff0d0_55%,#bfe39d_100%)]

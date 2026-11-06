@@ -9,6 +9,8 @@ import {
 import Tehnicki from "./Tehnicki";
 import TechnickiBackground from "./TechnickiBackground";
 import Registration from "./Registration";
+import Insurance from "./Insurance";
+import Payment from "./Payment";
 
 const services = [
   {
@@ -39,7 +41,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="bg-[#f7f9f8]">
+    <section id="usluge" className="bg-[#f7f9f8]">
       <TechnickiBackground>
         <div className="container">
           <div className="mt-10 mb-7.5 text-center min-[701px]:mb-9.75">
@@ -60,30 +62,8 @@ const Services = () => {
         <Tehnicki />
       </TechnickiBackground>
       <Registration />
-      <div className="container py-15.5 min-[701px]:py-21">
-        <div className="services-grid">
-          {services.map(({ icon: Icon, title, desc, image }) => (
-            <a className="service-card" href="#kontakt" key={title}>
-              <div className="service-picture">
-                <Image
-                  src={image}
-                  alt={title}
-                  fill
-                  sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 25vw"
-                />
-              </div>
-              <div className="service-icon">
-                <Icon size={29} />
-              </div>
-              <div className="service-body">
-                <h3>{title}</h3>
-                <p>{desc}</p>
-                <ArrowRight className="service-arrow" size={21} />
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
+      <Insurance />
+      <Payment />
     </section>
   );
 };
