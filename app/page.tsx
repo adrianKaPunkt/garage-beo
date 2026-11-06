@@ -6,7 +6,7 @@ import Services from "./_sections/services/Services";
 import Inspection from "./_sections/Inspection";
 import About from "./_sections/About";
 import Gallery from "./_sections/Gallery";
-import Contact from "./_sections/Contact";
+import Contact from "./_sections/contact/Contact";
 
 export default function Home() {
   return (

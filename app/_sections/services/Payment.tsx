@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ReceiptText, CreditCard, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
 import PaySpotLogo from "@/components/PaySpotLogo";
+import Link from "next/link";
 
 const paymentPoints = [
   {
@@ -305,7 +306,13 @@ export default function Payment() {
         {/* Kontakt-Button */}
         <div className="mt-10 flex justify-center">
           <div className="flex flex-col gap-12">
-            <PaySpotLogo animated />
+            <Link
+              href="https://payspot.rs/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PaySpotLogo animated />
+            </Link>
             <Button href="#kontakt" variant="primary" size="large" showArrow>
               Kontaktirajte nas
             </Button>
