@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Tehnicki from "./Tehnicki";
 import TechnickiBackground from "./TechnickiBackground";
+import Registration from "./Registration";
 
 const services = [
   {
@@ -58,6 +59,7 @@ const Services = () => {
         </div>
         <Tehnicki />
       </TechnickiBackground>
+      <Registration />
       <div className="container py-15.5 min-[701px]:py-21">
         <div className="services-grid">
           {services.map(({ icon: Icon, title, desc, image }) => (

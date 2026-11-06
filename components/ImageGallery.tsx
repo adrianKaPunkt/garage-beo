@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 export type GalleryImage = {
@@ -184,8 +185,8 @@ export default function ImageGallery({
         ))}
       </div>
 
-      {/* Lightbox */}
-      {isOpen && activeIndex !== null && images[activeIndex] && (
+      {/* Lightbox: Portal in den body, damit kein Stacking-Kontext (z.B. `isolate`) sie einsperrt */}
+      {isOpen && activeIndex !== null && images[activeIndex] && createPortal(
         <div
           role="dialog"
           aria-modal="true"
@@ -284,7 +285,8 @@ export default function ImageGallery({
           <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-sm font-medium text-white/70">
             {activeIndex + 1} / {images.length}
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
