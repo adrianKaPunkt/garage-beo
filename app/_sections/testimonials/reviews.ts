@@ -50,4 +50,19 @@ export const reviews: Review[] = [
     date: "2025-11",
     text: "Dragi neki,veseli ljudi,lepa atmosfera,pozitivna energija...Ismeji smo se do suza,hvala na tome!P.s.Mozete dobiti i posluzenje u vidu neprskanog grozdja i potpuno domace breskve🤣 🍇 ...",
   },
+  {
+    name: "Tamara I.",
+    rating: 5,
+    // Google zeigte am 7.11.2026 "vor 7 Monaten"
+    date: "2026-04",
+    text: "Najbolji registracioni centar bez konkurencije! definitivno 5 zvezdica! ⭐⭐⭐⭐⭐",
+  },
+  {
+    name: "Marija M.",
+    rating: 5,
+    // Google zeigte am 7.11.2026 "vor 2 Jahren"
+    date: "2024-11",
+    // \n = Zeilenumbruch wie im Original
+    text: "Sve je uvek brzo i efikasno.\nOdete na tehnicki i osecate se kao kod kuce.\nPrelepo,svaka cast.",
+  },
 ];

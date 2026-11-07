@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { reviews, type Review } from "./reviews";
-import styles from "./Testimonials.module.css";
+import ReviewCarousel from "./ReviewCarousel";
 
 // Ab so vielen Bewertungen läuft das Karussell, vorher stehen die Karten ruhig
 const MIN_REVIEWS_FOR_CAROUSEL = 3;
@@ -114,23 +114,21 @@ export default function Testimonials() {
       className="bg-[#f7f9f8] py-10 sm:py-14 lg:py-20"
     >
       {carousel ? (
-        <div className={`container overflow-hidden ${styles.viewport}`}>
-          <div className={`flex w-max ${styles.track}`}>
-            {/* Zweite Gruppe nur für die nahtlose Endlosschleife */}
-            {[false, true].map((duplicate) => (
-              <div className="flex shrink-0 gap-6 pr-6" key={String(duplicate)}>
-                {group.map((review, index) => (
-                  <ReviewCard
-                    key={`${review.name}-${index}`}
-                    review={review}
-                    // Screenreader lesen jede Bewertung nur einmal
-                    hidden={duplicate || index >= reviews.length}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        <ReviewCarousel label={t("label")}>
+          {/* Zweite Gruppe nur für die nahtlose Endlosschleife */}
+          {[false, true].map((duplicate) => (
+            <div className="flex shrink-0 gap-6 pr-6" key={String(duplicate)}>
+              {group.map((review, index) => (
+                <ReviewCard
+                  key={`${review.name}-${index}`}
+                  review={review}
+                  // Screenreader lesen jede Bewertung nur einmal
+                  hidden={duplicate || index >= reviews.length}
+                />
+              ))}
+            </div>
+          ))}
+        </ReviewCarousel>
       ) : (
         <div className="container flex flex-wrap justify-center gap-6">
           {reviews.map((review) => (
