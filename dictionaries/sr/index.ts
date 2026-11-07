@@ -16,6 +16,7 @@ import insurance from "./insurance.json";
 import payment from "./payment.json";
 import contact from "./contact.json";
 import footer from "./footer.json";
+import testimonials from "./testimonials.json";
 import legal from "./legal.json";
 
 const messages = {
@@ -32,6 +33,7 @@ const messages = {
   payment,
   contact,
   footer,
+  testimonials,
   legal,
 };
 
