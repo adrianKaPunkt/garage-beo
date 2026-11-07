@@ -168,7 +168,7 @@ export default function Contact() {
           {/* Links: Kontaktdaten + Öffnungszeiten */}
           <div className="flex flex-col gap-6">
             {/* Kontaktdaten */}
-            <div className="rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
+            <div className="relative rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
               <h3 className="m-0 mb-7 text-2xl font-bold">Kontakt</h3>
 
               <div className="space-y-5">
@@ -210,6 +210,14 @@ export default function Contact() {
                     </a>
                   ),
                 )}
+              </div>
+              <div className="absolute right-7 bottom-7 hidden min-[701px]:block">
+                <Image
+                  src="/images/car/contact.webp"
+                  alt="kontakt auto"
+                  width={160}
+                  height={160}
+                />
               </div>
             </div>
 

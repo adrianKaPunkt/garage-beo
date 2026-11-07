@@ -228,7 +228,10 @@ const ContactForm = () => {
             <p className="mb-0 text-xs leading-relaxed text-slate-300 sm:max-w-md">
               Vaše podatke koristimo isključivo da bismo odgovorili na vaš upit.
               Više u{" "}
-              <a href="#politika-privatnosti" className="text-inherit underline!">
+              <a
+                href="#politika-privatnosti"
+                className="text-inherit underline!"
+              >
                 politici privatnosti
               </a>
               .

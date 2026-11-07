@@ -3,7 +3,7 @@ import styles from "./Testimonials.module.css";
 export default function Testimonials() {
   return (
     <section className={styles.section} aria-hidden="true">
-      <div className={styles.viewport}>
+      <div className={`container ${styles.viewport}`}>
         <div className={styles.track}>
           {[0, 1].map((group) => (
             <div className={styles.group} key={group}>
