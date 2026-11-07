@@ -3,10 +3,13 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { CircleAlert, CircleCheck, Send } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
-import { site } from "@/app/site-config";
+import { contactTopics, site } from "@/app/site-config";
+import { MAX_MESSAGE_LENGTH, MIN_MESSAGE_LENGTH } from "./limits";
 import {
   sendContactMessage,
+  type ContactError,
   type ContactField,
   type ContactFormState,
 } from "./actions";
@@ -36,28 +39,33 @@ function FieldLabel({
   optional?: boolean;
   children: string;
 }) {
+  const t = useTranslations("contact.form");
+
   return (
     <label htmlFor={htmlFor} className="mb-2 block text-sm font-semibold">
       {children}
       {optional && (
-        <span className="font-normal text-slate-300"> (opciono)</span>
+        <span className="font-normal text-slate-300"> {t("optional")}</span>
       )}
     </label>
   );
 }
 
-function FieldError({ id, message }: { id: string; message?: string }) {
-  if (!message) return null;
+function FieldError({ id, error }: { id: string; error?: ContactError }) {
+  const t = useTranslations("contact.errors");
+
+  if (!error) return null;
 
   return (
     <span id={id} className="mt-2 block text-sm font-semibold text-orange">
-      {message}
+      {t(error, { min: MIN_MESSAGE_LENGTH, max: MAX_MESSAGE_LENGTH })}
     </span>
   );
 }
 
 function SubmitButton() {
   const { pending } = useFormStatus();
+  const t = useTranslations("contact.form");
 
   return (
     <Button
@@ -69,13 +77,14 @@ function SubmitButton() {
     >
       <span className="flex items-center gap-2 font-extrabold">
         <Send size={18} aria-hidden="true" />
-        {pending ? "Slanje..." : "Pošaljite poruku"}
+        {pending ? t("sending") : t("submit")}
       </span>
     </Button>
   );
 }
 
 const ContactForm = () => {
+  const t = useTranslations("contact");
   const [state, formAction] = useActionState(sendContactMessage, initialState);
 
   // Verbindet ein Feld mit seiner Fehlermeldung für Screenreader
@@ -92,9 +101,9 @@ const ContactForm = () => {
   return (
     <div className="container relative z-10 mt-6" id="termin">
       <div className="rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
-        <h3 className="m-0 mb-2 text-2xl font-bold">Pošaljite nam poruku</h3>
+        <h3 className="m-0 mb-2 text-2xl font-bold">{t("form.title")}</h3>
         <p className="mb-7 text-slate-200">
-          Popunite formular i javićemo vam se u najkraćem roku.
+          {t("form.intro")}
         </p>
 
         <form action={formAction} noValidate>
@@ -112,7 +121,7 @@ const ContactForm = () => {
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <div>
-              <FieldLabel htmlFor="contact-name">Ime i prezime</FieldLabel>
+              <FieldLabel htmlFor="contact-name">{t("form.name")}</FieldLabel>
               <input
                 {...fieldProps("name")}
                 type="text"
@@ -122,12 +131,12 @@ const ContactForm = () => {
               />
               <FieldError
                 id="contact-name-error"
-                message={state.errors?.name}
+                error={state.errors?.name}
               />
             </div>
 
             <div>
-              <FieldLabel htmlFor="contact-phone">Telefon</FieldLabel>
+              <FieldLabel htmlFor="contact-phone">{t("form.phone")}</FieldLabel>
               <input
                 {...fieldProps("phone")}
                 type="tel"
@@ -137,13 +146,13 @@ const ContactForm = () => {
               />
               <FieldError
                 id="contact-phone-error"
-                message={state.errors?.phone}
+                error={state.errors?.phone}
               />
             </div>
 
             <div>
               <FieldLabel htmlFor="contact-email" optional>
-                E-mail
+                {t("form.email")}
               </FieldLabel>
               <input
                 {...fieldProps("email")}
@@ -154,43 +163,43 @@ const ContactForm = () => {
               />
               <FieldError
                 id="contact-email-error"
-                message={state.errors?.email}
+                error={state.errors?.email}
               />
             </div>
 
             <div>
-              <FieldLabel htmlFor="contact-topic">Tema</FieldLabel>
+              <FieldLabel htmlFor="contact-topic">{t("form.topic")}</FieldLabel>
               <select
                 key={state.values?.topic ?? "empty"}
                 {...fieldProps("topic")}
                 className={`${inputStyles} cursor-pointer`}
               >
                 <option value="" className="text-[#14332a]">
-                  Izaberite temu
+                  {t("form.chooseTopic")}
                 </option>
-                {site.contactTopics.map((topic) => (
+                {contactTopics.map((topic) => (
                   <option key={topic} value={topic} className="text-[#14332a]">
-                    {topic}
+                    {t(`topics.${topic}`)}
                   </option>
                 ))}
               </select>
               <FieldError
                 id="contact-topic-error"
-                message={state.errors?.topic}
+                error={state.errors?.topic}
               />
             </div>
 
             <div className="md:col-span-2">
-              <FieldLabel htmlFor="contact-message">Poruka</FieldLabel>
+              <FieldLabel htmlFor="contact-message">{t("form.message")}</FieldLabel>
               <textarea
                 {...fieldProps("message")}
                 rows={5}
-                maxLength={2000}
+                maxLength={MAX_MESSAGE_LENGTH}
                 className={`${inputStyles} resize-y`}
               />
               <FieldError
                 id="contact-message-error"
-                message={state.errors?.message}
+                error={state.errors?.message}
               />
             </div>
           </div>
@@ -219,22 +228,23 @@ const ContactForm = () => {
                     aria-hidden="true"
                   />
                 )}
-                {state.message}
+                {t(`errors.${state.message}`, { phone: site.phone })}
               </p>
             )}
           </div>
 
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="mb-0 text-xs leading-relaxed text-slate-300 sm:max-w-md">
-              Vaše podatke koristimo isključivo da bismo odgovorili na vaš upit.
-              Više u{" "}
-              <a
-                href="#politika-privatnosti"
-                className="text-inherit underline!"
-              >
-                politici privatnosti
-              </a>
-              .
+              {t.rich("form.privacy", {
+                link: (chunks) => (
+                  <a
+                    href="#politika-privatnosti"
+                    className="text-inherit underline!"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
             </p>
             <SubmitButton />
           </div>

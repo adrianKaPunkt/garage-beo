@@ -1,0 +1,12 @@
+{
+  "titleFirst": "REGISTRACIJA",
+  "titleSecond": "VOZILA",
+  "subtitle": "Registracija vozila na jednom mestu.",
+  "description": "Olakšajte sebi proces registracije vozila. Pružamo vam potrebne informacije i pomoć, kako biste sve završili jednostavno, brzo i bez nepotrebnih komplikacija.",
+  "imageAlt": "Garage Beograd maskota sa registarskom tablicom i pečatom",
+  "points": {
+    "help": "Pomoć oko registracije vozila",
+    "documents": "Informacije o potrebnoj dokumentaciji",
+    "simple": "Jednostavno i bez komplikacija"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "titleFirst": "TECHNISCHE",
+  "titleSecond": "PRÜFUNG",
+  "description": "Schnelle, einfache und zuverlässige technische Prüfung Ihres Fahrzeugs. Mit moderner Ausstattung und einem erfahrenen Team finden Sie alles, was Sie brauchen, an einem Ort.",
+  "points": {
+    "control": "Gründliche Fahrzeugkontrolle",
+    "safety": "Prüfung von Sicherheit und Funktion",
+    "equipment": "Moderne Prüfausstattung"
+  },
+  "images": {
+    "station": "Prüfstelle Garage Beograd",
+    "vehicle": "Fahrzeug bei der technischen Prüfung",
+    "inspection": "Fahrzeugprüfung",
+    "front": "Fahrzeug vor der Prüfstelle",
+    "equipment": "Ausstattung für die technische Prüfung"
+  }
+}

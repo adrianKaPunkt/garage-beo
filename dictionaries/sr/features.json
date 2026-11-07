@@ -1,0 +1,18 @@
+{
+  "simple": {
+    "title": "Jednostavno",
+    "desc": "Sve informacije na jednom mestu"
+  },
+  "friendly": {
+    "title": "Ljubazan pristup",
+    "desc": "Tu smo za vaša pitanja"
+  },
+  "inspection": {
+    "title": "Tehnički pregled",
+    "desc": "Kontrola vozila na licu mesta"
+  },
+  "location": {
+    "title": "Praktična lokacija",
+    "desc": "Pristup vozilom"
+  }
+}

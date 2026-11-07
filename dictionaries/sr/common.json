@@ -1,0 +1,44 @@
+{
+  "brandSubtitle": "TEHNIČKI PREGLED",
+  "mascotAlt": "Garage Beograd maskota",
+  "address": {
+    "street": "Nabokovljeva 1a",
+    "cityLine": "11150 Beograd, Srbija"
+  },
+  "nav": {
+    "home": "Početna",
+    "about": "O nama",
+    "services": "Usluge",
+    "contact": "Kontakt",
+    "hours": "Radno vreme"
+  },
+  "days": {
+    "monday": "Ponedeljak",
+    "tuesday": "Utorak",
+    "wednesday": "Sreda",
+    "thursday": "Četvrtak",
+    "friday": "Petak",
+    "saturday": "Subota",
+    "sunday": "Nedelja"
+  },
+  "closed": "Ne radimo",
+  "actions": {
+    "bookAppointment": "Zakažite termin",
+    "contactUs": "Kontaktirajte nas"
+  },
+  "gallery": {
+    "label": "Galerija fotografija",
+    "open": "Otvori fotografiju {number}: {alt}",
+    "dialog": "Pregled fotografija",
+    "close": "Zatvori galeriju",
+    "previous": "Prethodna fotografija",
+    "next": "Sledeća fotografija"
+  },
+  "video": {
+    "defaultTitle": "Pogledajte naš prostor",
+    "unsupported": "Vaš pregledač ne podržava video.",
+    "unavailable": "Video trenutno nije dostupan.",
+    "openDirectly": "Otvorite video direktno",
+    "play": "Pusti video: {title}"
+  }
+}

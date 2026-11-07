@@ -1,0 +1,18 @@
+{
+  "simple": {
+    "title": "Simple",
+    "desc": "All the information in one place"
+  },
+  "friendly": {
+    "title": "Friendly service",
+    "desc": "Here to answer your questions"
+  },
+  "inspection": {
+    "title": "Vehicle inspection",
+    "desc": "Vehicle check on site"
+  },
+  "location": {
+    "title": "Convenient location",
+    "desc": "Easy to reach by car"
+  }
+}

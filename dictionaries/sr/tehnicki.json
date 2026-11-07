@@ -1,0 +1,17 @@
+{
+  "titleFirst": "TEHNIČKI",
+  "titleSecond": "PREGLED",
+  "description": "Brz, jednostavan i pouzdan tehnički pregled vašeg vozila. Uz savremenu opremu i stručan tim, sve što vam je potrebno nalazi se na jednom mestu.",
+  "points": {
+    "control": "Detaljna kontrola vozila",
+    "safety": "Provera bezbednosti i ispravnosti",
+    "equipment": "Savremena oprema za pregled"
+  },
+  "images": {
+    "station": "Kontrolna stanica Garage Beograd",
+    "vehicle": "Vozilo na tehničkom pregledu",
+    "inspection": "Pregled vozila",
+    "front": "Vozilo ispred kontrolne stanice",
+    "equipment": "Oprema za tehnički pregled"
+  }
+}

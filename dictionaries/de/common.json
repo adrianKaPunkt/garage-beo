@@ -1,0 +1,44 @@
+{
+  "brandSubtitle": "TECHNISCHE PRÜFUNG",
+  "mascotAlt": "Garage Beograd Maskottchen",
+  "address": {
+    "street": "Nabokovljeva 1a",
+    "cityLine": "11150 Belgrad, Serbien"
+  },
+  "nav": {
+    "home": "Start",
+    "about": "Über uns",
+    "services": "Leistungen",
+    "contact": "Kontakt",
+    "hours": "Öffnungszeiten"
+  },
+  "days": {
+    "monday": "Montag",
+    "tuesday": "Dienstag",
+    "wednesday": "Mittwoch",
+    "thursday": "Donnerstag",
+    "friday": "Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag"
+  },
+  "closed": "Geschlossen",
+  "actions": {
+    "bookAppointment": "Termin vereinbaren",
+    "contactUs": "Kontaktieren Sie uns"
+  },
+  "gallery": {
+    "label": "Fotogalerie",
+    "open": "Foto {number} öffnen: {alt}",
+    "dialog": "Fotoansicht",
+    "close": "Galerie schließen",
+    "previous": "Vorheriges Foto",
+    "next": "Nächstes Foto"
+  },
+  "video": {
+    "defaultTitle": "Sehen Sie sich unsere Räume an",
+    "unsupported": "Ihr Browser unterstützt keine Videos.",
+    "unavailable": "Das Video ist derzeit nicht verfügbar.",
+    "openDirectly": "Video direkt öffnen",
+    "play": "Video abspielen: {title}"
+  }
+}

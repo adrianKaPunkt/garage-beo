@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "inspection": "VEHICLE\nINSPECTION",
+    "registration": "VEHICLE\nREGISTRATION",
+    "insurance": "INSURANCE",
+    "payments": "BILL\nPAYMENT"
+  },
+  "subtitles": {
+    "fast": { "text": "FAST", "suffix": "" },
+    "clear": { "text": "CLEAR", "suffix": "" },
+    "simple": { "text": "SIMPLE", "suffix": "" },
+    "oneplace": { "text": "ALL IN ONE PLACE", "suffix": "" }
+  }
+}

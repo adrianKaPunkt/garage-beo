@@ -1,0 +1,18 @@
+{
+  "simple": {
+    "title": "Einfach",
+    "desc": "Alle Informationen an einem Ort"
+  },
+  "friendly": {
+    "title": "Freundlicher Service",
+    "desc": "Wir beantworten gern Ihre Fragen"
+  },
+  "inspection": {
+    "title": "Technische Prüfung",
+    "desc": "Fahrzeugprüfung direkt vor Ort"
+  },
+  "location": {
+    "title": "Praktische Lage",
+    "desc": "Gut mit dem Auto erreichbar"
+  }
+}

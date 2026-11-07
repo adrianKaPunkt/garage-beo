@@ -1,0 +1,54 @@
+{
+  "eyebrow": "WIR SIND FÜR SIE DA",
+  "title": {
+    "first": "KONTAKT",
+    "middle": "&",
+    "last": "ANFAHRT"
+  },
+  "intro": "Haben Sie eine Frage zur technischen Prüfung, zur Zulassung oder zu unseren Leistungen? Kontaktieren Sie uns oder besuchen Sie uns.",
+  "contactTitle": "Kontakt",
+  "labels": {
+    "address": "Adresse",
+    "phone": "Telefon",
+    "email": "E-Mail"
+  },
+  "hoursTitle": "Öffnungszeiten",
+  "status": {
+    "open": "Jetzt geöffnet",
+    "closing": "Schließt bald",
+    "closed": "Geschlossen"
+  },
+  "today": "(heute)",
+  "routeAria": "Route zur Adresse {address} in Google Maps planen",
+  "form": {
+    "title": "Schreiben Sie uns",
+    "intro": "Füllen Sie das Formular aus, wir melden uns so schnell wie möglich.",
+    "name": "Vor- und Nachname",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "optional": "(optional)",
+    "topic": "Thema",
+    "chooseTopic": "Thema auswählen",
+    "message": "Nachricht",
+    "sending": "Wird gesendet...",
+    "submit": "Nachricht senden",
+    "privacy": "Wir verwenden Ihre Daten ausschließlich, um Ihre Anfrage zu beantworten. Mehr dazu in der <link>Datenschutzerklärung</link>."
+  },
+  "topics": {
+    "inspection": "Technische Prüfung",
+    "registration": "Fahrzeugzulassung",
+    "insurance": "Versicherung",
+    "payment": "Rechnungszahlung",
+    "other": "Sonstiges"
+  },
+  "errors": {
+    "name": "Bitte geben Sie Ihren Vor- und Nachnamen ein.",
+    "phone": "Bitte geben Sie eine gültige Telefonnummer ein.",
+    "email": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "topic": "Bitte wählen Sie ein Thema aus.",
+    "messageTooShort": "Bitte schreiben Sie eine Nachricht mit mindestens {min} Zeichen.",
+    "messageTooLong": "Die Nachricht darf höchstens {max} Zeichen lang sein.",
+    "sendFailed": "Die Nachricht wurde nicht gesendet. Bitte versuchen Sie es erneut oder rufen Sie uns an: {phone}.",
+    "sent": "Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns bald bei Ihnen."
+  }
+}

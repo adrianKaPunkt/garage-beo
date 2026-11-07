@@ -1,47 +1,29 @@
 import Image from "next/image";
 import { ClipboardCheck, ShieldCheck, Wrench } from "lucide-react";
 import Button from "@/components/Button";
-import ImageGallery, { type GalleryImage } from "@/components/ImageGallery";
+import ImageGallery from "@/components/ImageGallery";
+import { useTranslations } from "next-intl";
 
-const tehnickiImages: GalleryImage[] = [
-  {
-    src: "/images/tehnicki01.jpeg",
-    alt: "Kontrolna stanica Garage Beograd",
-  },
-  {
-    src: "/images/tehnicki02.jpeg",
-    alt: "Vozilo na tehničkom pregledu",
-  },
-  {
-    src: "/images/tehnicki03.jpeg",
-    alt: "Pregled vozila",
-  },
-  {
-    src: "/images/tehnicki04.jpeg",
-    alt: "Vozilo ispred kontrolne stanice",
-  },
-  {
-    src: "/images/tehnicki05.jpeg",
-    alt: "Oprema za tehnički pregled",
-  },
-];
+// Alt-Texte in tehnicki.images im Dictionary
+const tehnickiImages = [
+  { src: "/images/tehnicki01.jpeg", key: "station" },
+  { src: "/images/tehnicki02.jpeg", key: "vehicle" },
+  { src: "/images/tehnicki03.jpeg", key: "inspection" },
+  { src: "/images/tehnicki04.jpeg", key: "front" },
+  { src: "/images/tehnicki05.jpeg", key: "equipment" },
+] as const;
 
+// Texte in tehnicki.points im Dictionary
 const inspectionPoints = [
-  {
-    icon: ClipboardCheck,
-    text: "Detaljna kontrola vozila",
-  },
-  {
-    icon: ShieldCheck,
-    text: "Provera bezbednosti i ispravnosti",
-  },
-  {
-    icon: Wrench,
-    text: "Savremena oprema za pregled",
-  },
-];
+  { icon: ClipboardCheck, key: "control" },
+  { icon: ShieldCheck, key: "safety" },
+  { icon: Wrench, key: "equipment" },
+] as const;
 
 export default function Tehnicki() {
+  const t = useTranslations("tehnicki");
+  const tCommon = useTranslations("common");
+
   return (
     <section
       id="tehnicki-pregled"
@@ -89,8 +71,8 @@ export default function Tehnicki() {
               lg:text-[clamp(40px,4vw,60px)]
             "
             >
-              <span className="text-lime-300">TEHNIČKI</span>
-              <span className="block text-orange">PREGLED</span>
+              <span className="text-lime-300">{t("titleFirst")}</span>
+              <span className="block text-orange">{t("titleSecond")}</span>
             </h2>
           </div>
 
@@ -134,7 +116,7 @@ export default function Tehnicki() {
             >
               <Image
                 src="/images/car/tehnicki.webp"
-                alt="Garage Beograd maskota"
+                alt={tCommon("mascotAlt")}
                 fill
                 sizes="(max-width: 1024px) 85vw, 440px"
                 className="object-contain drop-shadow-2xl"
@@ -160,9 +142,7 @@ export default function Tehnicki() {
               sm:text-lg
             "
               >
-                Brz, jednostavan i pouzdan tehnički pregled vašeg vozila. Uz
-                savremenu opremu i stručan tim, sve što vam je potrebno nalazi
-                se na jednom mestu.
+                {t("description")}
               </p>
 
               {/* Leistungen */}
@@ -171,7 +151,7 @@ export default function Tehnicki() {
                   const Icon = point.icon;
 
                   return (
-                    <div key={point.text} className="flex items-center gap-4">
+                    <div key={point.key} className="flex items-center gap-4">
                       <div
                         className="
                       flex h-11 w-11 shrink-0
@@ -189,7 +169,7 @@ export default function Tehnicki() {
                       </div>
 
                       <span className="font-semibold text-slate-100">
-                        {point.text}
+                        {t(`points.${point.key}`)}
                       </span>
                     </div>
                   );
@@ -201,7 +181,10 @@ export default function Tehnicki() {
         <div className="flex justify-center">
           <div className="container relative z-10 mt-12 lg:mt-15">
             <ImageGallery
-              images={tehnickiImages}
+              images={tehnickiImages.map(({ src, key }) => ({
+                src,
+                alt: t(`images.${key}`),
+              }))}
               shape="circle"
               size="md"
               align="center"
@@ -214,7 +197,7 @@ export default function Tehnicki() {
         {/* Kontakt-Button */}
         <div className="mt-10 flex justify-center">
           <Button href="#termin" variant="primary" size="large" showArrow>
-            Zakažite termin
+            {tCommon("actions.bookAppointment")}
           </Button>
         </div>
       </div>

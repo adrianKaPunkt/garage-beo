@@ -1,0 +1,44 @@
+{
+  "brandSubtitle": "VEHICLE INSPECTION",
+  "mascotAlt": "Garage Beograd mascot",
+  "address": {
+    "street": "Nabokovljeva 1a",
+    "cityLine": "11150 Belgrade, Serbia"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "services": "Services",
+    "contact": "Contact",
+    "hours": "Opening hours"
+  },
+  "days": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "closed": "Closed",
+  "actions": {
+    "bookAppointment": "Book an appointment",
+    "contactUs": "Contact us"
+  },
+  "gallery": {
+    "label": "Photo gallery",
+    "open": "Open photo {number}: {alt}",
+    "dialog": "Photo viewer",
+    "close": "Close gallery",
+    "previous": "Previous photo",
+    "next": "Next photo"
+  },
+  "video": {
+    "defaultTitle": "Take a look around",
+    "unsupported": "Your browser does not support video.",
+    "unavailable": "The video is currently unavailable.",
+    "openDirectly": "Open the video directly",
+    "play": "Play video: {title}"
+  }
+}

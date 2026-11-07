@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./InsuranceMarquee.module.css";
 
 const insurers = [
@@ -18,11 +19,12 @@ const insurers = [
 ];
 
 export default function InsuranceMarquee() {
+  const t = useTranslations("insurance");
   // Angetipptes Logo: Touch-Geräte kennen kein Hover
   const [activeFile, setActiveFile] = useState<string | null>(null);
 
   return (
-    <section className={styles.section} aria-label="Osiguravajuće kuće">
+    <section className={styles.section} aria-label={t("insurersLabel")}>
       <div className={styles.viewport}>
         <div
           className={[

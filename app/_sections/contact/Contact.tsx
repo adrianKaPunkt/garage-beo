@@ -3,21 +3,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Clock3, Mail, MapPin, Navigation, Phone } from "lucide-react";
-import { site } from "@/app/site-config";
+import { useTranslations } from "next-intl";
+import { DAY_KEYS, site } from "@/app/site-config";
 import ContactForm from "./ContactForm";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-// Index wie bei days in site.hours: 0 = Sonntag ... 6 = Samstag
-const DAY_NAMES = [
-  "Nedelja",
-  "Ponedeljak",
-  "Utorak",
-  "Sreda",
-  "Četvrtak",
-  "Petak",
-  "Subota",
-];
 
 // Anzeige beginnt am Montag
 const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0];
@@ -44,15 +34,16 @@ function getBelgradeTime() {
 // Ab so vielen Minuten vor Feierabend zeigt das Badge "Uskoro zatvaramo"
 const CLOSING_SOON_MINUTES = 60;
 
+// Texte in contact.status im Dictionary
 const STATUS = {
-  open: { label: "Otvoreno sada", styles: "bg-lime-300 text-[#14332a]" },
-  closing: { label: "Uskoro zatvaramo", styles: "bg-orange text-[#14332a]" },
-  closed: { label: "Zatvoreno", styles: "bg-red-600 text-white" },
+  open: "bg-lime-300 text-[#14332a]",
+  closing: "bg-orange text-[#14332a]",
+  closed: "bg-red-600 text-white",
 };
 
 function getStatus(day: number, minutes: number): keyof typeof STATUS {
   const today = site.hours.find((entry) => entry.days.includes(day));
-  const match = today?.time.match(/(\d{2}):(\d{2}) – (\d{2}):(\d{2})/);
+  const match = today?.time?.match(/(\d{2}):(\d{2}) – (\d{2}):(\d{2})/);
 
   if (!match) return "closed";
 
@@ -66,6 +57,8 @@ function getStatus(day: number, minutes: number): keyof typeof STATUS {
 }
 
 export default function Contact() {
+  const t = useTranslations("contact");
+  const tCommon = useTranslations("common");
   const [now, setNow] = useState<ReturnType<typeof getBelgradeTime> | null>(
     null,
   );
@@ -79,7 +72,10 @@ export default function Contact() {
     return () => clearInterval(timer);
   }, []);
 
-  const status = now !== null ? STATUS[getStatus(now.day, now.minutes)] : null;
+  const status = now !== null ? getStatus(now.day, now.minutes) : null;
+
+  // Angezeigte Adresse in der aktuellen Sprache
+  const address = `${tCommon("address.street")}, ${tCommon("address.cityLine")}`;
 
   const mapQuery = encodeURIComponent(site.address);
 
@@ -90,15 +86,20 @@ export default function Contact() {
   const contactRows = [
     {
       icon: MapPin,
-      label: "Adresa",
-      value: site.address,
+      label: t("labels.address"),
+      value: address,
       href: navigationUrl,
       external: true,
     },
-    { icon: Phone, label: "Telefon", value: site.phone, href: phoneUrl },
+    {
+      icon: Phone,
+      label: t("labels.phone"),
+      value: site.phone,
+      href: phoneUrl,
+    },
     {
       icon: Mail,
-      label: "E-mail",
+      label: t("labels.email"),
       value: site.email,
       href: `mailto:${site.email}`,
     },
@@ -144,24 +145,21 @@ export default function Contact() {
       <div className="container relative z-10">
         {/* Überschrift */}
         <div className="mt-10 mb-7.5 text-center min-[701px]:mb-9.75">
-          <p className="text-white mb-4">TU SMO ZA VAS</p>
+          <p className="text-white mb-4">{t("eyebrow")}</p>
           <h2
             id="contact-title"
             className="mb-7 text-[clamp(50px,3vw,55px)] leading-14"
           >
-            <span className="text-lime-300">KONTAKT </span>
+            <span className="text-lime-300">{t("title.first")} </span>
             <span className="whitespace-nowrap">
-              <span className="text-white">I </span>
-              <span className="text-orange">DOLAZAK</span>
+              <span className="text-white">{t("title.middle")} </span>
+              <span className="text-orange">{t("title.last")}</span>
             </span>
           </h2>
           <span className="mx-auto block h-1 w-16.5 rounded-xs bg-white" />
         </div>
         <div className="mx-auto mb-12 max-w-110 text-center text-lg text-slate-200">
-          <p>
-            Imate pitanje o tehničkom pregledu, registraciji ili našim uslugama?
-            Kontaktirajte nas ili nas posetite.
-          </p>
+          <p>{t("intro")}</p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -169,7 +167,7 @@ export default function Contact() {
           <div className="flex flex-col gap-6">
             {/* Kontaktdaten */}
             <div className="relative rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
-              <h3 className="m-0 mb-7 text-2xl font-bold">Kontakt</h3>
+              <h3 className="m-0 mb-7 text-2xl font-bold">{t("contactTitle")}</h3>
 
               <div className="space-y-5">
                 {contactRows.map(
@@ -214,7 +212,7 @@ export default function Contact() {
               <div className="absolute right-7 bottom-7 hidden min-[701px]:block">
                 <Image
                   src="/images/car/contact.webp"
-                  alt="kontakt auto"
+                  alt={tCommon("mascotAlt")}
                   width={160}
                   height={160}
                 />
@@ -233,18 +231,18 @@ export default function Contact() {
                     className="text-lime-300"
                     aria-hidden="true"
                   />
-                  <h3 className="m-0 text-2xl font-bold">Radno vreme</h3>
+                  <h3 className="m-0 text-2xl font-bold">{t("hoursTitle")}</h3>
                 </div>
 
                 {status && (
                   <span
-                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${status.styles}`}
+                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${STATUS[status]}`}
                   >
                     <span
                       aria-hidden="true"
                       className="h-2 w-2 rounded-full bg-current"
                     />
-                    {status.label}
+                    {t(`status.${status}`)}
                   </span>
                 )}
               </div>
@@ -252,9 +250,9 @@ export default function Contact() {
               <div className="space-y-1">
                 {WEEK_ORDER.map((day) => {
                   const isToday = now?.day === day;
-                  const time = site.hours.find((entry) =>
-                    entry.days.includes(day),
-                  )?.time;
+                  const time =
+                    site.hours.find((entry) => entry.days.includes(day))
+                      ?.time ?? tCommon("closed");
 
                   return (
                     <div
@@ -272,8 +270,8 @@ export default function Contact() {
                             : "text-sm text-slate-200"
                         }
                       >
-                        {DAY_NAMES[day]}
-                        {isToday && " (danas)"}
+                        {tCommon(`days.${DAY_KEYS[day]}`)}
+                        {isToday && ` ${t("today")}`}
                       </span>
 
                       <strong className="text-right text-sm font-bold text-white">
@@ -298,7 +296,7 @@ export default function Contact() {
               href={navigationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Isplanirajte rutu do adrese ${site.address} u Google Maps`}
+              aria-label={t("routeAria", { address })}
               className="
                 absolute inset-0 block
                 focus-visible:outline-2

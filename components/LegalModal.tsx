@@ -2,18 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { LegalNotice, PrivacyPolicy } from "./LegalContent";
 
-// Jeder normale Link auf diese Anker öffnet das Modal, z.B. <a href="#impresum">
+// Jeder normale Link auf diese Anker öffnet das Modal, z.B. <a href="#impresum">.
+// Texte in legal.modal im Dictionary.
 const tabs = [
-  { hash: "#politika-privatnosti", label: "Politika privatnosti" },
-  { hash: "#impresum", label: "Impresum" },
-];
+  { hash: "#politika-privatnosti", key: "privacyTab" },
+  { hash: "#impresum", key: "imprintTab" },
+] as const;
 
 export default function LegalModal() {
+  const t = useTranslations("legal.modal");
   const dialogRef = useRef<HTMLDialogElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [activeHash, setActiveHash] = useState(tabs[0].hash);
+  const [activeHash, setActiveHash] = useState<string>(tabs[0].hash);
 
   useEffect(() => {
     const openFromHash = () => {
@@ -72,10 +75,10 @@ export default function LegalModal() {
       <div className="flex max-h-[85dvh] flex-col">
         <div className="flex items-center justify-between gap-4 border-b border-slate-200 px-5 py-4 sm:px-8">
           <h2 id="legal-title" className="sr-only">
-            Pravne informacije
+            {t("title")}
           </h2>
 
-          <div role="tablist" aria-label="Pravne informacije" className="flex gap-2">
+          <div role="tablist" aria-label={t("title")} className="flex gap-2">
             {tabs.map((tab) => {
               const isActive = tab.hash === activeHash;
 
@@ -95,7 +98,7 @@ export default function LegalModal() {
                       : "bg-transparent text-slate-700 hover:bg-slate-100",
                   ].join(" ")}
                 >
-                  <span className="font-bold">{tab.label}</span>
+                  <span className="font-bold">{t(tab.key)}</span>
                 </button>
               );
             })}
@@ -103,7 +106,7 @@ export default function LegalModal() {
 
           <button
             type="button"
-            aria-label="Zatvori"
+            aria-label={t("close")}
             onClick={() => dialogRef.current?.close()}
             className="
               flex h-10 w-10 shrink-0 cursor-pointer
@@ -126,6 +129,24 @@ export default function LegalModal() {
           tabIndex={0}
           className="overflow-y-auto px-5 py-6 leading-relaxed sm:px-8"
         >
+          {/* Nur in Übersetzungen: In sr ist der Text leer */}
+          {t("translationNotice") && (
+            <p className="mb-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-slate-700">
+              {t.rich("translationNotice", {
+                // Führt zum selben Text in der serbischen Standardfassung
+                link: (chunks) => (
+                  <a
+                    href={`/${activeHash}`}
+                    hrefLang="sr-Latn"
+                    className="font-semibold text-darkgreen underline!"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
+            </p>
+          )}
+
           {activeHash === "#impresum" ? <LegalNotice /> : <PrivacyPolicy />}
         </div>
       </div>

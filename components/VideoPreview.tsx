@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { Play } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 type VideoPreviewProps = {
   src: string;
@@ -13,9 +14,11 @@ type VideoPreviewProps = {
 export default function VideoPreview({
   src,
   poster,
-  title = "Pogledajte naš prostor",
+  title,
   className = "",
 }: VideoPreviewProps) {
+  const t = useTranslations("common.video");
+  const label = title ?? t("defaultTitle");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -43,11 +46,11 @@ export default function VideoPreview({
         controls={started}
         playsInline
         tabIndex={-1}
-        aria-label={title}
+        aria-label={label}
         className="block h-full w-full object-cover"
         onError={() => setFailed(true)}
       >
-        Vaš pregledač ne podržava video.
+        {t("unsupported")}
       </video>
 
       {failed && (
@@ -56,9 +59,9 @@ export default function VideoPreview({
           className="absolute inset-0 m-0 flex items-center justify-center bg-black/70 p-4 text-center text-sm text-white"
         >
           <span>
-            Video trenutno nije dostupan.{" "}
+            {t("unavailable")}{" "}
             <a className="underline" href={src}>
-              Otvorite video direktno
+              {t("openDirectly")}
             </a>
             .
           </span>
@@ -68,7 +71,7 @@ export default function VideoPreview({
       {!started && (
         <button
           type="button"
-          aria-label={`Pusti video: ${title}`}
+          aria-label={t("play", { title: label })}
           onClick={handleStart}
           className="
             group absolute inset-0 block cursor-pointer

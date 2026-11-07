@@ -1,0 +1,54 @@
+{
+  "eyebrow": "WE ARE HERE FOR YOU",
+  "title": {
+    "first": "CONTACT",
+    "middle": "&",
+    "last": "DIRECTIONS"
+  },
+  "intro": "Do you have a question about vehicle inspection, registration or our services? Contact us or pay us a visit.",
+  "contactTitle": "Contact",
+  "labels": {
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email"
+  },
+  "hoursTitle": "Opening hours",
+  "status": {
+    "open": "Open now",
+    "closing": "Closing soon",
+    "closed": "Closed"
+  },
+  "today": "(today)",
+  "routeAria": "Plan a route to {address} in Google Maps",
+  "form": {
+    "title": "Send us a message",
+    "intro": "Fill out the form and we will get back to you as soon as possible.",
+    "name": "Full name",
+    "phone": "Phone",
+    "email": "Email",
+    "optional": "(optional)",
+    "topic": "Topic",
+    "chooseTopic": "Choose a topic",
+    "message": "Message",
+    "sending": "Sending...",
+    "submit": "Send message",
+    "privacy": "We only use your data to reply to your inquiry. Read more in our <link>privacy policy</link>."
+  },
+  "topics": {
+    "inspection": "Vehicle inspection",
+    "registration": "Vehicle registration",
+    "insurance": "Insurance",
+    "payment": "Bill payment",
+    "other": "Other"
+  },
+  "errors": {
+    "name": "Please enter your full name.",
+    "phone": "Please enter a valid phone number.",
+    "email": "Please enter a valid email address.",
+    "topic": "Please choose a topic.",
+    "messageTooShort": "Please write a message of at least {min} characters.",
+    "messageTooLong": "The message can be at most {max} characters long.",
+    "sendFailed": "Your message was not sent. Please try again or call us: {phone}.",
+    "sent": "Thank you! Your message has been sent. We will get back to you soon."
+  }
+}

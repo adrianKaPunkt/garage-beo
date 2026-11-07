@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "inspection": "TECHNISCHE\nPRÜFUNG",
+    "registration": "FAHRZEUG-\nZULASSUNG",
+    "insurance": "VERSICHERUNG",
+    "payments": "RECHNUNGEN\nBEZAHLEN"
+  },
+  "subtitles": {
+    "fast": { "text": "SCHNELL", "suffix": "" },
+    "clear": { "text": "KLAR", "suffix": "" },
+    "simple": { "text": "EINFACH", "suffix": "" },
+    "oneplace": { "text": "ALLES AN EINEM ORT", "suffix": "" }
+  }
+}

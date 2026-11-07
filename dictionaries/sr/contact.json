@@ -1,0 +1,54 @@
+{
+  "eyebrow": "TU SMO ZA VAS",
+  "title": {
+    "first": "KONTAKT",
+    "middle": "I",
+    "last": "DOLAZAK"
+  },
+  "intro": "Imate pitanje o tehničkom pregledu, registraciji ili našim uslugama? Kontaktirajte nas ili nas posetite.",
+  "contactTitle": "Kontakt",
+  "labels": {
+    "address": "Adresa",
+    "phone": "Telefon",
+    "email": "E-mail"
+  },
+  "hoursTitle": "Radno vreme",
+  "status": {
+    "open": "Otvoreno sada",
+    "closing": "Uskoro zatvaramo",
+    "closed": "Zatvoreno"
+  },
+  "today": "(danas)",
+  "routeAria": "Isplanirajte rutu do adrese {address} u Google Maps",
+  "form": {
+    "title": "Pošaljite nam poruku",
+    "intro": "Popunite formular i javićemo vam se u najkraćem roku.",
+    "name": "Ime i prezime",
+    "phone": "Telefon",
+    "email": "E-mail",
+    "optional": "(opciono)",
+    "topic": "Tema",
+    "chooseTopic": "Izaberite temu",
+    "message": "Poruka",
+    "sending": "Slanje...",
+    "submit": "Pošaljite poruku",
+    "privacy": "Vaše podatke koristimo isključivo da bismo odgovorili na vaš upit. Više u <link>politici privatnosti</link>."
+  },
+  "topics": {
+    "inspection": "Tehnički pregled",
+    "registration": "Registracija vozila",
+    "insurance": "Osiguranje",
+    "payment": "Plaćanje računa",
+    "other": "Drugo"
+  },
+  "errors": {
+    "name": "Unesite ime i prezime.",
+    "phone": "Unesite ispravan broj telefona.",
+    "email": "Unesite ispravnu e-mail adresu.",
+    "topic": "Izaberite temu.",
+    "messageTooShort": "Napišite poruku od najmanje {min} karaktera.",
+    "messageTooLong": "Poruka može imati najviše {max} karaktera.",
+    "sendFailed": "Poruka nije poslata. Pokušajte ponovo ili nas pozovite: {phone}.",
+    "sent": "Hvala! Vaša poruka je poslata. Javićemo vam se uskoro."
+  }
+}

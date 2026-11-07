@@ -3,8 +3,11 @@ import AnimatedCar from "@/components/AnimatedCar/AnimatedCar";
 import HeroHeader from "./HeroHeader";
 import HeroSubtitle from "./HeroSubtitle";
 import Button from "@/components/Button";
+import { useTranslations } from "next-intl";
 
 const Hero = () => {
+  const t = useTranslations("common.actions");
+
   return (
     <section
       id="pocetna"
@@ -57,7 +60,7 @@ const Hero = () => {
 
           <div className="flex justify-center lg:justify-start">
             <Button href="#termin" variant="primary" size="large" showArrow>
-              Zakažite termin
+              {t("bookAppointment")}
             </Button>
           </div>
         </div>

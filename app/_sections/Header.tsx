@@ -2,9 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { navLinks, site } from "@/app/site-config";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Header() {
+  const t = useTranslations("header");
+  const tCommon = useTranslations("common");
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#pocetna");
 
@@ -63,21 +67,21 @@ export default function Header() {
           href="#pocetna"
           className="flex min-w-0 shrink-0 flex-col"
           onClick={() => setMenuOpen(false)}
-          aria-label="GARAGE BEOGRAD – početna"
+          aria-label={t("homeAria")}
         >
           <span className="whitespace-nowrap text-lg sm:text-2xl leading-6">
             <span className="font-bold text-green">GARAGE </span>
             <span className="text-orange">BEOGRAD</span>
           </span>
           <span className="text-left text-[11px] text-gray-900 font-semibold tracking-widest">
-            &nbsp;TEHNIČKI PREGLED
+            &nbsp;{tCommon("brandSubtitle")}
           </span>
         </a>
 
         {/* Navigation */}
         <nav
           id="header-navigation"
-          aria-label="Glavna navigacija"
+          aria-label={t("navAria")}
           className={`
             absolute inset-x-0 top-full
             flex-col bg-white px-5 py-4
@@ -112,17 +116,19 @@ export default function Header() {
     }
   `}
             >
-              {link.label}
+              {tCommon(`nav.${link.key}`)}
             </a>
           ))}
         </nav>
 
-        {/* Telefon und mobiles Menü */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+        {/* Sprache, Telefon und mobiles Menü */}
+        <div className="flex shrink-0 items-center gap-1 sm:gap-3">
+          <LanguageSwitcher />
+
           {site.phone && (
             <a
               href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
-              aria-label={`Pozovi nas: ${site.phone}`}
+              aria-label={t("call", { phone: site.phone })}
               className="
                 inline-flex min-h-11 min-w-11
                 items-center justify-center gap-2
@@ -154,7 +160,7 @@ export default function Header() {
               focus-visible:outline-green
               lg:hidden
             "
-            aria-label={menuOpen ? "Zatvori meni" : "Otvori meni"}
+            aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
             aria-controls="header-navigation"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}

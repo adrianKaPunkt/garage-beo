@@ -1,9 +1,11 @@
-import { site, addressParts, navLinks } from "@/app/site-config";
+import { useTranslations } from "next-intl";
+import { site, navLinks } from "@/app/site-config";
+import { dayRangeLabel } from "@/app/_sections/hours";
 import type { SVGProps } from "react";
 import { Facebook, Instagram, MapPin, Youtube } from "lucide-react";
 import LegalModal from "@/components/LegalModal";
 
-// TikTok gibt es in lucide-react nicht
+// TikTok ist nicht in lucide-react enthalten.
 function TikTok({
   size,
   ...props
@@ -30,117 +32,131 @@ const socialLinks = [
   { label: "Google Maps", icon: MapPin, url: site.mapsUrl },
 ];
 
-const column = "flex flex-col items-start gap-2.5";
-const columnTitle = "mb-1.5 text-[15px]";
+const columnTitle = "text-base font-semibold text-white";
+const footerLink =
+  "text-sm leading-relaxed text-[#d0dfd2] transition-colors hover:text-lime-300";
 
-const Footer = () => {
+export default function Footer() {
+  const t = useTranslations("footer");
+  const tCommon = useTranslations("common");
+
   return (
     <footer className="bg-gray-950 text-white">
-      <div
-        className="
-          container grid grid-cols-2
-          gap-x-5 gap-y-8 pt-13.5 pb-10.5
-          min-[701px]:gap-9.5
-          min-[1001px]:grid-cols-[1.4fr_0.7fr_0.95fr_1fr]
-        "
-      >
-        <div className={`${column} col-span-2 min-[701px]:col-span-1`}>
-          <div className="flex flex-col">
-            <div>
-              <span className="text-lime-400 font-bold text-2xl leading-6">
-                GARAGE
+      <div className="container py-14 lg:py-18">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:gap-x-12 lg:grid-cols-[1.5fr_0.8fr_1.1fr_1fr] lg:gap-x-12 xl:gap-x-16">
+          {/* Unternehmen: mobil und auf Desktop oben links */}
+          <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-1">
+            <div className="flex flex-col gap-1">
+              <div className="flex flex-wrap items-baseline gap-x-1">
+                <span className="text-2xl font-bold leading-tight text-lime-400 lg:text-3xl">
+                  GARAGE
+                </span>
+                <span className="text-2xl leading-tight text-orange lg:text-3xl">
+                  BEOGRAD
+                </span>
+              </div>
+              <span className="text-sm tracking-wide text-[#c7d6cd]">
+                {tCommon("brandSubtitle")}
               </span>
-              <span className="text-orange text-2xl leading-6">BEOGRAD</span>
             </div>
-            <span className="text-[13px] leading-5 text-[#c7d6cd]">
-              TEHNIČKI PREGLED
-            </span>
+
+            <address className="text-sm not-italic leading-relaxed text-[#d0dfd2]">
+              {tCommon("address.street")}
+              <br />
+              {tCommon("address.cityLine")}
+            </address>
+
+            <p className="max-w-xs text-sm leading-relaxed text-gray-400">
+              {t("tagline")}
+            </p>
           </div>
-          <address className="text-[13px] not-italic leading-5 text-[#c7d6cd]">
-            {addressParts.street}
-            <br />
-            {addressParts.postalCode} {addressParts.city},{" "}
-            {addressParts.country}
-          </address>
-          <p className="text-[13px] text-gray-500">
-            Usluge za vaše vozilo na jednom mestu.
-          </p>
-        </div>
 
-        <div className={column}>
-          <strong className={columnTitle}>Brzi linkovi</strong>
-          {navLinks.map(({ label, href }) => (
-            <a
-              key={href}
-              href={href}
-              className="text-[13px] text-[#d0dfd2] hover:text-[#8bef68]"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
+          {/* Navigation */}
+          <nav
+            aria-label={t("quickLinks")}
+            className="flex flex-col items-start gap-4"
+          >
+            <h3 className={columnTitle}>{t("quickLinks")}</h3>
+            <div className="flex flex-col items-start gap-3">
+              {navLinks.map(({ key, href }) => (
+                <a key={href} href={href} className={footerLink}>
+                  {tCommon(`nav.${key}`)}
+                </a>
+              ))}
+            </div>
+          </nav>
 
-        <div className={column}>
-          <strong className={columnTitle}>Radno vreme</strong>
-          {site.hours.map((h) => (
-            <span key={h.day} className="text-xs text-[#d1dfd6]">
-              {h.day}: {h.time}
-            </span>
-          ))}
-        </div>
+          {/* Öffnungszeiten */}
+          <div className="flex flex-col items-start gap-4">
+            <h3 className={columnTitle}>{t("hours")}</h3>
+            <div className="flex flex-col items-start gap-3">
+              {site.hours.map(({ days, time }) => (
+                <p
+                  key={days.join()}
+                  className="text-sm leading-relaxed text-[#d0dfd2]"
+                >
+                  {dayRangeLabel(days, (day) => tCommon(`days.${day}`))}:{" "}
+                  {time ?? tCommon("closed")}
+                </p>
+              ))}
+            </div>
+          </div>
 
-        <div className={`${column} col-span-2 min-[701px]:col-span-1`}>
-          <strong className={columnTitle}>Društvene mreže</strong>
-          {/* Die Klickfläche ist größer als das Icon, daher der negative Rand */}
-          <div className="-ml-2.5 flex">
-            {socialLinks.map(({ label, icon: Icon, url }) => (
-              <a
-                key={label}
-                href={url || undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="
-                  flex h-11 w-11 items-center justify-center
-                  rounded-lg text-[#d0dfd2] transition-colors
-                  hover:text-[#8bef68]
-                  focus-visible:outline-2
-                  focus-visible:outline-[#8bef68] cursor-pointer
-                "
-              >
-                <Icon size={24} aria-hidden="true" />
-              </a>
-            ))}
+          {/* Social Media: mobil eine eigene Zeile */}
+          <div className="col-span-2 flex flex-col items-start gap-4 lg:col-span-1">
+            <h3 className={columnTitle}>{t("social")}</h3>
+            <div className="flex flex-wrap items-center gap-2">
+              {socialLinks.map(({ label, icon: Icon, url }) =>
+                url ? (
+                  <a
+                    key={label}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-11 w-11 items-center justify-center text-[#d0dfd2] transition-colors hover:border-lime-300/40 hover:bg-white/10 hover:text-lime-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-300"
+                  >
+                    <Icon size={22} aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span
+                    key={label}
+                    aria-label={t("notLinked", { label })}
+                    title={t("notLinked", { label })}
+                    className="flex h-11 w-11 items-center justify-center text-gray-500"
+                  >
+                    <Icon size={22} aria-hidden="true" />
+                  </span>
+                ),
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      <div
-        className="
-          container flex flex-col justify-between gap-3.75
-          border-t border-[#ffffff35] py-4.5
-          text-[11px] text-[#c9d6ce]
-          min-[701px]:flex-row
-        "
-      >
-        <span>
-          © {new Date().getFullYear()} Garage Beograd. Sva prava zadržana.
-        </span>
-        <span className="flex gap-5">
-          <a
-            href="#politika-privatnosti"
-            className="text-inherit hover:underline!"
-          >
-            Politika privatnosti
-          </a>
-          <a href="#impresum" className="text-inherit hover:underline!">
-            Impresum
-          </a>
-        </span>
+      {/* Unterer Abschluss */}
+      <div className="container border-t border-white/15 py-6">
+        <div className="flex flex-col gap-4 text-sm text-[#c9d6ce] sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            {t("copyright", { year: new Date().getFullYear() })}
+          </span>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <a
+              href="#politika-privatnosti"
+              className="hover:text-lime-300 hover:underline visited:text-gray-400"
+            >
+              {t("privacy")}
+            </a>
+            <a
+              href="#impresum"
+              className="hover:text-lime-300 hover:underline visited:text-gray-400"
+            >
+              {t("imprint")}
+            </a>
+          </div>
+        </div>
       </div>
       <LegalModal />
     </footer>
   );
-};
-
-export default Footer;
+}

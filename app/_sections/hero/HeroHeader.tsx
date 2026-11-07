@@ -4,33 +4,20 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
+// Texte in hero.titles im Dictionary
 const heroTitles = [
-  {
-    id: "inspection",
-    text: "TEHNIČKI\nPREGLED",
-    color: "inherit",
-  },
-  {
-    id: "registration",
-    text: "REGISTRACIJA\nVOZILA",
-    color: "inherit",
-  },
-  {
-    id: "insurance",
-    text: "OSIGURANJE",
-    color: "inherit",
-  },
-  {
-    id: "payments",
-    text: "PLAĆANJE\nRAČUNA",
-    color: "inherit",
-  },
-];
+  { id: "inspection", color: "inherit" },
+  { id: "registration", color: "inherit" },
+  { id: "insurance", color: "inherit" },
+  { id: "payments", color: "inherit" },
+] as const;
 
 export default function HeroHeader() {
+  const t = useTranslations("hero");
   const [currentIndex, setCurrentIndex] = useState(0);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -109,7 +96,7 @@ export default function HeroHeader() {
       "
         style={{ color: currentTitle.color }}
       >
-        {currentTitle.text.split("\n").map((line, index) => (
+        {t(`titles.${currentTitle.id}`).split("\n").map((line, index) => (
           <span key={index} className="block">
             {line}
           </span>

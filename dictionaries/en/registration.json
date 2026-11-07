@@ -1,0 +1,12 @@
+{
+  "titleFirst": "VEHICLE",
+  "titleSecond": "REGISTRATION",
+  "subtitle": "Vehicle registration in one place.",
+  "description": "Make registering your vehicle easier. We give you the information and help you need, so you can get everything done simply, quickly and without hassle.",
+  "imageAlt": "Garage Beograd mascot with a licence plate and a stamp",
+  "points": {
+    "help": "Help with vehicle registration",
+    "documents": "Information on the required documents",
+    "simple": "Simple and hassle-free"
+  }
+}

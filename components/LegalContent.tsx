@@ -1,15 +1,21 @@
 import type { ReactNode } from "react";
+import { useFormatter, useTranslations } from "next-intl";
 import { site } from "@/app/site-config";
 
 const { legal } = site;
 
+type Field = keyof Omit<typeof legal, "lastUpdated">;
+
 // Fehlende Pflichtangaben fallen sichtbar auf, statt erfunden zu werden
-function Value({ value, label }: { value: string; label: string }) {
+function Value({ field }: { field: Field }) {
+  const t = useTranslations("legal");
+  const value = legal[field];
+
   if (value) return <>{value}</>;
 
   return (
     <mark className="rounded bg-amber-200 px-1 font-semibold text-slate-900">
-      [DOPUNITI: {label}]
+      {t("missing", { label: t(`fields.${field}`) })}
     </mark>
   );
 }
@@ -27,7 +33,13 @@ function List({ children }: { children: ReactNode }) {
   return <ul className="mb-3 list-disc space-y-1 pl-5">{children}</ul>;
 }
 
-function ExternalLink({ href, children }: { href: string; children: string }) {
+function ExternalLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
   return (
     <a
       href={href}
@@ -40,211 +52,179 @@ function ExternalLink({ href, children }: { href: string; children: string }) {
   );
 }
 
-function OperatorDetails() {
+// Formatierung für Texte mit <strong> aus dem Dictionary
+const strong = (chunks: ReactNode) => <strong>{chunks}</strong>;
+
+function ContactDetails() {
+  const t = useTranslations("legal");
+  const tCommon = useTranslations("common.address");
+
   return (
-    <p>
-      <Value value={legal.companyName} label="poslovno ime" />
+    <>
+      {tCommon("street")}, {tCommon("cityLine")}
       <br />
-      {site.address}
+      {t("phone")}: {site.phone}
       <br />
-      Telefon: {site.phone}
-      <br />
-      E-mail: {site.email}
-    </p>
+      {t("email")}: {site.email}
+    </>
   );
 }
 
 export function PrivacyPolicy() {
+  const t = useTranslations("legal.privacy");
+  const format = useFormatter();
+
   return (
     <>
       <p className="text-sm text-slate-500">
-        Poslednje ažuriranje: {legal.lastUpdated}
+        {t("lastUpdated", {
+          date: format.dateTime(new Date(legal.lastUpdated), {
+            dateStyle: "long",
+          }),
+        })}
       </p>
 
-      <Section title="1. Rukovalac podacima">
+      <Section title={t("controller.title")}>
+        <p>{t("controller.text")}</p>
         <p>
-          Rukovalac podacima o ličnosti u smislu Zakona o zaštiti podataka o
-          ličnosti je:
-        </p>
-        <OperatorDetails />
-      </Section>
-
-      <Section title="2. Koje podatke obrađujemo">
-        <p>
-          <strong>Poseta sajtu.</strong> Prilikom posete sajtu server automatski
-          beleži tehničke podatke: IP adresu, datum i vreme pristupa, vrstu
-          pretraživača i operativnog sistema.
-        </p>
-        <p>
-          <strong>Kontakt formular.</strong> Kada nam pošaljete poruku,
-          obrađujemo podatke koje ste uneli: ime i prezime, broj telefona, temu,
-          tekst poruke i, ako ste je naveli, e-mail adresu.
-        </p>
-        <p>
-          <strong>Kontakt telefonom ili e-mailom.</strong> Ako nas kontaktirate
-          direktno, obrađujemo podatke koje nam tom prilikom saopštite.
+          <Value field="companyName" />
+          <br />
+          <ContactDetails />
         </p>
       </Section>
 
-      <Section title="3. Svrha i pravni osnov obrade">
+      <Section title={t("data.title")}>
+        <p>{t.rich("data.visit", { strong })}</p>
+        <p>{t.rich("data.form", { strong })}</p>
+        <p>{t.rich("data.direct", { strong })}</p>
+      </Section>
+
+      <Section title={t("purpose.title")}>
         <List>
-          <li>
-            Tehnički podaci služe za bezbedan i stabilan rad sajta. Pravni osnov
-            je naš legitimni interes.
-          </li>
-          <li>
-            Podaci iz formulara i direktnog kontakta služe da odgovorimo na vaš
-            upit. Pravni osnov je preduzimanje radnji na vaš zahtev pre
-            zaključenja ugovora, odnosno naš legitimni interes da odgovorimo na
-            upite.
-          </li>
+          <li>{t("purpose.technical")}</li>
+          <li>{t("purpose.inquiries")}</li>
         </List>
       </Section>
 
-      <Section title="4. Primaoci podataka i prenos u inostranstvo">
-        <p>Vaše podatke ne prodajemo. Koristimo sledeće pružaoce usluga:</p>
+      <Section title={t("recipients.title")}>
+        <p>{t("recipients.intro")}</p>
         <List>
           <li>
-            <strong>Hosting sajta:</strong>{" "}
-            <Value value={legal.hostingProvider} label="pružalac hostinga" />,
-            obrađuje tehničke podatke o poseti.
+            {t.rich("recipients.hosting", {
+              strong,
+              provider: () => <Value field="hostingProvider" />,
+            })}
           </li>
-          <li>
-            <strong>Resend (SAD):</strong> dostavlja nam poruke iz kontakt
-            formulara e-mailom.
-          </li>
-          <li>
-            <strong>Google Fonts (Google):</strong> sajt učitava fontove sa
-            Google servera, pri čemu se vaša IP adresa prenosi Google-u.
-          </li>
+          <li>{t.rich("recipients.resend", { strong })}</li>
+          <li>{t.rich("recipients.fonts", { strong })}</li>
         </List>
+        <p>{t("recipients.abroad")}</p>
+      </Section>
+
+      <Section title={t("map.title")}>
+        <p>{t("map.text")}</p>
+      </Section>
+
+      <Section title={t("cookies.title")}>
+        <p>{t("cookies.text")}</p>
+      </Section>
+
+      <Section title={t("retention.title")}>
         <p>
-          Ovi pružaoci mogu obrađivati podatke van Republike Srbije, uključujući
-          SAD.
+          {t.rich("retention.text", {
+            period: () => <Value field="retentionPeriod" />,
+          })}
         </p>
       </Section>
 
-      <Section title="5. Mapa i Google Maps">
-        <p>
-          Mapa na sajtu je slika koja se nalazi na našem serveru, zasnovana na
-          podacima projekta OpenStreetMap, i pri njenom prikazu se podaci ne
-          šalju trećim licima. Tek kada kliknete na mapu otvara se Google Maps u
-          novom prozoru, a za tu obradu važe pravila privatnosti kompanije
-          Google.
-        </p>
-      </Section>
-
-      <Section title="6. Kolačići">
-        <p>
-          Ovaj sajt ne koristi kolačiće za praćenje i ne koristi alate za
-          analitiku ili oglašavanje.
-        </p>
-      </Section>
-
-      <Section title="7. Rok čuvanja">
-        <p>
-          Podatke iz upita čuvamo{" "}
-          <Value value={legal.retentionPeriod} label="rok čuvanja" />, osim ako
-          zakon nalaže duže čuvanje.
-        </p>
-      </Section>
-
-      <Section title="8. Vaša prava">
-        <p>U vezi sa svojim podacima imate pravo na:</p>
+      <Section title={t("rights.title")}>
+        <p>{t("rights.intro")}</p>
         <List>
-          <li>pristup podacima i dobijanje kopije,</li>
-          <li>ispravku netačnih podataka,</li>
-          <li>brisanje podataka,</li>
-          <li>ograničenje obrade,</li>
-          <li>prenosivost podataka,</li>
-          <li>prigovor na obradu.</li>
+          <li>{t("rights.access")}</li>
+          <li>{t("rights.rectification")}</li>
+          <li>{t("rights.erasure")}</li>
+          <li>{t("rights.restriction")}</li>
+          <li>{t("rights.portability")}</li>
+          <li>{t("rights.objection")}</li>
         </List>
         <p>
-          Zahtev možete poslati na {site.email}. Takođe imate pravo da podnesete
-          pritužbu Povereniku za informacije od javnog značaja i zaštitu
-          podataka o ličnosti:{" "}
-          <ExternalLink href="https://www.poverenik.rs">
-            www.poverenik.rs
-          </ExternalLink>
-          .
+          {t.rich("rights.text", {
+            email: site.email,
+            link: (chunks) => (
+              <ExternalLink href="https://www.poverenik.rs">{chunks}</ExternalLink>
+            ),
+          })}
         </p>
       </Section>
 
-      <Section title="9. Izmene">
-        <p className="mb-0">
-          Ovu politiku možemo povremeno izmeniti. Važeća verzija uvek je
-          objavljena na ovom sajtu.
-        </p>
+      <Section title={t("changes.title")}>
+        <p className="mb-0">{t("changes.text")}</p>
       </Section>
     </>
   );
 }
 
+const companyFields: Field[] = [
+  "companyName",
+  "legalForm",
+  "representative",
+  "taxNumber",
+  "registrationNumber",
+  "activityCode",
+];
+
 export function LegalNotice() {
+  const t = useTranslations("legal");
+
   return (
     <>
-      <Section title="Podaci o privrednom subjektu">
+      <Section title={t("imprint.company")}>
         <dl className="m-0 grid grid-cols-1 gap-x-6 gap-y-1 sm:grid-cols-[auto_1fr]">
-          {[
-            ["Poslovno ime", legal.companyName, "poslovno ime"],
-            ["Pravna forma", legal.legalForm, "pravna forma"],
-            ["Zastupnik", legal.representative, "ime zastupnika"],
-            ["PIB", legal.taxNumber, "PIB"],
-            ["Matični broj", legal.registrationNumber, "matični broj"],
-            ["Šifra delatnosti", legal.activityCode, "šifra delatnosti"],
-          ].map(([term, value, label]) => (
-            <div key={term} className="contents">
-              <dt className="font-semibold text-slate-900">{term}</dt>
+          {companyFields.map((field) => (
+            <div key={field} className="contents">
+              <dt className="font-semibold text-slate-900">
+                {t(`fields.${field}`)}
+              </dt>
               <dd className="m-0 mb-2 sm:mb-0">
-                <Value value={value} label={label} />
+                <Value field={field} />
               </dd>
             </div>
           ))}
         </dl>
       </Section>
 
-      <Section title="Sedište i kontakt">
+      <Section title={t("imprint.seat")}>
         <p className="mb-0">
-          {site.address}
-          <br />
-          Telefon: {site.phone}
-          <br />
-          E-mail: {site.email}
+          <ContactDetails />
         </p>
       </Section>
 
-      <Section title="Registar">
+      <Section title={t("imprint.register.title")}>
         <p className="mb-0">
-          Podaci o privrednom subjektu vode se u registru Agencije za privredne
-          registre (APR):{" "}
-          <ExternalLink href="https://www.apr.gov.rs">
-            www.apr.gov.rs
-          </ExternalLink>
-          .
+          {t.rich("imprint.register.text", {
+            link: (chunks) => (
+              <ExternalLink href="https://www.apr.gov.rs">{chunks}</ExternalLink>
+            ),
+          })}
         </p>
       </Section>
 
-      <Section title="Ovlašćenje za tehnički pregled">
+      <Section title={t("imprint.license")}>
         <p className="mb-0">
-          <Value
-            value={legal.inspectionLicense}
-            label="broj i datum rešenja o ovlašćenju"
-          />
+          <Value field="inspectionLicense" />
         </p>
       </Section>
 
-      <Section title="Autorska prava">
-        <p>
-          Sadržaj ovog sajta, uključujući tekstove, fotografije i ilustracije,
-          zaštićen je autorskim pravom. Korišćenje bez saglasnosti nije
-          dozvoljeno.
-        </p>
+      <Section title={t("imprint.copyright.title")}>
+        <p>{t("imprint.copyright.text")}</p>
         <p className="mb-0">
-          Podaci za mapu: ©{" "}
-          <ExternalLink href="https://www.openstreetmap.org/copyright">
-            OpenStreetMap
-          </ExternalLink>{" "}
-          saradnici, licenca ODbL.
+          {t.rich("imprint.copyright.map", {
+            link: (chunks) => (
+              <ExternalLink href="https://www.openstreetmap.org/copyright">
+                {chunks}
+              </ExternalLink>
+            ),
+          })}
         </p>
       </Section>
     </>

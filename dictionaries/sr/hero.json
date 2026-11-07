@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "inspection": "TEHNIČKI\nPREGLED",
+    "registration": "REGISTRACIJA\nVOZILA",
+    "insurance": "OSIGURANJE",
+    "payments": "PLAĆANJE\nRAČUNA"
+  },
+  "subtitles": {
+    "fast": { "text": "BRZO", "suffix": "BRE" },
+    "clear": { "text": "JASNO", "suffix": "" },
+    "simple": { "text": "JEDNOSTAVNO", "suffix": "" },
+    "oneplace": { "text": "SVE NA JEDNOM MESTU", "suffix": "" }
+  }
+}

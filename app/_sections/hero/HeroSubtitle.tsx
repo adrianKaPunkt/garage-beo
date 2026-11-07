@@ -3,27 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(useGSAP);
 
+// Texte in hero.subtitles im Dictionary
 const subtitles = [
-  { id: "fast", text: "BRZO", suffix: "BRE", animation: "shake" },
-  { id: "clear", text: "JASNO", suffix: "", animation: "clarity" },
-  {
-    id: "simple",
-    text: "JEDNOSTAVNO",
-    suffix: "",
-    animation: "simple",
-  },
-  {
-    id: "oneplace",
-    text: "SVE NA JEDNOM MESTU",
-    suffix: "",
-    animation: "cozy",
-  },
+  { id: "fast", animation: "shake" },
+  { id: "clear", animation: "clarity" },
+  { id: "simple", animation: "simple" },
+  { id: "oneplace", animation: "cozy" },
 ] as const;
 
 export default function HeroSubtitle() {
+  const t = useTranslations("hero.subtitles");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const textRef = useRef<HTMLSpanElement>(null);
@@ -161,11 +154,11 @@ export default function HeroSubtitle() {
           className="inline-flex max-w-full items-baseline justify-center gap-x-1 whitespace-nowrap lg:justify-start"
         >
           <span ref={textRef} className="inline-block">
-            {subtitle.text}
+            {t(`${subtitle.id}.text`)}
           </span>
 
           <span ref={suffixRef} className="inline-block text-orange">
-            {subtitle.suffix}
+            {t(`${subtitle.id}.suffix`)}
           </span>
         </span>
       </p>

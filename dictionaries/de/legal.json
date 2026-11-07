@@ -1,0 +1,90 @@
+{
+  "modal": {
+    "title": "Rechtliche Informationen",
+    "close": "Schließen",
+    "privacyTab": "Datenschutz",
+    "imprintTab": "Impressum",
+    "translationNotice": "Diese Übersetzung dient nur der Information. Rechtlich maßgeblich ist die <link>serbische Fassung</link>."
+  },
+  "missing": "[ERGÄNZEN: {label}]",
+  "phone": "Telefon",
+  "email": "E-Mail",
+  "fields": {
+    "companyName": "Firmenname",
+    "legalForm": "Rechtsform",
+    "representative": "Vertretungsberechtigte Person",
+    "taxNumber": "Steuernummer (PIB)",
+    "registrationNumber": "Registernummer (Matični broj)",
+    "activityCode": "Tätigkeitsschlüssel",
+    "inspectionLicense": "Nummer und Datum der Zulassung als Prüfstelle",
+    "hostingProvider": "Hosting-Anbieter",
+    "retentionPeriod": "Speicherdauer"
+  },
+  "privacy": {
+    "lastUpdated": "Zuletzt aktualisiert: {date}",
+    "controller": {
+      "title": "1. Verantwortlicher",
+      "text": "Verantwortlicher für personenbezogene Daten im Sinne des serbischen Gesetzes über den Schutz personenbezogener Daten ist:"
+    },
+    "data": {
+      "title": "2. Welche Daten wir verarbeiten",
+      "visit": "<strong>Besuch der Website.</strong> Beim Besuch der Website erfasst der Server automatisch technische Daten: IP-Adresse, Datum und Uhrzeit des Zugriffs, Browser und Betriebssystem.",
+      "form": "<strong>Kontaktformular.</strong> Wenn Sie uns eine Nachricht senden, verarbeiten wir die von Ihnen eingegebenen Daten: Vor- und Nachname, Telefonnummer, Thema, Nachrichtentext und, falls angegeben, Ihre E-Mail-Adresse.",
+      "direct": "<strong>Kontakt per Telefon oder E-Mail.</strong> Wenn Sie uns direkt kontaktieren, verarbeiten wir die Daten, die Sie uns dabei mitteilen."
+    },
+    "purpose": {
+      "title": "3. Zweck und Rechtsgrundlage der Verarbeitung",
+      "technical": "Die technischen Daten dienen dem sicheren und stabilen Betrieb der Website. Rechtsgrundlage ist unser berechtigtes Interesse.",
+      "inquiries": "Die Daten aus dem Formular und aus direktem Kontakt dienen dazu, Ihre Anfrage zu beantworten. Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen auf Ihre Anfrage bzw. unser berechtigtes Interesse, Anfragen zu beantworten."
+    },
+    "recipients": {
+      "title": "4. Empfänger und Übermittlung ins Ausland",
+      "intro": "Wir verkaufen Ihre Daten nicht. Wir nutzen folgende Dienstleister:",
+      "hosting": "<strong>Hosting der Website:</strong> <provider></provider>, verarbeitet die technischen Daten des Besuchs.",
+      "resend": "<strong>Resend (USA):</strong> stellt uns die Nachrichten aus dem Kontaktformular per E-Mail zu.",
+      "fonts": "<strong>Google Fonts (Google):</strong> Die Website lädt Schriftarten von Google-Servern, dabei wird Ihre IP-Adresse an Google übermittelt.",
+      "abroad": "Diese Dienstleister können Daten außerhalb der Republik Serbien verarbeiten, auch in den USA."
+    },
+    "map": {
+      "title": "5. Karte und Google Maps",
+      "text": "Die Karte auf der Website ist ein Bild auf unserem Server, das auf Daten des Projekts OpenStreetMap beruht. Bei ihrer Anzeige werden keine Daten an Dritte übermittelt. Erst wenn Sie auf die Karte klicken, öffnet sich Google Maps in einem neuen Fenster. Für diese Verarbeitung gelten die Datenschutzbestimmungen von Google."
+    },
+    "cookies": {
+      "title": "6. Cookies",
+      "text": "Diese Website verwendet keine Tracking-Cookies und keine Analyse- oder Werbewerkzeuge."
+    },
+    "retention": {
+      "title": "7. Speicherdauer",
+      "text": "Daten aus Anfragen speichern wir <period></period>, sofern das Gesetz keine längere Aufbewahrung vorschreibt."
+    },
+    "rights": {
+      "title": "8. Ihre Rechte",
+      "intro": "In Bezug auf Ihre Daten haben Sie das Recht auf:",
+      "access": "Auskunft und Erhalt einer Kopie,",
+      "rectification": "Berichtigung unrichtiger Daten,",
+      "erasure": "Löschung,",
+      "restriction": "Einschränkung der Verarbeitung,",
+      "portability": "Datenübertragbarkeit,",
+      "objection": "Widerspruch gegen die Verarbeitung.",
+      "text": "Ihre Anfrage können Sie an {email} senden. Außerdem haben Sie das Recht, Beschwerde beim serbischen Beauftragten für Informationen von öffentlicher Bedeutung und den Schutz personenbezogener Daten einzulegen: <link>www.poverenik.rs</link>."
+    },
+    "changes": {
+      "title": "9. Änderungen",
+      "text": "Wir können diese Datenschutzerklärung gelegentlich ändern. Die gültige Fassung ist immer auf dieser Website veröffentlicht."
+    }
+  },
+  "imprint": {
+    "company": "Angaben zum Unternehmen",
+    "seat": "Sitz und Kontakt",
+    "register": {
+      "title": "Register",
+      "text": "Die Unternehmensdaten sind im Register der serbischen Agentur für Wirtschaftsregister (APR) eingetragen: <link>www.apr.gov.rs</link>."
+    },
+    "license": "Zulassung als Prüfstelle",
+    "copyright": {
+      "title": "Urheberrecht",
+      "text": "Die Inhalte dieser Website, einschließlich Texte, Fotos und Illustrationen, sind urheberrechtlich geschützt. Eine Nutzung ohne Zustimmung ist nicht gestattet.",
+      "map": "Kartendaten: © <link>OpenStreetMap</link>-Mitwirkende, Lizenz ODbL."
+    }
+  }
+}

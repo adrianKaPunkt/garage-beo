@@ -1,0 +1,90 @@
+{
+  "modal": {
+    "title": "Legal information",
+    "close": "Close",
+    "privacyTab": "Privacy policy",
+    "imprintTab": "Legal notice",
+    "translationNotice": "This translation is provided for information only. The <link>Serbian version</link> is legally binding."
+  },
+  "missing": "[TO BE ADDED: {label}]",
+  "phone": "Phone",
+  "email": "Email",
+  "fields": {
+    "companyName": "Company name",
+    "legalForm": "Legal form",
+    "representative": "Legal representative",
+    "taxNumber": "Tax ID (PIB)",
+    "registrationNumber": "Registration number (Matični broj)",
+    "activityCode": "Activity code",
+    "inspectionLicense": "Number and date of the inspection licence",
+    "hostingProvider": "Hosting provider",
+    "retentionPeriod": "Retention period"
+  },
+  "privacy": {
+    "lastUpdated": "Last updated: {date}",
+    "controller": {
+      "title": "1. Data controller",
+      "text": "The controller of personal data within the meaning of the Serbian Law on Personal Data Protection is:"
+    },
+    "data": {
+      "title": "2. What data we process",
+      "visit": "<strong>Visiting the website.</strong> When you visit the website, the server automatically records technical data: IP address, date and time of access, browser and operating system.",
+      "form": "<strong>Contact form.</strong> When you send us a message, we process the data you entered: full name, phone number, topic, message text and, if provided, your email address.",
+      "direct": "<strong>Contact by phone or email.</strong> If you contact us directly, we process the data you share with us."
+    },
+    "purpose": {
+      "title": "3. Purpose and legal basis of processing",
+      "technical": "Technical data is used for the secure and stable operation of the website. The legal basis is our legitimate interest.",
+      "inquiries": "Data from the form and from direct contact is used to reply to your inquiry. The legal basis is taking steps at your request prior to entering into a contract, or our legitimate interest in replying to inquiries."
+    },
+    "recipients": {
+      "title": "4. Recipients and transfers abroad",
+      "intro": "We do not sell your data. We use the following service providers:",
+      "hosting": "<strong>Website hosting:</strong> <provider></provider>, processes technical data about visits.",
+      "resend": "<strong>Resend (USA):</strong> delivers messages from the contact form to us by email.",
+      "fonts": "<strong>Google Fonts (Google):</strong> the website loads fonts from Google servers, which transmits your IP address to Google.",
+      "abroad": "These providers may process data outside the Republic of Serbia, including in the USA."
+    },
+    "map": {
+      "title": "5. Map and Google Maps",
+      "text": "The map on the website is an image hosted on our server, based on data from the OpenStreetMap project, and no data is sent to third parties when it is displayed. Google Maps only opens in a new window when you click on the map, and Google's privacy policy applies to that processing."
+    },
+    "cookies": {
+      "title": "6. Cookies",
+      "text": "This website does not use tracking cookies and does not use analytics or advertising tools."
+    },
+    "retention": {
+      "title": "7. Retention period",
+      "text": "We keep data from inquiries for <period></period>, unless the law requires longer retention."
+    },
+    "rights": {
+      "title": "8. Your rights",
+      "intro": "With regard to your data, you have the right to:",
+      "access": "access your data and receive a copy,",
+      "rectification": "have inaccurate data corrected,",
+      "erasure": "have your data erased,",
+      "restriction": "restrict processing,",
+      "portability": "data portability,",
+      "objection": "object to processing.",
+      "text": "You can send your request to {email}. You also have the right to lodge a complaint with the Serbian Commissioner for Information of Public Importance and Personal Data Protection: <link>www.poverenik.rs</link>."
+    },
+    "changes": {
+      "title": "9. Changes",
+      "text": "We may update this policy from time to time. The current version is always published on this website."
+    }
+  },
+  "imprint": {
+    "company": "Company details",
+    "seat": "Registered office and contact",
+    "register": {
+      "title": "Register",
+      "text": "The company details are recorded in the register of the Serbian Business Registers Agency (APR): <link>www.apr.gov.rs</link>."
+    },
+    "license": "Vehicle inspection licence",
+    "copyright": {
+      "title": "Copyright",
+      "text": "The content of this website, including texts, photos and illustrations, is protected by copyright. Use without permission is not allowed.",
+      "map": "Map data: © <link>OpenStreetMap</link> contributors, ODbL licence."
+    }
+  }
+}

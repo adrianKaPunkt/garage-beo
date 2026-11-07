@@ -1,0 +1,90 @@
+{
+  "modal": {
+    "title": "Pravne informacije",
+    "close": "Zatvori",
+    "privacyTab": "Politika privatnosti",
+    "imprintTab": "Impresum",
+    "translationNotice": ""
+  },
+  "missing": "[DOPUNITI: {label}]",
+  "phone": "Telefon",
+  "email": "E-mail",
+  "fields": {
+    "companyName": "Poslovno ime",
+    "legalForm": "Pravna forma",
+    "representative": "Zastupnik",
+    "taxNumber": "PIB",
+    "registrationNumber": "Matični broj",
+    "activityCode": "Šifra delatnosti",
+    "inspectionLicense": "Broj i datum rešenja o ovlašćenju",
+    "hostingProvider": "Pružalac hostinga",
+    "retentionPeriod": "Rok čuvanja"
+  },
+  "privacy": {
+    "lastUpdated": "Poslednje ažuriranje: {date}",
+    "controller": {
+      "title": "1. Rukovalac podacima",
+      "text": "Rukovalac podacima o ličnosti u smislu Zakona o zaštiti podataka o ličnosti je:"
+    },
+    "data": {
+      "title": "2. Koje podatke obrađujemo",
+      "visit": "<strong>Poseta sajtu.</strong> Prilikom posete sajtu server automatski beleži tehničke podatke: IP adresu, datum i vreme pristupa, vrstu pretraživača i operativnog sistema.",
+      "form": "<strong>Kontakt formular.</strong> Kada nam pošaljete poruku, obrađujemo podatke koje ste uneli: ime i prezime, broj telefona, temu, tekst poruke i, ako ste je naveli, e-mail adresu.",
+      "direct": "<strong>Kontakt telefonom ili e-mailom.</strong> Ako nas kontaktirate direktno, obrađujemo podatke koje nam tom prilikom saopštite."
+    },
+    "purpose": {
+      "title": "3. Svrha i pravni osnov obrade",
+      "technical": "Tehnički podaci služe za bezbedan i stabilan rad sajta. Pravni osnov je naš legitimni interes.",
+      "inquiries": "Podaci iz formulara i direktnog kontakta služe da odgovorimo na vaš upit. Pravni osnov je preduzimanje radnji na vaš zahtev pre zaključenja ugovora, odnosno naš legitimni interes da odgovorimo na upite."
+    },
+    "recipients": {
+      "title": "4. Primaoci podataka i prenos u inostranstvo",
+      "intro": "Vaše podatke ne prodajemo. Koristimo sledeće pružaoce usluga:",
+      "hosting": "<strong>Hosting sajta:</strong> <provider></provider>, obrađuje tehničke podatke o poseti.",
+      "resend": "<strong>Resend (SAD):</strong> dostavlja nam poruke iz kontakt formulara e-mailom.",
+      "fonts": "<strong>Google Fonts (Google):</strong> sajt učitava fontove sa Google servera, pri čemu se vaša IP adresa prenosi Google-u.",
+      "abroad": "Ovi pružaoci mogu obrađivati podatke van Republike Srbije, uključujući SAD."
+    },
+    "map": {
+      "title": "5. Mapa i Google Maps",
+      "text": "Mapa na sajtu je slika koja se nalazi na našem serveru, zasnovana na podacima projekta OpenStreetMap, i pri njenom prikazu se podaci ne šalju trećim licima. Tek kada kliknete na mapu otvara se Google Maps u novom prozoru, a za tu obradu važe pravila privatnosti kompanije Google."
+    },
+    "cookies": {
+      "title": "6. Kolačići",
+      "text": "Ovaj sajt ne koristi kolačiće za praćenje i ne koristi alate za analitiku ili oglašavanje."
+    },
+    "retention": {
+      "title": "7. Rok čuvanja",
+      "text": "Podatke iz upita čuvamo <period></period>, osim ako zakon nalaže duže čuvanje."
+    },
+    "rights": {
+      "title": "8. Vaša prava",
+      "intro": "U vezi sa svojim podacima imate pravo na:",
+      "access": "pristup podacima i dobijanje kopije,",
+      "rectification": "ispravku netačnih podataka,",
+      "erasure": "brisanje podataka,",
+      "restriction": "ograničenje obrade,",
+      "portability": "prenosivost podataka,",
+      "objection": "prigovor na obradu.",
+      "text": "Zahtev možete poslati na {email}. Takođe imate pravo da podnesete pritužbu Povereniku za informacije od javnog značaja i zaštitu podataka o ličnosti: <link>www.poverenik.rs</link>."
+    },
+    "changes": {
+      "title": "9. Izmene",
+      "text": "Ovu politiku možemo povremeno izmeniti. Važeća verzija uvek je objavljena na ovom sajtu."
+    }
+  },
+  "imprint": {
+    "company": "Podaci o privrednom subjektu",
+    "seat": "Sedište i kontakt",
+    "register": {
+      "title": "Registar",
+      "text": "Podaci o privrednom subjektu vode se u registru Agencije za privredne registre (APR): <link>www.apr.gov.rs</link>."
+    },
+    "license": "Ovlašćenje za tehnički pregled",
+    "copyright": {
+      "title": "Autorska prava",
+      "text": "Sadržaj ovog sajta, uključujući tekstove, fotografije i ilustracije, zaštićen je autorskim pravom. Korišćenje bez saglasnosti nije dozvoljeno.",
+      "map": "Podaci za mapu: © <link>OpenStreetMap</link> saradnici, licenca ODbL."
+    }
+  }
+}

@@ -1,24 +1,43 @@
 "use server";
 
-import { site } from "@/app/site-config";
+import { getTranslations } from "next-intl/server";
+import { contactTopics, site, type ContactTopic } from "@/app/site-config";
+import {
+  MAX_MESSAGE_LENGTH,
+  MAX_NAME_LENGTH,
+  MIN_MESSAGE_LENGTH,
+} from "./limits";
 
 export type ContactField = "name" | "phone" | "email" | "topic" | "message";
 
+// Keys aus contact.errors im Dictionary: Das Formular zeigt sie in der
+// Sprache des Besuchers an
+export type ContactError =
+  | "name"
+  | "phone"
+  | "email"
+  | "topic"
+  | "messageTooShort"
+  | "messageTooLong";
+
 export type ContactFormState = {
   status: "idle" | "success" | "error";
-  message?: string;
-  errors?: Partial<Record<ContactField, string>>;
+  message?: "sent" | "sendFailed";
+  errors?: Partial<Record<ContactField, ContactError>>;
   values?: Partial<Record<ContactField, string>>;
 };
+
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?[\d\s()/-]{6,20}$/;
 
-const MAX_NAME_LENGTH = 100;
-const MIN_MESSAGE_LENGTH = 10;
-const MAX_MESSAGE_LENGTH = 2000;
 
-async function sendEmail(values: Record<ContactField, string>) {
+const isTopic = (value: string): value is ContactTopic =>
+  (contactTopics as readonly string[]).includes(value);
+
+async function sendEmail(
+  values: Record<ContactField, string> & { topic: ContactTopic },
+) {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.CONTACT_FROM_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL ?? site.email;
@@ -32,11 +51,15 @@ async function sendEmail(values: Record<ContactField, string>) {
 
   const name = values.name.replace(/\s+/g, " ");
 
+  // Die E-Mail an die Garage ist immer auf Serbisch
+  const t = await getTranslations({ locale: "sr-Latn", namespace: "contact" });
+  const topic = t(`topics.${values.topic}`);
+
   const text = [
     `Ime i prezime: ${name}`,
     `Telefon: ${values.phone}`,
     `E-mail: ${values.email || "-"}`,
-    `Tema: ${values.topic}`,
+    `Tema: ${topic}`,
     "",
     values.message,
   ].join("\n");
@@ -51,7 +74,7 @@ async function sendEmail(values: Record<ContactField, string>) {
       body: JSON.stringify({
         from,
         to: [to],
-        subject: `Novi upit: ${values.topic} – ${name}`,
+        subject: `Novi upit: ${topic} – ${name}`,
         text,
         ...(values.email && { reply_to: values.email }),
       }),
@@ -91,43 +114,43 @@ export async function sendContactMessage(
   const errors: ContactFormState["errors"] = {};
 
   if (values.name.length < 2 || values.name.length > MAX_NAME_LENGTH) {
-    errors.name = "Unesite ime i prezime.";
+    errors.name = "name";
   }
 
   if (!PHONE_PATTERN.test(values.phone)) {
-    errors.phone = "Unesite ispravan broj telefona.";
+    errors.phone = "phone";
   }
 
   if (values.email && !EMAIL_PATTERN.test(values.email)) {
-    errors.email = "Unesite ispravnu e-mail adresu.";
+    errors.email = "email";
   }
 
-  if (!site.contactTopics.includes(values.topic)) {
-    errors.topic = "Izaberite temu.";
+  if (!isTopic(values.topic)) {
+    errors.topic = "topic";
   }
 
   if (values.message.length < MIN_MESSAGE_LENGTH) {
-    errors.message = "Napišite poruku od najmanje 10 karaktera.";
+    errors.message = "messageTooShort";
   } else if (values.message.length > MAX_MESSAGE_LENGTH) {
-    errors.message = "Poruka može imati najviše 2000 karaktera.";
+    errors.message = "messageTooLong";
   }
 
-  if (Object.keys(errors).length > 0) {
+  if (Object.keys(errors).length > 0 || !isTopic(values.topic)) {
     return { status: "error", errors, values };
   }
 
-  const sent = await sendEmail(values);
+  const sent = await sendEmail({ ...values, topic: values.topic });
 
   if (!sent) {
     return {
       status: "error",
-      message: `Poruka nije poslata. Pokušajte ponovo ili nas pozovite: ${site.phone}.`,
+      message: "sendFailed",
       values,
     };
   }
 
   return {
     status: "success",
-    message: "Hvala! Vaša poruka je poslata. Javićemo vam se uskoro.",
+    message: "sent",
   };
 }

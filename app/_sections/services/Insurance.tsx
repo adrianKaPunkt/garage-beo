@@ -1,24 +1,20 @@
 import Image from "next/image";
 import { ShieldCheck, Umbrella, ClipboardCheck } from "lucide-react";
 import Button from "@/components/Button";
+import { useTranslations } from "next-intl";
 import InsuranceMarquee from "./InsuranceMarquee/InsuranceMarquee";
 
+// Texte in insurance.points im Dictionary
 const insurancePoints = [
-  {
-    icon: ShieldCheck,
-    text: "Pouzdana zaštita za vaše vozilo",
-  },
-  {
-    icon: Umbrella,
-    text: "Informacije o opcijama osiguranja",
-  },
-  {
-    icon: ClipboardCheck,
-    text: "Jednostavno i bez komplikacija",
-  },
-];
+  { icon: ShieldCheck, key: "protection" },
+  { icon: Umbrella, key: "options" },
+  { icon: ClipboardCheck, key: "simple" },
+] as const;
 
 export default function Insurance() {
+  const t = useTranslations("insurance");
+  const tCommon = useTranslations("common");
+
   return (
     <section
       id="osiguranje"
@@ -135,8 +131,8 @@ export default function Insurance() {
                 lg:leading-12
               "
             >
-              <span className="text-lime-300">OSIGURANJE</span>
-              <span className="block text-orange">VOZILA</span>
+              <span className="text-lime-300">{t("titleFirst")}</span>
+              <span className="block text-orange">{t("titleSecond")}</span>
             </h2>
           </div>
 
@@ -183,7 +179,7 @@ export default function Insurance() {
                 // Vorläufig vorhandenes Maskottchen.
                 // Später durch /images/car/insurance.webp ersetzen.
                 src="/images/car/insurance.webp"
-                alt="Garage Beograd maskota"
+                alt={tCommon("mascotAlt")}
                 fill
                 sizes="(max-width: 1024px) 85vw, 440px"
                 className="object-contain drop-shadow-2xl"
@@ -207,7 +203,7 @@ export default function Insurance() {
               text-white sm:text-xl
               "
               >
-                Sigurnost i zaštita na prvom mestu.
+                {t("subtitle")}
               </p>
 
               {/* Beschreibung */}
@@ -219,9 +215,7 @@ export default function Insurance() {
                 sm:text-lg lg:mx-0
               "
               >
-                Informišite se o mogućnostima osiguranja vašeg vozila. Pružamo
-                vam potrebne informacije i pomoć kako biste lakše pronašli
-                odgovarajuće rešenje.
+                {t("description")}
               </p>
             </div>
 
@@ -237,7 +231,7 @@ export default function Insurance() {
                 const Icon = point.icon;
 
                 return (
-                  <div key={point.text} className="flex items-center gap-4">
+                  <div key={point.key} className="flex items-center gap-4">
                     <div
                       className="
                         flex h-11 w-11 shrink-0
@@ -259,7 +253,7 @@ export default function Insurance() {
                         font-semibold text-slate-100
                       "
                     >
-                      {point.text}
+                      {t(`points.${point.key}`)}
                     </span>
                   </div>
                 );
@@ -276,7 +270,7 @@ export default function Insurance() {
         {/* Kontakt-Button */}
         <div className="mt-10 flex justify-center">
           <Button href="#termin" variant="primary" size="large" showArrow>
-            Kontaktirajte nas
+            {tCommon("actions.contactUs")}
           </Button>
         </div>
       </div>

@@ -3,23 +3,19 @@ import { ReceiptText, CreditCard, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
 import PaySpotLogo from "@/components/PaySpotLogo/PaySpotLogo";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
+// Texte in payment.points im Dictionary
 const paymentPoints = [
-  {
-    icon: ReceiptText,
-    text: "Plaćanje računa na jednom mestu",
-  },
-  {
-    icon: CreditCard,
-    text: "Jednostavan i praktičan proces",
-  },
-  {
-    icon: CheckCircle2,
-    text: "Brzo i bez nepotrebnih komplikacija",
-  },
-];
+  { icon: ReceiptText, key: "onePlace" },
+  { icon: CreditCard, key: "simple" },
+  { icon: CheckCircle2, key: "fast" },
+] as const;
 
 export default function Payment() {
+  const t = useTranslations("payment");
+  const tCommon = useTranslations("common");
+
   return (
     <section
       id="placanje-racuna"
@@ -176,8 +172,8 @@ export default function Payment() {
                 lg:leading-12
               "
             >
-              <span className="text-white">PLAĆANJE</span>
-              <span className="block text-[#68401b]">RAČUNA</span>
+              <span className="text-white">{t("titleFirst")}</span>
+              <span className="block text-[#68401b]">{t("titleSecond")}</span>
             </h2>
           </div>
 
@@ -224,7 +220,7 @@ export default function Payment() {
             >
               <Image
                 src="/images/car/payment.webp"
-                alt="Garage Beograd maskota"
+                alt={tCommon("mascotAlt")}
                 fill
                 sizes="(max-width: 1024px) 85vw, 440px"
                 className="object-contain drop-shadow-2xl"
@@ -248,7 +244,7 @@ export default function Payment() {
               text-white sm:text-xl
               "
               >
-                Vaši računi, jednostavno i brzo.
+                {t("subtitle")}
               </p>
 
               {/* Beschreibung */}
@@ -260,9 +256,7 @@ export default function Payment() {
               sm:text-lg lg:mx-0
               "
               >
-                Uz PaySpot uslugu možete jednostavno obaviti plaćanje računa na
-                jednom mestu. Uštedite vreme i završite svoje obaveze brzo,
-                praktično i bez nepotrebnih komplikacija.
+                {t("description")}
               </p>
             </div>
 
@@ -278,7 +272,7 @@ export default function Payment() {
                 const Icon = point.icon;
 
                 return (
-                  <div key={point.text} className="flex items-center gap-4">
+                  <div key={point.key} className="flex items-center gap-4">
                     <div
                       className="
                         flex h-11 w-11 shrink-0
@@ -296,7 +290,7 @@ export default function Payment() {
                     </div>
 
                     <span className="font-semibold text-white">
-                      {point.text}
+                      {t(`points.${point.key}`)}
                     </span>
                   </div>
                 );
@@ -316,7 +310,7 @@ export default function Payment() {
               <PaySpotLogo animated />
             </Link>
             <Button href="#termin" variant="primary" size="large" showArrow>
-              Kontaktirajte nas
+              {tCommon("actions.contactUs")}
             </Button>
           </div>
         </div>

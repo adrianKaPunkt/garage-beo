@@ -1,23 +1,19 @@
 import Image from "next/image";
 import { FileCheck2, ClipboardCheck, BadgeCheck } from "lucide-react";
 import Button from "@/components/Button";
+import { useTranslations } from "next-intl";
 
+// Texte in registration.points im Dictionary
 const registrationPoints = [
-  {
-    icon: FileCheck2,
-    text: "Pomoć oko registracije vozila",
-  },
-  {
-    icon: ClipboardCheck,
-    text: "Informacije o potrebnoj dokumentaciji",
-  },
-  {
-    icon: BadgeCheck,
-    text: "Jednostavno i bez komplikacija",
-  },
-];
+  { icon: FileCheck2, key: "help" },
+  { icon: ClipboardCheck, key: "documents" },
+  { icon: BadgeCheck, key: "simple" },
+] as const;
 
 export default function Registration() {
+  const t = useTranslations("registration");
+  const tCommon = useTranslations("common.actions");
+
   return (
     <section
       id="registracija-vozila"
@@ -104,8 +100,8 @@ export default function Registration() {
                 lg:text-[clamp(40px,4vw,60px)]
               "
             >
-              REGISTRACIJA
-              <span className="block text-amber-200">VOZILA</span>
+              {t("titleFirst")}
+              <span className="block text-amber-200">{t("titleSecond")}</span>
             </h2>
           </div>
 
@@ -152,7 +148,7 @@ export default function Registration() {
             >
               <Image
                 src="/images/car/registration.webp"
-                alt="Garage Beograd maskota sa registarskom tablicom i pečatom"
+                alt={t("imageAlt")}
                 fill
                 sizes="(max-width: 1024px) 85vw, 440px"
                 className="object-contain drop-shadow-2xl"
@@ -170,7 +166,7 @@ export default function Registration() {
           >
             {/* Untertitel */}
             <p className="mb-5 px-1 text-lg font-semibold text-white sm:text-xl">
-              Registracija vozila na jednom mestu.
+              {t("subtitle")}
             </p>
 
             {/* Beschreibung */}
@@ -183,9 +179,7 @@ export default function Registration() {
                 sm:text-lg
               "
             >
-              Olakšajte sebi proces registracije vozila. Pružamo vam potrebne
-              informacije i pomoć, kako biste sve završili jednostavno, brzo i
-              bez nepotrebnih komplikacija.
+              {t("description")}
             </p>
 
             {/* Leistungen */}
@@ -194,7 +188,7 @@ export default function Registration() {
                 const Icon = point.icon;
 
                 return (
-                  <div key={point.text} className="flex items-center gap-4">
+                  <div key={point.key} className="flex items-center gap-4">
                     <div
                       className="
                         flex h-11 w-11 shrink-0
@@ -212,7 +206,7 @@ export default function Registration() {
                     </div>
 
                     <span className="font-semibold text-white/95">
-                      {point.text}
+                      {t(`points.${point.key}`)}
                     </span>
                   </div>
                 );
@@ -224,7 +218,7 @@ export default function Registration() {
         {/* Kontakt-Button */}
         <div className="mt-10 flex justify-center">
           <Button href="#termin" variant="primary" size="large" showArrow>
-            Kontaktirajte nas
+            {tCommon("contactUs")}
           </Button>
         </div>
       </div>

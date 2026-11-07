@@ -1,0 +1,17 @@
+{
+  "titleFirst": "VEHICLE",
+  "titleSecond": "INSPECTION",
+  "description": "Fast, simple and reliable inspection of your vehicle. With modern equipment and an expert team, everything you need is in one place.",
+  "points": {
+    "control": "Thorough vehicle check",
+    "safety": "Safety and roadworthiness check",
+    "equipment": "Modern inspection equipment"
+  },
+  "images": {
+    "station": "Garage Beograd inspection station",
+    "vehicle": "Vehicle during inspection",
+    "inspection": "Vehicle inspection",
+    "front": "Vehicle in front of the inspection station",
+    "equipment": "Vehicle inspection equipment"
+  }
+}

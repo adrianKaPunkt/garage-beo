@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export type GalleryImage = {
   src: string;
@@ -47,6 +48,7 @@ export default function ImageGallery({
   lightbox = true,
   className = "",
 }: ImageGalleryProps) {
+  const t = useTranslations("common.gallery");
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -140,7 +142,7 @@ export default function ImageGallery({
       {/* Vorschaubilder */}
       <div
         role="group"
-        aria-label="Galerija fotografija"
+        aria-label={t("label")}
         className={[
           "flex items-center gap-4 py-5 lg:gap-6",
           mobileScroll
@@ -155,7 +157,7 @@ export default function ImageGallery({
             key={`${image.src}-${index}`}
             type="button"
             disabled={!lightbox}
-            aria-label={`Otvori fotografiju ${index + 1}: ${image.alt}`}
+            aria-label={t("open", { number: index + 1, alt: image.alt })}
             onClick={(event) => {
               triggerRef.current = event.currentTarget;
               setActiveIndex(index);
@@ -190,7 +192,7 @@ export default function ImageGallery({
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Pregled fotografija"
+          aria-label={t("dialog")}
           className="
             fixed inset-0 z-[100]
             flex items-center justify-center
@@ -207,7 +209,7 @@ export default function ImageGallery({
             ref={closeButtonRef}
             type="button"
             onClick={close}
-            aria-label="Zatvori galeriju"
+            aria-label={t("close")}
             className="
               absolute right-4 top-4 z-20
               flex h-11 w-11 items-center justify-center
@@ -226,7 +228,7 @@ export default function ImageGallery({
               type="button"
               data-gallery-control="true"
               onClick={previous}
-              aria-label="Prethodna fotografija"
+              aria-label={t("previous")}
               className="
                 absolute left-2 top-1/2 z-20
                 flex h-11 w-11 -translate-y-1/2
@@ -265,7 +267,7 @@ export default function ImageGallery({
               type="button"
               data-gallery-control="true"
               onClick={next}
-              aria-label="Sledeća fotografija"
+              aria-label={t("next")}
               className="
                 absolute right-2 top-1/2 z-20
                 flex h-11 w-11 -translate-y-1/2
