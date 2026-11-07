@@ -36,7 +36,10 @@ export default function Header() {
         if (rect.top > activationPoint) continue;
 
         // Radno vreme liegt in Kontakt: danach gilt wieder Kontakt
-        if (rect.bottom <= activationPoint && current.element.contains(element)) {
+        if (
+          rect.bottom <= activationPoint &&
+          current.element.contains(element)
+        ) {
           continue;
         }
 
@@ -74,7 +77,7 @@ export default function Header() {
             <span className="text-orange">BEOGRAD</span>
           </span>
           <span className="text-left text-[11px] text-gray-900 font-semibold tracking-widest">
-            &nbsp;{tCommon("brandSubtitle")}
+            {tCommon("brandSubtitle")}
           </span>
         </a>
 
@@ -151,12 +154,16 @@ export default function Header() {
 
           <button
             type="button"
+            // Gleicher Stil wie Anrufen-Button und Sprachumschalter
             className="
-              inline-flex h-11 w-11
+              inline-flex h-11 w-11 cursor-pointer
               items-center justify-center
-              rounded-xl text-gray-800
-              transition-colors hover:bg-gray-100
+              rounded-xl border border-green/20
+              bg-green/5 text-darkgreen
+              transition-colors duration-200
+              hover:bg-green/10
               focus-visible:outline-2
+              focus-visible:outline-offset-2
               focus-visible:outline-green
               lg:hidden
             "
