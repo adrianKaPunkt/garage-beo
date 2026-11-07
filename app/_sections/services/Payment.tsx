@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ReceiptText, CreditCard, CheckCircle2 } from "lucide-react";
 import Button from "@/components/Button";
-import PaySpotLogo from "@/components/PaySpotLogo";
+import PaySpotLogo from "@/components/PaySpotLogo/PaySpotLogo";
 import Link from "next/link";
 
 const paymentPoints = [

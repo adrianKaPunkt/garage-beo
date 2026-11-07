@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import VideoPreview from "@/components/VideoPreview";
 
 const About = () => {
   return (
@@ -18,6 +18,12 @@ const About = () => {
             Pogledajte naš prostor i kontaktirajte nas ako imate pitanja pre
             dolaska.
           </p>
+          <VideoPreview
+            src="/videos/reception.mp4"
+            poster="/images/reception-poster.webp"
+            title="Pogledajte naš prostor"
+            className="mt-8 ml-0"
+          />
         </div>
         <div className="relative min-h-68.75 overflow-hidden rounded-[18px] shadow-[0_15px_36px_#1f29271c] min-[701px]:min-h-86.25">
           <Image

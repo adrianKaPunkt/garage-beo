@@ -1,3 +1,4 @@
+import styles from "./PaySpotLogo.module.css";
 import type { CSSProperties, SVGProps } from "react";
 
 type PaySpotLogoProps = SVGProps<SVGSVGElement> & {
@@ -21,7 +22,7 @@ const PaySpotLogo = ({
     viewBox="0 0 376.64 142.32"
     role="img"
     aria-label="PaySpot"
-    className={[animated && "payspot-animated", className]
+    className={[animated && styles["payspot-animated"], className]
       .filter(Boolean)
       .join(" ")}
     style={
@@ -43,10 +44,23 @@ const PaySpotLogo = ({
       <polygon points="368.48 85.41 362.06 85.45 362.07 55.08 357.44 55.01 357.45 48.62 362.06 48.56 362.06 36.37 368.47 36.35 368.49 48.54 373.86 48.63 373.85 55.01 368.47 55.08 368.48 85.41" />
     </g>
     <g fill={markColor}>
-      <polygon className="payspot-sw" points="79 106.04 79.1 139.9 2.79 62.45 36.02 62.4 79 106.04" />
-      <polygon className="payspot-se" points="79.49 101.42 62.42 85.16 84.28 62.71 117.63 62.67 79.49 101.42" />
-      <polygon className="payspot-ne" fill={accentColor} points="84.42 58.76 62.18 36.4 62.14 2.42 117.62 58.71 84.42 58.76" />
-      <polygon className="payspot-nw" points="35.88 58.88 2.78 58.79 58.23 2.57 58.22 36.4 35.88 58.88" />
+      <polygon
+        className={styles["payspot-sw"]}
+        points="79 106.04 79.1 139.9 2.79 62.45 36.02 62.4 79 106.04"
+      />
+      <polygon
+        className={styles["payspot-se"]}
+        points="79.49 101.42 62.42 85.16 84.28 62.71 117.63 62.67 79.49 101.42"
+      />
+      <polygon
+        className={styles["payspot-ne"]}
+        fill={accentColor}
+        points="84.42 58.76 62.18 36.4 62.14 2.42 117.62 58.71 84.42 58.76"
+      />
+      <polygon
+        className={styles["payspot-nw"]}
+        points="35.88 58.88 2.78 58.79 58.23 2.57 58.22 36.4 35.88 58.88"
+      />
     </g>
   </svg>
 );

@@ -1,0 +1,45 @@
+/* PaySpot logo: accent color travels clockwise around the mark */
+@keyframes payspot-rotate {
+  0%,
+  35%,
+  100% {
+    fill: var(--payspot-mark);
+  }
+  10%,
+  25% {
+    fill: var(--payspot-accent);
+  }
+}
+
+.payspot-animated .payspot-ne,
+.payspot-animated .payspot-se,
+.payspot-animated .payspot-sw,
+.payspot-animated .payspot-nw {
+  fill: var(--payspot-mark);
+  animation: payspot-rotate 2.4s linear infinite;
+}
+
+.payspot-animated .payspot-se {
+  animation-delay: 0.6s;
+}
+
+.payspot-animated .payspot-sw {
+  animation-delay: 1.2s;
+}
+
+.payspot-animated .payspot-nw {
+  animation-delay: 1.8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .payspot-animated .payspot-ne,
+  .payspot-animated .payspot-se,
+  .payspot-animated .payspot-sw,
+  .payspot-animated .payspot-nw {
+    animation: none;
+  }
+
+  .payspot-animated .payspot-ne {
+    fill: var(--payspot-accent);
+  }
+}

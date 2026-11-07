@@ -2,15 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
-import { site } from "@/app/site-config";
-
-const links = [
-  { label: "Početna", href: "#pocetna" },
-  { label: "Usluge", href: "#usluge" },
-  { label: "O nama", href: "#o-nama" },
-  { label: "Radno vreme", href: "#radno-vreme" },
-  { label: "Kontakt", href: "#kontakt" },
-];
+import { navLinks, site } from "@/app/site-config";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,17 +13,33 @@ export default function Header() {
       // Erkennungslinie im oberen Bereich des Bildschirms
       const activationPoint = 96 + window.innerHeight * 0.25;
 
-      let current = links[0].href;
+      // Nach Position auf der Seite sortiert, nicht nach Menü-Reihenfolge
+      const sections = navLinks
+        .flatMap(({ href }) => {
+          const element = document.getElementById(href.substring(1));
 
-      for (const link of links) {
-        const element = document.getElementById(link.href.substring(1));
+          return element
+            ? [{ href, element, rect: element.getBoundingClientRect() }]
+            : [];
+        })
+        .sort((a, b) => a.rect.top - b.rect.top);
 
-        if (element && element.getBoundingClientRect().top <= activationPoint) {
-          current = link.href;
+      let current = sections[0];
+
+      for (const section of sections) {
+        const { element, rect } = section;
+
+        if (rect.top > activationPoint) continue;
+
+        // Radno vreme liegt in Kontakt: danach gilt wieder Kontakt
+        if (rect.bottom <= activationPoint && current.element.contains(element)) {
+          continue;
         }
+
+        current = section;
       }
 
-      setActiveSection(current);
+      if (current) setActiveSection(current.href);
     };
 
     updateActiveSection();
@@ -81,7 +89,7 @@ export default function Header() {
             ${menuOpen ? "flex" : "hidden"}
           `}
         >
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
