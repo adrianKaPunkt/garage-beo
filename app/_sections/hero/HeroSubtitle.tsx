@@ -8,17 +8,17 @@ gsap.registerPlugin(useGSAP);
 
 const subtitles = [
   { id: "fast", text: "BRZO", suffix: "BRE", animation: "shake" },
-  { id: "clear", text: "JASNO", suffix: "BRE", animation: "clarity" },
+  { id: "clear", text: "JASNO", suffix: "", animation: "clarity" },
   {
     id: "simple",
     text: "JEDNOSTAVNO",
-    suffix: "BRE",
+    suffix: "",
     animation: "simple",
   },
   {
     id: "oneplace",
     text: "SVE NA JEDNOM MESTU",
-    suffix: "BRE",
+    suffix: "",
     animation: "cozy",
   },
 ] as const;
