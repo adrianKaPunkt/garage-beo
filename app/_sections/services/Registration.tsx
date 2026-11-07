@@ -163,20 +163,20 @@ export default function Registration() {
           {/* Text */}
           <div
             className="
-              mx-auto max-w-162 text-center lg:mt-6
+              mx-auto max-w-162 lg:mt-6
               lg:col-start-2 lg:row-start-2
-              lg:mx-0 lg:self-start lg:text-left
+              lg:mx-0 lg:self-start text-left
             "
           >
             {/* Untertitel */}
-            <p className="mb-5 text-lg font-semibold text-white sm:text-xl">
+            <p className="mb-5 px-1 text-lg font-semibold text-white sm:text-xl">
               Registracija vozila na jednom mestu.
             </p>
 
             {/* Beschreibung */}
             <p
               className="
-                mx-auto mb-9 max-w-140
+                mx-auto mb-9 max-w-140 px-1
                 text-base leading-relaxed
                 lg:mx-0
                 text-white/85

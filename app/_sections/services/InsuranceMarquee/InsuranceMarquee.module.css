@@ -1,0 +1,98 @@
+.section {
+  padding-block: clamp(24px, 4vw, 48px);
+}
+
+.viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: scroll 48s linear infinite;
+}
+
+/* Touch-Geräte behalten :hover nach dem Tippen, das Band bliebe stehen */
+@media (hover: hover) {
+  .viewport:hover .track {
+    animation-play-state: paused;
+  }
+}
+
+.group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  margin: 0;
+  padding: 0;
+  padding-inline-end: clamp(24px, 4vw, 64px);
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  flex: 0 0 168px;
+  width: 168px;
+  height: 80px;
+  place-items: center;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: 64px;
+  object-fit: contain;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .item {
+    flex-basis: 132px;
+    width: 132px;
+    height: 64px;
+  }
+
+  .logo {
+    height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .viewport {
+    overflow: visible;
+    mask-image: none;
+  }
+
+  .track {
+    width: 100%;
+    animation: none;
+  }
+
+  .group {
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline: 16px;
+  }
+
+  .group[aria-hidden="true"] {
+    display: none;
+  }
+}

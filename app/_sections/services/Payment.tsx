@@ -235,34 +235,36 @@ export default function Payment() {
           {/* Text rechts */}
           <div
             className="
-              mx-auto max-w-162 text-center lg:mt-6
+              mx-auto max-w-162 lg:mt-6
               lg:col-start-2 lg:row-start-2
-              lg:mx-0 lg:self-start lg:text-left
+              lg:mx-0 lg:self-start text-left
             "
           >
-            {/* Untertitel */}
-            <p
-              className="
-                mb-5 text-lg font-semibold
-                text-white sm:text-xl
+            <div className="mx-4 lg:mx-0">
+              {/* Untertitel */}
+              <p
+                className="
+              mb-5 text-lg font-semibold
+              text-white sm:text-xl
               "
-            >
-              Vaši računi, jednostavno i brzo.
-            </p>
+              >
+                Vaši računi, jednostavno i brzo.
+              </p>
 
-            {/* Beschreibung */}
-            <p
-              className="
-                mx-auto mb-9 max-w-140
-                text-base leading-relaxed
-                text-white/90
-                sm:text-lg lg:mx-0
+              {/* Beschreibung */}
+              <p
+                className="
+              mx-auto mb-9 max-w-140
+              text-base leading-relaxed
+              text-white/90
+              sm:text-lg lg:mx-0
               "
-            >
-              Uz PaySpot uslugu možete jednostavno obaviti plaćanje računa na
-              jednom mestu. Uštedite vreme i završite svoje obaveze brzo,
-              praktično i bez nepotrebnih komplikacija.
-            </p>
+              >
+                Uz PaySpot uslugu možete jednostavno obaviti plaćanje računa na
+                jednom mestu. Uštedite vreme i završite svoje obaveze brzo,
+                praktično i bez nepotrebnih komplikacija.
+              </p>
+            </div>
 
             {/* Leistungen */}
             <div

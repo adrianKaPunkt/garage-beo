@@ -143,56 +143,58 @@ export default function Tehnicki() {
           </div>
 
           {/* Text */}
-          <div
-            className="
-            mx-auto max-w-162 text-center lg:mt-6
-            lg:col-start-1 lg:row-start-2
-            lg:mx-0 lg:self-start lg:text-left
-          "
-          >
-            <p
+          <div>
+            <div
               className="
+            mx-auto max-w-162 lg:mt-6
+            lg:col-start-1 lg:row-start-2
+            lg:mx-0 lg:self-start text-left
+          "
+            >
+              <p
+                className="
               mx-auto mb-9 max-w-140
               text-base leading-relaxed
-              lg:mx-0
+              lg:mx-0 px-4 lg:px-0
               text-slate-200
               sm:text-lg
             "
-            >
-              Brz, jednostavan i pouzdan tehnički pregled vašeg vozila. Uz
-              savremenu opremu i stručan tim, sve što vam je potrebno nalazi se
-              na jednom mestu.
-            </p>
+              >
+                Brz, jednostavan i pouzdan tehnički pregled vašeg vozila. Uz
+                savremenu opremu i stručan tim, sve što vam je potrebno nalazi
+                se na jednom mestu.
+              </p>
 
-            {/* Leistungen */}
-            <div className="mx-auto mb-10 w-fit space-y-4 lg:mx-0">
-              {inspectionPoints.map((point) => {
-                const Icon = point.icon;
+              {/* Leistungen */}
+              <div className="mx-auto mb-10 w-fit space-y-4 lg:mx-0">
+                {inspectionPoints.map((point) => {
+                  const Icon = point.icon;
 
-                return (
-                  <div key={point.text} className="flex items-center gap-4">
-                    <div
-                      className="
+                  return (
+                    <div key={point.text} className="flex items-center gap-4">
+                      <div
+                        className="
                       flex h-11 w-11 shrink-0
                       items-center justify-center
                       rounded-xl
                       border border-lime-300/20
                       bg-lime-300/10
                     "
-                    >
-                      <Icon
-                        size={20}
-                        className="text-lime-300"
-                        aria-hidden="true"
-                      />
-                    </div>
+                      >
+                        <Icon
+                          size={20}
+                          className="text-lime-300"
+                          aria-hidden="true"
+                        />
+                      </div>
 
-                    <span className="font-semibold text-slate-100">
-                      {point.text}
-                    </span>
-                  </div>
-                );
-              })}
+                      <span className="font-semibold text-slate-100">
+                        {point.text}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

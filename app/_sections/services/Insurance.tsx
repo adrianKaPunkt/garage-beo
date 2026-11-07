@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ShieldCheck, Umbrella, ClipboardCheck } from "lucide-react";
 import Button from "@/components/Button";
+import InsuranceMarquee from "./InsuranceMarquee/InsuranceMarquee";
 
 const insurancePoints = [
   {
@@ -193,34 +194,36 @@ export default function Insurance() {
           {/* Text */}
           <div
             className="
-              mx-auto max-w-162 text-center lg:mt-6
+              mx-auto max-w-162 lg:mt-6
               lg:col-start-1 lg:row-start-2
-              lg:mx-0 lg:self-start lg:text-left
+              lg:mx-0 lg:self-start text-left
             "
           >
-            {/* Untertitel */}
-            <p
-              className="
-                mb-5 text-lg font-semibold
-                text-white sm:text-xl
+            <div className="mx-5 lg:mx-0">
+              {/* Untertitel */}
+              <p
+                className="
+              mb-5 text-lg font-semibold
+              text-white sm:text-xl
               "
-            >
-              Sigurnost i zaštita na prvom mestu.
-            </p>
+              >
+                Sigurnost i zaštita na prvom mestu.
+              </p>
 
-            {/* Beschreibung */}
-            <p
-              className="
+              {/* Beschreibung */}
+              <p
+                className="
                 mx-auto mb-9 max-w-140
                 text-base leading-relaxed
                 text-white/85
                 sm:text-lg lg:mx-0
               "
-            >
-              Informišite se o mogućnostima osiguranja vašeg vozila. Pružamo vam
-              potrebne informacije i pomoć kako biste lakše pronašli
-              odgovarajuće rešenje.
-            </p>
+              >
+                Informišite se o mogućnostima osiguranja vašeg vozila. Pružamo
+                vam potrebne informacije i pomoć kako biste lakše pronašli
+                odgovarajuće rešenje.
+              </p>
+            </div>
 
             {/* Leistungen */}
             <div
@@ -263,6 +266,11 @@ export default function Insurance() {
               })}
             </div>
           </div>
+        </div>
+
+        {/* Logos der Versicherungen */}
+        <div className="mt-6">
+          <InsuranceMarquee />
         </div>
 
         {/* Kontakt-Button */}
