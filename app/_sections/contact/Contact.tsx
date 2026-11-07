@@ -4,13 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Clock3, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { DAY_KEYS, site } from "@/app/site-config";
+import { DAY_KEYS, WEEK_ORDER, site } from "@/app/site-config";
 import ContactForm from "./ContactForm";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-// Anzeige beginnt am Montag
-const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0];
 
 // Aktuelle Zeit in Belgrad, unabhängig von der Zeitzone des Besuchers
 function getBelgradeTime() {

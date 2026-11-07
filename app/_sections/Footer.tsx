@@ -1,6 +1,5 @@
-import { useTranslations } from "next-intl";
-import { site, navLinks } from "@/app/site-config";
-import { dayRangeLabel } from "@/app/_sections/hours";
+import { useFormatter, useTranslations } from "next-intl";
+import { DAY_KEYS, WEEK_ORDER, site, navLinks } from "@/app/site-config";
 import type { SVGProps } from "react";
 import { Facebook, Instagram, MapPin, Youtube } from "lucide-react";
 import LegalModal from "@/components/LegalModal";
@@ -39,15 +38,23 @@ const footerLink =
 export default function Footer() {
   const t = useTranslations("footer");
   const tCommon = useTranslations("common");
+  const format = useFormatter();
+
+  // Kurzer Tagesname in der aktuellen Sprache, z.B. "pon.", "Mo.", "Mon".
+  // 7. Januar 2024 war ein Sonntag (Index 0).
+  const shortDayName = (day: number) =>
+    format.dateTime(new Date(Date.UTC(2024, 0, 7 + day, 12)), {
+      weekday: "short",
+    });
 
   return (
     <footer className="bg-gray-950 text-white">
-      <div className="container py-14 lg:py-18">
+      <div className="container py-14 lg:py-18 px-4 sm:px-0">
         <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:gap-x-12 lg:grid-cols-[1.5fr_0.8fr_1.1fr_1fr] lg:gap-x-12 xl:gap-x-16">
-          {/* Unternehmen: mobil und auf Desktop oben links */}
-          <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-1">
+          {/* Unternehmen: mobil zentriert über die volle Breite, ab lg oben links */}
+          <div className="col-span-2 flex flex-col items-center gap-5 text-center lg:col-span-1 lg:items-start lg:text-left">
             <div className="flex flex-col gap-1">
-              <div className="flex flex-wrap items-baseline gap-x-1">
+              <div className="flex flex-wrap items-baseline justify-center gap-x-1 lg:justify-start">
                 <span className="text-2xl font-bold leading-tight text-lime-400 lg:text-3xl">
                   GARAGE
                 </span>
@@ -86,26 +93,39 @@ export default function Footer() {
             </div>
           </nav>
 
-          {/* Öffnungszeiten */}
-          <div className="flex flex-col items-start gap-4">
+          {/* Öffnungszeiten: mobil rechtsbündig, ab lg linksbündig */}
+          <div className="flex flex-col items-end gap-4 text-right lg:items-start lg:text-left">
             <h3 className={columnTitle}>{t("hours")}</h3>
-            <div className="flex flex-col items-start gap-3">
-              {site.hours.map(({ days, time }) => (
-                <p
-                  key={days.join()}
-                  className="text-sm leading-relaxed text-[#d0dfd2]"
-                >
-                  {dayRangeLabel(days, (day) => tCommon(`days.${day}`))}:{" "}
-                  {time ?? tCommon("closed")}
-                </p>
-              ))}
-            </div>
+            <dl className="m-0 grid grid-cols-[auto_auto] gap-x-3 gap-y-2 text-sm leading-relaxed text-[#d0dfd2]">
+              {WEEK_ORDER.map((day) => {
+                const time =
+                  site.hours.find((entry) => entry.days.includes(day))?.time ??
+                  tCommon("closed");
+
+                return (
+                  <div key={day} className="contents">
+                    <dt className="text-left">
+                      {/* Mobil abgekürzt, damit es in die schmale Spalte passt */}
+                      <span className="capitalize lg:hidden">
+                        {shortDayName(day)}
+                      </span>
+                      <span className="hidden lg:inline">
+                        {tCommon(`days.${DAY_KEYS[day]}`)}
+                      </span>
+                    </dt>
+                    <dd className="m-0 whitespace-nowrap text-right lg:text-left">
+                      {time}
+                    </dd>
+                  </div>
+                );
+              })}
+            </dl>
           </div>
 
-          {/* Social Media: mobil eine eigene Zeile */}
-          <div className="col-span-2 flex flex-col items-start gap-4 lg:col-span-1">
+          {/* Social Media: mobil eine eigene, zentrierte Zeile */}
+          <div className="col-span-2 flex flex-col items-center gap-4 lg:col-span-1 lg:items-start">
             <h3 className={columnTitle}>{t("social")}</h3>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center justify-center gap-6 lg:justify-start">
               {socialLinks.map(({ label, icon: Icon, url }) =>
                 url ? (
                   <a
@@ -116,7 +136,7 @@ export default function Footer() {
                     aria-label={label}
                     className="flex h-11 w-11 items-center justify-center text-[#d0dfd2] transition-colors hover:border-lime-300/40 hover:bg-white/10 hover:text-lime-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-300"
                   >
-                    <Icon size={22} aria-hidden="true" />
+                    <Icon size={30} aria-hidden="true" />
                   </a>
                 ) : (
                   <span
@@ -125,7 +145,7 @@ export default function Footer() {
                     title={t("notLinked", { label })}
                     className="flex h-11 w-11 items-center justify-center text-gray-500"
                   >
-                    <Icon size={22} aria-hidden="true" />
+                    <Icon size={30} aria-hidden="true" />
                   </span>
                 ),
               )}
@@ -137,10 +157,10 @@ export default function Footer() {
       {/* Unterer Abschluss */}
       <div className="container border-t border-white/15 py-6">
         <div className="flex flex-col gap-4 text-sm text-[#c9d6ce] sm:flex-row sm:items-center sm:justify-between">
-          <span>
+          <span className="text-center">
             {t("copyright", { year: new Date().getFullYear() })}
           </span>
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-center sm:justify-start">
             <a
               href="#politika-privatnosti"
               className="hover:text-lime-300 hover:underline visited:text-gray-400"

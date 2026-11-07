@@ -31,6 +31,9 @@ export const DAY_KEYS = [
   "saturday",
 ] as const;
 
+// Reihenfolge in Öffnungszeiten-Listen: beginnt am Montag
+export const WEEK_ORDER = [1, 2, 3, 4, 5, 6, 0];
+
 // Themen im Kontaktformular, die Texte stehen in contact.topics
 export const contactTopics = [
   "inspection",
