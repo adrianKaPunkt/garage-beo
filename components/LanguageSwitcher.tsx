@@ -10,8 +10,8 @@ import { htmlLang, localePath, routing, type Locale } from "@/i18n/routing";
 const languages: Record<Locale, { short: string; name: string }> = {
   "sr-Latn": { short: "SR", name: "Srpski (latinica)" },
   "sr-Cyrl": { short: "СР", name: "Српски (ћирилица)" },
-  de: { short: "DE", name: "Deutsch" },
   en: { short: "EN", name: "English" },
+  de: { short: "DE", name: "Deutsch" },
 };
 
 export default function LanguageSwitcher() {

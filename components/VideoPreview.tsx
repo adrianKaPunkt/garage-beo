@@ -73,8 +73,11 @@ export default function VideoPreview({
           type="button"
           aria-label={t("play", { title: label })}
           onClick={handleStart}
+          // m-0, p-0, border-0, bg-transparent: Ohne Tailwind-Preflight hätte der
+          // Button Browser-Standards (Rahmen, Innenabstand), die als Rand ums Bild sichtbar wären
           className="
-            group absolute inset-0 block cursor-pointer
+            group absolute inset-0 m-0 block cursor-pointer
+            border-0 bg-transparent p-0
             focus-visible:outline-4
             focus-visible:-outline-offset-4
             focus-visible:outline-lime-300

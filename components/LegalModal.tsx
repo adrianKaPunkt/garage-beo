@@ -130,7 +130,8 @@ export default function LegalModal() {
           className="overflow-y-auto px-5 py-6 leading-relaxed sm:px-8"
         >
           {/* Nur in Übersetzungen: In sr ist der Text leer */}
-          {t("translationNotice") && (
+          {/* t.raw: nur prüfen, ob es einen Text gibt, ohne ihn zu formatieren */}
+          {t.raw("translationNotice") && (
             <p className="mb-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-slate-700">
               {t.rich("translationNotice", {
                 // Führt zum selben Text in der serbischen Standardfassung

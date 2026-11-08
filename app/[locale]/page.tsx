@@ -9,6 +9,7 @@ import Services from "@/app/_sections/services/Services";
 import About from "@/app/_sections/About";
 import Contact from "@/app/_sections/contact/Contact";
 import Testimonials from "@/app/_sections/testimonials/Testimonials";
+import Image from "next/image";
 
 export default function Home({
   params,
@@ -23,8 +24,21 @@ export default function Home({
     <>
       <Header />
       <main>
-        <Hero />
-        <Features />
+        {/* Desktop: Hero + Features füllen zusammen den Bildschirm unter dem Header (lg:h-24) */}
+        <div className="lg:flex lg:min-h-[calc(100svh-6rem)] lg:flex-col">
+          <Hero />
+          <Features />
+        </div>
+        <div className="container mt-20 mb-10">
+          <Image
+            className="h-auto w-full"
+            src="/images/building.webp"
+            alt="Zgrada Garage Beograd — tehnički pregled vozila"
+            width={1756}
+            height={895}
+            sizes="(min-width: 1280px) 1280px, 100vw"
+          />
+        </div>
         <About />
         <Services />
         <Testimonials />
