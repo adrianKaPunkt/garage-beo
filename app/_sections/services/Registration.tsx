@@ -22,8 +22,8 @@ export default function Registration() {
         relative isolate overflow-hidden
         scroll-mt-24
         bg-[linear-gradient(135deg,#903f42_0%,#bf625e_48%,#e69a87_100%)]
-        py-15.5 text-white
-        min-[701px]:py-21
+        py-25 text-white
+        min-[701px]:py-30
       "
     >
       {/* Horizontale technische Linien */}

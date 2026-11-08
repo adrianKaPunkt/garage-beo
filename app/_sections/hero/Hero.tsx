@@ -62,7 +62,7 @@ const Hero = () => {
         <GarageBeogradBadge
           size="100%"
           language={currentLanguage}
-          className="hidden w-44 justify-self-center drop-shadow-[0_10px_18px_rgba(31,69,41,0.35)] lg:col-span-2 lg:block xl:w-55"
+          className="hidden w-44 justify-self-center drop-shadow-[0_10px_18px_rgba(31,69,41,0.35)] lg:col-span-2 lg:block xl:w-75"
         />
 
         <div className="min-w-0">

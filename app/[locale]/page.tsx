@@ -6,7 +6,7 @@ import Hero from "@/app/_sections/hero/Hero";
 import Features from "@/app/_sections/Features";
 import Footer from "@/app/_sections/Footer";
 import Services from "@/app/_sections/services/Services";
-import About from "@/app/_sections/About";
+import About from "@/app/_sections/about/About";
 import Contact from "@/app/_sections/contact/Contact";
 import Testimonials from "@/app/_sections/testimonials/Testimonials";
 import Image from "next/image";

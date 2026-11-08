@@ -71,7 +71,8 @@ export default function HeroHeader() {
       flex
       h-32 sm:h-40 lg:h-48
       w-full
-      items-center
+      items-end
+      lg:items-center
       justify-center
       lg:justify-start
     "

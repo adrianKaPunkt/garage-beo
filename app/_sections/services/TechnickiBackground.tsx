@@ -6,8 +6,8 @@ const TechnickiBackground = ({ children }: { children: ReactNode }) => {
       className="
         relative isolate overflow-hidden
         bg-[linear-gradient(125deg,#14283a_0%,#24455a_55%,#416878_100%)]
-        py-15.5 text-white
-        min-[701px]:py-21
+        py-35 text-white
+        min-[701px]:py-50
       "
     >
       {/* Blueprint-Raster */}
@@ -28,7 +28,7 @@ const TechnickiBackground = ({ children }: { children: ReactNode }) => {
         className="
         pointer-events-none absolute
         -right-32 top-0
-        h-[650px] w-[650px]
+        h-162.5 w-162.5
         rounded-full
         bg-cyan-200/10
         blur-3xl
@@ -44,7 +44,7 @@ const TechnickiBackground = ({ children }: { children: ReactNode }) => {
         className="
         pointer-events-none absolute
         -right-20 top-1/2
-        hidden w-[700px]
+        hidden w-175
         -translate-y-1/2
         text-white/15
           lg:block
@@ -107,6 +107,20 @@ const TechnickiBackground = ({ children }: { children: ReactNode }) => {
           <circle cx="535" cy="255" r="3" />
           <circle cx="350" cy="105" r="3" />
         </g>
+      </svg>
+
+      {/* Weicher, welliger Übergang von der About-Section (gleiche Farbe wie deren unterer Bereich) */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 1440 120"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="pointer-events-none absolute inset-x-0 -top-px h-12 w-full sm:h-16 lg:h-24"
+      >
+        <path
+          fill="#e7f2dd"
+          d="M0 0H1440V36C1330 62 1210 76 1070 66C920 55 800 20 640 24C480 28 380 70 240 74C150 77 70 62 0 48Z"
+        />
       </svg>
 
       {/* Inhalt */}

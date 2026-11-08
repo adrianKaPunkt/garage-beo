@@ -147,7 +147,7 @@ export default function HeroSubtitle() {
   );
 
   return (
-    <div className="mb-6 lg:mb-16 flex h-14 w-full items-center justify-center md:h-16 lg:justify-start">
+    <div className="mb-6 lg:mb-16 -mt-6 flex h-14 w-full items-start justify-center sm:-mt-5 lg:mt-0 lg:items-center md:h-16 lg:justify-start">
       <p className="m-0 w-full text-center text-darkgreen text-3xl font-bold sm:text-4xl md:text-5xl lg:text-left lg:text-6xl">
         <span
           key={subtitle.id}

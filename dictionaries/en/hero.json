@@ -2,7 +2,7 @@
   "titles": {
     "inspection": "VEHICLE\nINSPECTION",
     "registration": "VEHICLE\nREGISTRATION",
-    "insurance": "INSURANCE",
+    "insurance": "VEHICLE\nINSURANCE",
     "payments": "BILL\nPAYMENT"
   },
   "subtitles": {
