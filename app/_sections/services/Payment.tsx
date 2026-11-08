@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import PaySpotLogo from "@/components/PaySpotLogo/PaySpotLogo";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { waveMask } from "./waveMask";
 
 // Texte in payment.points im Dictionary
 const paymentPoints = [
@@ -24,9 +25,13 @@ export default function Payment() {
         relative isolate overflow-hidden
         scroll-mt-24
         bg-[linear-gradient(135deg,#a8681c_0%,#d99b32_48%,#f4cf75_100%)]
-        py-15.5 text-white
-        min-[701px]:py-21
+        text-white
+        [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
+        -mt-12 sm:-mt-16 lg:-mt-24
+        pt-27.5 pb-15.5 sm:pt-31.5
+        min-[701px]:pt-37 min-[701px]:pb-21 lg:pt-45
       "
+      style={waveMask()}
     >
       {/* Halbtransparente Kreise im Hintergrund */}
       <div

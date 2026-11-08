@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FileCheck2, ClipboardCheck, BadgeCheck } from "lucide-react";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
+import { waveMask } from "./waveMask";
 
 // Texte in registration.points im Dictionary
 const registrationPoints = [
@@ -22,9 +23,13 @@ export default function Registration() {
         relative isolate overflow-hidden
         scroll-mt-24
         bg-[linear-gradient(135deg,#903f42_0%,#bf625e_48%,#e69a87_100%)]
-        py-25 text-white
-        min-[701px]:py-30
+        text-white
+        [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
+        -mt-12 sm:-mt-16 lg:-mt-24
+        pt-37 pb-25 sm:pt-41
+        min-[701px]:pt-46 min-[701px]:pb-30 lg:pt-54
       "
+      style={waveMask()}
     >
       {/* Horizontale technische Linien */}
       <div

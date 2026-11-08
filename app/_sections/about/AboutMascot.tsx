@@ -10,9 +10,9 @@ type AboutMascotProps = {
 };
 
 const checks = [
-  "/images/car/about/check1.webp",
-  "/images/car/about/check2.webp",
-  "/images/car/about/check3.webp",
+  "/images/about/check1.webp",
+  "/images/about/check2.webp",
+  "/images/about/check3.webp",
 ];
 
 export default function AboutMascot({ className = "" }: AboutMascotProps) {
@@ -65,17 +65,17 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative mx-auto w-full max-w-82 sm:max-w-103 lg:max-w-125 ${className}`}
+      className={`relative mx-auto w-full max-w-65 sm:max-w-103 lg:max-w-125 ${className}`}
       role="img"
       aria-label="Ilustracija maskote Garage Beograd, koja predstavlja pouzdanog i stručnog partnera za tehnički pregled vozila"
     >
       <div className="relative aspect-[657/599] w-full">
         {/* Maskottchen */}
         <Image
-          src="/images/car/about/car-about.webp"
+          src="/images/about/car-about.webp"
           alt=""
           fill
-          sizes="(max-width: 640px) 328px, (max-width: 1023px) 412px, 500px"
+          sizes="(max-width: 640px) 260px, (max-width: 1023px) 412px, 500px"
           className="object-contain"
         />
 
@@ -91,7 +91,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
               src={src}
               alt=""
               fill
-              sizes="(max-width: 640px) 328px, (max-width: 1023px) 412px, 500px"
+              sizes="(max-width: 640px) 260px, (max-width: 1023px) 412px, 500px"
               className="object-contain"
             />
           </div>

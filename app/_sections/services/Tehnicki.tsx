@@ -186,7 +186,7 @@ export default function Tehnicki() {
                 alt: t(`images.${key}`),
               }))}
               shape="circle"
-              size="md"
+              size="lg"
               align="center"
               mobileScroll
               lightbox

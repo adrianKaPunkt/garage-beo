@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Location = () => {
   return (
-    <div className="mb-16 grid grid-cols-1 items-center gap-10 lg:mb-24 lg:grid-cols-12 lg:gap-14">
+    <div className="mb-16 grid grid-cols-1 items-center gap-10 lg:pt-40 lg:mb-24 lg:grid-cols-12 lg:gap-14">
       <figure className="lg:col-span-7">
         <div className="relative aspect-4/3 overflow-hidden rounded-2xl sm:aspect-16/10+">
           <Image

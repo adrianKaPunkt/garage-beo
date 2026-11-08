@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ShieldCheck, Umbrella, ClipboardCheck } from "lucide-react";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
+import { waveMask } from "./waveMask";
 import InsuranceMarquee from "./InsuranceMarquee/InsuranceMarquee";
 
 // Texte in insurance.points im Dictionary
@@ -23,9 +24,13 @@ export default function Insurance() {
         relative isolate overflow-hidden
         scroll-mt-24
         bg-[linear-gradient(125deg,#123f36_0%,#1c624f_52%,#2c8067_100%)]
-        py-15.5 text-white
-        min-[701px]:py-21
+        text-white
+        [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
+        -mt-12 sm:-mt-16 lg:-mt-24
+        pt-27.5 pb-15.5 sm:pt-31.5
+        min-[701px]:pt-37 min-[701px]:pb-21 lg:pt-45 lg:pb-27
       "
+      style={waveMask("mirrored")}
     >
       {/* Sanfte Wellenlinien im Hintergrund */}
       <svg

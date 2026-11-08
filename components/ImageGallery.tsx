@@ -14,7 +14,8 @@ export type GalleryImage = {
 type ImageGalleryProps = {
   images: GalleryImage[];
   shape?: "circle" | "rounded" | "square";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
+  gap?: "md" | "lg";
   align?: "left" | "center" | "right";
   mobileScroll?: boolean;
   lightbox?: boolean;
@@ -25,6 +26,20 @@ const sizes = {
   sm: "h-24 w-24 lg:h-28 lg:w-28",
   md: "h-28 w-28 lg:h-36 lg:w-36",
   lg: "h-36 w-36 lg:h-44 lg:w-44",
+  xl: "h-36 w-36 sm:h-50.5 sm:w-50.5 lg:h-64.5 lg:w-64.5",
+};
+
+// Passende Bildbreite für next/image je Größe (größter Wert, also Desktop)
+const imageSizes = {
+  sm: "112px",
+  md: "144px",
+  lg: "176px",
+  xl: "258px",
+};
+
+const gaps = {
+  md: "gap-4 lg:gap-6",
+  lg: "gap-8 lg:gap-14",
 };
 
 const shapes = {
@@ -43,6 +58,7 @@ export default function ImageGallery({
   images,
   shape = "circle",
   size = "md",
+  gap = "md",
   align = "center",
   mobileScroll = true,
   lightbox = true,
@@ -144,7 +160,8 @@ export default function ImageGallery({
         role="group"
         aria-label={t("label")}
         className={[
-          "flex items-center gap-4 py-5 lg:gap-6",
+          "flex items-center py-5",
+          gaps[gap],
           mobileScroll
             ? "flex-nowrap justify-start overflow-x-auto overscroll-x-contain snap-x snap-mandatory lg:overflow-visible"
             : "flex-wrap justify-center",
@@ -180,7 +197,7 @@ export default function ImageGallery({
               src={image.src}
               alt={image.alt}
               fill
-              sizes="(max-width: 1024px) 176px, 176px"
+              sizes={imageSizes[size]}
               className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
           </button>

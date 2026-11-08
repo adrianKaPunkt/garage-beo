@@ -35,7 +35,7 @@ const About = () => {
           className="
             pointer-events-none absolute inset-x-0 top-0 -bottom-px
             bg-[#f3f8ee]
-            [clip-path:polygon(0_140px,42%_235px,50%_245px,58%_225px,100%_70px,100%_100%,0_100%)]
+            [clip-path:polygon(0_110px,42%_186px,50%_194px,58%_178px,100%_55px,100%_100%,0_100%)]
             sm:[clip-path:polygon(0_170px,43%_300px,50%_312px,57%_292px,100%_70px,100%_100%,0_100%)]
             lg:[clip-path:polygon(0_200px,44%_420px,50%_440px,56%_402px,100%_55px,100%_100%,0_100%)]
           "
