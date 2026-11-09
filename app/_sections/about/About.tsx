@@ -47,9 +47,9 @@ const About = () => {
           className="
             pointer-events-none absolute inset-x-0 top-0 -bottom-px
             bg-[#f3f8ee]
-            [clip-path:polygon(0_94px,42%_158px,50%_165px,58%_151px,100%_47px,100%_100%,0_100%)]
-            sm:[clip-path:polygon(0_145px,43%_255px,50%_265px,57%_248px,100%_60px,100%_100%,0_100%)]
-            lg:[clip-path:polygon(0_170px,44%_357px,50%_374px,56%_342px,100%_47px,100%_100%,0_100%)]
+            [clip-path:polygon(0_128px,42%_215px,50%_225px,58%_206px,100%_64px,100%_100%,0_100%)]
+            sm:[clip-path:polygon(0_157px,43%_275px,50%_286px,57%_268px,100%_65px,100%_100%,0_100%)]
+            lg:[clip-path:polygon(0_184px,44%_387px,50%_406px,56%_371px,100%_51px,100%_100%,0_100%)]
           "
         />
 

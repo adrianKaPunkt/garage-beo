@@ -3,6 +3,7 @@ import { FileCheck2, ClipboardCheck, BadgeCheck } from "lucide-react";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
 import { waveMask } from "./waveMask";
+import RegistrationMascot from "./RegistrationMascot";
 
 // Texte in registration.points im Dictionary
 const registrationPoints = [
@@ -27,7 +28,7 @@ export default function Registration() {
         [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
         -mt-12 sm:-mt-16 lg:-mt-24
         pt-37 pb-25 sm:pt-41
-        min-[701px]:pt-46 min-[701px]:pb-30 lg:pt-54
+        min-[701px]:pt-46 min-[701px]:pb-50 lg:pt-54
       "
       style={waveMask()}
     >
@@ -151,13 +152,7 @@ export default function Registration() {
                 motion-reduce:transform-none
               "
             >
-              <Image
-                src="/images/car/registration.webp"
-                alt={t("imageAlt")}
-                fill
-                sizes="(max-width: 1024px) 85vw, 440px"
-                className="object-contain drop-shadow-2xl"
-              />
+              <RegistrationMascot />
             </div>
           </div>
 

@@ -67,7 +67,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative mx-auto w-full max-w-55 sm:max-w-88 lg:max-w-106 ${className}`}
+      className={`relative mx-auto w-full max-w-75 sm:max-w-95 lg:max-w-115 ${className}`}
       role="img"
       aria-label={t("mascotAlt")}
     >
@@ -77,7 +77,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
           src="/images/about/car-about.webp"
           alt=""
           fill
-          sizes="(max-width: 640px) 220px, (max-width: 1023px) 352px, 424px"
+          sizes="(max-width: 640px) 300px, (max-width: 1023px) 380px, 460px"
           className="object-contain"
         />
 
@@ -93,7 +93,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
               src={src}
               alt=""
               fill
-              sizes="(max-width: 640px) 220px, (max-width: 1023px) 352px, 424px"
+              sizes="(max-width: 640px) 300px, (max-width: 1023px) 380px, 460px"
               className="object-contain"
             />
           </div>

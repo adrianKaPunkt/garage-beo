@@ -28,7 +28,7 @@ export default function Insurance() {
         [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
         -mt-12 sm:-mt-16 lg:-mt-24
         pt-27.5 pb-15.5 sm:pt-31.5
-        min-[701px]:pt-37 min-[701px]:pb-21 lg:pt-45 lg:pb-27
+        min-[701px]:pt-37 min-[701px]:pb-21 lg:pt-45 lg:pb-50
       "
       style={waveMask("mirrored")}
     >

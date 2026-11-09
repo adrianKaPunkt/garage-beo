@@ -145,10 +145,10 @@ export default function Contact() {
           <p className="text-white mb-4">{t("eyebrow")}</p>
           <h2
             id="contact-title"
-            className="mb-7 text-[clamp(50px,3vw,55px)] leading-14"
+            className="mb-7 text-[clamp(2.25rem,10vw,3.4375rem)] leading-[1.1]"
           >
             <span className="text-lime-300">{t("title.first")} </span>
-            <span className="whitespace-nowrap">
+            <span className="min-[400px]:whitespace-nowrap">
               <span className="text-white">{t("title.middle")} </span>
               <span className="text-orange">{t("title.last")}</span>
             </span>

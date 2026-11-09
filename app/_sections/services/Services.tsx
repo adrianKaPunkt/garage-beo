@@ -14,7 +14,7 @@ const Services = () => {
         <div className="container">
           <div className="mt-10 mb-7.5 text-center min-[701px]:mb-9.75">
             <p className="text-green mb-4">{t("eyebrow")}</p>
-            <h2 className="mb-7 text-[clamp(50px,3vw,55px)] leading-14">
+            <h2 className="mb-7 text-[clamp(2.25rem,10vw,3.4375rem)] leading-[1.1]">
               <span className="text-lime-300">{t("titleFirst")} </span>
               <span className="text-white">{t("titleSecond")}</span>
             </h2>

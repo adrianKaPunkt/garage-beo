@@ -3,6 +3,7 @@ import { ClipboardCheck, ShieldCheck, Wrench } from "lucide-react";
 import Button from "@/components/Button";
 import ImageGallery from "@/components/ImageGallery";
 import { useTranslations } from "next-intl";
+import TehnickiMaskot from "./TehnickiMaskot";
 
 // Alt-Texte in tehnicki.images im Dictionary
 const tehnickiImages = [
@@ -114,12 +115,9 @@ export default function Tehnicki() {
               hover:-translate-y-2
             "
             >
-              <Image
-                src="/images/car/tehnicki.webp"
-                alt={tCommon("mascotAlt")}
-                fill
-                sizes="(max-width: 1024px) 85vw, 440px"
-                className="object-contain drop-shadow-2xl"
+              <TehnickiMaskot
+                size={440}
+                className="mx-auto max-w-[80%] lg:mx-0"
               />
             </div>
           </div>

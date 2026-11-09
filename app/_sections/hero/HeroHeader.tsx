@@ -125,7 +125,7 @@ export default function HeroHeader() {
         w-full
         font-extrabold
         text-gray-900
-        text-[3rem]
+        text-[clamp(2rem,11.5vw,3rem)]
         sm:text-[3.25rem]
         md:text-[4rem]
         lg:text-[5rem]

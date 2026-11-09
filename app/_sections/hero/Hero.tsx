@@ -4,7 +4,7 @@ import HeroHeader from "./HeroHeader";
 import HeroSubtitle from "./HeroSubtitle";
 import Button from "@/components/Button";
 import { useLocale, useTranslations } from "next-intl";
-import GarageBeogradBadge from "@/components/GarageBeogradBadge";
+import AnniversaryBadge from "@/components/AnniversaryBadge";
 
 const Hero = () => {
   const t = useTranslations("common.actions");
@@ -59,7 +59,7 @@ const Hero = () => {
         "
       >
         {/* Desktop: Jubiläums-Badge zentriert über Headline und Auto */}
-        <GarageBeogradBadge
+        <AnniversaryBadge
           size="100%"
           language={currentLanguage}
           className="hidden w-44 justify-self-center drop-shadow-[0_10px_18px_rgba(31,69,41,0.35)] lg:col-span-2 lg:block xl:w-75"
@@ -78,7 +78,7 @@ const Hero = () => {
 
         <div className="relative w-full max-w-75 sm:max-w-95 lg:max-w-115 justify-self-center">
           {/* Mobile/Tablet: Jubiläums-Badge als „Siegel“ oben links am Auto */}
-          <GarageBeogradBadge
+          <AnniversaryBadge
             size="100%"
             language={currentLanguage}
             className="absolute -right-7 -top-40 z-10 w-30 -rotate-12 drop-shadow-[0_10px_18px_rgba(31,69,41,0.35)] sm:w-28 lg:hidden"
