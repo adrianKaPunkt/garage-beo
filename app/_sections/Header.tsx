@@ -95,7 +95,7 @@ export default function Header() {
           className={`
             absolute inset-x-0 top-full
             max-h-[calc(100dvh-5rem)] overflow-y-auto
-            flex-col bg-white px-5 py-4
+            flex-col bg-white px-5 pt-0 pb-5
             shadow-lg
             lg:max-h-none lg:overflow-visible
             lg:static lg:flex lg:flex-row
@@ -137,7 +137,7 @@ export default function Header() {
             <div
               role="group"
               aria-label={t("social")}
-              className="flex justify-center gap-3 mt-3 pt-4 lg:hidden"
+              className="flex justify-center gap-3 pt-4 lg:hidden"
             >
               {activeSocialLinks.map(({ label, icon: Icon, url }) => (
                 <a
@@ -148,7 +148,7 @@ export default function Header() {
                   aria-label={label}
                   onClick={() => setMenuOpen(false)}
                   className="
-                    inline-flex h-15 w-15
+                    inline-flex h-12 w-12
                     items-center justify-center
                     text-gray-800
                   "
