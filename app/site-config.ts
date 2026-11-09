@@ -70,6 +70,9 @@ export const site = {
   mapsUrl:
     "https://www.google.com/maps/place/Tehni%C4%8Dki+i+registracija+Garage/@44.7756933,20.5500733,21z/data=!4m15!1m8!3m7!1s0x475a774faccbcdef:0xb1882f90fbb97c00!2sNabokovljeva+1a,+Beograd+11000,+Serbien!3b1!8m2!3d44.7759706!4d20.5500022!16s%2Fg%2F11l5d1ymn5!3m5!1s0x475a77df1d97ea85:0xe0e00ccd1e82a9e0!8m2!3d44.7759391!4d20.5499628!16s%2Fg%2F11v3q652d3?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D",
   bookingUrl: "",
+  // Google-Bewertung: wird live aus der Places API geladen (siehe .env.example),
+  // diese Werte gelten nur ohne API-Key oder wenn Google nicht erreichbar ist
+  googleRating: { rating: 5.0, reviewCount: 72 },
   // Profil-Adressen: Ohne Eintrag ist das Icon im Footer nicht klickbar
   social: {
     facebook: "",

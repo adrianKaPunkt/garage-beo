@@ -6,7 +6,7 @@
     "payments": "PLAĆANJE\nRAČUNA"
   },
   "subtitles": {
-    "fast": { "text": "BRZO", "suffix": "" },
+    "fast": { "text": "BRZO", "suffix": "BRE" },
     "clear": { "text": "JASNO", "suffix": "" },
     "simple": { "text": "JEDNOSTAVNO", "suffix": "" },
     "oneplace": { "text": "SVE NA JEDNOM MESTU", "suffix": "" }
