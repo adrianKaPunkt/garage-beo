@@ -164,7 +164,9 @@ export default function Contact() {
           <div className="flex flex-col gap-6">
             {/* Kontaktdaten */}
             <div className="relative rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
-              <h3 className="m-0 mb-7 text-2xl font-bold">{t("contactTitle")}</h3>
+              <h3 className="m-0 mb-7 text-2xl font-bold">
+                {t("contactTitle")}
+              </h3>
 
               <div className="space-y-5">
                 {contactRows.map(
@@ -268,7 +270,7 @@ export default function Contact() {
                         }
                       >
                         {tCommon(`days.${DAY_KEYS[day]}`)}
-                        {isToday && ` ${t("today")}`}
+                        {/* {isToday && ` ${t("today")}`} */}
                       </span>
 
                       <strong className="text-right text-sm font-bold text-white">

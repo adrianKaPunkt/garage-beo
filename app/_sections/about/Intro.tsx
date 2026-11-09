@@ -17,18 +17,18 @@ const Intro = () => {
     <div>
       <div className="mt-10 lg:mt-18 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="lg:col-span-1">
-          <p className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">
+          <p data-reveal="left" className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">
             {t("eyebrow")}
           </p>
-          <h3 className="mb-6 text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
+          <h3 data-reveal="left" data-reveal-pulse className="mb-6 origin-left text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
             {t("title")}
           </h3>
-          <p className="mb-5 text-base leading-relaxed text-[#5b646b]">
+          <p data-reveal="left" className="mb-5 text-base leading-relaxed text-[#5b646b]">
             {t("text1")}
           </p>
 
           {/* Mobile/Tablet: Zeichnung zwischen dem ersten und zweiten Absatz */}
-          <div className="my-5 flex justify-center lg:hidden">
+          <div data-reveal className="my-5 flex justify-center lg:hidden">
             <Image
               src="/images/about/intro.png"
               alt={t("drawingAlt")}
@@ -39,19 +39,19 @@ const Intro = () => {
             />
           </div>
 
-          <p className="text-base leading-relaxed text-[#5b646b]">
+          <p data-reveal="left" className="text-base leading-relaxed text-[#5b646b]">
             {t("text2")}
           </p>
-          <p className="text-base leading-relaxed text-[#5b646b]">
+          <p data-reveal="left" className="text-base leading-relaxed text-[#5b646b]">
             {t("text3")}
           </p>
-          <p className="text-base leading-relaxed text-[#5b646b]">
+          <p data-reveal="left" className="text-base leading-relaxed text-[#5b646b]">
             {t("text4")}
           </p>
         </div>
 
         {/* Desktop: Zeichnung in der rechten Spalte */}
-        <div className="hidden justify-center lg:col-span-1 lg:flex">
+        <div data-reveal className="hidden justify-center lg:col-span-1 lg:flex">
           <Image
             src="/images/about/intro.png"
             alt={t("drawingAlt")}
@@ -62,7 +62,7 @@ const Intro = () => {
           />
         </div>
       </div>
-      <div className="flex justify-center lg:mt-20">
+      <div data-reveal className="flex justify-center lg:mt-20">
         <ImageGallery
           images={images.map(({ src, key }) => ({
             src,

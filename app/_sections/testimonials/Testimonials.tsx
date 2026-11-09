@@ -111,7 +111,8 @@ export default function Testimonials() {
   return (
     <section
       aria-label={t("label")}
-      className="bg-[#f7f9f8] py-10 sm:py-14 lg:py-20"
+      // Oben extra Platz für die untere Hälfte des Google-Badges (page.tsx)
+      className="bg-[#f7f9f8] pt-32 pb-10 sm:pt-38 sm:pb-14 lg:pt-46 lg:pb-20"
     >
       {carousel ? (
         <ReviewCarousel label={t("label")}>

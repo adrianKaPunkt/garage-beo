@@ -29,7 +29,7 @@ export default function Payment() {
         [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
         -mt-12 sm:-mt-16 lg:-mt-24
         pt-27.5 pb-15.5 sm:pt-31.5
-        min-[701px]:pt-37 min-[701px]:pb-21 lg:pt-45
+        min-[701px]:pt-37 min-[701px]:pb-60 lg:pt-45
       "
       style={waveMask()}
     >
@@ -41,7 +41,7 @@ export default function Payment() {
         <div
           className="
             absolute -left-36 -top-40
-            h-[450px] w-[450px]
+            h-112.5 w-112.5
             rounded-full
             border border-white/20
           "
@@ -50,7 +50,7 @@ export default function Payment() {
         <div
           className="
             absolute -left-15 -top-20
-            h-[280px] w-[280px]
+            h-70 w-70
             rounded-full
             border border-white/15
           "
@@ -68,7 +68,7 @@ export default function Payment() {
         <div
           className="
             absolute -right-36 top-[10%]
-            h-[550px] w-[550px]
+            h-137.5 w-137.5
             rounded-full
             border border-white/20
           "
@@ -77,7 +77,7 @@ export default function Payment() {
         <div
           className="
             absolute -right-15 top-[25%]
-            h-[310px] w-[310px]
+            h-77.5 w-77.5
             rounded-full
             border border-white/15
           "
@@ -95,7 +95,7 @@ export default function Payment() {
         <div
           className="
             absolute -bottom-52 left-[10%]
-            h-[440px] w-[440px]
+            h-110 w-110
             rounded-full
             border border-white/15
           "
@@ -108,7 +108,7 @@ export default function Payment() {
         className="
           pointer-events-none absolute
           -left-32 top-1/2
-          h-[600px] w-[600px]
+          h-150 w-150
           -translate-y-1/2 rounded-full
           bg-yellow-100/15
           blur-3xl
@@ -121,7 +121,7 @@ export default function Payment() {
         className="
           pointer-events-none absolute
           -right-40 -top-40
-          h-[500px] w-[500px]
+          h-125 w-125
           rounded-full
           bg-white/10 blur-3xl
         "

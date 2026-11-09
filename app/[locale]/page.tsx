@@ -10,6 +10,8 @@ import About from "@/app/_sections/about/About";
 import Contact from "@/app/_sections/contact/Contact";
 import Testimonials from "@/app/_sections/testimonials/Testimonials";
 import Image from "next/image";
+import ScrollReveal from "@/components/ScrollReveal";
+import GoogleRatingBadge from "../_sections/testimonials/GoogleRatingBadge";
 
 export default function Home({
   params,
@@ -41,10 +43,20 @@ export default function Home({
         </div>
         <About />
         <Services />
+        {/* Badge mittig auf der Kante zwischen Payment und Testimonials */}
+        <div className="relative z-10 h-0">
+          <GoogleRatingBadge
+            rating={5.0}
+            reviewCount={72}
+            logoSrc="/logos/google.svg"
+            className="absolute top-0 left-1/2 h-auto w-44 -translate-x-1/2 -translate-y-1/2 sm:w-52 lg:w-60"
+          />
+        </div>
         <Testimonials />
         <Contact />
       </main>
       <Footer />
+      <ScrollReveal />
     </>
   );
 }
