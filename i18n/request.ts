@@ -3,6 +3,7 @@ import { getRequestConfig } from "next-intl/server";
 import sr, { type Messages } from "@/dictionaries/sr";
 import de from "@/dictionaries/de";
 import en from "@/dictionaries/en";
+import ru from "@/dictionaries/ru";
 import { routing, type Locale } from "./routing";
 import { transliterateMessages } from "./transliterate";
 
@@ -13,6 +14,7 @@ const dictionaries: Record<Locale, Messages> = {
   "sr-Cyrl": transliterateMessages(sr),
   de,
   en,
+  ru,
 };
 
 export function getMessages(locale: Locale) {

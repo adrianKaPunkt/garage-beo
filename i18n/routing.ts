@@ -5,10 +5,10 @@ const prefixes = { "sr-Cyrl": "/cir" } as const;
 
 export const routing = defineRouting({
   // sr-Cyrl hat kein eigenes Dictionary, es wird aus sr-Latn transliteriert
-  locales: ["sr-Latn", "sr-Cyrl", "de", "en"],
+  locales: ["sr-Latn", "sr-Cyrl", "de", "en", "ru"],
   defaultLocale: "sr-Latn",
   localePrefix: {
-    // Latinica bleibt ohne Präfix unter "/", die anderen unter /cir, /de, /en
+    // Latinica bleibt ohne Präfix unter "/", die anderen unter /cir, /de, /en, /ru
     mode: "as-needed",
     prefixes,
   },
@@ -33,6 +33,7 @@ export const htmlLang: Record<Locale, string> = {
   "sr-Cyrl": "sr-Cyrl",
   de: "de",
   en: "en",
+  ru: "ru",
 };
 
 export const ogLocale: Record<Locale, string> = {
@@ -40,4 +41,5 @@ export const ogLocale: Record<Locale, string> = {
   "sr-Cyrl": "sr_RS",
   de: "de_DE",
   en: "en_US",
+  ru: "ru_RU",
 };

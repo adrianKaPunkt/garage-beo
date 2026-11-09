@@ -12,7 +12,22 @@ const languages: Record<Locale, { short: string; name: string }> = {
   "sr-Cyrl": { short: "СР", name: "Српски (ћирилица)" },
   en: { short: "EN", name: "English" },
   de: { short: "DE", name: "Deutsch" },
+  ru: { short: "RU", name: "Русский" },
 };
+
+// Reihenfolge im Menü (unabhängig von routing.locales).
+// Fehlt eine Sprache aus dem Routing, meldet TypeScript einen Fehler.
+const MENU_POSITION: Record<Locale, number> = {
+  "sr-Latn": 1,
+  "sr-Cyrl": 2,
+  ru: 3,
+  en: 4,
+  de: 5,
+};
+
+const MENU_ORDER = [...routing.locales].sort(
+  (a, b) => MENU_POSITION[a] - MENU_POSITION[b],
+);
 
 export default function LanguageSwitcher({
   // Farben des Buttons (Rahmen, Fläche, Schrift), passend zum Header-Hintergrund
@@ -84,7 +99,7 @@ export default function LanguageSwitcher({
             shadow-lg
           "
       >
-        {routing.locales.map((entry) => {
+        {MENU_ORDER.map((entry) => {
           const isActive = entry === locale;
 
           return (

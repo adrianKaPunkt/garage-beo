@@ -1,0 +1,44 @@
+{
+  "brandSubtitle": "ТЕХОСМОТР",
+  "mascotAlt": "Талисман Garage Beograd",
+  "address": {
+    "street": "Nabokovljeva 1a",
+    "cityLine": "11150 Белград, Сербия"
+  },
+  "nav": {
+    "home": "Главная",
+    "about": "О нас",
+    "services": "Услуги",
+    "contact": "Контакты",
+    "hours": "Часы работы"
+  },
+  "days": {
+    "monday": "Понедельник",
+    "tuesday": "Вторник",
+    "wednesday": "Среда",
+    "thursday": "Четверг",
+    "friday": "Пятница",
+    "saturday": "Суббота",
+    "sunday": "Воскресенье"
+  },
+  "closed": "Закрыто",
+  "actions": {
+    "bookAppointment": "Записаться",
+    "contactUs": "Связаться с нами"
+  },
+  "gallery": {
+    "label": "Фотогалерея",
+    "open": "Открыть фото {number}: {alt}",
+    "dialog": "Просмотр фото",
+    "close": "Закрыть галерею",
+    "previous": "Предыдущее фото",
+    "next": "Следующее фото"
+  },
+  "video": {
+    "defaultTitle": "Загляните к нам",
+    "unsupported": "Ваш браузер не поддерживает видео.",
+    "unavailable": "Видео сейчас недоступно.",
+    "openDirectly": "Открыть видео напрямую",
+    "play": "Воспроизвести видео: {title}"
+  }
+}

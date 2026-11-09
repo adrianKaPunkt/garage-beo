@@ -1,4 +1,6 @@
+import { getLocale } from "next-intl/server";
 import { site } from "@/app/site-config";
+import type { Locale } from "@/i18n/routing";
 import GoogleRatingBadge from "./GoogleRatingBadge";
 import { getGoogleRating } from "./googleRating";
 
@@ -8,6 +10,7 @@ import { getGoogleRating } from "./googleRating";
  */
 export default async function GoogleRatingLink() {
   const { rating, reviewCount } = await getGoogleRating();
+  const locale = (await getLocale()) as Locale;
 
   return (
     <div className="relative z-10 h-0">
@@ -20,6 +23,7 @@ export default async function GoogleRatingLink() {
         <GoogleRatingBadge
           rating={rating}
           reviewCount={reviewCount}
+          language={locale}
           logoSrc="/logos/google.svg"
           className="block h-auto w-full"
         />

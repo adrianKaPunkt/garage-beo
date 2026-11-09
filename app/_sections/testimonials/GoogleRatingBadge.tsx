@@ -90,20 +90,35 @@ export const DEFAULT_COLORS: BadgeColors = {
   starEmpty: "#e7dcc3",
 };
 
-export type RatingLanguage = "sr-Latn" | "sr-Cyrl" | "en" | "de";
+export type RatingLanguage = "sr-Latn" | "sr-Cyrl" | "en" | "de" | "ru";
 
-const COPY: Record<
-  RatingLanguage,
-  { reviews: (one: boolean) => string; locale: string }
-> = {
-  "sr-Latn": { reviews: () => "RECENZIJA", locale: "sr-Latn-RS" },
-  "sr-Cyrl": { reviews: () => "РЕЦЕНЗИЈА", locale: "sr-Cyrl-RS" },
-  en: { reviews: (one) => (one ? "REVIEW" : "REVIEWS"), locale: "en-US" },
-  de: {
-    reviews: (one) => (one ? "BEWERTUNG" : "BEWERTUNGEN"),
-    locale: "de-DE",
-  },
+// Wort für „Bewertungen“ je Pluralform (Intl.PluralRules), fehlende Formen → other
+type PluralForms = Partial<Record<Intl.LDMLPluralRule, string>> & {
+  other: string;
 };
+
+const COPY: Record<RatingLanguage, { reviews: PluralForms; locale: string }> =
+  {
+    // 1, 21 … recenzija · 2–4, 22–24 … recenzije · sonst recenzija
+    "sr-Latn": {
+      reviews: { one: "RECENZIJA", few: "RECENZIJE", other: "RECENZIJA" },
+      locale: "sr-Latn-RS",
+    },
+    "sr-Cyrl": {
+      reviews: { one: "РЕЦЕНЗИЈА", few: "РЕЦЕНЗИЈЕ", other: "РЕЦЕНЗИЈА" },
+      locale: "sr-Cyrl-RS",
+    },
+    en: { reviews: { one: "REVIEW", other: "REVIEWS" }, locale: "en-US" },
+    de: {
+      reviews: { one: "BEWERTUNG", other: "BEWERTUNGEN" },
+      locale: "de-DE",
+    },
+    // 1, 21 … отзыв · 2–4, 22–24 … отзыва · sonst отзывов
+    ru: {
+      reviews: { one: "ОТЗЫВ", few: "ОТЗЫВА", many: "ОТЗЫВОВ", other: "ОТЗЫВА" },
+      locale: "ru-RU",
+    },
+  };
 
 const FONT = "'Montserrat', 'Poppins', 'Helvetica Neue', Arial, sans-serif";
 
@@ -171,7 +186,9 @@ export default function GoogleRatingBadge({
     const rounded = countDisplay === "rounded" && n >= 100;
     const shown = rounded ? Math.floor(n / 100) * 100 : n;
     const num = new Intl.NumberFormat(copy.locale).format(shown);
-    bottom = `${num}${rounded ? "+" : ""} ${copy.reviews(n === 1)}`;
+    const form = new Intl.PluralRules(copy.locale).select(shown);
+    const word = copy.reviews[form] ?? copy.reviews.other;
+    bottom = `${num}${rounded ? "+" : ""} ${word}`;
   }
 
   // Sterne: 5 × 34 Durchmesser, 7 Abstand, Mitte y = 264

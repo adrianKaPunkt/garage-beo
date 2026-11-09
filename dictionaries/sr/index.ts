@@ -2,7 +2,7 @@
 // dieselben Keys haben, sonst meldet TypeScript einen Fehler.
 // Ćirilica wird automatisch daraus erzeugt (i18n/transliterate.ts).
 //
-// Neues Dictionary: JSON-Datei anlegen und hier sowie in de/ und en/ eintragen.
+// Neues Dictionary: JSON-Datei anlegen und hier sowie in de/, en/ und ru/ eintragen.
 import common from "./common.json";
 import meta from "./meta.json";
 import header from "./header.json";
