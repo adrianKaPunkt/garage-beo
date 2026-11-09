@@ -118,7 +118,7 @@ const TechnickiBackground = ({ children }: { children: ReactNode }) => {
         className="pointer-events-none absolute inset-x-0 -top-px h-12 w-full sm:h-16 lg:h-24"
       >
         <path
-          fill="#d7ebe0"
+          fill="#cde5e0"
           d="M0 0H1440V36C1330 62 1210 76 1070 66C920 55 800 20 640 24C480 28 380 70 240 74C150 77 70 62 0 48Z"
         />
       </svg>

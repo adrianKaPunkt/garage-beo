@@ -1,10 +1,18 @@
-import Image from "next/image";
-import VideoPreview from "@/components/VideoPreview";
 import Intro from "./Intro";
 import AboutMascot from "./AboutMascot";
 import Location from "./Location";
 import Chill from "./Chill";
+import Us from "./Us";
 import { useTranslations } from "next-intl";
+
+// Farbfläche mit Zickzack-Oberkante (mobil 4, ab sm 6, ab lg 8 Zacken).
+// Wird über den Hintergrund des jeweiligen Bereichs gelegt; Farbe kommt per bg-* dazu.
+const zigzagLayer = `
+  pointer-events-none absolute inset-x-0 top-0 -bottom-px
+  [clip-path:polygon(0_30px,12.5%_70px,25%_30px,37.5%_70px,50%_30px,62.5%_70px,75%_30px,87.5%_70px,100%_30px,100%_100%,0_100%)]
+  sm:[clip-path:polygon(0_36px,8.333%_86px,16.667%_36px,25%_86px,33.333%_36px,41.667%_86px,50%_36px,58.333%_86px,66.667%_36px,75%_86px,83.333%_36px,91.667%_86px,100%_36px,100%_100%,0_100%)]
+  lg:[clip-path:polygon(0_40px,6.25%_110px,12.5%_40px,18.75%_110px,25%_40px,31.25%_110px,37.5%_40px,43.75%_110px,50%_40px,56.25%_110px,62.5%_40px,68.75%_110px,75%_40px,81.25%_110px,87.5%_40px,93.75%_110px,100%_40px,100%_100%,0_100%)]
+`;
 
 const About = () => {
   const t = useTranslations("about");
@@ -55,57 +63,27 @@ const About = () => {
         </div>
       </div>
 
+      {/* Zweite Hintergrundfläche: Zickzack-Kante zwischen Intro und Location */}
       <div className="relative bg-[#f3f8ee] pt-16 sm:pt-20 lg:pt-24">
-        {/* Zweite Hintergrundfläche: Zickzack-Kante zwischen Intro und Location (mobil 4, ab sm 6, ab lg 8 Zacken) */}
-        <div
-          aria-hidden="true"
-          className="
-            pointer-events-none absolute inset-x-0 top-0 -bottom-px
-            bg-[#e7f2dd]
-            [clip-path:polygon(0_30px,12.5%_70px,25%_30px,37.5%_70px,50%_30px,62.5%_70px,75%_30px,87.5%_70px,100%_30px,100%_100%,0_100%)]
-            sm:[clip-path:polygon(0_36px,8.333%_86px,16.667%_36px,25%_86px,33.333%_36px,41.667%_86px,50%_36px,58.333%_86px,66.667%_36px,75%_86px,83.333%_36px,91.667%_86px,100%_36px,100%_100%,0_100%)]
-            lg:[clip-path:polygon(0_40px,6.25%_110px,12.5%_40px,18.75%_110px,25%_40px,31.25%_110px,37.5%_40px,43.75%_110px,50%_40px,56.25%_110px,62.5%_40px,68.75%_110px,75%_40px,81.25%_110px,87.5%_40px,93.75%_110px,100%_40px,100%_100%,0_100%)]
-          "
-        />
-
+        <div aria-hidden="true" className={`${zigzagLayer} bg-[#e7f2dd]`} />
         <div className="container relative">
           <Location />
         </div>
       </div>
 
-      <div className="relative bg-[#e7f2dd] pt-16 pb-15.5 sm:pt-20 min-[701px]:pb-21 lg:pt-24">
-        {/* Dritte Hintergrundfläche: dieselbe Zickzack-Kante zwischen Location und Chill */}
-        <div
-          aria-hidden="true"
-          className="
-            pointer-events-none absolute inset-x-0 top-0 -bottom-px
-            bg-[#d7ebe0]
-            [clip-path:polygon(0_30px,12.5%_70px,25%_30px,37.5%_70px,50%_30px,62.5%_70px,75%_30px,87.5%_70px,100%_30px,100%_100%,0_100%)]
-            sm:[clip-path:polygon(0_36px,8.333%_86px,16.667%_36px,25%_86px,33.333%_36px,41.667%_86px,50%_36px,58.333%_86px,66.667%_36px,75%_86px,83.333%_36px,91.667%_86px,100%_36px,100%_100%,0_100%)]
-            lg:[clip-path:polygon(0_40px,6.25%_110px,12.5%_40px,18.75%_110px,25%_40px,31.25%_110px,37.5%_40px,43.75%_110px,50%_40px,56.25%_110px,62.5%_40px,68.75%_110px,75%_40px,81.25%_110px,87.5%_40px,93.75%_110px,100%_40px,100%_100%,0_100%)]
-          "
-        />
-
+      {/* Dritte Hintergrundfläche: Zickzack-Kante zwischen Location und Chill */}
+      <div className="relative bg-[#e7f2dd] pt-16 sm:pt-20 lg:pt-24">
+        <div aria-hidden="true" className={`${zigzagLayer} bg-[#d7ebe0]`} />
         <div className="container relative">
           <Chill />
+        </div>
+      </div>
 
-          {/* 04 – Video und Wartebereich: Dreispaltiges Editorial-Finale */}
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-5">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-green">
-                {t("video.eyebrow")}
-              </p>
-              <h3 className="mb-6 text-2xl font-bold leading-tight text-[#26332f] sm:text-3xl">
-                {t("video.title")}
-              </h3>
-              <VideoPreview
-                src="/videos/reception.mp4"
-                poster="/images/video-thumbnail.webp"
-                title={t("video.videoTitle")}
-                className="w-full"
-              />
-            </div>
-          </div>
+      {/* Vierte Hintergrundfläche: Zickzack-Kante zwischen Chill und Us */}
+      <div className="relative bg-[#d7ebe0] pt-16 pb-15.5 sm:pt-20 min-[701px]:pb-21 lg:pt-24">
+        <div aria-hidden="true" className={`${zigzagLayer} bg-[#cde5e0]`} />
+        <div className="container relative">
+          <Us />
         </div>
       </div>
     </section>
