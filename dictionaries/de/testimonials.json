@@ -2,5 +2,6 @@
   "label": "Kundenbewertungen",
   "source": "Bewertung auf Google",
   "rating": "Bewertung: {rating} von 5",
-  "original": "Originaltext auf Serbisch"
+  "original": "Originaltext auf Serbisch",
+  "translated": "Aus dem Serbischen übersetzt"
 }

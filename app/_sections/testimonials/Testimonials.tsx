@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Star } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
-import { reviews, type Review } from "./reviews";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
+import { reviews, type Review, type ReviewTranslationLocale } from "./reviews";
 import ReviewCarousel from "./ReviewCarousel";
 
 // Ab so vielen Bewertungen läuft das Karussell, vorher stehen die Karten ruhig
@@ -22,11 +22,15 @@ function ReviewCard({
 }) {
   const t = useTranslations("testimonials");
   const format = useFormatter();
+  const locale = useLocale();
 
-  // Name und Text bleiben überall im Original (Latinica): Es sind Zitate, und
-  // ohne Häkchen geschriebene Texte ("kuce" statt "kuće") würden beim
-  // Transliterieren falsch ("куце")
-  const { name, text } = review;
+  // Name bleibt überall im Original. Der Text auch in beiden serbischen
+  // Fassungen: Ohne Häkchen geschriebene Texte ("kuce" statt "kuće") würden
+  // beim Transliterieren falsch ("куце"). In en/de/ru: Übersetzung, falls vorhanden.
+  const { name } = review;
+  const translation =
+    review.translations?.[locale as ReviewTranslationLocale] ?? null;
+  const text = translation ?? review.text;
 
   // Serbische Doppelbuchstaben bleiben zusammen: "Lj", "Nj", "Dž"
   const initial = /^(Lj|Nj|Dž)/.exec(name)?.[0] ?? name.charAt(0);
@@ -84,13 +88,16 @@ function ReviewCard({
       </div>
 
       <blockquote
-        lang="sr-Latn"
+        lang={translation ? locale : "sr-Latn"}
         className="m-0 whitespace-pre-line text-[15px] leading-relaxed text-gray-700">
         „{text}“
       </blockquote>
 
-      {t("original") && (
-        <span className="mt-auto text-xs text-gray-400">{t("original")}</span>
+      {/* Hinweis: übersetzt bzw. Original auf Serbisch (in sr leer) */}
+      {t(translation ? "translated" : "original") && (
+        <span className="mt-auto text-xs text-gray-400">
+          {t(translation ? "translated" : "original")}
+        </span>
       )}
     </figure>
   );

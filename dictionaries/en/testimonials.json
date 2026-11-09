@@ -2,5 +2,6 @@
   "label": "Customer reviews",
   "source": "Review on Google",
   "rating": "Rating: {rating} out of 5",
-  "original": "Original review in Serbian"
+  "original": "Original review in Serbian",
+  "translated": "Translated from Serbian"
 }

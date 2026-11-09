@@ -2,5 +2,6 @@
   "label": "Recenzije klijenata",
   "source": "Recenzija na Google-u",
   "rating": "Ocena: {rating} od 5",
-  "original": ""
+  "original": "",
+  "translated": ""
 }
