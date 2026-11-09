@@ -13,7 +13,7 @@ const Chill = () => {
   const t = useTranslations("about");
 
   return (
-    <div className="pt-8 lg:pt-40">
+    <div className="pt-8 lg:pt-24">
       <div className="mt-10 lg:mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="lg:col-span-1">
           <p className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">

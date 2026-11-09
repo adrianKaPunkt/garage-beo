@@ -27,7 +27,7 @@ const Location = () => {
   );
 
   return (
-    <div className="pt-16 lg:pt-40">
+    <div className="pt-16 lg:pt-24">
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
         {/* Desktop: Zeichnung in der linken Spalte */}
         <div className="hidden justify-center lg:flex">{drawing}</div>
