@@ -6,7 +6,10 @@ import { useEffect, useId, useState, type CSSProperties } from "react";
  * „Garage Beograd – 30 godina sa vama“ Jubiläums-Badge.
  *
  * Reines SVG, keine Abhängigkeiten außer React (18+).
- * Die Goldflächen bekommen einen subtilen, animierten Glanz:
+ * Farbversionen in BADGE_THEMES, Auswahl per `variant`:
+ *  - "classic" (Standard): Creme, Dunkelgrün und Gold wie das GoogleRatingBadge
+ *  - "gold": Gold auf Dunkelgrün
+ * Bei Versionen mit `shine` (z. B. "gold") bekommen die Goldflächen einen subtilen, animierten Glanz:
  *  - ein diagonaler Lichtstreifen, der in Abständen über alle Goldelemente läuft
  *  - die Spiegelung im Außenring wandert langsam im Kreis
  * Bei „Bewegung reduzieren“ (prefers-reduced-motion) bleibt das Badge statisch.
@@ -14,7 +17,9 @@ import { useEffect, useId, useState, type CSSProperties } from "react";
 export interface GarageBeogradBadgeProps {
   /** Breite/Höhe, z. B. 240 oder "100%". Standard: 300 */
   size?: number | string;
-  /** Glanz-Animation an/aus. Standard: true */
+  /** Farbversion: "classic" (schlicht, wie das Google-Badge) oder "gold". Standard: "classic" */
+  variant?: BadgeVariant;
+  /** Glanz-Animation an/aus (nur bei Versionen mit Glanz, z. B. "gold"). Standard: true */
   animated?: boolean;
   /** Dauer eines Glanz-Durchlaufs inkl. Pause in Sekunden. Standard: 5 */
   shineDuration?: number;
@@ -84,6 +89,124 @@ const DIGIT_0 =
 const LEAF_RIGHT =
   "M523.828 342.097 L529.607 341.403 C524.89 352.459 518.349 360.912 507.324 359.686 C504.325 359.359 500.963 360.221 499.201 363.307 L495.008 370.605 C493.726 372.847 491.858 374.167 489.659 373.752 C492.894 368.06 496.405 363.131 499.012 357.207 C500.738 353.282 498.987 348.143 496.802 344.997 C493.089 339.668 491.651 333.389 492.067 326.53 L492.758 315.348 L499.015 321.938 C503.598 326.77 505.536 334.014 504.355 341.31 C503.806 344.718 502.39 347.818 502.338 351.51 C505.657 345.351 508.01 338.918 510.117 332.273 C512.224 325.628 510.866 319.688 505.916 315.679 C500.966 311.669 497.602 305.631 496.784 298.536 L495.681 288.959 L504.483 295.161 C509.911 298.982 512.937 305.645 512.744 313.211 L512.964 321.119 C515.028 313.583 515.707 305.963 515.969 297.987 C516.149 292.565 513.69 287.687 509.23 285.654 C499.294 281.12 496.496 274.193 493.281 262.261 L499.864 263.824 C504.671 264.97 509.015 268.485 511.539 273.583 C512.825 276.182 513.43 279.241 514.191 282.106 L515.643 287.564 L515.612 282.606 L514.204 271.902 C513.677 267.914 512.615 264.03 510.952 260.441 C508.443 255.041 499.388 251.493 497.61 239.43 L495.755 226.81 C506.646 233.707 513.876 239.712 512.85 255.692 C512.708 257.984 513.152 259.956 513.703 262.126 L515.495 269.14 L517.089 276.793 C517.655 274.337 517.742 271.483 517.235 268.8 C515.845 261.462 517.343 254.391 520.81 248.312 L524.445 241.954 C528.825 253.536 529.629 263.184 522.405 272.494 C520.451 275.017 518.361 277.799 517.907 281.311 L517.874 289.132 L517.654 306.468 C518.706 304.708 519.295 302.506 519.402 300.207 C519.781 292.496 522.336 285.45 527.351 280.459 L535.457 273.391 C536.324 286.819 533.78 298.759 523.118 304.567 C518.069 307.314 517.343 311.766 516.162 316.907 L513.878 326.914 L511.868 334.672 C514.268 332.893 514.995 330.282 515.898 327.528 C518.18 320.576 522.504 315.475 528.318 312.715 L536.721 308.712 C534.819 320.744 530.206 331.63 519.893 333.906 C516.425 334.667 512.237 335.936 510.354 339.973 L502.235 357.49 C503.839 355.84 505.021 354.109 506.267 352.187 C509.053 347.892 512.697 344.588 517.262 343.313 L523.805 342.101 Z";
 
+/* ---------- Farbversionen ---------- */
+
+/** Verlaufsstopp: [Position 0–1, Farbe, Deckkraft (optional)] */
+type Stop = readonly [offset: number, color: string, opacity?: number];
+
+export interface BadgeTheme {
+  /** Kreisfläche (radialer Verlauf) */
+  background: Stop[];
+  /** Äußerer und innerer Ring */
+  ringOuter: Stop[];
+  ringInner: Stop[];
+  /** Lichtkante außen am Ring, null = keine */
+  ringGlow: Stop[] | null;
+  /** Dunkle Kanten innen am Ring, null = keine */
+  ringEdges: { inner: string; middle: string } | null;
+  /** Schriftzug, „30“ und Lorbeer */
+  text: Stop[];
+  digit: Stop[];
+  leaf: Stop[];
+  /** Wandernder Glanzstreifen über Schrift, Zahl und Lorbeer */
+  shine: boolean;
+}
+
+export const BADGE_THEMES = {
+  /** Schlicht und freundlich, Farben wie das GoogleRatingBadge */
+  classic: {
+    background: [
+      [0, "#fbf8f1"],
+      [1, "#f3ecdc"],
+    ],
+    ringOuter: [[0, "#1d5230"]],
+    ringInner: [[0, "#e3b448"]],
+    ringGlow: null,
+    ringEdges: null,
+    text: [[0, "#0f3b21"]],
+    digit: [
+      [0, "#2a6b40"],
+      [1, "#1d5230"],
+    ],
+    leaf: [
+      [0, "#f8cd4f"],
+      [1, "#e09a1b"],
+    ],
+    shine: false,
+  },
+
+  /** Ursprüngliche Version: Gold auf Dunkelgrün, mit Glanz und drehender Ringspiegelung */
+  gold: {
+    background: [
+      [0, "#216b3d"],
+      [0.7, "#1b5330"],
+      [1, "#1f4529"],
+    ],
+    ringOuter: [
+      [0, "#fff3c4"],
+      [0.16, "#f2c661"],
+      [0.36, "#a56c1d"],
+      [0.52, "#f9df94"],
+      [0.7, "#c2852a"],
+      [0.86, "#fbe9b0"],
+      [1, "#95611d"],
+    ],
+    ringInner: [
+      [0, "#fff0bd"],
+      [0.25, "#d49b3f"],
+      [0.45, "#8e5d1c"],
+      [0.62, "#f3cf7a"],
+      [0.8, "#b37822"],
+      [1, "#f7dc95"],
+    ],
+    ringGlow: [
+      [0, "#ffffff", 0.95],
+      [0.3, "#fff6d8", 0.35],
+      [0.55, "#ffffff", 0],
+      [0.85, "#fff6d8", 0.4],
+      [1, "#ffffff", 0.7],
+    ],
+    ringEdges: { inner: "#3a2506", middle: "#7e511a" },
+    // Champagner-Gold, pro Buchstabe von oben nach unten
+    text: [
+      [0, "#fff8e0"],
+      [0.45, "#f7dc98"],
+      [0.55, "#dfae55"],
+      [1, "#f9e3a6"],
+    ],
+    // Poliertes Gold, diagonal
+    digit: [
+      [0, "#fff4c8"],
+      [0.22, "#f6cf6c"],
+      [0.42, "#b47a22"],
+      [0.5, "#9d661d"],
+      [0.6, "#f4d283"],
+      [0.8, "#d49a3a"],
+      [1, "#905d1c"],
+    ],
+    leaf: [
+      [0, "#fff1c0"],
+      [0.3, "#e9b452"],
+      [0.5, "#a56c1d"],
+      [0.7, "#f6d98e"],
+      [1, "#9d661d"],
+    ],
+    shine: true,
+  },
+} satisfies Record<string, BadgeTheme>;
+
+export type BadgeVariant = keyof typeof BADGE_THEMES;
+
+const stops = (list: Stop[]) =>
+  list.map(([offset, color, opacity], index) => (
+    <stop
+      key={index}
+      offset={offset}
+      stopColor={color}
+      stopOpacity={opacity}
+    />
+  ));
+
 /* ---------- Komponente ---------- */
 
 function usePrefersReducedMotion(): boolean {
@@ -101,6 +224,7 @@ function usePrefersReducedMotion(): boolean {
 
 export default function GarageBeogradBadge({
   size = 300,
+  variant = "classic",
   animated = true,
   shineDuration = 5,
   ringDuration = 14,
@@ -118,6 +242,8 @@ export default function GarageBeogradBadge({
 
   const reducedMotion = usePrefersReducedMotion();
   const animate = animated && !reducedMotion;
+  const theme: BadgeTheme = BADGE_THEMES[variant] ?? BADGE_THEMES.classic;
+  const shine = animate && theme.shine;
 
   // Alle Goldflächen einmal als Liste – genutzt für die sichtbare Darstellung und für die Glanz-Maske
   const goldShapes = (fillFor: (kind: "text" | "digit" | "leaf") => string) => (
@@ -159,7 +285,7 @@ export default function GarageBeogradBadge({
         <style>{`@keyframes ${id("fadeIn")}{from{opacity:0}to{opacity:1}}.${id("fade")}{animation:${id("fadeIn")} .45s ease-out}`}</style>
       )}
       <defs>
-        {/* Grüner Hintergrund */}
+        {/* Hintergrund */}
         <radialGradient
           id={id("bg")}
           cx="300"
@@ -167,9 +293,7 @@ export default function GarageBeogradBadge({
           r="270"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#216b3d" />
-          <stop offset="0.7" stopColor="#1b5330" />
-          <stop offset="1" stopColor="#1f4529" />
+          {stops(theme.background)}
         </radialGradient>
 
         {/* Außenring – Spiegelung dreht sich langsam */}
@@ -181,13 +305,7 @@ export default function GarageBeogradBadge({
           y2="573.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#fff3c4" />
-          <stop offset="0.16" stopColor="#f2c661" />
-          <stop offset="0.36" stopColor="#a56c1d" />
-          <stop offset="0.52" stopColor="#f9df94" />
-          <stop offset="0.7" stopColor="#c2852a" />
-          <stop offset="0.86" stopColor="#fbe9b0" />
-          <stop offset="1" stopColor="#95611d" />
+          {stops(theme.ringOuter)}
           {animate && (
             <animateTransform
               attributeName="gradientTransform"
@@ -207,12 +325,7 @@ export default function GarageBeogradBadge({
           y2="33.341"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#fff0bd" />
-          <stop offset="0.25" stopColor="#d49b3f" />
-          <stop offset="0.45" stopColor="#8e5d1c" />
-          <stop offset="0.62" stopColor="#f3cf7a" />
-          <stop offset="0.8" stopColor="#b37822" />
-          <stop offset="1" stopColor="#f7dc95" />
+          {stops(theme.ringInner)}
           {animate && (
             <animateTransform
               attributeName="gradientTransform"
@@ -232,11 +345,7 @@ export default function GarageBeogradBadge({
           y2="573.9"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#ffffff" stopOpacity="0.95" />
-          <stop offset="0.3" stopColor="#fff6d8" stopOpacity="0.35" />
-          <stop offset="0.55" stopColor="#ffffff" stopOpacity="0" />
-          <stop offset="0.85" stopColor="#fff6d8" stopOpacity="0.4" />
-          <stop offset="1" stopColor="#ffffff" stopOpacity="0.7" />
+          {stops(theme.ringGlow ?? [])}
           {animate && (
             <animateTransform
               attributeName="gradientTransform"
@@ -249,15 +358,12 @@ export default function GarageBeogradBadge({
           )}
         </linearGradient>
 
-        {/* Schrift: Champagner-Gold, pro Buchstabe von oben nach unten */}
+        {/* Schrift: pro Buchstabe von oben nach unten */}
         <linearGradient id={id("text")} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#fff8e0" />
-          <stop offset="0.45" stopColor="#f7dc98" />
-          <stop offset="0.55" stopColor="#dfae55" />
-          <stop offset="1" stopColor="#f9e3a6" />
+          {stops(theme.text)}
         </linearGradient>
 
-        {/* 30: poliertes Gold, diagonal */}
+        {/* 30: diagonal */}
         <linearGradient
           id={id("digit")}
           x1="0.19"
@@ -265,13 +371,7 @@ export default function GarageBeogradBadge({
           x2="0.81"
           y2="1.045"
         >
-          <stop offset="0" stopColor="#fff4c8" />
-          <stop offset="0.22" stopColor="#f6cf6c" />
-          <stop offset="0.42" stopColor="#b47a22" />
-          <stop offset="0.5" stopColor="#9d661d" />
-          <stop offset="0.6" stopColor="#f4d283" />
-          <stop offset="0.8" stopColor="#d49a3a" />
-          <stop offset="1" stopColor="#905d1c" />
+          {stops(theme.digit)}
         </linearGradient>
 
         {/* Lorbeer */}
@@ -282,11 +382,7 @@ export default function GarageBeogradBadge({
           x2="1.06"
           y2="0.99"
         >
-          <stop offset="0" stopColor="#fff1c0" />
-          <stop offset="0.3" stopColor="#e9b452" />
-          <stop offset="0.5" stopColor="#a56c1d" />
-          <stop offset="0.7" stopColor="#f6d98e" />
-          <stop offset="1" stopColor="#9d661d" />
+          {stops(theme.leaf)}
         </linearGradient>
 
         {/* Glanzstreifen: weicher, diagonaler Lichtstreifen */}
@@ -366,35 +462,41 @@ export default function GarageBeogradBadge({
       {goldShapes((kind) => url(kind))}
 
       {/* Feine Kanten am Ring */}
-      <circle
-        cx="300"
-        cy="300"
-        r="273.3"
-        fill="none"
-        stroke={url("ringGlow")}
-        strokeWidth="1.2"
-      />
-      <circle
-        cx="300"
-        cy="300"
-        r="262.7"
-        fill="none"
-        stroke="#3a2506"
-        strokeWidth="1.2"
-        opacity="0.55"
-      />
-      <circle
-        cx="300"
-        cy="300"
-        r="268.4"
-        fill="none"
-        stroke="#7e511a"
-        strokeWidth="0.8"
-        opacity="0.7"
-      />
+      {theme.ringGlow && (
+        <circle
+          cx="300"
+          cy="300"
+          r="273.3"
+          fill="none"
+          stroke={url("ringGlow")}
+          strokeWidth="1.2"
+        />
+      )}
+      {theme.ringEdges && (
+        <>
+          <circle
+            cx="300"
+            cy="300"
+            r="262.7"
+            fill="none"
+            stroke={theme.ringEdges.inner}
+            strokeWidth="1.2"
+            opacity="0.55"
+          />
+          <circle
+            cx="300"
+            cy="300"
+            r="268.4"
+            fill="none"
+            stroke={theme.ringEdges.middle}
+            strokeWidth="0.8"
+            opacity="0.7"
+          />
+        </>
+      )}
 
       {/* Animierter Glanz – nur auf den Goldflächen */}
-      {animate && (
+      {shine && (
         <rect
           x="0"
           y="0"

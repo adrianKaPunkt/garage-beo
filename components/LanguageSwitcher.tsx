@@ -14,7 +14,12 @@ const languages: Record<Locale, { short: string; name: string }> = {
   de: { short: "DE", name: "Deutsch" },
 };
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({
+  // Farben des Buttons (Rahmen, Fläche, Schrift), passend zum Header-Hintergrund
+  buttonClassName = "border-green/20 bg-green/5 text-darkgreen hover:bg-green/10 focus-visible:outline-green",
+}: {
+  buttonClassName?: string;
+}) {
   const t = useTranslations("header");
   const locale = useLocale();
   const [open, setOpen] = useState(false);
@@ -52,18 +57,16 @@ export default function LanguageSwitcher() {
         aria-controls="language-menu"
         onClick={() => setOpen((value) => !value)}
         // Gleicher Stil wie der Anrufen-Button im Header
-        className="
+        className={`
           inline-flex min-h-11 min-w-11 cursor-pointer
           items-center justify-center gap-2
-          rounded-xl border border-green/20
-          bg-green/5 px-3
-          font-bold text-darkgreen
+          rounded-xl border px-3
+          font-bold
           transition-colors duration-200
-          hover:bg-green/10
           focus-visible:outline-2
           focus-visible:outline-offset-2
-          focus-visible:outline-green
-        "
+          ${buttonClassName}
+        `}
       >
         <Globe size={20} aria-hidden="true" />
         {languages[locale].short}

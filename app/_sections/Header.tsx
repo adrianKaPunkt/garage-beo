@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { DAY_KEYS, WEEK_ORDER, navLinks, site } from "@/app/site-config";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { activeSocialLinks } from "@/components/socialLinks";
+import { useSectionBackground } from "@/components/useSectionBackground";
+
+// Anrufen, Menü und Sprache: gleicher Stil, auf dunklen Sektionen hell
+const buttonTheme = (dark: boolean) =>
+  dark
+    ? "border-white/25 bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white"
+    : "border-green/20 bg-green/5 text-darkgreen hover:bg-green/10 focus-visible:outline-green";
 
 export default function Header() {
   const t = useTranslations("header");
@@ -13,6 +20,12 @@ export default function Header() {
   const tFooter = useTranslations("footer");
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#pocetna");
+
+  // Hintergrund der Sektion direkt unter dem Header übernehmen;
+  // bei offenem mobilem Menü bleibt der Header deckend weiß
+  const headerRef = useRef<HTMLElement>(null);
+  const sectionBackground = useSectionBackground(headerRef);
+  const dark = !menuOpen && (sectionBackground?.dark ?? false);
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -66,11 +79,25 @@ export default function Header() {
 
   return (
     <header
+      ref={headerRef}
       // Bei offenem mobilem Menü deckend weiß, sonst leicht transparent
-      className={`sticky top-0 z-50 h-20 border-b border-gray-200 backdrop-blur-md lg:h-24 lg:bg-white/80 ${
-        menuOpen ? "bg-white" : "bg-white/80"
-      }`}
+      className={`sticky top-0 z-50 h-20 border-b backdrop-blur-md transition-colors duration-300 lg:h-24 ${
+        menuOpen ? "bg-white" : sectionBackground ? "" : "bg-white/80"
+      } ${dark ? "border-white/10" : "border-gray-200"}`}
     >
+      {/* Hintergrund der darunterliegenden Sektion, leicht transparent */}
+      {sectionBackground && (
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none absolute inset-0 -z-10 opacity-95 ${
+            menuOpen ? "max-lg:hidden" : ""
+          }`}
+          style={{
+            backgroundColor: sectionBackground.backgroundColor,
+            backgroundImage: sectionBackground.backgroundImage,
+          }}
+        />
+      )}
       <div className="container flex h-full items-center justify-between gap-3 lg:gap-7">
         {/* Logo */}
         <a
@@ -80,10 +107,18 @@ export default function Header() {
           aria-label={t("homeAria")}
         >
           <span className="whitespace-nowrap text-lg sm:text-2xl leading-6">
-            <span className="font-bold text-green">GARAGE </span>
+            <span
+              className={`font-bold transition-colors duration-300 ${dark ? "text-lime-300" : "text-green"}`}
+            >
+              GARAGE{" "}
+            </span>
             <span className="text-orange">BEOGRAD</span>
           </span>
-          <span className="text-left text-[11px] text-gray-900 font-semibold tracking-widest">
+          <span
+            className={`text-left text-[11px] font-semibold tracking-widest transition-colors duration-300 ${
+              dark ? "text-white" : "text-gray-900"
+            }`}
+          >
             {tCommon("brandSubtitle")}
           </span>
         </a>
@@ -123,8 +158,10 @@ export default function Header() {
     lg:border-0 lg:px-0 lg:py-0 lg:text-left
     ${
       activeSection === link.href
-        ? "text-green"
-        : "text-gray-800 hover:text-green"
+        ? `text-green ${dark ? "lg:text-lime-300" : ""}`
+        : `text-gray-800 hover:text-green ${
+            dark ? "lg:text-white/85 lg:hover:text-lime-300" : ""
+          }`
     }
   `}
             >
@@ -219,24 +256,22 @@ export default function Header() {
 
         {/* Sprache, Telefon und mobiles Menü */}
         <div className="flex shrink-0 items-center gap-1 sm:gap-3">
-          <LanguageSwitcher />
+          <LanguageSwitcher buttonClassName={buttonTheme(dark)} />
 
           {site.phone && (
             <a
               href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}
               aria-label={t("call", { phone: site.phone })}
-              className="
+              className={`
                 inline-flex min-h-11 min-w-11
                 items-center justify-center gap-2
-                rounded-xl border border-green/20
-                bg-green/5 px-3
-                font-bold text-darkgreen
+                rounded-xl border px-3
+                font-bold
                 transition-colors duration-200
-                hover:bg-green/10
                 focus-visible:outline-2
                 focus-visible:outline-offset-2
-                focus-visible:outline-green
-              "
+                ${buttonTheme(dark)}
+              `}
             >
               <Phone size={20} aria-hidden="true" />
               <span className="hidden whitespace-nowrap sm:inline">
@@ -248,18 +283,16 @@ export default function Header() {
           <button
             type="button"
             // Gleicher Stil wie Anrufen-Button und Sprachumschalter
-            className="
+            className={`
               inline-flex h-11 w-11 cursor-pointer
               items-center justify-center
-              rounded-xl border border-green/20
-              bg-green/5 text-darkgreen
+              rounded-xl border
               transition-colors duration-200
-              hover:bg-green/10
               focus-visible:outline-2
               focus-visible:outline-offset-2
-              focus-visible:outline-green
               lg:hidden
-            "
+              ${buttonTheme(dark)}
+            `}
             aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
             aria-controls="header-navigation"
             aria-expanded={menuOpen}
