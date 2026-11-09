@@ -166,7 +166,7 @@ export default function Registration() {
             className="
               mx-auto max-w-162 lg:mt-6
               lg:col-start-2 lg:row-start-2
-              lg:mx-0 lg:self-start text-left
+              lg:mx-0 lg:self-start text-center lg:text-left
             "
           >
             {/* Untertitel */}

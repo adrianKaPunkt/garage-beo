@@ -28,7 +28,7 @@ export default function Payment() {
         text-white
         [--wave:48px] sm:[--wave:64px] lg:[--wave:96px]
         -mt-12 sm:-mt-16 lg:-mt-24
-        pt-27.5 pb-15.5 sm:pt-31.5
+        pt-27.5 pb-40 sm:pt-31.5 sm:pb-60
         min-[701px]:pt-37 min-[701px]:pb-60 lg:pt-45
       "
       style={waveMask()}
@@ -238,7 +238,7 @@ export default function Payment() {
             className="
               mx-auto max-w-162 lg:mt-6
               lg:col-start-2 lg:row-start-2
-              lg:mx-0 lg:self-start text-left
+              lg:mx-0 lg:self-start text-center lg:text-left
             "
           >
             <div className="mx-4 lg:mx-0">
