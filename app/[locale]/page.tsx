@@ -1,10 +1,10 @@
 import { use } from "react";
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
-import Header from "@/app/_sections/Header";
+import Header from "@/components/Header";
 import Hero from "@/app/_sections/hero/Hero";
 import Features from "@/app/_sections/Features";
-import Footer from "@/app/_sections/Footer";
+import Footer from "@/components/Footer";
 import Services from "@/app/_sections/services/Services";
 import About from "@/app/_sections/about/About";
 import Contact from "@/app/_sections/contact/Contact";

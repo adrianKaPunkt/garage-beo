@@ -2,6 +2,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { DAY_KEYS, WEEK_ORDER, site, navLinks } from "@/app/site-config";
 import { socialLinks } from "@/components/socialLinks";
 import LegalModal from "@/components/LegalModal";
+import GarageBeogradLogo from "./GarageBeogradLogo";
 
 const columnTitle = "text-base font-semibold text-white";
 const footerLink =
@@ -27,12 +28,20 @@ export default function Footer() {
           <div className="col-span-2 flex flex-col items-center gap-5 text-center lg:col-span-1 lg:items-start lg:text-left">
             <div className="flex flex-col gap-1">
               <div className="flex flex-wrap items-baseline justify-center gap-x-1 lg:justify-start">
-                <span className="text-2xl font-bold leading-tight text-lime-400 lg:text-3xl">
+                <GarageBeogradLogo
+                            className="h-15 w-auto"
+                            // Wie der frühere Schriftzug: GARAGE text-green (dunkel: lime-300), BEOGRAD text-orange
+                            primaryColor={
+                              "var(--color-lime-300, #bbf451)"
+                            }
+                            accentColor="var(--color-orange)"
+                          />
+                {/* <span className="text-2xl font-bold leading-tight text-lime-400 lg:text-3xl">
                   GARAGE
                 </span>
                 <span className="text-2xl leading-tight text-orange lg:text-3xl">
                   BEOGRAD
-                </span>
+                </span> */}
               </div>
               <span className="text-sm tracking-wide text-[#c7d6cd]">
                 {tCommon("brandSubtitle")}

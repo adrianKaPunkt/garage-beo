@@ -7,6 +7,7 @@ import { DAY_KEYS, WEEK_ORDER, navLinks, site } from "@/app/site-config";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { activeSocialLinks } from "@/components/socialLinks";
 import { useSectionBackground } from "@/components/useSectionBackground";
+import GarageBeogradLogo from "./GarageBeogradLogo";
 
 // Anrufen, Menü und Sprache: gleicher Stil, auf dunklen Sektionen hell
 const buttonTheme = (dark: boolean) =>
@@ -106,7 +107,16 @@ export default function Header() {
           onClick={() => setMenuOpen(false)}
           aria-label={t("homeAria")}
         >
-          <span className="whitespace-nowrap text-lg sm:text-2xl leading-6">
+          {/* Auf dunklen Sektionen: Grün → Lime, damit das Logo lesbar bleibt */}
+          <GarageBeogradLogo
+            className="h-15 w-auto"
+            // Wie der frühere Schriftzug: GARAGE text-green (dunkel: lime-300), BEOGRAD text-orange
+            primaryColor={
+              dark ? "var(--color-lime-300, #bbf451)" : "var(--color-green)"
+            }
+            accentColor="var(--color-orange)"
+          />
+          {/* <span className="whitespace-nowrap text-lg sm:text-2xl leading-6">
             <span
               className={`font-bold transition-colors duration-300 ${dark ? "text-lime-300" : "text-green"}`}
             >
@@ -120,7 +130,7 @@ export default function Header() {
             }`}
           >
             {tCommon("brandSubtitle")}
-          </span>
+          </span> */}
         </a>
 
         {/* Navigation */}
