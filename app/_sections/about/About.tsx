@@ -3,8 +3,12 @@ import VideoPreview from "@/components/VideoPreview";
 import Intro from "./Intro";
 import AboutMascot from "./AboutMascot";
 import Location from "./Location";
+import Chill from "./Chill";
+import { useTranslations } from "next-intl";
 
 const About = () => {
+  const t = useTranslations("about");
+
   return (
     <section
       id="o-nama"
@@ -15,14 +19,14 @@ const About = () => {
         {/* Überschrift wie in den Services, mit viel Weißraum */}
         <div className="mx-auto mb-14 max-w-4xl text-center lg:mb-24">
           <p className="mb-4 font-medium uppercase tracking-wide text-green">
-            O NAMA
+            {t("eyebrow")}
           </p>
           <h2
             id="about-title"
             className="mb-7 text-[clamp(36px,3vw,55px)] leading-[1.12] font-bold"
           >
-            <span className="text-green">VIŠE OD </span>
-            <span className="text-[#26332f]">TEHNIČKOG PREGLEDA</span>
+            <span className="text-green">{t("titleFirst")}</span>
+            <span className="text-[#26332f]">{t("titleSecond")}</span>
           </h2>
           <span className="mx-auto block h-1 w-16.5 rounded-xs bg-green" />
         </div>
@@ -35,9 +39,9 @@ const About = () => {
           className="
             pointer-events-none absolute inset-x-0 top-0 -bottom-px
             bg-[#f3f8ee]
-            [clip-path:polygon(0_110px,42%_186px,50%_194px,58%_178px,100%_55px,100%_100%,0_100%)]
-            sm:[clip-path:polygon(0_170px,43%_300px,50%_312px,57%_292px,100%_70px,100%_100%,0_100%)]
-            lg:[clip-path:polygon(0_200px,44%_420px,50%_440px,56%_402px,100%_55px,100%_100%,0_100%)]
+            [clip-path:polygon(0_94px,42%_158px,50%_165px,58%_151px,100%_47px,100%_100%,0_100%)]
+            sm:[clip-path:polygon(0_145px,43%_255px,50%_265px,57%_248px,100%_60px,100%_100%,0_100%)]
+            lg:[clip-path:polygon(0_170px,44%_357px,50%_374px,56%_342px,100%_47px,100%_100%,0_100%)]
           "
         />
 
@@ -51,100 +55,56 @@ const About = () => {
         </div>
       </div>
 
-      <div className="relative bg-[#f3f8ee] pt-16 pb-15.5 sm:pt-20 min-[701px]:pb-21 lg:pt-24">
-        {/* Zweite Hintergrundfläche: gespiegeltes, etwas flacheres V zwischen Intro und Location */}
+      <div className="relative bg-[#f3f8ee] pt-16 sm:pt-20 lg:pt-24">
+        {/* Zweite Hintergrundfläche: Zickzack-Kante zwischen Intro und Location (mobil 4, ab sm 6, ab lg 8 Zacken) */}
         <div
           aria-hidden="true"
           className="
             pointer-events-none absolute inset-x-0 top-0 -bottom-px
             bg-[#e7f2dd]
-            [clip-path:polygon(0_38px,42%_124px,50%_135px,58%_129px,100%_77px,100%_100%,0_100%)]
-            sm:[clip-path:polygon(0_40px,43%_160px,50%_172px,57%_165px,100%_94px,100%_100%,0_100%)]
-            lg:[clip-path:polygon(0_30px,44%_221px,50%_242px,56%_231px,100%_110px,100%_100%,0_100%)]
+            [clip-path:polygon(0_30px,12.5%_70px,25%_30px,37.5%_70px,50%_30px,62.5%_70px,75%_30px,87.5%_70px,100%_30px,100%_100%,0_100%)]
+            sm:[clip-path:polygon(0_36px,8.333%_86px,16.667%_36px,25%_86px,33.333%_36px,41.667%_86px,50%_36px,58.333%_86px,66.667%_36px,75%_86px,83.333%_36px,91.667%_86px,100%_36px,100%_100%,0_100%)]
+            lg:[clip-path:polygon(0_40px,6.25%_110px,12.5%_40px,18.75%_110px,25%_40px,31.25%_110px,37.5%_40px,43.75%_110px,50%_40px,56.25%_110px,62.5%_40px,68.75%_110px,75%_40px,81.25%_110px,87.5%_40px,93.75%_110px,100%_40px,100%_100%,0_100%)]
           "
         />
 
         <div className="container relative">
-          {/* 02 – Empfang: Persönlicher Service */}
           <Location />
+        </div>
+      </div>
 
-          {/* 03 – Garten und Gastfreundschaft */}
-          <div className="mb-16 grid grid-cols-1 items-center gap-10 lg:mb-24 lg:grid-cols-12 lg:gap-14">
-            <div className="lg:col-span-4">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-green">
-                PRIJATNA ATMOSFERA
-              </p>
-              <h3 className="mb-6 text-3xl font-bold leading-tight text-[#26332f] sm:text-4xl">
-                Dok čekate, osećajte se kao kod kuće.
-              </h3>
-              <p className="mb-5 text-base leading-relaxed text-[#5b646b]">
-                Dok se vaše vozilo pregleda, možete predahnuti u našem prijatnom
-                prostoru ili uživati u hladovini vinove loze.
-              </p>
-              <p className="text-base leading-relaxed text-[#5b646b]">
-                Verujemo da dobar odnos prema klijentima počinje već pri samom
-                dolasku. Zato nam je važno da vaše iskustvo bude što prijatnije.
-              </p>
-            </div>
+      <div className="relative bg-[#e7f2dd] pt-16 pb-15.5 sm:pt-20 min-[701px]:pb-21 lg:pt-24">
+        {/* Dritte Hintergrundfläche: dieselbe Zickzack-Kante zwischen Location und Chill */}
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none absolute inset-x-0 top-0 -bottom-px
+            bg-[#d7ebe0]
+            [clip-path:polygon(0_30px,12.5%_70px,25%_30px,37.5%_70px,50%_30px,62.5%_70px,75%_30px,87.5%_70px,100%_30px,100%_100%,0_100%)]
+            sm:[clip-path:polygon(0_36px,8.333%_86px,16.667%_36px,25%_86px,33.333%_36px,41.667%_86px,50%_36px,58.333%_86px,66.667%_36px,75%_86px,83.333%_36px,91.667%_86px,100%_36px,100%_100%,0_100%)]
+            lg:[clip-path:polygon(0_40px,6.25%_110px,12.5%_40px,18.75%_110px,25%_40px,31.25%_110px,37.5%_40px,43.75%_110px,50%_40px,56.25%_110px,62.5%_40px,68.75%_110px,75%_40px,81.25%_110px,87.5%_40px,93.75%_110px,100%_40px,100%_100%,0_100%)]
+          "
+        />
 
-            <figure className="lg:col-span-8">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[16/10]">
-                <Image
-                  src="/images/outside01.jpeg"
-                  alt="Kutak za odmor u bašti Garage Beograd, sa drvenim klupama u hladovini vinove loze"
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 65vw"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="mt-3 text-sm text-slate-500">
-                Mali kutak za predah i opuštanje.
-              </figcaption>
-            </figure>
-          </div>
+        <div className="container relative">
+          <Chill />
 
           {/* 04 – Video und Wartebereich: Dreispaltiges Editorial-Finale */}
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-5">
               <p className="mb-4 text-sm font-semibold uppercase tracking-widest text-green">
-                UPOZNAJTE NAS
+                {t("video.eyebrow")}
               </p>
               <h3 className="mb-6 text-2xl font-bold leading-tight text-[#26332f] sm:text-3xl">
-                Pogledajte našu priču.
+                {t("video.title")}
               </h3>
               <VideoPreview
                 src="/videos/reception.mp4"
                 poster="/images/video-thumbnail.webp"
-                title="Dobro došli u Garage Beograd"
+                title={t("video.videoTitle")}
                 className="w-full"
               />
             </div>
-
-            <div className="lg:col-span-3 lg:pt-16">
-              <p className="mb-5 text-base leading-relaxed text-[#5b646b]">
-                Tehnički pregled, registracija vozila i korisne informacije na
-                jednom mestu — uz pristup koji je stručan, ali i neposredan.
-              </p>
-              <p className="text-base leading-relaxed text-[#5b646b]">
-                Svratite, upoznajte naš tim i uverite se da poseta tehničkom
-                pregledu može biti jednostavno i prijatno iskustvo.
-              </p>
-            </div>
-
-            <figure className="lg:col-span-4">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[4/3] lg:aspect-[4/5]">
-                <Image
-                  src="/images/inside02.jpeg"
-                  alt="Udoban prostor za čekanje u Garage Beograd sa sofom i biljkama"
-                  fill
-                  sizes="(max-width: 1023px) 100vw, 33vw"
-                  className="object-cover"
-                />
-              </div>
-              <figcaption className="mt-3 text-sm text-slate-500">
-                Prostor u kojem se naši gosti mogu opustiti.
-              </figcaption>
-            </figure>
           </div>
         </div>
       </div>

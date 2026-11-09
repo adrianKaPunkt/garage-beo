@@ -1,8 +1,43 @@
 {
-  "eyebrow": "GET TO KNOW US",
-  "title": "About us",
-  "text1": "Garage Beograd is a vehicle inspection station. We want all the information and services our customers need to be easy to access.",
-  "text2": "Take a look around and contact us if you have any questions before your visit.",
-  "videoTitle": "Take a look around",
-  "imageAlt": "Reception area at Garage Beograd"
+  "eyebrow": "ABOUT US",
+  "titleFirst": "MORE THAN ",
+  "titleSecond": "A VEHICLE INSPECTION",
+  "mascotAlt": "Illustration of the Garage Beograd mascot, representing a reliable and expert partner for vehicle inspections",
+  "intro": {
+    "eyebrow": "EXPERTISE YOU CAN TRUST",
+    "title": "WELCOME",
+    "text1": "At Garage Beograd, we believe that taking care of your vehicle shouldn't be complicated. For 30 years, we have been providing our customers with professional service, reliable information and support every step of the way.",
+    "text2": "From vehicle inspection and registration to insurance and easy bill payment — our goal is to make your everyday obligations easier, faster and more pleasant.",
+    "text3": "Our work is about more than inspecting vehicles and processing paperwork. We want you to understand every step, get clear answers and know that you can always count on us.",
+    "text4": "That's why we combine experience, a professional approach and a homely atmosphere. Because to us, every customer is much more than just another vehicle in line.",
+    "drawingAlt": "Technical drawing of a vehicle's suspension, brake and wheel"
+  },
+  "location": {
+    "eyebrow": "YOU'RE ALWAYS WELCOME HERE",
+    "title": "FEEL AT HOME",
+    "text1": "We believe good service starts with the very first encounter. That's why at Garage Beograd we greet you with a smile, ready to listen to your needs, answer your questions and help you get everything done simply and without unnecessary stress.",
+    "text2": "Whether you're coming for a vehicle inspection, registration, insurance or to pay bills, our team is here to guide you through every step. We'll explain what's needed, help with the paperwork and do our best to make the whole process as clear and pleasant as possible.",
+    "text3": "To us, professionalism isn't just about a job well done. It's also the kindness, patience and attention we give every customer. Because we want you to feel welcome here — not just the first time, but on every visit after that.",
+    "drawingAlt": "Drawing of coffee, a newspaper, a car key and vehicle registration papers"
+  },
+  "chill": {
+    "eyebrow": "A LITTLE SPOT TO UNWIND",
+    "title": "A PLEASANT ATMOSPHERE",
+    "text1": "At Garage Beograd, we believe that even time spent waiting can be pleasant. That's why we've set up a small outdoor corner for our guests, far from the usual waiting-room atmosphere, where you can relax and unwind while we take care of your vehicle.",
+    "text2": "In the natural shade of the grapevines, surrounded by greenery, you can settle in comfortably, have a coffee, read the paper or simply enjoy a few quiet moments. Our benches and tables offer room for a short break and a pleasant chat.",
+    "text3": "For us, hospitality is much more than a friendly greeting. It also shows in the small details that make a difference. We want you to feel relaxed and welcome here, without rush or unnecessary stress.",
+    "text4": "Because at Garage Beograd, we don't just care about your vehicle — we also care about how you feel while you're with us.",
+    "drawingAlt": "Drawing of a table with rakija, small glasses and fruit in the shade of a grapevine"
+  },
+  "video": {
+    "eyebrow": "GET TO KNOW US",
+    "title": "Watch our story.",
+    "videoTitle": "Welcome to Garage Beograd"
+  },
+  "images": {
+    "counter": "Reception desk at Garage Beograd for vehicle registration",
+    "chill": "Cozy waiting area at Garage Beograd with a sofa and plants",
+    "bench": "Wooden benches and a table in the shade of grapevines in the Garage Beograd courtyard",
+    "table": "Bar table and stools in the Garage Beograd orchard"
+  }
 }

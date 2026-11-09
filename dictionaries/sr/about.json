@@ -1,8 +1,43 @@
 {
-  "eyebrow": "UPOZNAJTE NAS",
-  "title": "O nama",
-  "text1": "Garage Beograd je stanica za tehnički pregled vozila. Želimo da sve potrebne informacije i usluge budu lako dostupne našim klijentima.",
-  "text2": "Pogledajte naš prostor i kontaktirajte nas ako imate pitanja pre dolaska.",
-  "videoTitle": "Pogledajte naš prostor",
-  "imageAlt": "Prijemni prostor Garaže Beograd"
+  "eyebrow": "O NAMA",
+  "titleFirst": "VIŠE OD ",
+  "titleSecond": "TEHNIČKOG PREGLEDA",
+  "mascotAlt": "Ilustracija maskote Garage Beograd, koja predstavlja pouzdanog i stručnog partnera za tehnički pregled vozila",
+  "intro": {
+    "eyebrow": "STRUČNOST KOJA ULIVA POVERENJE",
+    "title": "DOBRO DOŠLI",
+    "text1": "U Garage Beograd verujemo da briga o vašem vozilu ne treba da bude komplikovana. Već 30 godina našim klijentima pružamo profesionalnu uslugu, pouzdane informacije i podršku u svakom koraku.",
+    "text2": "Od tehničkog pregleda i registracije vozila, preko osiguranja, do jednostavnog plaćanja računa — naša želja je da vam svakodnevne obaveze učinimo lakšim, bržim i prijatnijim.",
+    "text3": "Naš posao nije samo pregled vozila i obrada dokumentacije. Važno nam je da razumete svaki korak, dobijete jasne odgovore i znate da se uvek možete osloniti na nas.",
+    "text4": "Zato spajamo iskustvo, profesionalan pristup i domaćinsku atmosferu. Jer za nas je svaki klijent mnogo više od još jednog vozila u redu.",
+    "drawingAlt": "Tehnički crtež ogibljenja, kočnice i točka vozila"
+  },
+  "location": {
+    "eyebrow": "KOD NAS STE UVEK DOBRODOŠLI",
+    "title": "KAO KOD KUĆE",
+    "text1": "Verujemo da dobra usluga počinje već pri prvom susretu. Zato vas u Garage Beograd dočekujemo sa osmehom, spremni da saslušamo vaše potrebe, odgovorimo na pitanja i pomognemo vam da sve obavite jednostavno i bez nepotrebnog stresa.",
+    "text2": "Bilo da dolazite na tehnički pregled, registraciju vozila, zbog osiguranja ili plaćanja računa, naš tim je tu da vas uputi u svaki korak. Objasnićemo vam šta je potrebno, pomoći oko dokumentacije i potruditi se da ceo postupak bude što jasniji i prijatniji.",
+    "text3": "Za nas profesionalnost nije samo dobro obavljen posao. To su i ljubaznost, strpljenje i pažnja koju posvećujemo svakom klijentu. Jer želimo da se kod nas osećate dobrodošlo — ne samo prvi put, već pri svakom sledećem dolasku.",
+    "drawingAlt": "Crtež kafe, novina, ključa automobila i papira za registraciju vozila"
+  },
+  "chill": {
+    "eyebrow": "MALI KUTAK ZA PREDAH",
+    "title": "PRIJATNA ATMOSFERA",
+    "text1": "U Garage Beograd verujemo da i vreme provedeno u čekanju može biti prijatno. Zato smo za naše goste uredili mali kutak na otvorenom, daleko od uobičajene atmosfere čekaonica, gde možete da se opustite i predahnete dok završavamo obaveze oko vašeg vozila.",
+    "text2": "U prirodnoj hladovini vinove loze, okruženi zelenilom, možete udobno da se smestite, popijete kafu, pročitate novine ili jednostavno uživate u nekoliko trenutaka mira. Naše klupe i stolovi pružaju prostor za kratak odmor i prijatan razgovor.",
+    "text3": "Za nas je gostoprimstvo mnogo više od ljubaznog pozdrava. Ono se ogleda i u malim detaljima koji čine razliku. Želimo da se kod nas osećate opušteno i dobrodošlo, bez žurbe i nepotrebnog stresa.",
+    "text4": "Jer u Garage Beograd ne brinemo samo o vašem vozilu — važno nam je i kako se vi osećate dok ste kod nas.",
+    "drawingAlt": "Crtež stola sa rakijom, čašicama i voćem u hladovini vinove loze"
+  },
+  "video": {
+    "eyebrow": "UPOZNAJTE NAS",
+    "title": "Pogledajte našu priču.",
+    "videoTitle": "Dobro došli u Garage Beograd"
+  },
+  "images": {
+    "counter": "Prijemni pult Garage Beograd za registraciju vozila",
+    "chill": "Udoban prostor za čekanje u Garage Beograd sa sofom i biljkama",
+    "bench": "Drvene klupe i sto u hladovini vinove loze u dvorištu Garage Beograd",
+    "table": "Barski sto i stolice u voćnjaku Garage Beograd"
+  }
 }

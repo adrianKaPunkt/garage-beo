@@ -1,8 +1,43 @@
 {
-  "eyebrow": "LERNEN SIE UNS KENNEN",
-  "title": "Über uns",
-  "text1": "Garage Beograd ist eine Prüfstelle für die technische Fahrzeugprüfung. Wir möchten, dass alle nötigen Informationen und Leistungen für unsere Kunden leicht zugänglich sind.",
-  "text2": "Sehen Sie sich unsere Räume an und kontaktieren Sie uns, wenn Sie vor Ihrem Besuch Fragen haben.",
-  "videoTitle": "Sehen Sie sich unsere Räume an",
-  "imageAlt": "Empfangsbereich der Garage Beograd"
+  "eyebrow": "ÜBER UNS",
+  "titleFirst": "MEHR ALS ",
+  "titleSecond": "EINE TECHNISCHE PRÜFUNG",
+  "mascotAlt": "Illustration des Maskottchens der Garage Beograd, das für einen verlässlichen und kompetenten Partner bei der technischen Fahrzeugprüfung steht",
+  "intro": {
+    "eyebrow": "KOMPETENZ, DIE VERTRAUEN SCHAFFT",
+    "title": "WILLKOMMEN",
+    "text1": "Bei Garage Beograd sind wir überzeugt, dass die Sorge um Ihr Fahrzeug nicht kompliziert sein muss. Seit 30 Jahren bieten wir unseren Kunden professionellen Service, verlässliche Informationen und Unterstützung bei jedem Schritt.",
+    "text2": "Von der technischen Prüfung und Fahrzeugzulassung über Versicherungen bis hin zum einfachen Bezahlen von Rechnungen — wir möchten Ihnen alltägliche Pflichten leichter, schneller und angenehmer machen.",
+    "text3": "Unsere Arbeit besteht nicht nur aus Fahrzeugprüfung und Papierkram. Uns ist wichtig, dass Sie jeden Schritt verstehen, klare Antworten bekommen und wissen, dass Sie sich immer auf uns verlassen können.",
+    "text4": "Deshalb verbinden wir Erfahrung, Professionalität und eine familiäre Atmosphäre. Denn für uns ist jeder Kunde viel mehr als nur ein weiteres Fahrzeug in der Warteschlange.",
+    "drawingAlt": "Technische Zeichnung von Radaufhängung, Bremse und Rad eines Fahrzeugs"
+  },
+  "location": {
+    "eyebrow": "BEI UNS SIND SIE IMMER WILLKOMMEN",
+    "title": "WIE ZU HAUSE",
+    "text1": "Wir glauben, dass guter Service schon bei der ersten Begegnung beginnt. Deshalb empfangen wir Sie bei Garage Beograd mit einem Lächeln — bereit, Ihnen zuzuhören, Ihre Fragen zu beantworten und Ihnen zu helfen, alles einfach und ohne unnötigen Stress zu erledigen.",
+    "text2": "Ob Sie zur technischen Prüfung, zur Fahrzeugzulassung, wegen einer Versicherung oder zum Bezahlen von Rechnungen kommen — unser Team begleitet Sie durch jeden Schritt. Wir erklären Ihnen, was nötig ist, helfen bei den Unterlagen und sorgen dafür, dass der gesamte Ablauf so klar und angenehm wie möglich ist.",
+    "text3": "Professionalität bedeutet für uns nicht nur gut erledigte Arbeit. Dazu gehören auch Freundlichkeit, Geduld und die Aufmerksamkeit, die wir jedem Kunden schenken. Denn wir möchten, dass Sie sich bei uns willkommen fühlen — nicht nur beim ersten Mal, sondern bei jedem weiteren Besuch.",
+    "drawingAlt": "Zeichnung von Kaffee, Zeitung, Autoschlüssel und Unterlagen zur Fahrzeugzulassung"
+  },
+  "chill": {
+    "eyebrow": "EIN KLEINER ORT ZUM DURCHATMEN",
+    "title": "ANGENEHME ATMOSPHÄRE",
+    "text1": "Bei Garage Beograd sind wir überzeugt, dass auch die Wartezeit angenehm sein kann. Deshalb haben wir für unsere Gäste eine kleine Ecke im Freien eingerichtet — fernab der üblichen Wartezimmer-Atmosphäre —, in der Sie entspannen und durchatmen können, während wir uns um Ihr Fahrzeug kümmern.",
+    "text2": "Im natürlichen Schatten der Weinreben, umgeben von Grün, können Sie es sich gemütlich machen, einen Kaffee trinken, Zeitung lesen oder einfach ein paar ruhige Momente genießen. Unsere Bänke und Tische bieten Platz für eine kurze Pause und ein nettes Gespräch.",
+    "text3": "Gastfreundschaft ist für uns viel mehr als ein freundlicher Gruß. Sie zeigt sich auch in den kleinen Details, die den Unterschied machen. Wir möchten, dass Sie sich bei uns entspannt und willkommen fühlen — ohne Eile und unnötigen Stress.",
+    "text4": "Denn bei Garage Beograd kümmern wir uns nicht nur um Ihr Fahrzeug — uns ist auch wichtig, wie Sie sich bei uns fühlen.",
+    "drawingAlt": "Zeichnung eines Tisches mit Schnaps, Gläsern und Obst im Schatten einer Weinrebe"
+  },
+  "video": {
+    "eyebrow": "LERNEN SIE UNS KENNEN",
+    "title": "Sehen Sie sich unsere Geschichte an.",
+    "videoTitle": "Willkommen bei Garage Beograd"
+  },
+  "images": {
+    "counter": "Empfangstresen der Garage Beograd für die Fahrzeugzulassung",
+    "chill": "Gemütlicher Wartebereich der Garage Beograd mit Sofa und Pflanzen",
+    "bench": "Holzbänke und Tisch im Schatten der Weinreben im Hof der Garage Beograd",
+    "table": "Stehtisch mit Barhockern im Obstgarten der Garage Beograd"
+  }
 }

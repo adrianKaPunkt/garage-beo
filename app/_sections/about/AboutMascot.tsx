@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useTranslations } from "next-intl";
 
 type AboutMascotProps = {
   className?: string;
@@ -16,6 +17,7 @@ const checks = [
 ];
 
 export default function AboutMascot({ className = "" }: AboutMascotProps) {
+  const t = useTranslations("about");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -65,9 +67,9 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative mx-auto w-full max-w-65 sm:max-w-103 lg:max-w-125 ${className}`}
+      className={`relative mx-auto w-full max-w-55 sm:max-w-88 lg:max-w-106 ${className}`}
       role="img"
-      aria-label="Ilustracija maskote Garage Beograd, koja predstavlja pouzdanog i stručnog partnera za tehnički pregled vozila"
+      aria-label={t("mascotAlt")}
     >
       <div className="relative aspect-[657/599] w-full">
         {/* Maskottchen */}
@@ -75,7 +77,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
           src="/images/about/car-about.webp"
           alt=""
           fill
-          sizes="(max-width: 640px) 260px, (max-width: 1023px) 412px, 500px"
+          sizes="(max-width: 640px) 220px, (max-width: 1023px) 352px, 424px"
           className="object-contain"
         />
 
@@ -91,7 +93,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
               src={src}
               alt=""
               fill
-              sizes="(max-width: 640px) 260px, (max-width: 1023px) 412px, 500px"
+              sizes="(max-width: 640px) 220px, (max-width: 1023px) 352px, 424px"
               className="object-contain"
             />
           </div>
