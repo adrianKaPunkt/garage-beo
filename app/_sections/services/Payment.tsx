@@ -223,13 +223,22 @@ export default function Payment() {
                 motion-reduce:transform-none
               "
             >
-              <Image
-                src="/images/car/payment.webp"
-                alt={tCommon("mascotAlt")}
-                fill
-                sizes="(max-width: 1024px) 85vw, 440px"
-                className="object-contain drop-shadow-2xl"
-              />
+              {/* Freudensprung – eigenes Element, damit Hover-Transform erhalten bleibt */}
+              <div
+                className="
+                  absolute inset-0
+                  origin-bottom animate-joy-hop
+                  motion-reduce:animate-none
+                "
+              >
+                <Image
+                  src="/images/car/payment.webp"
+                  alt={tCommon("mascotAlt")}
+                  fill
+                  sizes="(max-width: 1024px) 85vw, 440px"
+                  className="object-contain drop-shadow-2xl"
+                />
+              </div>
             </div>
           </div>
 
@@ -312,7 +321,7 @@ export default function Payment() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <PaySpotLogo animated className="h-30 w-auto" />
+              <PaySpotLogo animated className="h-20 lg:h-30 w-auto" />
             </Link>
             <Button href="#termin" variant="primary" size="large" showArrow>
               {tCommon("actions.contactUs")}

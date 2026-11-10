@@ -183,7 +183,7 @@ export default function ImageGallery({
               "group relative shrink-0 snap-center cursor-pointer",
               "overflow-hidden border-2 border-white/30",
               "transition-all duration-300",
-              "hover:-translate-y-1 hover:scale-105",
+              "hover:-translate-y-1 hover:scale-110",
               "hover:border-lime-400",
               "focus-visible:outline-2",
               "focus-visible:outline-offset-4",
@@ -205,29 +205,32 @@ export default function ImageGallery({
       </div>
 
       {/* Lightbox: Portal in den body, damit kein Stacking-Kontext (z.B. `isolate`) sie einsperrt */}
-      {isOpen && activeIndex !== null && images[activeIndex] && createPortal(
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={t("dialog")}
-          className="
+      {isOpen &&
+        activeIndex !== null &&
+        images[activeIndex] &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("dialog")}
+            className="
             fixed inset-0 z-[100]
             flex items-center justify-center
             bg-black/90 p-4
           "
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              close();
-            }
-          }}
-        >
-          {/* Schließen */}
-          <button
-            ref={closeButtonRef}
-            type="button"
-            onClick={close}
-            aria-label={t("close")}
-            className="
+            onMouseDown={(event) => {
+              if (event.target === event.currentTarget) {
+                close();
+              }
+            }}
+          >
+            {/* Schließen */}
+            <button
+              ref={closeButtonRef}
+              type="button"
+              onClick={close}
+              aria-label={t("close")}
+              className="
               absolute right-4 top-4 z-20
               flex h-11 w-11 items-center justify-center
               rounded-full bg-white/10 text-white
@@ -235,18 +238,18 @@ export default function ImageGallery({
               focus-visible:outline-2
               focus-visible:outline-white
             "
-          >
-            <X size={24} />
-          </button>
+            >
+              <X size={24} />
+            </button>
 
-          {/* Vorheriges Bild */}
-          {images.length > 1 && (
-            <button
-              type="button"
-              data-gallery-control="true"
-              onClick={previous}
-              aria-label={t("previous")}
-              className="
+            {/* Vorheriges Bild */}
+            {images.length > 1 && (
+              <button
+                type="button"
+                data-gallery-control="true"
+                onClick={previous}
+                aria-label={t("previous")}
+                className="
                 absolute left-2 top-1/2 z-20
                 flex h-11 w-11 -translate-y-1/2
                 items-center justify-center rounded-full
@@ -256,36 +259,36 @@ export default function ImageGallery({
                 focus-visible:outline-white
                 sm:left-6
               "
-            >
-              <ChevronLeft size={28} />
-            </button>
-          )}
+              >
+                <ChevronLeft size={28} />
+              </button>
+            )}
 
-          {/* Vollständiges Foto */}
-          <div
-            className="
+            {/* Vollständiges Foto */}
+            <div
+              className="
               relative h-[75vh] w-[90vw]
               max-w-275
             "
-          >
-            <Image
-              src={images[activeIndex].src}
-              alt={images[activeIndex].alt}
-              fill
-              priority
-              sizes="90vw"
-              className="object-contain"
-            />
-          </div>
+            >
+              <Image
+                src={images[activeIndex].src}
+                alt={images[activeIndex].alt}
+                fill
+                priority
+                sizes="90vw"
+                className="object-contain"
+              />
+            </div>
 
-          {/* Nächstes Bild */}
-          {images.length > 1 && (
-            <button
-              type="button"
-              data-gallery-control="true"
-              onClick={next}
-              aria-label={t("next")}
-              className="
+            {/* Nächstes Bild */}
+            {images.length > 1 && (
+              <button
+                type="button"
+                data-gallery-control="true"
+                onClick={next}
+                aria-label={t("next")}
+                className="
                 absolute right-2 top-1/2 z-20
                 flex h-11 w-11 -translate-y-1/2
                 items-center justify-center rounded-full
@@ -295,18 +298,18 @@ export default function ImageGallery({
                 focus-visible:outline-white
                 sm:right-6
               "
-            >
-              <ChevronRight size={28} />
-            </button>
-          )}
+              >
+                <ChevronRight size={28} />
+              </button>
+            )}
 
-          {/* Bildzähler */}
-          <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-sm font-medium text-white/70">
-            {activeIndex + 1} / {images.length}
-          </div>
-        </div>,
-        document.body,
-      )}
+            {/* Bildzähler */}
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-sm font-medium text-white/70">
+              {activeIndex + 1} / {images.length}
+            </div>
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

@@ -7,6 +7,35 @@
   --color-green: var(--green);
   --color-darkgreen: var(--darkgreen);
   --color-orange: var(--orange);
+
+  /* Freudensprung (z. B. Payment-Maskottchen): zwei Hüpfer, dann Pause */
+  --animate-joy-hop: joy-hop 2.6s ease-in-out infinite;
+
+  @keyframes joy-hop {
+    0%,
+    50%,
+    100% {
+      transform: translateY(0) scale(1, 1);
+    }
+    6% {
+      transform: translateY(0) scale(1.06, 0.92);
+    }
+    15% {
+      transform: translateY(-14%) scale(0.96, 1.05);
+    }
+    24% {
+      transform: translateY(0) scale(1.05, 0.94);
+    }
+    30% {
+      transform: translateY(0) scale(1, 1);
+    }
+    38% {
+      transform: translateY(-7%) scale(0.98, 1.02);
+    }
+    46% {
+      transform: translateY(0) scale(1.03, 0.97);
+    }
+  }
 }
 :root {
   --green: #399d0e;
