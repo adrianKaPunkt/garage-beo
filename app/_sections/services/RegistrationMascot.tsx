@@ -1,59 +1,31 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 type RegistrationMascotProps = {
   className?: string;
 };
 
-const STEP_DURATION = 1000; // 1 Sekunde pro Kennzeichen
-const PAUSE_DURATION = 3000; // 3 Sekunden Pause mit Basisbild
+const STEP_DURATION = 1500; // alle 1,5 Sekunden ein neues Kennzeichen
+
+type PlateState = -1 | 0 | 1;
 
 const RegistrationMascot = ({ className = "" }: RegistrationMascotProps) => {
   /**
    * -1 = kein Overlay sichtbar -> Basisbild
    *  0 = Kennzeichen 1
    *  1 = Kennzeichen 2
+   * Durchgehende Schleife ohne Pause: Basis -> 1 -> 2 -> Basis -> ...
    */
-  const [activePlate, setActivePlate] = useState<-1 | 0 | 1>(-1);
-
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [activePlate, setActivePlate] = useState<PlateState>(-1);
 
   useEffect(() => {
-    const clearCurrentTimeout = () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+    const interval = setInterval(() => {
+      setActivePlate((prev) => (prev === 1 ? -1 : ((prev + 1) as PlateState)));
+    }, STEP_DURATION);
 
-    const startLoop = () => {
-      // 1s Basisbild sichtbar lassen
-      timeoutRef.current = setTimeout(() => {
-        setActivePlate(0);
-
-        // nach 1s zu Kennzeichen 2 wechseln
-        timeoutRef.current = setTimeout(() => {
-          setActivePlate(1);
-
-          // nach 1s wieder zurück zum Basisbild
-          timeoutRef.current = setTimeout(() => {
-            setActivePlate(-1);
-
-            // 3s Pause, dann Loop neu starten
-            timeoutRef.current = setTimeout(() => {
-              startLoop();
-            }, PAUSE_DURATION);
-          }, STEP_DURATION);
-        }, STEP_DURATION);
-      }, STEP_DURATION);
-    };
-
-    startLoop();
-
-    return () => {
-      clearCurrentTimeout();
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
