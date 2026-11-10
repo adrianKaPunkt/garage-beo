@@ -518,7 +518,13 @@ export default function AnniversaryBadge({
             }
           : undefined
       }
-      className={[id("root"), tapToZoom && "cursor-pointer", className]
+      className={[
+        id("root"),
+        // Kein Fokusrahmen/Tap-Highlight beim Antippen, nur bei Tastaturbedienung
+        tapToZoom &&
+          "cursor-pointer outline-none [-webkit-tap-highlight-color:transparent] focus-visible:rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a36f1d]",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
       style={zoomed ? { ...style, scale: tapScale } : style}
