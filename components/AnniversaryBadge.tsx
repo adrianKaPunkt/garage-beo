@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useId, useState, type CSSProperties } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import { scallopPath } from "@/app/_sections/testimonials/GoogleRatingBadge";
 
 /**
@@ -39,6 +45,13 @@ export interface AnniversaryBadgeProps {
   hoverScale?: number;
   /** Dauer einer vollen Umdrehung des Rands beim Hover in Sekunden. Standard: 20 */
   hoverSpinDuration?: number;
+  /**
+   * Antippen vergrößert das Badge, erneutes Antippen oder Tippen daneben verkleinert es wieder.
+   * Den Drehpunkt per `className` setzen (z. B. `origin-right`). Standard: false
+   */
+  tapToZoom?: boolean;
+  /** Vergrößerung beim Antippen. Standard: 1.7 */
+  tapScale?: number;
   /** Glanz-Animation an/aus (nur bei Versionen mit Glanz, z. B. "gold"). Standard: true */
   animated?: boolean;
   /** Dauer eines Glanz-Durchlaufs inkl. Pause in Sekunden. Standard: 5 */
@@ -395,7 +408,21 @@ export default function AnniversaryBadge({
   hoverEffect = true,
   hoverScale = 1.08,
   hoverSpinDuration = 20,
+  tapToZoom = false,
+  tapScale = 1.7,
 }: AnniversaryBadgeProps) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [zoomed, setZoomed] = useState(false);
+
+  // Vergrößert: Tippen außerhalb des Badges verkleinert es wieder
+  useEffect(() => {
+    if (!zoomed) return;
+    const close = (event: PointerEvent) => {
+      if (!svgRef.current?.contains(event.target as Node)) setZoomed(false);
+    };
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, [zoomed]);
   const lang: BadgeLanguage =
     language in BOTTOM_TEXT_LABEL ? language : "sr-Latn";
   const bottomPath = TEXT_BOTTOM[lang];
@@ -470,16 +497,37 @@ export default function AnniversaryBadge({
 
   return (
     <svg
+      ref={svgRef}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="-25 -25 650 650"
       width={size}
       height={size}
-      role="img"
+      role={tapToZoom ? "button" : "img"}
       aria-label={label}
-      className={[id("root"), className].filter(Boolean).join(" ")}
-      style={style}
+      aria-pressed={tapToZoom ? zoomed : undefined}
+      tabIndex={tapToZoom ? 0 : undefined}
+      onClick={tapToZoom ? () => setZoomed((z) => !z) : undefined}
+      onKeyDown={
+        tapToZoom
+          ? (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setZoomed((z) => !z);
+              }
+              if (event.key === "Escape") setZoomed(false);
+            }
+          : undefined
+      }
+      className={[id("root"), tapToZoom && "cursor-pointer", className]
+        .filter(Boolean)
+        .join(" ")}
+      style={zoomed ? { ...style, scale: tapScale } : style}
     >
       <title>{label}</title>
+      {tapToZoom && (
+        // Antippen: federnde Vergrößerung (Wert kommt als inline `scale`)
+        <style>{`@media (prefers-reduced-motion:no-preference){.${id("root")}{transition:scale .45s cubic-bezier(.34,1.56,.64,1)}}`}</style>
+      )}
       {animate && (
         <style>{`@keyframes ${id("fadeIn")}{from{opacity:0}to{opacity:1}}.${id("fade")}{animation:${id("fadeIn")} .45s ease-out}`}</style>
       )}
