@@ -4,6 +4,7 @@ import TechnickiBackground from "./TechnickiBackground";
 import Registration from "./Registration";
 import Insurance from "./Insurance";
 import Payment from "./Payment";
+import FullService from "./FullService";
 
 const Services = () => {
   const t = useTranslations("services");
@@ -28,6 +29,7 @@ const Services = () => {
       </TechnickiBackground>
       <Registration />
       <Insurance />
+      <FullService />
       <Payment />
     </section>
   );

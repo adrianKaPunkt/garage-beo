@@ -33,6 +33,12 @@ export interface AnniversaryBadgeProps {
   variant?: BadgeVariant;
   /** Anzahl der Wellen am Rand. Standard: 12 (wie das Google-Badge) */
   waves?: number;
+  /** Hover: Badge vergrößert sich, der Wellenrand dreht sich langsam (Inhalt bleibt stehen). Standard: true */
+  hoverEffect?: boolean;
+  /** Vergrößerung beim Hover. Standard: 1.08 */
+  hoverScale?: number;
+  /** Dauer einer vollen Umdrehung des Rands beim Hover in Sekunden. Standard: 20 */
+  hoverSpinDuration?: number;
   /** Glanz-Animation an/aus (nur bei Versionen mit Glanz, z. B. "gold"). Standard: true */
   animated?: boolean;
   /** Dauer eines Glanz-Durchlaufs inkl. Pause in Sekunden. Standard: 5 */
@@ -164,6 +170,99 @@ export const BADGE_THEMES = {
     shine: false,
   },
 
+  /** Logo-Farben mit subtilen Verläufen: oben links etwas heller, unten rechts etwas dunkler */
+  logoGradient: {
+    background: [
+      [0, "#fdfbf6"],
+      [1, "#f1e8d4"],
+    ],
+    ringOuter: [
+      [0, "#55bb22"],
+      [0.5, SITE_GREEN],
+      [1, "#2b7f09"],
+    ],
+    ringInner: [
+      [0, "#f9c862"],
+      [0.5, SITE_ORANGE],
+      [1, "#e28d14"],
+    ],
+    ringGlow: null,
+    ringEdges: null,
+    // Pro Buchstabe von oben nach unten
+    text: [
+      [0, "#48ae18"],
+      [1, "#2f880b"],
+    ],
+    textAccent: [
+      [0, "#f8b847"],
+      [1, "#e8931a"],
+    ],
+    digit: [
+      [0, "#5cc426"],
+      [0.55, SITE_GREEN],
+      [1, "#2a7d09"],
+    ],
+    leaf: [
+      [0, "#f9c862"],
+      [1, "#e48f16"],
+    ],
+    shine: false,
+  },
+
+  /** Goldring und Goldschrift auf Creme; Schrift in tieferem Gold, damit sie auf hellem Grund lesbar bleibt */
+  goldCream: {
+    background: [
+      [0, "#fdfbf6"],
+      [1, "#f1e8d4"],
+    ],
+    ringOuter: [
+      [0, "#fff3c4"],
+      [0.16, "#f2c661"],
+      [0.36, "#a56c1d"],
+      [0.52, "#f9df94"],
+      [0.7, "#c2852a"],
+      [0.86, "#fbe9b0"],
+      [1, "#95611d"],
+    ],
+    ringInner: [
+      [0, "#f3cf7a"],
+      [0.3, "#b37822"],
+      [0.6, "#e9b452"],
+      [1, "#8e5d1c"],
+    ],
+    ringGlow: [
+      [0, "#ffffff", 0.95],
+      [0.3, "#fff6d8", 0.35],
+      [0.55, "#ffffff", 0],
+      [0.85, "#fff6d8", 0.4],
+      [1, "#ffffff", 0.7],
+    ],
+    ringEdges: { inner: "#7e511a", middle: "#7e511a" },
+    // Pro Buchstabe von oben nach unten
+    text: [
+      [0, "#c08a2c"],
+      [0.5, "#a36f1d"],
+      [1, "#7f5414"],
+    ],
+    // Poliertes Gold, diagonal, dunkler als bei "gold"
+    digit: [
+      [0, "#e8b955"],
+      [0.25, "#c8922f"],
+      [0.45, "#8f5f17"],
+      [0.55, "#7f5414"],
+      [0.68, "#d3a043"],
+      [0.85, "#a8741f"],
+      [1, "#734b12"],
+    ],
+    leaf: [
+      [0, "#e9b452"],
+      [0.4, "#b37822"],
+      [0.7, "#d9a445"],
+      [1, "#8a5a17"],
+    ],
+    shine: true,
+  },
+
   /** Schlicht und freundlich, Farben wie das GoogleRatingBadge */
   classic: {
     background: [
@@ -293,6 +392,9 @@ export default function AnniversaryBadge({
   style,
   language = "sr-Latn",
   title,
+  hoverEffect = true,
+  hoverScale = 1.08,
+  hoverSpinDuration = 20,
 }: AnniversaryBadgeProps) {
   const lang: BadgeLanguage =
     language in BOTTOM_TEXT_LABEL ? language : "sr-Latn";
@@ -374,12 +476,24 @@ export default function AnniversaryBadge({
       height={size}
       role="img"
       aria-label={label}
-      className={className}
+      className={[id("root"), className].filter(Boolean).join(" ")}
       style={style}
     >
       <title>{label}</title>
       {animate && (
         <style>{`@keyframes ${id("fadeIn")}{from{opacity:0}to{opacity:1}}.${id("fade")}{animation:${id("fadeIn")} .45s ease-out}`}</style>
+      )}
+      {hoverEffect && (
+        // Hover: Badge wächst leicht (eigene CSS-Eigenschaft `scale`, verträgt sich mit
+        // rotate/translate von außen), der Wellenrand dreht sich langsam. Beim Verlassen
+        // bleibt der Rand stehen, wo er ist, statt zurückzuspringen.
+        <style>{`@media (hover:hover) and (prefers-reduced-motion:no-preference){
+.${id("root")}{transition:scale .45s cubic-bezier(.34,1.56,.64,1)}
+.${id("root")}:hover{scale:${hoverScale}}
+@keyframes ${id("spinKf")}{to{transform:rotate(360deg)}}
+.${id("spin")}{transform-box:fill-box;transform-origin:center;animation:${id("spinKf")} ${hoverSpinDuration}s linear infinite;animation-play-state:paused}
+.${id("root")}:hover .${id("spin")}{animation-play-state:running}
+}`}</style>
       )}
       <defs>
         {/* Bogen für den unteren Schriftzug ohne fertigen Pfad */}
@@ -406,7 +520,7 @@ export default function AnniversaryBadge({
           gradientUnits="userSpaceOnUse"
         >
           {stops(theme.ringOuter)}
-          {animate && (
+          {shine && (
             <animateTransform
               attributeName="gradientTransform"
               type="rotate"
@@ -426,7 +540,7 @@ export default function AnniversaryBadge({
           gradientUnits="userSpaceOnUse"
         >
           {stops(theme.ringInner)}
-          {animate && (
+          {shine && (
             <animateTransform
               attributeName="gradientTransform"
               type="rotate"
@@ -446,7 +560,7 @@ export default function AnniversaryBadge({
           gradientUnits="userSpaceOnUse"
         >
           {stops(theme.ringGlow ?? [])}
-          {animate && (
+          {shine && (
             <animateTransform
               attributeName="gradientTransform"
               type="rotate"
@@ -523,47 +637,52 @@ export default function AnniversaryBadge({
           width="650"
           height="650"
         >
-          {/* Wellenrand = Außenform ohne Innenfläche */}
-          <path d={outerShape} fill="#fff" />
-          <path d={innerShape} fill="#000" />
+          {/* Wellenrand = Außenform ohne Innenfläche, dreht sich mit */}
+          <g className={id("spin")}>
+            <path d={outerShape} fill="#fff" />
+            <path d={innerShape} fill="#000" />
+          </g>
           {goldShapes(() => "#fff")}
         </mask>
       </defs>
 
-      {/* Grundaufbau: gewellter Außenrand, Linie, Innenfläche */}
-      <path d={outerShape} fill={url("ringOuter")} />
-      <path d={edgeShape} fill={url("ringInner")} />
-      <path d={innerShape} fill={url("bg")} />
+      {/* Grundaufbau: gewellter Außenrand, Linie, Innenfläche.
+          Diese Gruppe dreht sich beim Hover, der Inhalt darüber bleibt stehen. */}
+      <g className={id("spin")}>
+        <path d={outerShape} fill={url("ringOuter")} />
+        <path d={edgeShape} fill={url("ringInner")} />
+        <path d={innerShape} fill={url("bg")} />
+
+        {/* Feine Kanten am Rand */}
+        {theme.ringGlow && (
+          <path
+            d={outerShape}
+            fill="none"
+            stroke={url("ringGlow")}
+            strokeWidth="1.2"
+          />
+        )}
+        {theme.ringEdges && (
+          <>
+            <path
+              d={innerShape}
+              fill="none"
+              stroke={theme.ringEdges.inner}
+              strokeWidth="1.2"
+              opacity="0.55"
+            />
+            <path
+              d={edgeShape}
+              fill="none"
+              stroke={theme.ringEdges.middle}
+              strokeWidth="0.8"
+              opacity="0.7"
+            />
+          </>
+        )}
+      </g>
 
       {goldShapes((kind) => url(kind))}
-
-      {/* Feine Kanten am Rand */}
-      {theme.ringGlow && (
-        <path
-          d={outerShape}
-          fill="none"
-          stroke={url("ringGlow")}
-          strokeWidth="1.2"
-        />
-      )}
-      {theme.ringEdges && (
-        <>
-          <path
-            d={innerShape}
-            fill="none"
-            stroke={theme.ringEdges.inner}
-            strokeWidth="1.2"
-            opacity="0.55"
-          />
-          <path
-            d={edgeShape}
-            fill="none"
-            stroke={theme.ringEdges.middle}
-            strokeWidth="0.8"
-            opacity="0.7"
-          />
-        </>
-      )}
 
       {/* Animierter Glanz – nur auf den Goldflächen */}
       {shine && (

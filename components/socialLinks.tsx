@@ -3,7 +3,7 @@ import { Facebook, Instagram, MapPin, Youtube } from "lucide-react";
 import { site } from "@/app/site-config";
 
 // TikTok ist nicht in lucide-react enthalten.
-function TikTok({
+export function TikTok({
   size,
   ...props
 }: SVGProps<SVGSVGElement> & { size: number }) {

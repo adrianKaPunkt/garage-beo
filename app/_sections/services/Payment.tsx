@@ -31,7 +31,7 @@ export default function Payment() {
         pt-27.5 pb-40 sm:pt-31.5 sm:pb-60
         min-[701px]:pt-37 min-[701px]:pb-60 lg:pt-45
       "
-      style={waveMask()}
+      style={waveMask("mirrored")}
     >
       {/* Halbtransparente Kreise im Hintergrund */}
       <div
@@ -143,7 +143,7 @@ export default function Payment() {
               mx-auto flex max-w-162
               flex-col items-center gap-5
               text-center
-              lg:col-start-2 lg:row-start-1
+              lg:col-start-1 lg:row-start-1
               lg:mx-0 lg:flex-row lg:self-end
               lg:text-left
             "
@@ -162,7 +162,7 @@ export default function Payment() {
                   text-[#80501a]
                 "
               >
-                4
+                5
               </span>
             </div>
 
@@ -182,12 +182,12 @@ export default function Payment() {
             </h2>
           </div>
 
-          {/* Maskottchen links */}
+          {/* Maskottchen rechts */}
           <div
             className="
               relative flex w-full
               items-center justify-center
-              lg:col-start-1 lg:row-span-2 lg:row-start-1
+              lg:col-start-2 lg:row-span-2 lg:row-start-1
               lg:self-center
             "
           >
@@ -237,7 +237,7 @@ export default function Payment() {
           <div
             className="
               mx-auto max-w-162 lg:mt-6
-              lg:col-start-2 lg:row-start-2
+              lg:col-start-1 lg:row-start-2
               lg:mx-0 lg:self-start text-center lg:text-left
             "
           >
@@ -312,7 +312,7 @@ export default function Payment() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <PaySpotLogo animated />
+              <PaySpotLogo animated className="h-30 w-auto" />
             </Link>
             <Button href="#termin" variant="primary" size="large" showArrow>
               {tCommon("actions.contactUs")}

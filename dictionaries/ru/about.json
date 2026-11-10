@@ -32,7 +32,9 @@
   "video": {
     "eyebrow": "НАША ИСТОРИЯ",
     "title": "ПОЗНАКОМЬТЕСЬ С НАМИ",
-    "videoTitle": "Добро пожаловать в Garage Beograd"
+    "videoTitle": "Добро пожаловать в Garage Beograd",
+    "instagramCta": "Станьте частью нашей истории!",
+    "tiktokCta": "Станьте частью нашей истории!"
   },
   "images": {
     "counter": "Стойка регистрации автомобилей в Garage Beograd",

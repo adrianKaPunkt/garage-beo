@@ -32,7 +32,9 @@
   "video": {
     "eyebrow": "POGLEDAJTE NAŠU PRIČU",
     "title": "UPOZNAJTE NAS",
-    "videoTitle": "Dobro došli u Garage Beograd"
+    "videoTitle": "Dobro došli u Garage Beograd",
+    "instagramCta": "Budite deo naše priče!",
+    "tiktokCta": "Budite deo naše priče!"
   },
   "images": {
     "counter": "Prijemni pult Garage Beograd za registraciju vozila",

@@ -32,7 +32,9 @@
   "video": {
     "eyebrow": "SEHEN SIE SICH UNSERE GESCHICHTE AN",
     "title": "LERNEN SIE UNS KENNEN",
-    "videoTitle": "Willkommen bei Garage Beograd"
+    "videoTitle": "Willkommen bei Garage Beograd",
+    "instagramCta": "Werden Sie Teil unserer Geschichte!",
+    "tiktokCta": "Werden Sie Teil unserer Geschichte!"
   },
   "images": {
     "counter": "Empfangstresen der Garage Beograd für die Fahrzeugzulassung",

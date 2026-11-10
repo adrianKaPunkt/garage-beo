@@ -1,0 +1,11 @@
+{
+  "titleFirst": "FULL",
+  "titleSecond": "SERVICE",
+  "subtitle": "We pick up your vehicle, complete the paperwork and bring it back to your address.",
+  "description": "If you don't have time to come in person, Garage Beograd can pick up your vehicle, take care of all the necessary steps and return it once everything is done. Convenient, safe and without wasting your time.",
+  "points": {
+    "pickup": "Vehicle pickup at an agreed address",
+    "handling": "Complete organisation and handling of the process",
+    "return": "Vehicle return once the service is completed"
+  }
+}

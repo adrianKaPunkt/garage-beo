@@ -3,6 +3,7 @@
     "inspection": "VEHICLE\nINSPECTION",
     "registration": "VEHICLE\nREGISTRATION",
     "insurance": "VEHICLE\nINSURANCE",
+    "fullService": "FULL\nSERVICE",
     "payments": "BILL\nPAYMENT"
   },
   "subtitles": {

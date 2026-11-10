@@ -30,25 +30,25 @@ const Location = () => {
     <div className="pt-16 lg:pt-24">
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-14">
         {/* Desktop: Zeichnung in der linken Spalte */}
-        <div className="hidden justify-center lg:flex">{drawing}</div>
+        <div data-reveal className="hidden justify-center lg:flex">{drawing}</div>
 
-        {/* Text */}
+        {/* Text – blendet wie im Intro nacheinander ein, nur von rechts */}
         <div className="space-y-5 lg:pl-4">
           <div>
-            <p className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">
+            <p data-reveal="right" className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">
               {t("location.eyebrow")}
             </p>
-            <h3 className="mb-6 text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
+            <h3 data-reveal="right" data-reveal-pulse className="mb-6 origin-left text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
               {t("location.title")}
             </h3>
           </div>
-          <p className={paragraph}>{t("location.text1")}</p>
+          <p data-reveal="right" className={paragraph}>{t("location.text1")}</p>
 
           {/* Mobile/Tablet: Zeichnung zwischen dem ersten und zweiten Absatz */}
-          <div className="flex justify-center py-3 lg:hidden">{drawing}</div>
+          <div data-reveal className="flex justify-center py-3 lg:hidden">{drawing}</div>
 
-          <p className={paragraph}>{t("location.text2")}</p>
-          <p className={paragraph}>{t("location.text3")}</p>
+          <p data-reveal="right" className={paragraph}>{t("location.text2")}</p>
+          <p data-reveal="right" className={paragraph}>{t("location.text3")}</p>
         </div>
       </div>
 

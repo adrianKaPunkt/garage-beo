@@ -1,4 +1,4 @@
-import Image from "next/image";
+import InsuranceMascot from "./InsuranceMascot";
 import { ShieldCheck, Umbrella, ClipboardCheck } from "lucide-react";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
@@ -173,22 +173,15 @@ export default function Insurance() {
 
             <div
               className="
-                relative aspect-square w-full
+                relative w-full
                 max-w-110
                 transition-transform duration-500
                 hover:-translate-y-2
                 motion-reduce:transform-none
               "
             >
-              <Image
-                // Vorläufig vorhandenes Maskottchen.
-                // Später durch /images/car/insurance.webp ersetzen.
-                src="/images/car/insurance.webp"
-                alt={tCommon("mascotAlt")}
-                fill
-                sizes="(max-width: 1024px) 85vw, 440px"
-                className="object-contain drop-shadow-2xl"
-              />
+              {/* Maskottchen mit Ball, der vom Schirm abprallt */}
+              <InsuranceMascot alt={tCommon("mascotAlt")} />
             </div>
           </div>
 

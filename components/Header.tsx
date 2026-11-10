@@ -82,9 +82,9 @@ export default function Header() {
     <header
       ref={headerRef}
       // Bei offenem mobilem Menü deckend weiß, sonst leicht transparent
-      className={`sticky top-0 z-50 h-20 border-b backdrop-blur-md transition-colors duration-300 lg:h-24 ${
+      className={`sticky top-0 z-50 h-20 backdrop-blur-md transition-colors duration-300 lg:h-24 ${
         menuOpen ? "bg-white" : sectionBackground ? "" : "bg-white/80"
-      } ${dark ? "border-white/10" : "border-gray-200"}`}
+      } ${dark ? "" : ""}`}
     >
       {/* Hintergrund der darunterliegenden Sektion, leicht transparent */}
       {sectionBackground && (

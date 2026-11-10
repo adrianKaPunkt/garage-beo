@@ -32,7 +32,9 @@
   "video": {
     "eyebrow": "WATCH OUR STORY",
     "title": "GET TO KNOW US",
-    "videoTitle": "Welcome to Garage Beograd"
+    "videoTitle": "Welcome to Garage Beograd",
+    "instagramCta": "Be part of our story!",
+    "tiktokCta": "Be part of our story!"
   },
   "images": {
     "counter": "Reception desk at Garage Beograd for vehicle registration",

@@ -10,7 +10,8 @@ gsap.registerPlugin(useGSAP, SplitText);
 
 // Texte in hero.titles im Dictionary.
 // Verlauf jeweils wie der Hintergrund der passenden Services-Sektion
-// (TechnickiBackground, Registration, Insurance, Payment) – dort mitändern.
+// (TechnickiBackground, Registration, Insurance, FullService, Payment) – dort mitändern.
+// Reihenfolge wie die Sektionen in Services.tsx.
 const heroTitles = [
   {
     id: "inspection",
@@ -25,6 +26,10 @@ const heroTitles = [
     gradient: "linear-gradient(125deg,#123f36 0%,#1c624f 52%,#2c8067 100%)",
   },
   {
+    id: "fullService",
+    gradient: "linear-gradient(130deg,#6f2a8a 0%,#a53384 52%,#d94f9d 100%)",
+  },
+  {
     id: "payments",
     gradient: "linear-gradient(135deg,#a8681c 0%,#d99b32 48%,#f4cf75 100%)",
   },
@@ -37,6 +42,15 @@ const heroTitles = [
  * ein- und ausgeblendet werden.
  */
 function applyGradient(chars: HTMLElement[], gradient: string) {
+  // Der Verlauf erscheint nur innerhalb der Buchstaben-Box. Bei engem Zeilenabstand
+  // ragen Akzente (Č, Ü, Й) darüber hinaus und würden abgeschnitten. Daher die Box
+  // nach oben/unten erweitern und per negativem Margin ausgleichen, damit sich das
+  // Layout nicht ändert.
+  chars.forEach((char) => {
+    char.style.paddingBlock = "0.2em";
+    char.style.marginBlock = "-0.2em";
+  });
+
   const rects = chars.map((char) => char.getBoundingClientRect());
   const left = Math.min(...rects.map((rect) => rect.left));
   const top = Math.min(...rects.map((rect) => rect.top));
@@ -130,7 +144,7 @@ export default function HeroHeader() {
         md:text-[4rem]
         lg:text-[5rem]
         xl:text-[6rem]
-        leading-[1.1]
+        leading-none
         tracking-tight
         text-center
         lg:text-left

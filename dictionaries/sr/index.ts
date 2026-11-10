@@ -14,6 +14,7 @@ import tehnicki from "./tehnicki.json";
 import registration from "./registration.json";
 import insurance from "./insurance.json";
 import payment from "./payment.json";
+import fullService from "./fullService.json";
 import contact from "./contact.json";
 import footer from "./footer.json";
 import testimonials from "./testimonials.json";
@@ -31,6 +32,7 @@ const messages = {
   registration,
   insurance,
   payment,
+  fullService,
   contact,
   footer,
   testimonials,

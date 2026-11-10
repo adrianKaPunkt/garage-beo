@@ -7,7 +7,7 @@ import { useEffect } from "react";
  *
  * Erfasst automatisch die direkten Kinder jedes `.container` in <main>,
  * außer im Hero. Weitere Elemente lassen sich mit `data-reveal` markieren,
- * `data-reveal="left"` blendet stattdessen leicht von links ein.
+ * `data-reveal="left"` blendet stattdessen leicht von links ein, `data-reveal="right"` von rechts.
  * Enthält ein automatisch erfasster Block eigene `data-reveal`-Elemente, werden
  * nur diese animiert (z. B. Absatz für Absatz), nicht der ganze Block.
  *
@@ -22,7 +22,9 @@ const EXCLUDE = "#pocetna, [aria-hidden='true'], [data-no-reveal]";
 
 const DISTANCE = "24px";
 const DURATION = 700; // ms
-const STAGGER = 90; // ms zwischen gleichzeitig sichtbar werdenden Elementen
+const STAGGER = 150; // ms Abstand zwischen zwei Elementen, die kurz nacheinander sichtbar werden
+const MAX_DELAY = 450; // ms, länger wartet kein Element – sonst hinken Texte beim schnellen Scrollen hinterher
+const TRIGGER_AHEAD = "10%"; // Animation startet schon, kurz bevor ein Element unten ins Bild kommt
 const PULSE_DURATION = 600; // ms pro Puls
 
 export default function ScrollReveal() {
@@ -51,7 +53,9 @@ export default function ScrollReveal() {
     const offset = (element: HTMLElement) =>
       element.dataset.reveal === "left"
         ? `translateX(-${DISTANCE})`
-        : `translateY(${DISTANCE})`;
+        : element.dataset.reveal === "right"
+          ? `translateX(${DISTANCE})`
+          : `translateY(${DISTANCE})`;
 
     // Nur Elemente unterhalb des sichtbaren Bereichs verstecken
     const hidden = elements.filter(
@@ -95,37 +99,38 @@ export default function ScrollReveal() {
       );
     };
 
-    const createObserver = (bottomMargin: string) => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .map((entry) => entry.target as HTMLElement);
-
-          visible.forEach((element, index) => {
-            observer.unobserve(element);
-            reveal(element, index * STAGGER);
-          });
-        },
-        { rootMargin: `0px 0px -${bottomMargin} 0px`, threshold: 0.05 },
-      );
-      return observer;
+    // Warteschlange: Elemente, die kurz nacheinander sichtbar werden, blenden
+    // nacheinander ein – aber nie mehr als MAX_DELAY verspätet
+    let queueEnd = 0;
+    const schedule = (element: HTMLElement) => {
+      const now = performance.now();
+      const start = Math.max(now, Math.min(queueEnd + STAGGER, now + MAX_DELAY));
+      queueEnd = start;
+      reveal(element, start - now);
     };
 
-    // Standard: etwas bevor das Element ganz im Bild ist.
-    // Von links: erst weiter oben im Bild, damit der Effekt sichtbar ist.
-    const observer = createObserver("10%");
-    const leftObserver = createObserver("25%");
-
-    hidden.forEach((element) =>
-      (element.dataset.reveal === "left" ? leftObserver : observer).observe(
-        element,
-      ),
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => entry.target as HTMLElement)
+          // In Lesereihenfolge (Dokumentreihenfolge)
+          .sort((a, b) =>
+            a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1,
+          )
+          .forEach((element) => {
+            observer.unobserve(element);
+            schedule(element);
+          });
+      },
+      // Positiver unterer Rand: löst schon aus, bevor das Element im Bild ist
+      { rootMargin: `0px 0px ${TRIGGER_AHEAD} 0px`, threshold: 0 },
     );
+
+    hidden.forEach((element) => observer.observe(element));
 
     return () => {
       observer.disconnect();
-      leftObserver.disconnect();
       // Beim Verlassen nichts unsichtbar zurücklassen
       for (const element of hidden) {
         element.style.removeProperty("opacity");
