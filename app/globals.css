@@ -68,6 +68,26 @@ button {
   font: inherit;
 }
 
+/* Wellen am unteren Rand des Hero (app/_sections/hero/HeroWave.tsx):
+   die SVG ist doppelt so breit, nach -50 % sieht sie wieder gleich aus */
+@keyframes hero-wave {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.hero-wave {
+  animation: hero-wave 20s linear infinite;
+}
+.hero-wave--slow {
+  animation-duration: 32s;
+  animation-direction: reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-wave {
+    animation: none;
+  }
+}
+
 /* Intro (components/intro): nur sichtbar, wenn das Skript im <head>
    data-intro="play" gesetzt hat – ohne JavaScript nie */
 .intro-overlay {

@@ -7,6 +7,7 @@ import IntroOverlay from "@/components/intro/IntroOverlay";
 import HeroBackdrop from "./HeroBackdrop";
 import HeroHeader from "./HeroHeader";
 import HeroSubtitle from "./HeroSubtitle";
+import HeroWave from "./HeroWave";
 
 /**
  * Neuer Hero: zuerst das Intro (Rolltor), danach wechselt der Hintergrund
@@ -21,7 +22,8 @@ const Hero = () => {
     <>
       <IntroOverlay />
 
-      <HeroBackdrop className="lg:grid lg:flex-1">
+      {/* Unten Platz für die Welle, damit sie nichts vom Inhalt verdeckt */}
+      <HeroBackdrop className="pb-[clamp(36px,5vw,80px)] lg:grid lg:flex-1">
         {/* Technisches Raster – hell, damit es auf allen Farben wirkt */}
         <div
           aria-hidden="true"
@@ -95,6 +97,9 @@ const Hero = () => {
             </CarEntrance>
           </div>
         </div>
+
+        {/* Welliger Übergang in die nächste Sektion */}
+        <HeroWave />
       </HeroBackdrop>
     </>
   );
