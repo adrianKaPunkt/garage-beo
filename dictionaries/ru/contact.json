@@ -19,6 +19,7 @@
     "closed": "Закрыто"
   },
   "today": "(сегодня)",
+  "specialHours": "Изменённый график",
   "routeAria": "Построить маршрут до {address} в Google Maps",
   "form": {
     "title": "Напишите нам",

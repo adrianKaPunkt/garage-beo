@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import Services from "@/app/_sections/services/Services";
 import About from "@/app/_sections/about/About";
 import Contact from "@/app/_sections/contact/Contact";
+import { getOpeningHours } from "@/app/_sections/contact/openingHours";
 import Testimonials from "@/app/_sections/testimonials/Testimonials";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -34,9 +35,12 @@ export default function Home({
 
   setRequestLocale(locale as Locale);
 
+  // Öffnungszeiten aus dem Google-Profil (Fallback: site-config)
+  const openingHours = use(getOpeningHours());
+
   return (
     <>
-      <Header />
+      <Header compactLogoOnMobile={false} />
       <main>
         {/* Desktop: Der Hero füllt den Bildschirm unter dem Header (lg:h-24).
             Features (app/_sections/Features.tsx) ist vorerst ausgeblendet;
@@ -63,7 +67,7 @@ export default function Home({
         <Services />
         <GoogleRatingLink />
         <Testimonials />
-        <Contact />
+        <Contact hours={openingHours} />
       </main>
       <Footer />
       <ScrollReveal />

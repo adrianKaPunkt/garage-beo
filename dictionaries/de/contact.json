@@ -19,6 +19,7 @@
     "closed": "Geschlossen"
   },
   "today": "(heute)",
+  "specialHours": "Geänderte Öffnungszeiten",
   "routeAria": "Route zur Adresse {address} in Google Maps planen",
   "form": {
     "title": "Schreiben Sie uns",

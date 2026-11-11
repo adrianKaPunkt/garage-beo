@@ -38,7 +38,7 @@ const Location = () => {
             <p data-reveal="right" className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">
               {t("location.eyebrow")}
             </p>
-            <h3 data-reveal="right" data-reveal-pulse className="mb-6 origin-left text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
+            <h3 data-reveal="right" data-reveal-pulse className="mb-6 origin-left text-3xl font-bold leading-tight text-orange sm:text-5xl">
               {t("location.title")}
             </h3>
           </div>

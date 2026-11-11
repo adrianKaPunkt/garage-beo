@@ -3,30 +3,59 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Clock3, Mail, MapPin, Navigation, Phone } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { DAY_KEYS, WEEK_ORDER, site } from "@/app/site-config";
+import type { OpeningHours, Period } from "./openingHours";
 import ContactForm from "./ContactForm";
-
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 // Aktuelle Zeit in Belgrad, unabhängig von der Zeitzone des Besuchers
 function getBelgradeTime() {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "Europe/Belgrade",
-    weekday: "short",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
     hourCycle: "h23",
   }).formatToParts(new Date());
 
   const get = (type: string) =>
-    parts.find((part) => part.type === type)?.value ?? "";
+    Number(parts.find((part) => part.type === type)?.value ?? 0);
 
   return {
-    day: WEEKDAYS.indexOf(get("weekday")),
-    minutes: Number(get("hour")) * 60 + Number(get("minute")),
+    // Kalendertag in Belgrad als UTC-Datum, damit sich Tage einfach addieren lassen
+    date: Date.UTC(get("year"), get("month") - 1, get("day")),
+    minutes: get("hour") * 60 + get("minute"),
   };
 }
+
+// Die nächsten 7 Tage ab heute, jeweils mit den gültigen Zeiten:
+// Abweichungen aus Google, sonst die reguläre Woche
+function getUpcomingDays(today: number, hours: OpeningHours) {
+  return Array.from({ length: 7 }, (_, offset) => {
+    const date = new Date(today + offset * 86_400_000);
+    const day = date.getUTCDay();
+    const entry = hours.dates[date.toISOString().slice(0, 10)];
+
+    return {
+      date,
+      day,
+      periods: entry?.periods ?? hours.week[day],
+      special: entry?.special ?? false,
+    };
+  });
+}
+
+const pad = (value: number) => String(value).padStart(2, "0");
+const formatMinutes = (minutes: number) =>
+  `${pad(Math.floor(minutes / 60))}:${pad(minutes % 60)}`;
+
+// "08:00 – 16:00", mehrere Zeiträume (z. B. Mittagspause) mit Komma
+const formatPeriods = (periods: Period[]) =>
+  periods
+    .map(({ opens, closes }) => `${formatMinutes(opens)} – ${formatMinutes(closes)}`)
+    .join(", ");
 
 // Ab so vielen Minuten vor Feierabend zeigt das Badge "Uskoro zatvaramo"
 const CLOSING_SOON_MINUTES = 60;
@@ -38,24 +67,20 @@ const STATUS = {
   closed: "bg-red-600 text-white",
 };
 
-function getStatus(day: number, minutes: number): keyof typeof STATUS {
-  const today = site.hours.find((entry) => entry.days.includes(day));
-  const match = today?.time?.match(/(\d{2}):(\d{2}) – (\d{2}):(\d{2})/);
+function getStatus(periods: Period[], minutes: number): keyof typeof STATUS {
+  const current = periods.find(
+    ({ opens, closes }) => minutes >= opens && minutes < closes,
+  );
 
-  if (!match) return "closed";
+  if (!current) return "closed";
 
-  const [, openHour, openMinute, closeHour, closeMinute] = match.map(Number);
-  const opensAt = openHour * 60 + openMinute;
-  const closesAt = closeHour * 60 + closeMinute;
-
-  if (minutes < opensAt || minutes >= closesAt) return "closed";
-
-  return closesAt - minutes <= CLOSING_SOON_MINUTES ? "closing" : "open";
+  return current.closes - minutes <= CLOSING_SOON_MINUTES ? "closing" : "open";
 }
 
-export default function Contact() {
+export default function Contact({ hours }: { hours: OpeningHours }) {
   const t = useTranslations("contact");
   const tCommon = useTranslations("common");
+  const format = useFormatter();
   const [now, setNow] = useState<ReturnType<typeof getBelgradeTime> | null>(
     null,
   );
@@ -69,7 +94,18 @@ export default function Contact() {
     return () => clearInterval(timer);
   }, []);
 
-  const status = now !== null ? getStatus(now.day, now.minutes) : null;
+  // Vor dem ersten Rendern im Browser: reguläre Woche ohne Datum
+  const days =
+    now !== null
+      ? getUpcomingDays(now.date, hours)
+      : WEEK_ORDER.map((day) => ({
+          date: null,
+          day,
+          periods: hours.week[day],
+          special: false,
+        }));
+
+  const status = now !== null ? getStatus(days[0].periods, now.minutes) : null;
 
   // Angezeigte Adresse in der aktuellen Sprache
   const address = `${tCommon("address.street")}, ${tCommon("address.cityLine")}`;
@@ -247,15 +283,15 @@ export default function Contact() {
               </div>
 
               <div className="space-y-1">
-                {WEEK_ORDER.map((day) => {
-                  const isToday = now?.day === day;
-                  const time =
-                    site.hours.find((entry) => entry.days.includes(day))
-                      ?.time ?? tCommon("closed");
+                {days.map(({ date, day, periods, special }, index) => {
+                  const isToday = date !== null && index === 0;
+                  const time = periods.length
+                    ? formatPeriods(periods)
+                    : tCommon("closed");
 
                   return (
                     <div
-                      key={day}
+                      key={date?.getTime() ?? day}
                       aria-current={isToday ? "date" : undefined}
                       className={[
                         "flex items-center justify-between gap-4 rounded-xl px-4 py-2",
@@ -270,12 +306,48 @@ export default function Contact() {
                         }
                       >
                         {tCommon(`days.${DAY_KEYS[day]}`)}
-                        {/* {isToday && ` ${t("today")}`} */}
+                        {/* Datum im Format der Sprache: mobil "11. nov",
+                            ab sm "11. novembar" (en: "Nov 11" / "November 11") */}
+                        {date && ","}
+                        {date && (
+                          <span
+                            className={
+                              isToday
+                                ? "ml-1.5 font-normal"
+                                : "ml-1.5 text-slate-400"
+                            }
+                          >
+                            <span className="sm:hidden">
+                              {format.dateTime(date, {
+                                day: "numeric",
+                                month: "short",
+                                timeZone: "UTC",
+                              })}
+                            </span>
+                            <span className="hidden sm:inline">
+                              {format.dateTime(date, {
+                                day: "numeric",
+                                month: "long",
+                                timeZone: "UTC",
+                              })}
+                            </span>
+                          </span>
+                        )}
                       </span>
 
-                      <strong className="text-right text-sm font-bold text-white">
-                        {time}
-                      </strong>
+                      <span className="text-right">
+                        <strong
+                          className={`block text-sm font-bold ${special ? "text-orange" : "text-white"}`}
+                        >
+                          {time}
+                        </strong>
+                        {/* Abweichung im Google-Profil, z. B. Feiertag */}
+                        {special && (
+                          <span className="block text-xs text-orange">
+                            {t("specialHours")}
+                          </span>
+                        )}
+                      </span>
                     </div>
                   );
                 })}

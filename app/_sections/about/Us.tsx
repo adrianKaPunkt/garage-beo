@@ -70,7 +70,7 @@ const Us = () => {
         <p className="mb-1 text-sm font-bold uppercase tracking-widest text-green">
           {t("eyebrow")}
         </p>
-        <h3 className="text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
+        <h3 className="text-3xl font-bold leading-tight text-orange sm:text-5xl">
           {t("title")}
         </h3>
       </div>

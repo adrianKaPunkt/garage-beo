@@ -17,7 +17,7 @@ const Services = () => {
             <p className="text-green mb-4">{t("eyebrow")}</p>
             <h2 className="mb-7 text-[clamp(2.25rem,10vw,3.4375rem)] leading-[1.1]">
               <span className="text-lime-300">{t("titleFirst")} </span>
-              <span className="text-white">{t("titleSecond")}</span>
+              <span className="text-orange">{t("titleSecond")}</span>
             </h2>
             <span className="mx-auto block h-1 w-16.5 rounded-xs bg-green" />
           </div>

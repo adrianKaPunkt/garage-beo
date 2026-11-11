@@ -19,6 +19,7 @@
     "closed": "Closed"
   },
   "today": "(today)",
+  "specialHours": "Special opening hours",
   "routeAria": "Plan a route to {address} in Google Maps",
   "form": {
     "title": "Send us a message",

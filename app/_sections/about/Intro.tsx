@@ -26,7 +26,7 @@ const Intro = () => {
           <h3
             data-reveal="left"
             data-reveal-pulse
-            className="mb-6 origin-left text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl"
+            className="mb-6 origin-left text-3xl font-bold leading-tight text-orange sm:text-5xl"
           >
             {t("title")}
           </h3>

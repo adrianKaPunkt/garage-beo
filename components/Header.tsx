@@ -8,6 +8,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { activeSocialLinks } from "@/components/socialLinks";
 import { useSectionBackground } from "@/components/useSectionBackground";
 import GarageBeogradLogo from "./GarageBeogradLogo";
+import { useCompactLogo } from "./useCompactLogo";
 
 // Anrufen, Menü und Sprache: gleicher Stil, auf dunklen Sektionen hell
 const buttonTheme = (dark: boolean) =>
@@ -15,7 +16,12 @@ const buttonTheme = (dark: boolean) =>
     ? "border-white/25 bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white"
     : "border-green/20 bg-green/5 text-darkgreen hover:bg-green/10 focus-visible:outline-green";
 
-export default function Header() {
+export default function Header({
+  compactLogoOnMobile = false,
+}: {
+  /** Handy und Tablet: Logo wird nach dem Intro zum Monogramm „BG“ */
+  compactLogoOnMobile?: boolean;
+}) {
   const t = useTranslations("header");
   const tCommon = useTranslations("common");
   const tFooter = useTranslations("footer");
@@ -27,6 +33,9 @@ export default function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const sectionBackground = useSectionBackground(headerRef);
   const dark = !menuOpen && (sectionBackground?.dark ?? false);
+
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  useCompactLogo(logoRef, compactLogoOnMobile);
 
   useEffect(() => {
     const updateActiveSection = () => {
@@ -102,6 +111,7 @@ export default function Header() {
       <div className="container flex h-full items-center justify-between gap-3 lg:gap-7">
         {/* Logo */}
         <a
+          ref={logoRef}
           href="#pocetna"
           className="flex min-w-0 shrink-0 flex-col"
           // Ziel des Intro-Logos (components/intro/IntroOverlay.tsx)

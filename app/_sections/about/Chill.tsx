@@ -19,7 +19,7 @@ const Chill = () => {
           <p data-reveal="left" className="mb-1 text-sm font-semibold uppercase tracking-widest text-green">
             {t("chill.eyebrow")}
           </p>
-          <h3 data-reveal="left" data-reveal-pulse className="mb-6 origin-left text-3xl font-bold leading-tight text-[#26332f] sm:text-5xl">
+          <h3 data-reveal="left" data-reveal-pulse className="mb-6 origin-left text-3xl font-bold leading-tight text-orange sm:text-5xl">
             {t("chill.title")}
           </h3>
           <p data-reveal="left" className="mb-5 text-base leading-relaxed text-[#5b646b]">

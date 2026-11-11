@@ -34,7 +34,7 @@ const About = () => {
             className="mb-7 text-[clamp(36px,3vw,55px)] leading-[1.12] font-bold"
           >
             <span className="text-green">{t("titleFirst")}</span>
-            <span className="text-[#26332f]">{t("titleSecond")}</span>
+            <span className="text-orange">{t("titleSecond")}</span>
           </h2>
           <span className="mx-auto block h-1 w-16.5 rounded-xs bg-green" />
         </div>

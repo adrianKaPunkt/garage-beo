@@ -19,6 +19,7 @@
     "closed": "Zatvoreno"
   },
   "today": "(danas)",
+  "specialHours": "Izmenjeno radno vreme",
   "routeAria": "Isplanirajte rutu do adrese {address} u Google Maps",
   "form": {
     "title": "Pošaljite nam poruku",
