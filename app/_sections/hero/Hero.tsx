@@ -1,8 +1,10 @@
 import CarEntrance from "@/components/AnimatedCar/CarEntrance";
+import CarHop from "@/components/AnimatedCar/CarHop";
 import AnimatedCar from "@/components/AnimatedCar/AnimatedCar";
 import Button from "@/components/Button";
 import { useLocale, useTranslations } from "next-intl";
 import AnniversaryBadge from "@/components/AnniversaryBadge";
+import BadgeStamp from "@/components/BadgeStamp";
 import IntroOverlay from "@/components/intro/IntroOverlay";
 import HeroBackdrop from "./HeroBackdrop";
 import HeroHeader from "./HeroHeader";
@@ -61,17 +63,20 @@ const Hero = () => {
             lg:pt-25 lg:pb-10
           "
         >
-          {/* Desktop: Jubiläums-Badge zentriert über Headline und Auto */}
-          <AnniversaryBadge
-            variant="goldCream"
-            size="100%"
-            language={currentLanguage}
-            className="hidden w-44 justify-self-center drop-shadow-[0_10px_18px_rgba(0,0,0,0.35)] lg:col-span-2 lg:block xl:w-75"
-          />
+          {/* Desktop: Jubiläums-Badge zentriert über Headline und Auto,
+              wird nach dem Intro „aufgestempelt“ */}
+          <BadgeStamp className="hidden w-44 justify-self-center lg:col-span-2 lg:block xl:w-75">
+            <AnniversaryBadge
+              variant="goldCream"
+              size="100%"
+              language={currentLanguage}
+              className="block h-auto w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.35)]"
+            />
+          </BadgeStamp>
 
           <div className="min-w-0">
-            <HeroHeader tone="light" />
-            <HeroSubtitle tone="light" />
+            <HeroHeader tone="complement" />
+            <HeroSubtitle tone="brand" />
 
             <div className="flex justify-center lg:justify-start">
               <Button href="#termin" variant="primary" size="large" showArrow>
@@ -81,19 +86,28 @@ const Hero = () => {
           </div>
 
           <div className="relative w-full max-w-75 sm:max-w-95 lg:max-w-115 justify-self-center">
-            {/* Mobile/Tablet: Jubiläums-Badge als „Siegel“ oben links am Auto */}
-            <AnniversaryBadge
-              variant="goldCream"
-              size="100%"
-              language={currentLanguage}
-              tapToZoom
-              className="absolute -right-7 -top-40 z-10 w-30 -rotate-12 origin-right drop-shadow-[0_10px_18px_rgba(0,0,0,0.35)] sm:w-28 lg:hidden"
-            />
-            <CarEntrance>
-              <AnimatedCar
-                animated={true}
-                sizes="(max-width: 700px) 280px, (max-width: 1000px) 40vw, 460px"
+            {/* Mobile/Tablet: Jubiläums-Badge als „Siegel“ oben rechts am Auto,
+                knapp unter dem Button (der Abstand Button–Auto ist fest: gap-18) */}
+            <BadgeStamp
+              rotate={-12}
+              className="absolute -right-7 -top-12 z-10 w-30 sm:w-28 lg:hidden"
+            >
+              <AnniversaryBadge
+                variant="goldCream"
+                size="100%"
+                language={currentLanguage}
+                tapToZoom
+                className="block h-auto w-full origin-right drop-shadow-[0_10px_18px_rgba(0,0,0,0.35)]"
               />
+            </BadgeStamp>
+            <CarEntrance>
+              {/* Hüpft, wenn das Badge aufgestempelt wird */}
+              <CarHop>
+                <AnimatedCar
+                  animated={true}
+                  sizes="(max-width: 700px) 280px, (max-width: 1000px) 40vw, 460px"
+                />
+              </CarHop>
             </CarEntrance>
           </div>
         </div>

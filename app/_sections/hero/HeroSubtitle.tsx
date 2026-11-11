@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
+import { HERO_TITLE_EVENT, heroTitles } from "./HeroHeader";
 
 gsap.registerPlugin(useGSAP);
 
@@ -17,13 +18,39 @@ const subtitles = [
 ] as const;
 
 type HeroSubtitleProps = {
-  /** "light": weiße Schrift für den farbig wechselnden Hero-Hintergrund */
-  tone?: "dark" | "light";
+  /**
+   * "dark": Dunkelgrün (heller Hintergrund).
+   * "light": weiße Schrift.
+   * "brand": Markenfarben für den farbig wechselnden Hero – Lime wie das Logo
+   *   auf dunklem Grund, „BRE“ orange; auf hellem Hintergrund (Gold) dunkles
+   *   Markengrün und dunkleres Orange, damit es lesbar bleibt.
+   */
+  tone?: "dark" | "light" | "brand";
+};
+
+// Markenfarben für tone="brand", je nach Hero-Hintergrund
+const BRAND = {
+  onDark: { text: "var(--color-lime-300, #bbf451)", suffix: "var(--color-orange)" },
+  onLight: { text: "#14530a", suffix: "#a8480b" },
 };
 
 export default function HeroSubtitle({ tone = "dark" }: HeroSubtitleProps) {
   const t = useTranslations("hero.subtitles");
   const [currentIndex, setCurrentIndex] = useState(0);
+  // Ist der Hero-Hintergrund gerade hell? (wechselt mit dem Titel im HeroHeader)
+  const [onLight, setOnLight] = useState<boolean>(heroTitles[0].onLight);
+
+  useEffect(() => {
+    if (tone !== "brand") return;
+    const onTitle = (event: Event) => {
+      const { index } = (event as CustomEvent<{ index: number }>).detail;
+      setOnLight(heroTitles[index]?.onLight ?? false);
+    };
+    window.addEventListener(HERO_TITLE_EVENT, onTitle);
+    return () => window.removeEventListener(HERO_TITLE_EVENT, onTitle);
+  }, [tone]);
+
+  const brand = onLight ? BRAND.onLight : BRAND.onDark;
 
   const textRef = useRef<HTMLSpanElement>(null);
   const suffixRef = useRef<HTMLSpanElement>(null);
@@ -183,8 +210,15 @@ export default function HeroSubtitle({ tone = "dark" }: HeroSubtitleProps) {
         className={`m-0 w-full text-center text-3xl font-bold sm:text-4xl md:text-5xl lg:text-left lg:text-6xl ${
           tone === "light"
             ? "text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]"
-            : "text-darkgreen"
+            : tone === "brand"
+              ? `transition-colors duration-700 ${
+                  onLight
+                    ? "drop-shadow-[0_1px_8px_rgba(255,244,214,0.5)]"
+                    : "drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
+                }`
+              : "text-darkgreen"
         }`}
+        style={tone === "brand" ? { color: brand.text } : undefined}
       >
         <span
           key={subtitle.id}
@@ -194,7 +228,11 @@ export default function HeroSubtitle({ tone = "dark" }: HeroSubtitleProps) {
             {t(`${subtitle.id}.text`)}
           </span>
 
-          <span ref={suffixRef} className="inline-block text-orange">
+          <span
+            ref={suffixRef}
+            className="inline-block text-orange transition-colors duration-700"
+            style={tone === "brand" ? { color: brand.suffix } : undefined}
+          >
             {t(`${subtitle.id}.suffix`)}
           </span>
         </span>

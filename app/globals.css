@@ -115,6 +115,10 @@ html[data-intro="play"] .intro-overlay {
 .intro-overlay [data-intro-subtitle-line] {
   transform: scaleX(0);
 }
+/* Das Jubiläums-Badge wird erst nach dem Intro aufgestempelt (BadgeStamp) */
+html[data-intro="play"]:has(.intro-overlay) [data-stamp] {
+  opacity: 0;
+}
 /* Das Auto im Hero wartet unsichtbar, bis das Intro-Auto dort ankommt */
 html[data-intro="play"]:has(.intro-overlay) [data-intro-car-target] {
   visibility: hidden;

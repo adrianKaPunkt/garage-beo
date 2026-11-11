@@ -13,26 +13,42 @@ gsap.registerPlugin(useGSAP, SplitText);
 // (TechnickiBackground, Registration, Insurance, FullService, Payment) – dort mitändern.
 // Reihenfolge wie die Sektionen in Services.tsx.
 // Auch der Hero-Hintergrund (HeroBackdrop) wechselt durch diese Verläufe.
+//
+// complement: Verlauf für den Titel im Hero, in der Komplementärfarbe des
+//   Hintergrunds (Blau → Orange, Rot → Türkis, Grün → Rosa, Violett → Gelbgrün,
+//   Gold → Blau), hell genug für den dunklen Grund.
+// onLight: Hintergrund ist hell (Gold) – Titel dann dunkel, Untertitel im
+//   dunkleren Markengrün statt Lime.
 export const heroTitles = [
   {
     id: "inspection",
     gradient: "linear-gradient(125deg,#14283a 0%,#24455a 55%,#416878 100%)",
+    complement: "linear-gradient(100deg,#ffe3a3 0%,#ffb067 55%,#ff8a3d 100%)",
+    onLight: false,
   },
   {
     id: "registration",
     gradient: "linear-gradient(135deg,#903f42 0%,#bf625e 48%,#e69a87 100%)",
+    complement: "linear-gradient(100deg,#e2fffa 0%,#9ff3e5 55%,#5fdccb 100%)",
+    onLight: false,
   },
   {
     id: "insurance",
     gradient: "linear-gradient(125deg,#123f36 0%,#1c624f 52%,#2c8067 100%)",
+    complement: "linear-gradient(100deg,#ffe3f2 0%,#ffa6d5 55%,#ff74ba 100%)",
+    onLight: false,
   },
   {
     id: "fullService",
     gradient: "linear-gradient(130deg,#6f2a8a 0%,#a53384 52%,#d94f9d 100%)",
+    complement: "linear-gradient(100deg,#fbffd6 0%,#e6ff80 55%,#c4f23f 100%)",
+    onLight: false,
   },
   {
     id: "payments",
     gradient: "linear-gradient(135deg,#a8681c 0%,#d99b32 48%,#f4cf75 100%)",
+    complement: "linear-gradient(100deg,#1a2668 0%,#283c9e 55%,#3a52c8 100%)",
+    onLight: true,
   },
 ] as const;
 
@@ -76,10 +92,11 @@ export const HERO_TITLE_EVENT = "garage:hero-title";
 type HeroHeaderProps = {
   /**
    * "gradient": Buchstaben im Verlauf der Service-Sektion (heller Hintergrund).
-   * "light": weiße Buchstaben – für den Hero, dessen Hintergrund selbst
-   * durch die Verläufe wechselt.
+   * "complement": Buchstaben im Komplementär-Verlauf – für den Hero, dessen
+   *   Hintergrund selbst durch die Service-Verläufe wechselt.
+   * "light": weiße Buchstaben.
    */
-  tone?: "gradient" | "light";
+  tone?: "gradient" | "complement" | "light";
 };
 
 export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
@@ -104,6 +121,8 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
 
       if (tone === "gradient") {
         applyGradient(split.chars as HTMLElement[], currentTitle.gradient);
+      } else if (tone === "complement") {
+        applyGradient(split.chars as HTMLElement[], currentTitle.complement);
       }
 
       const timeline = gsap.timeline({
@@ -165,7 +184,17 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
         className={`
         w-full
         font-extrabold
-        ${tone === "light" ? "text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]" : "text-gray-900"}
+        ${
+          tone === "light"
+            ? "text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]"
+            : tone === "complement"
+              ? // Weiß, bis der Verlauf auf die Buchstaben gelegt ist.
+                // Heller Verlauf: dunkler Schatten; dunkler Verlauf (auf Gold): heller Schein
+                currentTitle.onLight
+                ? "text-white drop-shadow-[0_1px_10px_rgba(255,244,214,0.45)]"
+                : "text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.3)]"
+              : "text-gray-900"
+        }
         [--title-max:clamp(2rem,11.5vw,3rem)]
         sm:[--title-max:3.25rem]
         md:[--title-max:4rem]
