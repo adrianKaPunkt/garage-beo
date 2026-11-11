@@ -104,6 +104,8 @@ export default function Header() {
         <a
           href="#pocetna"
           className="flex min-w-0 shrink-0 flex-col"
+          // Ziel des Intro-Logos (components/intro/IntroOverlay.tsx)
+          data-intro-target
           onClick={() => setMenuOpen(false)}
           aria-label={t("homeAria")}
         >

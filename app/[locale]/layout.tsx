@@ -11,6 +11,7 @@ import {
   routing,
   type Locale,
 } from "@/i18n/routing";
+import { INTRO_GATE_SCRIPT } from "@/components/intro/introState";
 import "../globals.css";
 
 type Props = {
@@ -82,7 +83,12 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <html lang={htmlLang[locale]}>
+    // suppressHydrationWarning: das Intro-Skript setzt data-intro vor React
+    <html lang={htmlLang[locale]} suppressHydrationWarning>
+      <head>
+        {/* Entscheidet vor dem ersten Zeichnen, ob das Intro läuft */}
+        <script dangerouslySetInnerHTML={{ __html: INTRO_GATE_SCRIPT }} />
+      </head>
       <body>
         <NextIntlClientProvider>
           <StructuredData />

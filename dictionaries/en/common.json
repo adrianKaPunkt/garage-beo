@@ -1,5 +1,6 @@
 {
   "brandSubtitle": "VEHICLE INSPECTION",
+  "introSubtitle": "Vehicle inspection & registration",
   "mascotAlt": "Garage Beograd mascot",
   "address": {
     "street": "Nabokovljeva 1a",
@@ -24,7 +25,8 @@
   "closed": "Closed",
   "actions": {
     "bookAppointment": "Book an appointment",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "skipIntro": "Skip"
   },
   "gallery": {
     "label": "Photo gallery",

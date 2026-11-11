@@ -1,5 +1,6 @@
 {
   "brandSubtitle": "TECHNISCHE PRÜFUNG",
+  "introSubtitle": "Technische Prüfung & Zulassung",
   "mascotAlt": "Garage Beograd Maskottchen",
   "address": {
     "street": "Nabokovljeva 1a",
@@ -24,7 +25,8 @@
   "closed": "Geschlossen",
   "actions": {
     "bookAppointment": "Termin vereinbaren",
-    "contactUs": "Kontaktieren Sie uns"
+    "contactUs": "Kontaktieren Sie uns",
+    "skipIntro": "Überspringen"
   },
   "gallery": {
     "label": "Fotogalerie",

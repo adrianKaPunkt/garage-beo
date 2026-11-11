@@ -15,7 +15,12 @@ const subtitles = [
   { id: "oneplace", animation: "cozy" },
 ] as const;
 
-export default function HeroSubtitle() {
+type HeroSubtitleProps = {
+  /** "light": weiße Schrift für den farbig wechselnden Hero-Hintergrund */
+  tone?: "dark" | "light";
+};
+
+export default function HeroSubtitle({ tone = "dark" }: HeroSubtitleProps) {
   const t = useTranslations("hero.subtitles");
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -148,7 +153,13 @@ export default function HeroSubtitle() {
 
   return (
     <div className="mb-6 lg:mb-16 -mt-6 flex h-14 w-full items-start justify-center sm:-mt-5 lg:mt-0 lg:items-center md:h-16 lg:justify-start">
-      <p className="m-0 w-full text-center text-darkgreen text-3xl font-bold sm:text-4xl md:text-5xl lg:text-left lg:text-6xl">
+      <p
+        className={`m-0 w-full text-center text-3xl font-bold sm:text-4xl md:text-5xl lg:text-left lg:text-6xl ${
+          tone === "light"
+            ? "text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]"
+            : "text-darkgreen"
+        }`}
+      >
         <span
           key={subtitle.id}
           className="inline-flex max-w-full items-baseline justify-center gap-x-1 whitespace-nowrap lg:justify-start"

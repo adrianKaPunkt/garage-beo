@@ -67,6 +67,42 @@ a {
 button {
   font: inherit;
 }
+
+/* Intro (components/intro): nur sichtbar, wenn das Skript im <head>
+   data-intro="play" gesetzt hat – ohne JavaScript nie */
+.intro-overlay {
+  display: none;
+}
+html[data-intro="play"] .intro-overlay {
+  display: block;
+  /* Notbremse: Falls das Skript der Seite nicht startet, öffnet sich das Tor
+     nach 6 s von selbst. IntroOverlay schaltet das beim Start ab. */
+  animation: intro-failsafe 0.4s ease 6s forwards;
+}
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* Buchstaben und Auto starten unsichtbar, bis GSAP sie hereinholt */
+.intro-overlay [data-part^="gar-"],
+.intro-overlay [data-part^="beo-"],
+.intro-overlay [data-intro-speed],
+.intro-overlay [data-intro-subtitle-text] {
+  opacity: 0;
+}
+.intro-overlay [data-intro-subtitle-line] {
+  transform: scaleX(0);
+}
+/* Das Auto im Hero wartet unsichtbar, bis das Intro-Auto dort ankommt */
+html[data-intro="play"]:has(.intro-overlay) [data-intro-car-target] {
+  visibility: hidden;
+}
+/* Das Header-Logo wartet, bis das Intro-Logo an seinem Platz ist */
+html[data-intro="play"]:has(.intro-overlay) [data-intro-target] {
+  opacity: 0;
+}
 svg {
   flex-shrink: 0;
 }

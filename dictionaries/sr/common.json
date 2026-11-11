@@ -1,5 +1,6 @@
 {
   "brandSubtitle": "TEHNIČKI PREGLED",
+  "introSubtitle": "Tehnički pregled i registracija",
   "mascotAlt": "Garage Beograd maskota",
   "address": {
     "street": "Nabokovljeva 1a",
@@ -24,7 +25,8 @@
   "closed": "Ne radimo",
   "actions": {
     "bookAppointment": "Zakažite termin",
-    "contactUs": "Kontaktirajte nas"
+    "contactUs": "Kontaktirajte nas",
+    "skipIntro": "Preskoči"
   },
   "gallery": {
     "label": "Galerija fotografija",

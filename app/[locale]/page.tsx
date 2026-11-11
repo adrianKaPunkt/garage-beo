@@ -32,14 +32,14 @@ export default function Home({
           <Features />
         </div>
         <div className="container mt-20 mb-10">
-          <Image
+          {/* <Image
             className="h-auto w-full"
             src="/images/building.webp"
             alt="Zgrada Garage Beograd — tehnički pregled vozila"
             width={1756}
             height={895}
             sizes="(min-width: 1280px) 1280px, 100vw"
-          />
+          /> */}
         </div>
         <About />
         <Services />

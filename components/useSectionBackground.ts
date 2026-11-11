@@ -67,6 +67,8 @@ export function useSectionBackground(
 
       for (const element of document.elementsFromPoint(width / 2, y)) {
         if (header.contains(element)) continue;
+        // Das Intro liegt nur kurz darüber; der Header richtet sich nach der Seite darunter
+        if (element.closest(".intro-overlay")) continue;
         if (element.getBoundingClientRect().width < width - 1) continue;
 
         const style = getComputedStyle(element);

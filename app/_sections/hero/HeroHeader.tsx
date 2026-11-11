@@ -12,7 +12,8 @@ gsap.registerPlugin(useGSAP, SplitText);
 // Verlauf jeweils wie der Hintergrund der passenden Services-Sektion
 // (TechnickiBackground, Registration, Insurance, FullService, Payment) – dort mitändern.
 // Reihenfolge wie die Sektionen in Services.tsx.
-const heroTitles = [
+// Auch der Hero-Hintergrund (HeroBackdrop) wechselt durch diese Verläufe.
+export const heroTitles = [
   {
     id: "inspection",
     gradient: "linear-gradient(125deg,#14283a 0%,#24455a 55%,#416878 100%)",
@@ -69,7 +70,19 @@ function applyGradient(chars: HTMLElement[], gradient: string) {
   });
 }
 
-export default function HeroHeader() {
+/** Wird bei jedem neuen Titel ausgelöst, detail: { index } (Position in heroTitles) */
+export const HERO_TITLE_EVENT = "garage:hero-title";
+
+type HeroHeaderProps = {
+  /**
+   * "gradient": Buchstaben im Verlauf der Service-Sektion (heller Hintergrund).
+   * "light": weiße Buchstaben – für den Hero, dessen Hintergrund selbst
+   * durch die Verläufe wechselt.
+   */
+  tone?: "gradient" | "light";
+};
+
+export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
   const t = useTranslations("hero");
   const [currentIndex, setCurrentIndex] = useState(0);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -79,12 +92,19 @@ export default function HeroHeader() {
     () => {
       if (!titleRef.current) return;
 
+      // Hintergrund (HeroBackdrop) wechselt gleichzeitig mit dem Titel
+      window.dispatchEvent(
+        new CustomEvent(HERO_TITLE_EVENT, { detail: { index: currentIndex } }),
+      );
+
       const split = SplitText.create(titleRef.current, {
         type: "chars",
         aria: "auto",
       });
 
-      applyGradient(split.chars as HTMLElement[], currentTitle.gradient);
+      if (tone === "gradient") {
+        applyGradient(split.chars as HTMLElement[], currentTitle.gradient);
+      }
 
       const timeline = gsap.timeline({
         onComplete: () => {
@@ -135,10 +155,10 @@ export default function HeroHeader() {
         key={currentTitle.id}
         ref={titleRef}
         id="hero-title"
-        className="
+        className={`
         w-full
         font-extrabold
-        text-gray-900
+        ${tone === "light" ? "text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]" : "text-gray-900"}
         text-[clamp(2rem,11.5vw,3rem)]
         sm:text-[3.25rem]
         md:text-[4rem]
@@ -148,7 +168,7 @@ export default function HeroHeader() {
         tracking-tight
         text-center
         lg:text-left
-      "
+      `}
       >
         {t(`titles.${currentTitle.id}`).split("\n").map((line, index) => (
           <span key={index} className="block">

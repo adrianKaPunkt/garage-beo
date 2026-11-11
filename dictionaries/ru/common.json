@@ -1,5 +1,6 @@
 {
   "brandSubtitle": "ТЕХОСМОТР",
+  "introSubtitle": "Техосмотр и регистрация",
   "mascotAlt": "Талисман Garage Beograd",
   "address": {
     "street": "Nabokovljeva 1a",
@@ -24,7 +25,8 @@
   "closed": "Закрыто",
   "actions": {
     "bookAppointment": "Записаться",
-    "contactUs": "Связаться с нами"
+    "contactUs": "Связаться с нами",
+    "skipIntro": "Пропустить"
   },
   "gallery": {
     "label": "Фотогалерея",
