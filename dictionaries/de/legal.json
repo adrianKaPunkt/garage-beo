@@ -42,7 +42,6 @@
       "intro": "Wir verkaufen Ihre Daten nicht. Wir nutzen folgende Dienstleister:",
       "hosting": "<strong>Hosting der Website:</strong> <provider></provider>, verarbeitet die technischen Daten des Besuchs.",
       "resend": "<strong>Resend (USA):</strong> stellt uns die Nachrichten aus dem Kontaktformular per E-Mail zu.",
-      "fonts": "<strong>Google Fonts (Google):</strong> Die Website lädt Schriftarten von Google-Servern, dabei wird Ihre IP-Adresse an Google übermittelt.",
       "abroad": "Diese Dienstleister können Daten außerhalb der Republik Serbien verarbeiten, auch in den USA."
     },
     "map": {
@@ -81,6 +80,7 @@
       "text": "Die Unternehmensdaten sind im Register der serbischen Agentur für Wirtschaftsregister (APR) eingetragen: <link>www.apr.gov.rs</link>."
     },
     "license": "Zulassung als Prüfstelle",
+    "licenseText": "Die technische Fahrzeugprüfung führen wir auf Grundlage einer Ermächtigung des Innenministeriums der Republik Serbien durch.",
     "copyright": {
       "title": "Urheberrecht",
       "text": "Die Inhalte dieser Website, einschließlich Texte, Fotos und Illustrationen, sind urheberrechtlich geschützt. Eine Nutzung ohne Zustimmung ist nicht gestattet.",

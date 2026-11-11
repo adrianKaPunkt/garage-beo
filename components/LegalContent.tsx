@@ -116,7 +116,6 @@ export function PrivacyPolicy() {
             })}
           </li>
           <li>{t.rich("recipients.resend", { strong })}</li>
-          <li>{t.rich("recipients.fonts", { strong })}</li>
         </List>
         <p>{t("recipients.abroad")}</p>
       </Section>
@@ -210,9 +209,14 @@ export function LegalNotice() {
       </Section>
 
       <Section title={t("imprint.license")}>
-        <p className="mb-0">
-          <Value field="inspectionLicense" />
-        </p>
+        <p className="mb-0">{t("imprint.licenseText")}</p>
+        {/* Nummer und Datum des Rešenje erscheinen, sobald sie in
+            site.legal.inspectionLicense eingetragen sind */}
+        {legal.inspectionLicense && (
+          <p className="mt-2 mb-0">
+            {t("fields.inspectionLicense")}: {legal.inspectionLicense}
+          </p>
+        )}
       </Section>
 
       <Section title={t("imprint.copyright.title")}>

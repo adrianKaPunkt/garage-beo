@@ -42,7 +42,6 @@
       "intro": "Vaše podatke ne prodajemo. Koristimo sledeće pružaoce usluga:",
       "hosting": "<strong>Hosting sajta:</strong> <provider></provider>, obrađuje tehničke podatke o poseti.",
       "resend": "<strong>Resend (SAD):</strong> dostavlja nam poruke iz kontakt formulara e-mailom.",
-      "fonts": "<strong>Google Fonts (Google):</strong> sajt učitava fontove sa Google servera, pri čemu se vaša IP adresa prenosi Google-u.",
       "abroad": "Ovi pružaoci mogu obrađivati podatke van Republike Srbije, uključujući SAD."
     },
     "map": {
@@ -81,6 +80,7 @@
       "text": "Podaci o privrednom subjektu vode se u registru Agencije za privredne registre (APR): <link>www.apr.gov.rs</link>."
     },
     "license": "Ovlašćenje za tehnički pregled",
+    "licenseText": "Tehnički pregled vozila obavljamo na osnovu ovlašćenja Ministarstva unutrašnjih poslova Republike Srbije.",
     "copyright": {
       "title": "Autorska prava",
       "text": "Sadržaj ovog sajta, uključujući tekstove, fotografije i ilustracije, zaštićen je autorskim pravom. Korišćenje bez saglasnosti nije dozvoljeno.",

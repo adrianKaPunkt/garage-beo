@@ -87,13 +87,14 @@ export const site = {
   // Pravni podaci: Leere Felder erscheinen im Modal als [DOPUNITI: ...]
   legal: {
     // Datum im Format JJJJ-MM-TT, wird pro Sprache formatiert
-    lastUpdated: "2026-11-06",
-    companyName: "",
-    legalForm: "",
-    representative: "",
-    taxNumber: "",
-    registrationNumber: "",
-    activityCode: "",
+    lastUpdated: "2026-11-11",
+    // Wie im Register der APR eingetragen
+    companyName: "AUTOCENTAR S&K DOO BEOGRAD-ZVEZDARA",
+    legalForm: "Društvo sa ograničenom odgovornošću (DOO)",
+    representative: "Anđela Jasnić",
+    taxNumber: "109025476",
+    registrationNumber: "21113697",
+    activityCode: "7120 – Tehničko ispitivanje i analize",
     inspectionLicense: "",
     hostingProvider: "",
     retentionPeriod: "",

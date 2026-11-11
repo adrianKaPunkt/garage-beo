@@ -42,7 +42,6 @@
       "intro": "We do not sell your data. We use the following service providers:",
       "hosting": "<strong>Website hosting:</strong> <provider></provider>, processes technical data about visits.",
       "resend": "<strong>Resend (USA):</strong> delivers messages from the contact form to us by email.",
-      "fonts": "<strong>Google Fonts (Google):</strong> the website loads fonts from Google servers, which transmits your IP address to Google.",
       "abroad": "These providers may process data outside the Republic of Serbia, including in the USA."
     },
     "map": {
@@ -81,6 +80,7 @@
       "text": "The company details are recorded in the register of the Serbian Business Registers Agency (APR): <link>www.apr.gov.rs</link>."
     },
     "license": "Vehicle inspection licence",
+    "licenseText": "We carry out vehicle technical inspections under an authorisation issued by the Ministry of the Interior of the Republic of Serbia.",
     "copyright": {
       "title": "Copyright",
       "text": "The content of this website, including texts, photos and illustrations, is protected by copyright. Use without permission is not allowed.",
