@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 
 const { legal } = site;
 

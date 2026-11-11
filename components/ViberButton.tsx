@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 
 // Viber-Lila
 const VIBER_PURPLE = "#7360f2";

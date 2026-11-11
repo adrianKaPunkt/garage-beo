@@ -12,7 +12,7 @@ Responsive Website auf Basis des gemeinsam erarbeiteten Entwurfs. **Alle Fotos d
 
 ## Das kannst du selbst ändern
 
-- **Texte, Kontakt, Öffnungszeiten, Buchungslink:** `app/site-config.ts` und `app/page.tsx`
+- **Texte, Kontakt, Öffnungszeiten, Buchungslink:** `lib/site-config.ts` und `app/page.tsx`
 - **Farben, Abstände, Layout, Mobilansicht:** `app/globals.css`
 - **Menü:** `components/Header.tsx`
 - **Bilder:** `public/images/`
@@ -20,7 +20,7 @@ Responsive Website auf Basis des gemeinsam erarbeiteten Entwurfs. **Alle Fotos d
 
 ## WICHTIG vor Veröffentlichung
 
-- Die **Telefonnummer, E-Mail, Anschrift und der Buchungslink sind nicht hinterlegt** – in `app/site-config.ts` echte Angaben einsetzen. Bis dahin führen die Buchungs-Buttons zum Kontaktbereich.
+- Die **Telefonnummer, E-Mail, Anschrift und der Buchungslink sind nicht hinterlegt** – in `lib/site-config.ts` echte Angaben einsetzen. Bis dahin führen die Buchungs-Buttons zum Kontaktbereich.
 - **Öffnungszeiten sind unbestätigt** und müssen mit dem Betreiber abgeglichen werden.
 - Die Texte zu den Leistungen sind beispielhaft und dürfen erst nach sachlicher Freigabe veröffentlicht werden.
 - Die Website zeigt absichtlich **keine erfundenen Kundenzahlen, Zertifikate oder Bewertungen**.

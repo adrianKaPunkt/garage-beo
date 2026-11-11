@@ -1,7 +1,7 @@
 "use server";
 
 import { getTranslations } from "next-intl/server";
-import { contactTopics, site, type ContactTopic } from "@/app/site-config";
+import { contactTopics, site, type ContactTopic } from "@/lib/site-config";
 import {
   MAX_MESSAGE_LENGTH,
   MAX_NAME_LENGTH,

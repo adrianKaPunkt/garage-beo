@@ -1,5 +1,5 @@
 import { useFormatter, useTranslations } from "next-intl";
-import { DAY_KEYS, WEEK_ORDER, site, navLinks } from "@/app/site-config";
+import { DAY_KEYS, WEEK_ORDER, site, navLinks } from "@/lib/site-config";
 import { socialLinks } from "@/components/socialLinks";
 import LegalModal from "@/components/LegalModal";
 import GarageBeogradLogo from "./GarageBeogradLogo";

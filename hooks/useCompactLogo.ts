@@ -4,7 +4,7 @@ import type { RefObject } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { onIntroDone } from "@/components/intro/introState";
-import { LOGO_MONOGRAM, LOGO_VIEWBOX } from "./GarageBeogradLogo";
+import { LOGO_MONOGRAM, LOGO_VIEWBOX } from "@/components/GarageBeogradLogo";
 
 // Unterhalb von lg (wie das mobile Menü im Header)
 const MOBILE = "(max-width: 1023.98px)";

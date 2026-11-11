@@ -1,8 +1,8 @@
 import { getLocale } from "next-intl/server";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 import type { Locale } from "@/i18n/routing";
 import GoogleRatingBadge from "./GoogleRatingBadge";
-import { getGoogleRating } from "./googleRating";
+import { getGoogleRating } from "@/lib/google/rating";
 
 /**
  * Google-Badge mittig auf der Kante zwischen Payment und Testimonials.

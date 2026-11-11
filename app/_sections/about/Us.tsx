@@ -3,7 +3,7 @@ import VideoPreview from "@/components/VideoPreview";
 import { useTranslations } from "next-intl";
 import localFont from "next/font/local";
 import { Instagram } from "lucide-react";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 import { TikTok } from "@/components/socialLinks";
 
 // Handschriftliche Schrift nur für die Sätze neben dem Video

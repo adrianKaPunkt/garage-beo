@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 import { Facebook, Instagram, MapPin, Youtube } from "lucide-react";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 
 // TikTok ist nicht in lucide-react enthalten.
 export function TikTok({

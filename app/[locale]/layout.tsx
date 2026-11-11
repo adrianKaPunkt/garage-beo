@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import StructuredData from "@/components/StructuredData";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 import {
   htmlLang,
   localePath,

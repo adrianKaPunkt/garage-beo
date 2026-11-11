@@ -5,7 +5,7 @@ import { useFormStatus } from "react-dom";
 import { CircleAlert, CircleCheck, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
-import { contactTopics, site } from "@/app/site-config";
+import { contactTopics, site } from "@/lib/site-config";
 import { MAX_MESSAGE_LENGTH, MIN_MESSAGE_LENGTH } from "./limits";
 import {
   sendContactMessage,

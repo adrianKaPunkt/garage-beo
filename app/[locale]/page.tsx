@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Services from "@/app/_sections/services/Services";
 import About from "@/app/_sections/about/About";
 import Contact from "@/app/_sections/contact/Contact";
-import { getOpeningHours } from "@/app/_sections/contact/openingHours";
+import { getOpeningHours } from "@/lib/google/openingHours";
 import Testimonials from "@/app/_sections/testimonials/Testimonials";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";

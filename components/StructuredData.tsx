@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { contactTopics, site } from "@/app/site-config";
+import { contactTopics, site } from "@/lib/site-config";
 import { htmlLang, localePath } from "@/i18n/routing";
 
 // Index wie bei days in site.hours: 0 = Sonntag ... 6 = Samstag

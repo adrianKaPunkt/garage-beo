@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Clock3, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
-import { DAY_KEYS, WEEK_ORDER, site } from "@/app/site-config";
-import type { OpeningHours, Period } from "./openingHours";
+import { DAY_KEYS, WEEK_ORDER, site } from "@/lib/site-config";
+import type { OpeningHours, Period } from "@/lib/google/openingHours";
 import ContactForm from "./ContactForm";
 
 // Aktuelle Zeit in Belgrad, unabhängig von der Zeitzone des Besuchers

@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { DAY_KEYS, WEEK_ORDER, navLinks, site } from "@/app/site-config";
+import { DAY_KEYS, WEEK_ORDER, navLinks, site } from "@/lib/site-config";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { activeSocialLinks } from "@/components/socialLinks";
-import { useSectionBackground } from "@/components/useSectionBackground";
+import { useSectionBackground } from "@/hooks/useSectionBackground";
 import GarageBeogradLogo from "./GarageBeogradLogo";
-import { useCompactLogo } from "./useCompactLogo";
+import { useCompactLogo } from "@/hooks/useCompactLogo";
 
 // Anrufen, Menü und Sprache: gleicher Stil, auf dunklen Sektionen hell
 const buttonTheme = (dark: boolean) =>

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/app/site-config";
+import { site } from "@/lib/site-config";
 import { htmlLang, localePath, routing } from "@/i18n/routing";
 
 // Jede Fassung als eigener Eintrag, jeweils mit Verweis auf die anderen

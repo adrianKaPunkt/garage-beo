@@ -1,5 +1,5 @@
-import { site } from "@/app/site-config";
-import { getPlaceDetails, type PlacePeriod } from "@/app/google-place";
+import { site } from "@/lib/site-config";
+import { getPlaceDetails, type PlacePeriod } from "./place";
 
 // Zeitraum in Minuten ab Mitternacht, closes = 1440 bedeutet 24:00
 export interface Period {

@@ -1,5 +1,5 @@
-import { site } from "@/app/site-config";
-import { getPlaceDetails } from "@/app/google-place";
+import { site } from "@/lib/site-config";
+import { getPlaceDetails } from "./place";
 
 export interface GoogleRating {
   rating: number;
