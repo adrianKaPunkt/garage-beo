@@ -26,7 +26,8 @@
   "actions": {
     "bookAppointment": "Записаться",
     "contactUs": "Связаться с нами",
-    "skipIntro": "Пропустить"
+    "skipIntro": "Пропустить",
+    "viber": "Напишите нам в Viber"
   },
   "gallery": {
     "label": "Фотогалерея",

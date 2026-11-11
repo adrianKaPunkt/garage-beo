@@ -26,7 +26,8 @@
   "actions": {
     "bookAppointment": "Termin vereinbaren",
     "contactUs": "Kontaktieren Sie uns",
-    "skipIntro": "Überspringen"
+    "skipIntro": "Überspringen",
+    "viber": "Schreiben Sie uns auf Viber"
   },
   "gallery": {
     "label": "Fotogalerie",

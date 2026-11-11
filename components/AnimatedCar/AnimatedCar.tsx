@@ -4,11 +4,17 @@ import styles from "./AnimatedCar.module.css";
 type AnimatedCarProps = {
   animated?: boolean;
   sizes?: string;
+  /**
+   * Bilder mit Vorrang laden (vorladen, nicht erst beim Hinscrollen).
+   * Für das Auto im Hero: Es ist oft das größte Element beim Laden.
+   */
+  priority?: boolean;
 };
 
 export default function AnimatedCar({
   animated = true,
   sizes = "240px",
+  priority = false,
 }: AnimatedCarProps) {
   return (
     <div className={`relative aspect-square ${styles.car}`}>
@@ -19,6 +25,7 @@ export default function AnimatedCar({
         aria-hidden="true"
         fill
         sizes={sizes}
+        priority={priority}
         className={`${styles.arm} ${animated ? styles.waving : ""}`}
       />
 
@@ -27,6 +34,7 @@ export default function AnimatedCar({
         alt="Garage Beograd"
         fill
         sizes={sizes}
+        priority={priority}
         className={styles.body}
       />
 
@@ -36,6 +44,7 @@ export default function AnimatedCar({
         aria-hidden="true"
         fill
         sizes={sizes}
+        priority={priority}
         className={`${styles.eye} ${animated ? styles.blinking : ""}`}
       />
 
@@ -45,6 +54,7 @@ export default function AnimatedCar({
         aria-hidden="true"
         fill
         sizes={sizes}
+        priority={priority}
         className={styles.thumb}
       />
     </div>

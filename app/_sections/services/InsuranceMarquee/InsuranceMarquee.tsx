@@ -67,6 +67,9 @@ export default function InsuranceMarquee() {
                         : "[filter:grayscale(1)_invert(1)_brightness(1.4)]",
                     ].join(" ")}
                     decoding="async"
+                    // Erst laden, wenn das Laufband in die Nähe kommt
+                    // (sonst lädt React die Logos schon beim Seitenaufruf vor)
+                    loading="lazy"
                   />
                 </li>
               ))}

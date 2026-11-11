@@ -11,8 +11,26 @@ import {
   routing,
   type Locale,
 } from "@/i18n/routing";
+import { DM_Sans, Manrope } from "next/font/google";
 import { INTRO_GATE_SCRIPT } from "@/components/intro/introState";
 import "../globals.css";
+
+// Schriften über next/font: beim Build geladen, vom eigenen Server ausgeliefert
+// und vorgeladen (vorher per @import von Google, das blockierte das erste Anzeigen).
+// DM Sans gibt es bei Google nur für lateinische Schrift; kyrillischer Text
+// fällt wie bisher auf Arial zurück. Manrope hat kyrillische Zeichen.
+const dmSans = DM_Sans({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+const manrope = Manrope({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 type Props = {
   children: React.ReactNode;
@@ -84,7 +102,11 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     // suppressHydrationWarning: das Intro-Skript setzt data-intro vor React
-    <html lang={htmlLang[locale]} suppressHydrationWarning>
+    <html
+      lang={htmlLang[locale]}
+      className={`${dmSans.variable} ${manrope.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* Entscheidet vor dem ersten Zeichnen, ob das Intro läuft */}
         <script dangerouslySetInnerHTML={{ __html: INTRO_GATE_SCRIPT }} />

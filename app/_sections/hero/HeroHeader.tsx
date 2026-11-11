@@ -103,6 +103,7 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
   const t = useTranslations("hero");
   const [currentIndex, setCurrentIndex] = useState(0);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const isFirstTitle = useRef(true);
   const currentTitle = heroTitles[currentIndex];
 
   useGSAP(
@@ -131,13 +132,20 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
         },
       });
 
-      // Buchstaben sanft nacheinander einblenden
-      timeline.from(split.chars, {
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.045,
-        ease: "power2.out",
-      });
+      // Buchstaben sanft nacheinander einblenden – außer beim allerersten
+      // Titel: Der steht sofort da, damit er schon beim ersten Anzeigen
+      // sichtbar ist (zählt für Googles „Largest Contentful Paint“; beim
+      // Intro liegt er ohnehin noch unter dem Rolltor)
+      if (isFirstTitle.current) {
+        isFirstTitle.current = false;
+      } else {
+        timeline.from(split.chars, {
+          opacity: 0,
+          duration: 1.2,
+          stagger: 0.045,
+          ease: "power2.out",
+        });
+      }
 
       // Überschrift ruhig stehen lassen
       timeline.to({}, { duration: 8 });

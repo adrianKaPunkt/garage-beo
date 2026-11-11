@@ -105,6 +105,7 @@ const Hero = () => {
               <CarHop>
                 <AnimatedCar
                   animated={true}
+                  priority
                   sizes="(max-width: 700px) 280px, (max-width: 1000px) 40vw, 460px"
                 />
               </CarHop>

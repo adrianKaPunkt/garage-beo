@@ -122,6 +122,8 @@ export default function Footer() {
                 ) : (
                   <span
                     key={label}
+                    // role="img": ein aria-label ist auf einem bloßen <span> nicht erlaubt
+                    role="img"
                     aria-label={t("notLinked", { label })}
                     title={t("notLinked", { label })}
                     className="flex h-11 w-11 items-center justify-center text-gray-500"
@@ -144,13 +146,13 @@ export default function Footer() {
           <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center text-center sm:justify-start">
             <a
               href="#politika-privatnosti"
-              className="hover:text-lime-300 hover:underline visited:text-gray-400"
+              className="text-[#c9d6ce] hover:text-lime-300 hover:underline visited:text-gray-400"
             >
               {t("privacy")}
             </a>
             <a
               href="#impresum"
-              className="hover:text-lime-300 hover:underline visited:text-gray-400"
+              className="text-[#c9d6ce] hover:text-lime-300 hover:underline visited:text-gray-400"
             >
               {t("imprint")}
             </a>

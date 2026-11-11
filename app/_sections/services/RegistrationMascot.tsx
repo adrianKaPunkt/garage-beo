@@ -39,7 +39,7 @@ const RegistrationMascot = ({ className = "" }: RegistrationMascotProps) => {
         src="/images/services/registration-body.webp"
         alt=""
         fill
-        priority
+        // Kein priority: liegt weit unten, Vorladen würde dem Hero Bandbreite nehmen
         sizes="(max-width: 768px) 70vw, 640px"
         className="pointer-events-none select-none object-contain"
       />

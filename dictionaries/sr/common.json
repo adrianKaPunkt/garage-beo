@@ -26,7 +26,8 @@
   "actions": {
     "bookAppointment": "Zakažite termin",
     "contactUs": "Kontaktirajte nas",
-    "skipIntro": "Preskoči"
+    "skipIntro": "Preskoči",
+    "viber": "Pišite nam na Viberu"
   },
   "gallery": {
     "label": "Galerija fotografija",

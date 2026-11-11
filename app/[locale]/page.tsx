@@ -12,6 +12,7 @@ import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import GoogleRatingLink from "@/app/_sections/testimonials/GoogleRatingLink";
 import ImageGallery from "@/components/ImageGallery";
+import ViberButton from "@/components/ViberButton";
 
 const location = [
   {
@@ -66,6 +67,8 @@ export default function Home({
       </main>
       <Footer />
       <ScrollReveal />
+      {/* Schwebender Viber-Button unten rechts */}
+      <ViberButton />
     </>
   );
 }

@@ -67,7 +67,8 @@ export default function LanguageSwitcher({
     <div ref={containerRef} className="relative">
       <button
         type="button"
-        aria-label={`${t("language")}: ${languages[locale].name}`}
+        // Sichtbares Kürzel zuerst, damit Sprachsteuerung („SR anklicken“) funktioniert
+        aria-label={`${languages[locale].short} – ${t("language")}: ${languages[locale].name}`}
         aria-expanded={open}
         aria-controls="language-menu"
         onClick={() => setOpen((value) => !value)}

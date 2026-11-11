@@ -63,6 +63,9 @@ export const site = {
   // Live-Domain: Basis für Canonical, Sitemap und Vorschaubilder
   url: "https://garagebeograd.rs",
   phone: "+381 64 1260935",
+  // Viber-Nummer für den schwebenden Button (components/ViberButton.tsx);
+  // leer lassen, um den Button auszublenden
+  viber: "+381 64 1260935",
   email: "info@garagebeograd.rs",
   address: `${addressParts.street}, ${addressParts.postalCode} ${addressParts.city}, ${addressParts.country}`,
   addressParts,
