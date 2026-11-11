@@ -11,6 +11,18 @@ import Testimonials from "@/app/_sections/testimonials/Testimonials";
 import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import GoogleRatingLink from "@/app/_sections/testimonials/GoogleRatingLink";
+import ImageGallery from "@/components/ImageGallery";
+
+const location = [
+  {
+    src: "/images/street03.jpeg",
+    alt: "Garage Beograd — ulaz u garažu sa ulice",
+  },
+  {
+    src: "/images/street01.jpeg",
+    alt: "Garage Beograd — ulaz u garažu sa ulice",
+  },
+];
 
 export default function Home({
   params,
@@ -40,6 +52,11 @@ export default function Home({
             height={895}
             sizes="(min-width: 1280px) 1280px, 100vw"
           />
+          {/* Wie die Galerien im About-Bereich: große runde Bilder,
+              zentriert, blendet beim Scrollen ein */}
+          <div data-reveal className="mt-10 flex justify-center lg:mt-20">
+            <ImageGallery images={location} size="xl" gap="lg" />
+          </div>
         </div>
         <About />
         <Services />
