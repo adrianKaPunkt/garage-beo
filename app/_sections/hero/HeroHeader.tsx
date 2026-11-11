@@ -139,6 +139,12 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
     { dependencies: [currentIndex], revertOnUpdate: true },
   );
 
+  const lines = t(`titles.${currentTitle.id}`).split("\n");
+  const longestLine = Math.max(...lines.map((line) => line.length));
+  // Durchschnittliche Breite eines Großbuchstabens in em (DM Sans, extrabold,
+  // tracking-tight); kyrillische Buchstaben (Ж, Ш, Ю …) sind breiter
+  const letterWidth = /[Ѐ-ӿ]/.test(lines.join("")) ? 0.8 : 0.72;
+
   return (
     <div
       className="
@@ -149,6 +155,7 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
       lg:items-center
       justify-center
       lg:justify-start
+      [container-type:inline-size]
     "
     >
       <h1
@@ -159,19 +166,24 @@ export default function HeroHeader({ tone = "gradient" }: HeroHeaderProps) {
         w-full
         font-extrabold
         ${tone === "light" ? "text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.25)]" : "text-gray-900"}
-        text-[clamp(2rem,11.5vw,3rem)]
-        sm:text-[3.25rem]
-        md:text-[4rem]
-        lg:text-[5rem]
-        xl:text-[6rem]
+        [--title-max:clamp(2rem,11.5vw,3rem)]
+        sm:[--title-max:3.25rem]
+        md:[--title-max:4rem]
+        lg:[--title-max:5rem]
+        xl:[--title-max:6rem]
         leading-none
         tracking-tight
         text-center
         lg:text-left
       `}
+        style={{
+          // Höchstens die Größe der Stufe, aber nur so groß, dass die längste
+          // Zeile in die Spalte passt. So bricht kein Wort mitten durch.
+          fontSize: `min(var(--title-max), calc(100cqi / ${(longestLine * letterWidth).toFixed(2)}))`,
+        }}
       >
-        {t(`titles.${currentTitle.id}`).split("\n").map((line, index) => (
-          <span key={index} className="block">
+        {lines.map((line, index) => (
+          <span key={index} className="block whitespace-nowrap">
             {line}
           </span>
         ))}

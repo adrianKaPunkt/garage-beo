@@ -10,6 +10,7 @@
     "fast": { "text": "SCHNELL", "suffix": "" },
     "clear": { "text": "KLAR", "suffix": "" },
     "simple": { "text": "EINFACH", "suffix": "" },
+    "home": { "text": "WIE ZU HAUSE", "suffix": "" },
     "oneplace": { "text": "ALLES AN EINEM ORT", "suffix": "" }
   }
 }

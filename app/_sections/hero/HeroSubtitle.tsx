@@ -12,6 +12,7 @@ const subtitles = [
   { id: "fast", animation: "shake" },
   { id: "clear", animation: "clarity" },
   { id: "simple", animation: "simple" },
+  { id: "home", animation: "warm" },
   { id: "oneplace", animation: "cozy" },
 ] as const;
 
@@ -105,6 +106,31 @@ export default function HeroSubtitle({ tone = "dark" }: HeroSubtitleProps) {
               ease: "power3.out",
             },
           );
+          break;
+
+        case "warm":
+          // KAO KOD KUĆE wippt freundlich herein, wie ein herzliches Nicken
+          tl.fromTo(
+            text,
+            { opacity: 0, y: 18, scale: 0.9, rotation: -4 },
+            {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              rotation: 0,
+              duration: 0.6,
+              ease: "back.out(2)",
+            },
+          );
+
+          tl.to(text, {
+            keyframes: [
+              { rotation: 2, duration: 0.18, ease: "sine.inOut" },
+              { rotation: -1.5, duration: 0.18, ease: "sine.inOut" },
+              { rotation: 0, duration: 0.25, ease: "sine.out" },
+            ],
+            transformOrigin: "50% 100%",
+          });
           break;
 
         case "cozy":

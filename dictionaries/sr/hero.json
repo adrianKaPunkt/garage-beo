@@ -10,6 +10,7 @@
     "fast": { "text": "BRZO", "suffix": "BRE" },
     "clear": { "text": "JASNO", "suffix": "" },
     "simple": { "text": "JEDNOSTAVNO", "suffix": "" },
+    "home": { "text": "KAO KOD KUĆE", "suffix": "" },
     "oneplace": { "text": "SVE NA JEDNOM MESTU", "suffix": "" }
   }
 }

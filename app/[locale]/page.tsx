@@ -3,7 +3,6 @@ import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import Header from "@/components/Header";
 import Hero from "@/app/_sections/hero/Hero";
-import Features from "@/app/_sections/Features";
 import Footer from "@/components/Footer";
 import Services from "@/app/_sections/services/Services";
 import About from "@/app/_sections/about/About";
@@ -26,20 +25,21 @@ export default function Home({
     <>
       <Header />
       <main>
-        {/* Desktop: Hero + Features füllen zusammen den Bildschirm unter dem Header (lg:h-24) */}
+        {/* Desktop: Der Hero füllt den Bildschirm unter dem Header (lg:h-24).
+            Features (app/_sections/Features.tsx) ist vorerst ausgeblendet;
+            „Ljubazan pristup“ steckt jetzt als „Kao kod kuće“ im Hero-Untertitel. */}
         <div className="lg:flex lg:min-h-[calc(100svh-6rem)] lg:flex-col">
           <Hero />
-          <Features />
         </div>
         <div className="container mt-20 mb-10">
-          {/* <Image
+          <Image
             className="h-auto w-full"
             src="/images/building.webp"
             alt="Zgrada Garage Beograd — tehnički pregled vozila"
             width={1756}
             height={895}
             sizes="(min-width: 1280px) 1280px, 100vw"
-          /> */}
+          />
         </div>
         <About />
         <Services />
