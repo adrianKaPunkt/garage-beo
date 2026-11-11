@@ -1,0 +1,33 @@
+{
+  "eyebrow": "GOT A QUESTION?",
+  "titleFirst": "FREQUENTLY ASKED ",
+  "titleSecond": "QUESTIONS",
+  "intro": "Answers to the questions our customers ask us most often.",
+  "items": {
+    "onePlace": {
+      "question": "Can I take care of everything in one place?",
+      "answer": "Yes. With us you can get your vehicle inspection, vehicle registration, insurance and bill payments via PaySpot done – all at one address, without going from counter to counter."
+    },
+    "appointment": {
+      "question": "Do I need to book an appointment?",
+      "answer": "No, you don’t need an appointment – just drop by during our opening hours. If you have questions before you come, call us or message us on Viber. You can find our hours in the <hours>Opening hours</hours> section."
+    },
+    "documents": {
+      "question": "Which documents do I need for vehicle registration?",
+      "answer": "As a rule you need the vehicle registration certificate, your ID card or, for companies, a business register extract, the compulsory insurance policy and proof of paid vehicle tax. Before you come, we are happy to tell you exactly what your vehicle requires."
+    },
+    "duration": {
+      "question": "How long does the vehicle inspection take?",
+      "answer": "It depends on the type of vehicle. While we carry out the inspection, you can relax with a coffee in our outdoor corner."
+    },
+    "insurance": {
+      "question": "Which insurance companies do you work with?",
+      "answer": "We work with Serbia's leading insurers, including Dunav, DDOR, Generali, Triglav, Wiener Städtische, Sava, Uniqa, Grawe, AMS, Milenijum and Globos. We will help you choose the right policy."
+    },
+    "fullService": {
+      "question": "What if I don't have time to come in person?",
+      "answer": "We can pick up your vehicle at an agreed address, complete the whole procedure and bring it back to you afterwards."
+    }
+  },
+  "more": "Didn't find an answer? <contact>Contact us</contact> – we are happy to help."
+}

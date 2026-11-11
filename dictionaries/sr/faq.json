@@ -1,0 +1,33 @@
+{
+  "eyebrow": "IMATE PITANJE?",
+  "titleFirst": "ČESTA ",
+  "titleSecond": "PITANJA",
+  "intro": "Odgovori na pitanja koja nam klijenti najčešće postavljaju.",
+  "items": {
+    "onePlace": {
+      "question": "Da li kod vas mogu sve da završim na jednom mestu?",
+      "answer": "Da. Kod nas možete obaviti tehnički pregled, registraciju vozila, osiguranje i plaćanje računa preko PaySpot usluge – sve na jednoj adresi, bez obilaženja više šaltera."
+    },
+    "appointment": {
+      "question": "Da li je potrebno zakazati termin?",
+      "answer": "Ne, termin nije potreban – možete doći bez zakazivanja u toku radnog vremena. Ako imate pitanja pre dolaska, pozovite nas ili nam pišite na Viber. Radno vreme pogledajte u odeljku <hours>Radno vreme</hours>."
+    },
+    "documents": {
+      "question": "Koja dokumenta su potrebna za registraciju vozila?",
+      "answer": "Po pravilu su potrebni saobraćajna dozvola, lična karta ili izvod iz registra za firme, polisa obaveznog osiguranja i dokaz o plaćenom porezu na upotrebu vozila. Pre dolaska vam rado kažemo šta je tačno potrebno za vaše vozilo."
+    },
+    "duration": {
+      "question": "Koliko traje tehnički pregled?",
+      "answer": "Trajanje zavisi od vrste vozila. Dok mi završavamo pregled, možete se opustiti uz kafu u našem kutku na otvorenom."
+    },
+    "insurance": {
+      "question": "Sa kojim osiguravajućim kućama sarađujete?",
+      "answer": "Sarađujemo sa vodećim osiguravajućim kućama u Srbiji, među kojima su Dunav, DDOR, Generali, Triglav, Wiener Städtische, Sava, Uniqa, Grawe, AMS, Milenijum i Globos. Pomoći ćemo vam da izaberete odgovarajuću polisu."
+    },
+    "fullService": {
+      "question": "Šta ako nemam vremena da dođem lično?",
+      "answer": "Možemo preuzeti vaše vozilo na dogovorenoj adresi, završiti celu proceduru i vratiti vam ga nakon završene usluge."
+    }
+  },
+  "more": "Niste pronašli odgovor? <contact>Kontaktirajte nas</contact> – rado ćemo vam pomoći."
+}

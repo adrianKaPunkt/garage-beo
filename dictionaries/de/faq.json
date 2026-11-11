@@ -1,0 +1,33 @@
+{
+  "eyebrow": "SIE HABEN EINE FRAGE?",
+  "titleFirst": "HÄUFIGE ",
+  "titleSecond": "FRAGEN",
+  "intro": "Antworten auf die Fragen, die uns Kunden am häufigsten stellen.",
+  "items": {
+    "onePlace": {
+      "question": "Kann ich bei Ihnen alles an einem Ort erledigen?",
+      "answer": "Ja. Bei uns erledigen Sie die technische Prüfung, die Fahrzeugzulassung, die Versicherung und das Bezahlen von Rechnungen über PaySpot – alles an einer Adresse, ohne von Schalter zu Schalter zu laufen."
+    },
+    "appointment": {
+      "question": "Muss ich einen Termin vereinbaren?",
+      "answer": "Nein, ein Termin ist nicht nötig – Sie können während der Öffnungszeiten einfach vorbeikommen. Wenn Sie vorher Fragen haben, rufen Sie uns an oder schreiben Sie uns auf Viber. Die Öffnungszeiten finden Sie im Bereich <hours>Öffnungszeiten</hours>."
+    },
+    "documents": {
+      "question": "Welche Unterlagen brauche ich für die Zulassung?",
+      "answer": "In der Regel werden der Fahrzeugschein, der Personalausweis bzw. bei Firmen ein Registerauszug, die Police der Kfz-Haftpflichtversicherung und der Nachweis über die bezahlte Kfz-Steuer benötigt. Vor Ihrem Besuch sagen wir Ihnen gern, was genau für Ihr Fahrzeug nötig ist."
+    },
+    "duration": {
+      "question": "Wie lange dauert die technische Prüfung?",
+      "answer": "Die Dauer hängt von der Fahrzeugart ab. Während wir prüfen, können Sie sich bei einem Kaffee in unserer Ecke im Freien entspannen."
+    },
+    "insurance": {
+      "question": "Mit welchen Versicherungen arbeiten Sie zusammen?",
+      "answer": "Wir arbeiten mit den führenden Versicherungen Serbiens zusammen, darunter Dunav, DDOR, Generali, Triglav, Wiener Städtische, Sava, Uniqa, Grawe, AMS, Milenijum und Globos. Wir helfen Ihnen, die passende Police zu finden."
+    },
+    "fullService": {
+      "question": "Was, wenn ich keine Zeit habe, selbst zu kommen?",
+      "answer": "Wir können Ihr Fahrzeug an einer vereinbarten Adresse abholen, das gesamte Verfahren erledigen und es Ihnen danach zurückbringen."
+    }
+  },
+  "more": "Keine Antwort gefunden? <contact>Kontaktieren Sie uns</contact> – wir helfen Ihnen gern."
+}

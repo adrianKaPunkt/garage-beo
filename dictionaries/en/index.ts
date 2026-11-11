@@ -15,6 +15,7 @@ import contact from "./contact.json";
 import footer from "./footer.json";
 import testimonials from "./testimonials.json";
 import legal from "./legal.json";
+import faq from "./faq.json";
 
 // Typ aus sr: Fehlt hier ein Key, meldet TypeScript einen Fehler
 const messages: Messages = {
@@ -34,6 +35,7 @@ const messages: Messages = {
   footer,
   testimonials,
   legal,
+  faq,
 };
 
 export default messages;

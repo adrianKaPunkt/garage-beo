@@ -19,6 +19,7 @@ import contact from "./contact.json";
 import footer from "./footer.json";
 import testimonials from "./testimonials.json";
 import legal from "./legal.json";
+import faq from "./faq.json";
 
 const messages = {
   common,
@@ -37,6 +38,7 @@ const messages = {
   footer,
   testimonials,
   legal,
+  faq,
 };
 
 export type Messages = typeof messages;

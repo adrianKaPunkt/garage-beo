@@ -28,6 +28,12 @@ export default async function StructuredData() {
     url: new URL(localePath(locale), site.url).toString(),
     inLanguage: htmlLang[locale],
     image: `${site.url}/images/og-image.jpg`,
+    // BG-Monogramm (aus app/icon.svg erzeugt, 512 × 512)
+    logo: `${site.url}/images/logo.png`,
+    // Profile desselben Unternehmens, damit Google sie zuordnet;
+    // leere Einträge in site.social werden übersprungen
+    sameAs: Object.values(site.social).filter(Boolean),
+    hasMap: site.mapsUrl,
     telephone: site.phone.replace(/\s/g, ""),
     email: site.email,
     address: {

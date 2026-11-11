@@ -2,7 +2,7 @@ import Image from "next/image";
 import { FileCheck2, ClipboardCheck, BadgeCheck } from "lucide-react";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
-import { waveMask } from "./waveMask";
+import { waveMask } from "@/lib/waveMask";
 import RegistrationMascot from "./RegistrationMascot";
 
 // Texte in registration.points im Dictionary

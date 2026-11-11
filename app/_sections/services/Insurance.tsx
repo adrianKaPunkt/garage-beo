@@ -2,7 +2,7 @@ import InsuranceMascot from "./InsuranceMascot";
 import { ShieldCheck, Umbrella, ClipboardCheck } from "lucide-react";
 import Button from "@/components/Button";
 import { useTranslations } from "next-intl";
-import { waveMask } from "./waveMask";
+import { waveMask } from "@/lib/waveMask";
 import InsuranceMarquee from "./InsuranceMarquee/InsuranceMarquee";
 
 // Texte in insurance.points im Dictionary

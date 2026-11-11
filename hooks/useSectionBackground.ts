@@ -8,6 +8,11 @@ export interface SectionBackground {
   backgroundImage: string;
   /** true bei dunklem Hintergrund → Header-Inhalte hell darstellen */
   dark: boolean;
+  /**
+   * true, wenn die Sektion data-header="orange" trägt (z. B. die FAQ):
+   * Das orange BEOGRAD im Logo würde dort verschwinden
+   */
+  orange: boolean;
 }
 
 const COLOR_PATTERN =
@@ -102,9 +107,12 @@ export function useSectionBackground(
           // Etwas über der rechnerischen Mitte (0.18), damit kräftige Verläufe
           // wie Registracija (Rot) helle Schrift bekommen
           dark: averageLuminance < 0.3,
+          orange:
+            element.closest<HTMLElement>("[data-header]")?.dataset.header ===
+            "orange",
         };
 
-        const key = `${next.backgroundColor}|${next.backgroundImage}`;
+        const key = `${next.backgroundColor}|${next.backgroundImage}|${next.orange}`;
         if (key !== lastKey) {
           lastKey = key;
           setBackground(next);

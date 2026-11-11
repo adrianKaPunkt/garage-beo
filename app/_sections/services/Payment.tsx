@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import PaySpotLogo from "@/components/PaySpotLogo/PaySpotLogo";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { waveMask } from "./waveMask";
+import { waveMask } from "@/lib/waveMask";
 
 // Texte in payment.points im Dictionary
 const paymentPoints = [

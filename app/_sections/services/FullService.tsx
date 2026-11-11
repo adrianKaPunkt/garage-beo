@@ -2,7 +2,7 @@ import Image from "next/image";
 import { CarFront, KeyRound, House } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
-import { waveMask } from "./waveMask";
+import { waveMask } from "@/lib/waveMask";
 import FullServiceMascot from "./FullServiceMascot";
 
 // Texte in fullService.points im Dictionary

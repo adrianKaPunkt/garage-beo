@@ -1,4 +1,9 @@
-/* PaySpot logo: accent color travels clockwise around the mark */
+/* PaySpot logo: Die Akzentfarbe läuft zwei volle Runden im Uhrzeigersinn um das
+   Zeichen und bleibt dann oben rechts (ne) stehen, wie im Original-Logo.
+   Ohne data-playing (vor dem Sichtbarwerden, ohne JavaScript, bei
+   „Bewegung reduzieren“) zeigt das Logo seinen normalen Zustand. */
+
+/* Eine Runde = 2,4 s, jedes Viertel 0,6 s später */
 @keyframes payspot-rotate {
   0%,
   35%,
@@ -11,35 +16,52 @@
   }
 }
 
-.payspot-animated .payspot-ne,
-.payspot-animated .payspot-se,
-.payspot-animated .payspot-sw,
-.payspot-animated .payspot-nw {
-  fill: var(--payspot-mark);
-  animation: payspot-rotate 2.4s linear infinite;
+/* Abschluss: ne wird nach zwei Runden rot und bleibt es */
+@keyframes payspot-settle {
+  from {
+    fill: var(--payspot-mark);
+  }
+  to {
+    fill: var(--payspot-accent);
+  }
 }
 
-.payspot-animated .payspot-se {
+.payspot-animated[data-playing] .payspot-ne,
+.payspot-animated[data-playing] .payspot-se,
+.payspot-animated[data-playing] .payspot-sw,
+.payspot-animated[data-playing] .payspot-nw {
+  fill: var(--payspot-mark);
+  animation: payspot-rotate 2.4s linear 2;
+}
+
+.payspot-animated[data-playing] .payspot-se {
   animation-delay: 0.6s;
 }
 
-.payspot-animated .payspot-sw {
+.payspot-animated[data-playing] .payspot-sw {
   animation-delay: 1.2s;
 }
 
-.payspot-animated .payspot-nw {
+.payspot-animated[data-playing] .payspot-nw {
   animation-delay: 1.8s;
 }
 
+/* Beginnt, wenn die dritte Runde ne erreichen würde (2 × 2,4 s) */
+.payspot-animated[data-playing] .payspot-ne {
+  animation:
+    payspot-rotate 2.4s linear 2,
+    payspot-settle 0.24s linear 4.8s forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .payspot-animated .payspot-ne,
-  .payspot-animated .payspot-se,
-  .payspot-animated .payspot-sw,
-  .payspot-animated .payspot-nw {
+  .payspot-animated[data-playing] .payspot-ne,
+  .payspot-animated[data-playing] .payspot-se,
+  .payspot-animated[data-playing] .payspot-sw,
+  .payspot-animated[data-playing] .payspot-nw {
     animation: none;
   }
 
-  .payspot-animated .payspot-ne {
+  .payspot-animated[data-playing] .payspot-ne {
     fill: var(--payspot-accent);
   }
 }

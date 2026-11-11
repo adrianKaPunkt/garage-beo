@@ -30,6 +30,13 @@ const KEEP_LATIN = [
   "OpenStreetMap",
   "Resend",
   "ODbL",
+  // Marken mit Buchstaben ohne kyrillische Entsprechung (W, q, ä) oder Abkürzungen
+  "Viber",
+  "Wiener Städtische",
+  "Uniqa",
+  "Grawe",
+  "DDOR",
+  "AMS",
 ];
 
 const escape = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

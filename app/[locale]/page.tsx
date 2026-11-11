@@ -6,6 +6,7 @@ import Hero from "@/app/_sections/hero/Hero";
 import Footer from "@/components/Footer";
 import Services from "@/app/_sections/services/Services";
 import About from "@/app/_sections/about/About";
+import Faq from "@/app/_sections/faq/Faq";
 import Contact from "@/app/_sections/contact/Contact";
 import { getOpeningHours } from "@/lib/google/openingHours";
 import Testimonials from "@/app/_sections/testimonials/Testimonials";
@@ -68,6 +69,7 @@ export default function Home({
         <GoogleRatingLink />
         <Testimonials />
         <Contact hours={openingHours} />
+        <Faq />
       </main>
       <Footer />
       <ScrollReveal />

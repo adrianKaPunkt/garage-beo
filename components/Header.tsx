@@ -33,6 +33,8 @@ export default function Header({
   const headerRef = useRef<HTMLElement>(null);
   const sectionBackground = useSectionBackground(headerRef);
   const dark = !menuOpen && (sectionBackground?.dark ?? false);
+  // Über orangen Sektionen (FAQ): Logo dunkelgrün/weiß, aktiver Link weiß
+  const orange = !menuOpen && (sectionBackground?.orange ?? false);
 
   const logoRef = useRef<HTMLAnchorElement>(null);
   useCompactLogo(logoRef, compactLogoOnMobile);
@@ -124,9 +126,13 @@ export default function Header({
             className="h-15 w-auto"
             // Wie der frühere Schriftzug: GARAGE text-green (dunkel: lime-300), BEOGRAD text-orange
             primaryColor={
-              dark ? "var(--color-lime-300, #bbf451)" : "var(--color-green)"
+              orange
+                ? "#14332a"
+                : dark
+                  ? "var(--color-lime-300, #bbf451)"
+                  : "var(--color-green)"
             }
-            accentColor="var(--color-orange)"
+            accentColor={orange ? "#ffffff" : "var(--color-orange)"}
           />
           {/* <span className="whitespace-nowrap text-lg sm:text-2xl leading-6">
             <span
@@ -180,10 +186,10 @@ export default function Header({
     lg:border-0 lg:px-0 lg:py-0 lg:text-left
     ${
       activeSection === link.href
-        ? `text-green ${dark ? "lg:text-lime-300" : ""}`
+        ? `text-green ${dark ? "lg:text-lime-300" : ""} ${orange ? "lg:text-white" : ""}`
         : `text-gray-800 hover:text-green ${
             dark ? "lg:text-white/85 lg:hover:text-lime-300" : ""
-          }`
+          } ${orange ? "lg:text-[#14332a] lg:hover:text-white" : ""}`
     }
   `}
             >
