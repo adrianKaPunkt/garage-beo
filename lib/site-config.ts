@@ -16,7 +16,7 @@ export const navLinks = [
   { key: "about", href: "#o-nama" },
   { key: "services", href: "#usluge" },
   { key: "contact", href: "#kontakt" },
-  { key: "hours", href: "#radno-vreme" },
+  { key: "faq", href: "#pitanja" },
 ] as const;
 
 // Index wie bei days in site.hours: 0 = Sonntag ... 6 = Samstag.

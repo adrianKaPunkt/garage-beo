@@ -33,7 +33,7 @@ export default function Header({
   const headerRef = useRef<HTMLElement>(null);
   const sectionBackground = useSectionBackground(headerRef);
   const dark = !menuOpen && (sectionBackground?.dark ?? false);
-  // Über orangen Sektionen (FAQ): Logo dunkelgrün/weiß, aktiver Link weiß
+  // Über orangen Sektionen (FAQ): Logo dunkelgrün/weiß, aktiver Link pink wie die aktiven Fragen
   const orange = !menuOpen && (sectionBackground?.orange ?? false);
 
   const logoRef = useRef<HTMLAnchorElement>(null);
@@ -57,20 +57,9 @@ export default function Header({
 
       let current = sections[0];
 
+      // Die letzte Sektion, deren Anfang die Erkennungslinie erreicht hat
       for (const section of sections) {
-        const { element, rect } = section;
-
-        if (rect.top > activationPoint) continue;
-
-        // Radno vreme liegt in Kontakt: danach gilt wieder Kontakt
-        if (
-          rect.bottom <= activationPoint &&
-          current.element.contains(element)
-        ) {
-          continue;
-        }
-
-        current = section;
+        if (section.rect.top <= activationPoint) current = section;
       }
 
       if (current) setActiveSection(current.href);
@@ -186,10 +175,10 @@ export default function Header({
     lg:border-0 lg:px-0 lg:py-0 lg:text-left
     ${
       activeSection === link.href
-        ? `text-green ${dark ? "lg:text-lime-300" : ""} ${orange ? "lg:text-white" : ""}`
+        ? `text-green ${dark ? "lg:text-lime-300" : ""} ${orange ? "lg:text-[#a3115f]" : ""}`
         : `text-gray-800 hover:text-green ${
             dark ? "lg:text-white/85 lg:hover:text-lime-300" : ""
-          } ${orange ? "lg:text-[#14332a] lg:hover:text-white" : ""}`
+          } ${orange ? "lg:text-[#14332a] lg:hover:text-[#a3115f]" : ""}`
     }
   `}
             >

@@ -76,14 +76,14 @@ export default function Faq() {
       // Header zeigt das Logo hier in Dunkelgrün und Weiß (hooks/useSectionBackground.ts)
       data-header="orange"
       aria-labelledby="faq-title"
-      // Orange wie BEOGRAD im Logo, als Verlauf wie beim Kontakt. Text in
-      // Dunkelgrün (#14332a): auf diesem Orange mindestens 5,3 : 1 Kontrast,
+      // Sanftes Orange (heller als BEOGRAD im Logo), als Verlauf wie beim Kontakt. Text in
+      // Dunkelgrün (#14332a): auf diesem Orange mindestens 6,9 : 1 Kontrast,
       // Weiß wäre zu schwach und bleibt deshalb nur Schmuck
       // Sägeblatt-Kante: --wave = Höhe der Zacken, um dieselbe Höhe nach oben
       // in den Kontakt geschoben, dessen Grün zwischen den Zacken durchscheint
       className="
         relative isolate scroll-mt-24 overflow-hidden
-        bg-[linear-gradient(125deg,#f5a623_0%,#f19a2a_55%,#ec8a2c_100%)]
+        bg-[linear-gradient(125deg,#f9c46a_0%,#f7b65a_55%,#f4a94e_100%)]
         text-[#14332a]
         [--wave:16px] lg:[--wave:20px]
         -mt-4 lg:-mt-5
@@ -96,7 +96,7 @@ export default function Faq() {
         aria-hidden="true"
         className="
           pointer-events-none absolute inset-0 -z-10
-          bg-[linear-gradient(to_right,rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.14)_1px,transparent_1px)]
+          bg-[linear-gradient(to_right,rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.09)_1px,transparent_1px)]
           bg-size-[40px_40px]
         "
       />
@@ -136,12 +136,12 @@ export default function Faq() {
         </div>
 
         {/* Keine Karten: nur Linien zwischen den Fragen (und oben/unten) */}
-        <div className="mx-auto max-w-3xl border-t border-[#14332a]/20">
+        <div className="mx-auto max-w-3xl border-t border-[#14332a]/15">
           {FAQ_ITEMS.map((key) => (
             <details
               key={key}
               name="faq"
-              className="group border-b border-[#14332a]/20"
+              className="group border-b border-[#14332a]/15"
             >
               <summary
                 className="
