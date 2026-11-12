@@ -120,7 +120,7 @@ export default function Faq() {
       <div className="container">
         {/* Überschrift wie in der About-Sektion */}
         <div className="mx-auto mb-10 max-w-4xl text-center lg:mb-14">
-          <p className="mb-4 font-medium uppercase tracking-wide">
+          <p className="mb-4 font-medium uppercase tracking-wide text-green">
             {t("eyebrow")}
           </p>
           <h2
@@ -130,9 +130,9 @@ export default function Faq() {
             {/* Pink und Grün, jeweils so dunkel gewählt, dass sie auf dem
                 Orange mindestens 3 : 1 Kontrast haben (große Schrift) */}
             <span className="text-[#a3115f]">{t("titleFirst")}</span>
-            <span className="text-[#185c07]">{t("titleSecond")}</span>
+            <span className="text-lime-300">{t("titleSecond")}</span>
           </h2>
-          <span className="mx-auto mb-7 block h-1 w-16.5 rounded-xs bg-lime-300" />
+          <span className="mx-auto mb-7 block h-1 w-16.5 rounded-xs bg-green" />
           <p className="m-0 text-lg">{t("intro")}</p>
         </div>
 
@@ -147,8 +147,8 @@ export default function Faq() {
               <summary
                 className="
                   flex cursor-pointer list-none items-center justify-between gap-4
-                  py-5 text-left font-bold text-[#104204]
-                  transition-colors hover:text-[#a3115f] group-open:text-[#a3115f]
+                  py-5 text-left font-bold text-[#a3115f]
+                  transition-colors hover:text-lime-300 group-open:text-lime-300
                   sm:py-6 sm:text-lg
                   focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#14332a]
                   [&::-webkit-details-marker]:hidden
