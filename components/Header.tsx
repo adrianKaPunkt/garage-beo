@@ -8,6 +8,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { activeSocialLinks } from "@/components/socialLinks";
 import { useSectionBackground } from "@/hooks/useSectionBackground";
 import GarageBeogradLogo from "./GarageBeogradLogo";
+import GarageBeogradWordmark from "./GarageBeogradWordmark";
 import { useCompactLogo } from "@/hooks/useCompactLogo";
 
 // Anrufen, Menü und Sprache: gleicher Stil, auf dunklen Sektionen hell
@@ -217,11 +218,14 @@ export default function Header({
           <div className="mt-1 flex flex-col items-center gap-6 border-t border-gray-100 pt-6 text-center lg:hidden">
             {/* Garage Beograd */}
             <div className="flex flex-col items-center gap-2">
-              <div className="flex flex-col">
-                <span className="text-xl leading-6">
-                  <span className="font-bold text-green">GARAGE </span>
-                  <span className="text-orange">BEOGRAD</span>
-                </span>
+              <div className="flex flex-col items-center gap-1.5">
+                {/* Einzeiliges Logo, einfarbig im Grau der Menüpunkte;
+                    oben im Header steht mobil schon das farbige BG */}
+                <GarageBeogradWordmark
+                  className="h-9 w-auto text-gray-800"
+                  primaryColor="currentColor"
+                  accentColor="currentColor"
+                />
                 <span className="text-[11px] font-semibold tracking-widest text-gray-900">
                   {tCommon("brandSubtitle")}
                 </span>

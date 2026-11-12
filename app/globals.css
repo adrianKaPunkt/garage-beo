@@ -65,6 +65,14 @@ body {
 a {
   text-decoration: none;
 }
+/* Links übernehmen die Textfarbe ihrer Umgebung statt Browser-Blau/-Lila
+   (wie Tailwinds Preflight, das hier nicht geladen wird). In @layer base,
+   damit Klassen wie text-green auf einem Link weiterhin gewinnen. */
+@layer base {
+  a {
+    color: inherit;
+  }
+}
 button {
   font: inherit;
 }
