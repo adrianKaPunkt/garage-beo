@@ -33,7 +33,10 @@ const links = {
     </a>
   ),
   contact: (chunks: ReactNode) => (
-    <a href="#kontakt" className="font-bold text-[#14332a] underline!">
+    <a
+      href="#kontakt"
+      className="font-bold text-[#a3115f] underline! transition-colors hover:text-[#14332a]"
+    >
       {chunks}
     </a>
   ),
@@ -124,10 +127,12 @@ export default function Faq() {
             id="faq-title"
             className="mb-7 text-[clamp(36px,3vw,55px)] leading-[1.12] font-bold"
           >
-            {t("titleFirst")}
-            {t("titleSecond")}
+            {/* Pink und Grün, jeweils so dunkel gewählt, dass sie auf dem
+                Orange mindestens 3 : 1 Kontrast haben (große Schrift) */}
+            <span className="text-[#a3115f]">{t("titleFirst")}</span>
+            <span className="text-[#185c07]">{t("titleSecond")}</span>
           </h2>
-          <span className="mx-auto mb-7 block h-1 w-16.5 rounded-xs bg-white" />
+          <span className="mx-auto mb-7 block h-1 w-16.5 rounded-xs bg-lime-300" />
           <p className="m-0 text-lg">{t("intro")}</p>
         </div>
 
@@ -142,8 +147,8 @@ export default function Faq() {
               <summary
                 className="
                   flex cursor-pointer list-none items-center justify-between gap-4
-                  py-5 text-left font-bold
-                  transition-opacity hover:opacity-80
+                  py-5 text-left font-bold text-[#104204]
+                  transition-colors hover:text-[#a3115f] group-open:text-[#a3115f]
                   sm:py-6 sm:text-lg
                   focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#14332a]
                   [&::-webkit-details-marker]:hidden
@@ -153,6 +158,7 @@ export default function Faq() {
                 <ChevronDown
                   size={22}
                   aria-hidden="true"
+                  // Ohne eigene Farbe: übernimmt die Farbe der Frage (grün, beim Hover pink)
                   className="shrink-0 transition-transform duration-300 group-open:rotate-180 motion-reduce:transition-none"
                 />
               </summary>
@@ -163,7 +169,10 @@ export default function Faq() {
           ))}
         </div>
 
-        <p className="mt-10 mb-0 text-center">{t.rich("more", links)}</p>
+        {/* pt statt mt: globals.css setzt margin-top von p auf 0 */}
+        <p className="mb-0 pt-16 text-center lg:pt-20">
+          {t.rich("more", links)}
+        </p>
       </div>
 
       <script
