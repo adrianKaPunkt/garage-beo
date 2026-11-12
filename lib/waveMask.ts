@@ -33,3 +33,23 @@ export function waveMask(
     maskRepeat: "no-repeat",
   };
 }
+
+/**
+ * Sägeblatt-Oberkante: kleine, gleichmäßige Zacken statt einer Welle.
+ * Funktioniert wie waveMask (--wave = Höhe der Zacken, negativer Margin-Top
+ * in derselben Höhe). Ein Zacken ist immer `toothWidth` Pixel breit und wird
+ * wiederholt, die Zacken bleiben dadurch auf jeder Bildschirmbreite gleich groß.
+ */
+export function sawtoothMask(toothWidth = 36): CSSProperties {
+  // Ein Zacken: Spitze oben in der Mitte, die Fläche darunter bleibt sichtbar
+  const svg = encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" preserveAspectRatio="none"><path d="M0 1L1 0L2 1Z"/></svg>`,
+  );
+
+  return {
+    maskImage: `url("data:image/svg+xml,${svg}"), linear-gradient(#000, #000)`,
+    maskSize: `${toothWidth}px var(--wave), 100% calc(100% - var(--wave) + 1px)`,
+    maskPosition: "top left, bottom",
+    maskRepeat: "repeat-x, no-repeat",
+  };
+}

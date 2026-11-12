@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { waveMask } from "@/lib/waveMask";
+import { sawtoothMask } from "@/lib/waveMask";
 
 // Reihenfolge der Fragen, die Texte stehen in faq.items im Dictionary
 const FAQ_ITEMS = [
@@ -43,8 +43,8 @@ const links = {
 };
 
 /**
- * Häufige Fragen als Akkordeon, nach der Kontakt-Sektion. Die wellige
- * Oberkante (lib/waveMask.ts) lässt das Dunkelgrün des Kontakts durchscheinen.
+ * Häufige Fragen als Akkordeon, nach der Kontakt-Sektion. Die Sägeblatt-
+ * Oberkante (sawtoothMask in lib/waveMask.ts) lässt das Grün des Kontakts durchscheinen.
  *
  * <details>/<summary> funktionieren ohne JavaScript und mit der Tastatur;
  * dasselbe `name` schließt die offene Frage, wenn man eine andere öffnet.
@@ -79,18 +79,17 @@ export default function Faq() {
       // Orange wie BEOGRAD im Logo, als Verlauf wie beim Kontakt. Text in
       // Dunkelgrün (#14332a): auf diesem Orange mindestens 5,3 : 1 Kontrast,
       // Weiß wäre zu schwach und bleibt deshalb nur Schmuck
-      // Welle: --wave = Höhe der Welle, um dieselbe Höhe nach oben in den
-      // Kontakt geschoben (etwas flacher als in den Services, damit sie das
-      // Kontaktformular nicht berührt)
+      // Sägeblatt-Kante: --wave = Höhe der Zacken, um dieselbe Höhe nach oben
+      // in den Kontakt geschoben, dessen Grün zwischen den Zacken durchscheint
       className="
         relative isolate scroll-mt-24 overflow-hidden
         bg-[linear-gradient(125deg,#f5a623_0%,#f19a2a_55%,#ec8a2c_100%)]
         text-[#14332a]
-        [--wave:40px] sm:[--wave:56px] lg:[--wave:72px]
-        -mt-10 sm:-mt-14 lg:-mt-18
-        pt-25.5 pb-15.5 sm:pt-29.5 min-[701px]:pb-21 lg:pt-39
+        [--wave:16px] lg:[--wave:20px]
+        -mt-4 lg:-mt-5
+        pt-19.5 pb-15.5 min-[701px]:pt-25 min-[701px]:pb-21
       "
-      style={waveMask("mirrored")}
+      style={sawtoothMask(36)}
     >
       {/* Feines Raster wie beim Kontakt, damit beide Flächen zusammengehören */}
       <div
@@ -120,7 +119,7 @@ export default function Faq() {
       <div className="container">
         {/* Überschrift wie in der About-Sektion */}
         <div className="mx-auto mb-10 max-w-4xl text-center lg:mb-14">
-          <p className="mb-4 font-medium uppercase tracking-wide text-green">
+          <p className="mb-4 font-medium uppercase tracking-wide text-[#185307]">
             {t("eyebrow")}
           </p>
           <h2
@@ -130,9 +129,9 @@ export default function Faq() {
             {/* Pink und Grün, jeweils so dunkel gewählt, dass sie auf dem
                 Orange mindestens 3 : 1 Kontrast haben (große Schrift) */}
             <span className="text-[#a3115f]">{t("titleFirst")}</span>
-            <span className="text-lime-300">{t("titleSecond")}</span>
+            <span className="text-[#185c07]">{t("titleSecond")}</span>
           </h2>
-          <span className="mx-auto mb-7 block h-1 w-16.5 rounded-xs bg-green" />
+          <span className="mx-auto mb-7 block h-1 w-16.5 rounded-xs bg-[#185307]" />
           <p className="m-0 text-lg">{t("intro")}</p>
         </div>
 
@@ -147,8 +146,8 @@ export default function Faq() {
               <summary
                 className="
                   flex cursor-pointer list-none items-center justify-between gap-4
-                  py-5 text-left font-bold text-[#a3115f]
-                  transition-colors hover:text-lime-300 group-open:text-lime-300
+                  py-5 text-left font-bold text-[#104204]
+                  transition-colors hover:text-[#a3115f] group-open:text-[#a3115f]
                   sm:py-6 sm:text-lg
                   focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#14332a]
                   [&::-webkit-details-marker]:hidden
