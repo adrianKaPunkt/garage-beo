@@ -9,7 +9,8 @@
   "contactTitle": "Contact",
   "labels": {
     "address": "Address",
-    "phone": "Phone",
+    "phone": "Mobile",
+    "landline": "Landline",
     "email": "Email"
   },
   "hoursTitle": "Opening hours",

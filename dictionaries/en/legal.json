@@ -7,7 +7,8 @@
     "translationNotice": "This translation is provided for information only. The <link>Serbian version</link> is legally binding."
   },
   "missing": "[TO BE ADDED: {label}]",
-  "phone": "Phone",
+  "phone": "Mobile",
+  "landline": "Landline",
   "email": "Email",
   "fields": {
     "companyName": "Company name",

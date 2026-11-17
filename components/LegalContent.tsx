@@ -65,6 +65,12 @@ function ContactDetails() {
       <br />
       {t("phone")}: {site.phone}
       <br />
+      {site.landline && (
+        <>
+          {t("landline")}: {site.landline}
+          <br />
+        </>
+      )}
       {t("email")}: {site.email}
     </>
   );

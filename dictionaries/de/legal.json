@@ -7,7 +7,8 @@
     "translationNotice": "Diese Übersetzung dient nur der Information. Rechtlich maßgeblich ist die <link>serbische Fassung</link>."
   },
   "missing": "[ERGÄNZEN: {label}]",
-  "phone": "Telefon",
+  "phone": "Mobil",
+  "landline": "Festnetz",
   "email": "E-Mail",
   "fields": {
     "companyName": "Firmenname",

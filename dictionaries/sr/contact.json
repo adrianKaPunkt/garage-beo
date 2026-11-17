@@ -9,7 +9,8 @@
   "contactTitle": "Kontakt",
   "labels": {
     "address": "Adresa",
-    "phone": "Telefon",
+    "phone": "Mobilni telefon",
+    "landline": "Fiksni telefon",
     "email": "E-mail"
   },
   "hoursTitle": "Radno vreme",

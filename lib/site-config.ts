@@ -62,7 +62,9 @@ export const site = {
   name: "Garage Beograd",
   // Live-Domain: Basis für Canonical, Sitemap und Vorschaubilder
   url: "https://garagebeograd.rs",
-  phone: "+381 11 7471789",
+  phone: "+381 64 1260935",
+  // Festnetz: zusätzlich im Kontaktbereich und im Impressum; leer = ausgeblendet
+  landline: "+381 11 7471789",
   // Viber-Nummer für den schwebenden Button (components/ViberButton.tsx);
   // leer lassen, um den Button auszublenden
   viber: "+381 64 1260935",

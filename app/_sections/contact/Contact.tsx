@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Clock3, Mail, MapPin, Navigation, Phone } from "lucide-react";
+import {
+  Clock3,
+  Mail,
+  MapPin,
+  Navigation,
+  Phone,
+  Smartphone,
+} from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { DAY_KEYS, WEEK_ORDER, site } from "@/lib/site-config";
 import type { OpeningHours, Period } from "@/lib/google/openingHours";
@@ -114,7 +121,7 @@ export default function Contact({ hours }: { hours: OpeningHours }) {
 
   const navigationUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
 
-  const phoneUrl = `tel:${site.phone.replace(/\s/g, "")}`;
+  const telUrl = (number: string) => `tel:${number.replace(/\s/g, "")}`;
 
   const contactRows = [
     {
@@ -125,11 +132,21 @@ export default function Contact({ hours }: { hours: OpeningHours }) {
       external: true,
     },
     {
-      icon: Phone,
+      icon: Smartphone,
       label: t("labels.phone"),
       value: site.phone,
-      href: phoneUrl,
+      href: telUrl(site.phone),
     },
+    ...(site.landline
+      ? [
+          {
+            icon: Phone,
+            label: t("labels.landline"),
+            value: site.landline,
+            href: telUrl(site.landline),
+          },
+        ]
+      : []),
     {
       icon: Mail,
       label: t("labels.email"),
