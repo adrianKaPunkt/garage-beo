@@ -1,5 +1,4 @@
-"use server";
-
+// Prüfung und Versand des Kontaktformulars, aufgerufen von app/api/contact/route.ts
 import { getTranslations } from "next-intl/server";
 import { contactTopics, site, type ContactTopic } from "@/lib/site-config";
 import {
@@ -99,7 +98,8 @@ export async function sendContactMessage(
   const read = (key: string) => String(formData.get(key) ?? "").trim();
 
   // Honeypot: Nur Bots füllen dieses versteckte Feld aus
-  if (read("website")) {
+  if (read("hp_check")) {
+    console.warn("Kontaktformular: Honeypot ausgefüllt, Anfrage verworfen.");
     return { status: "success" };
   }
 

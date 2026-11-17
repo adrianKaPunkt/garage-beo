@@ -155,16 +155,22 @@ const ContactForm = () => {
         <p className="mb-7 text-slate-200">{t("form.intro")}</p>
 
         <form onSubmit={handleSubmit} noValidate>
-          {/* Honeypot gegen Spam-Bots */}
+          {/* Honeypot gegen Spam-Bots. Bewusst ohne Namen wie "website" oder
+              "url": Browser-Autofill und Passwortmanager füllen solche Felder
+              sonst aus, und echte Anfragen würden still verworfen. */}
           <div aria-hidden="true" className="absolute -left-[9999px]">
-            <label htmlFor="contact-website">Website</label>
+            <label htmlFor="contact-hp">Leave empty</label>
 
             <input
-              id="contact-website"
+              id="contact-hp"
               type="text"
-              name="website"
+              name="hp_check"
               tabIndex={-1}
               autoComplete="off"
+              data-1p-ignore
+              data-lpignore="true"
+              data-bwignore
+              data-form-type="other"
             />
           </div>
 
