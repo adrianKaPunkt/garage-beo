@@ -4,3 +4,7 @@ out
 .env*
 !.env.example
 .claude
+/dist/
+.vinext/
+.cloudflare/
+cloudflare*
