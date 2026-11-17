@@ -6,7 +6,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { isIntroPlaying } from "@/components/intro/introState";
 
-gsap.registerPlugin(useGSAP);
+// Nur im Browser: Auf Cloudflare Workers startet das sonst einen Timer
+// im globalen Bereich, und das Server-Rendering bricht ab
+if (typeof window !== "undefined") gsap.registerPlugin(useGSAP);
 
 export default function CarEntrance({ children }: { children: ReactNode }) {
   const carRef = useRef<HTMLDivElement>(null);

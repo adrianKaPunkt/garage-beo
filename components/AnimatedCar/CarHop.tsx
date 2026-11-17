@@ -5,7 +5,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { BADGE_STAMP_EVENT } from "@/components/BadgeStamp";
 
-gsap.registerPlugin(useGSAP);
+// Nur im Browser: Auf Cloudflare Workers startet das sonst einen Timer
+// im globalen Bereich, und das Server-Rendering bricht ab
+if (typeof window !== "undefined") gsap.registerPlugin(useGSAP);
 
 /**
  * Das Auto zuckt zusammen, wenn das Jubiläums-Badge aufgestempelt wird:

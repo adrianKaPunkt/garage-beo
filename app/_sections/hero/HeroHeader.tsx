@@ -6,7 +6,9 @@ import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import { useTranslations } from "next-intl";
 
-gsap.registerPlugin(useGSAP, SplitText);
+// Nur im Browser: Auf Cloudflare Workers startet das sonst einen Timer
+// im globalen Bereich, und das Server-Rendering bricht ab
+if (typeof window !== "undefined") gsap.registerPlugin(useGSAP, SplitText);
 
 // Texte in hero.titles im Dictionary.
 // Verlauf jeweils wie der Hintergrund der passenden Services-Sektion

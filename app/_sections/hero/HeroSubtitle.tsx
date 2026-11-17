@@ -6,7 +6,9 @@ import { useGSAP } from "@gsap/react";
 import { useTranslations } from "next-intl";
 import { HERO_TITLE_EVENT, heroTitles } from "./HeroHeader";
 
-gsap.registerPlugin(useGSAP);
+// Nur im Browser: Auf Cloudflare Workers startet das sonst einen Timer
+// im globalen Bereich, und das Server-Rendering bricht ab
+if (typeof window !== "undefined") gsap.registerPlugin(useGSAP);
 
 // Texte in hero.subtitles im Dictionary
 const subtitles = [

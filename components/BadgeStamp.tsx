@@ -5,7 +5,9 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { isIntroPlaying, onIntroDone } from "@/components/intro/introState";
 
-gsap.registerPlugin(useGSAP);
+// Nur im Browser: Auf Cloudflare Workers startet das sonst einen Timer
+// im globalen Bereich, und das Server-Rendering bricht ab
+if (typeof window !== "undefined") gsap.registerPlugin(useGSAP);
 
 /** Wird im Moment des Aufpralls ausgelöst (z. B. damit das Auto hüpft) */
 export const BADGE_STAMP_EVENT = "garage:badge-stamp";

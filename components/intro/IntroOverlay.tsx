@@ -9,7 +9,9 @@ import GarageBeogradLogo from "@/components/GarageBeogradLogo";
 import AnimatedCar from "@/components/AnimatedCar/AnimatedCar";
 import { INTRO_EVENT, INTRO_STORAGE_KEY } from "./introState";
 
-gsap.registerPlugin(useGSAP, SplitText);
+// Nur im Browser: Auf Cloudflare Workers startet das sonst einen Timer
+// im globalen Bereich, und das Server-Rendering bricht ab
+if (typeof window !== "undefined") gsap.registerPlugin(useGSAP, SplitText);
 
 // Farben auf dem dunklen Hintergrund, wie der Header auf dunklen Sektionen
 const DOOR_COLORS = {
