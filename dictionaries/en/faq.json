@@ -10,19 +10,19 @@
     },
     "appointment": {
       "question": "Do I need to book an appointment?",
-      "answer": "No, you don’t need an appointment – just drop by during our opening hours. If you have questions before you come, call us or message us on Viber. You can find our hours in the <hours>Opening hours</hours> section."
+      "answer": "Yes, please book an appointment in advance. If you have questions before you come, call us or message us on Viber. You can find our hours in the <hours>Opening hours</hours> section."
     },
     "documents": {
       "question": "Which documents do I need for vehicle registration?",
-      "answer": "As a rule you need the vehicle registration certificate, your ID card or, for companies, a business register extract, the compulsory insurance policy and proof of paid vehicle tax. Before you come, we are happy to tell you exactly what your vehicle requires."
+      "answer": "As a rule you need the vehicle registration certificate and your ID card or, for companies, a business register extract. Before you come, we are happy to tell you exactly what your vehicle requires."
     },
     "duration": {
       "question": "How long does the vehicle inspection take?",
-      "answer": "It depends on the type of vehicle. While we carry out the inspection, you can relax with a coffee in our outdoor corner."
+      "answer": "The inspection takes about 25 minutes. While we carry out the inspection, you can relax with a coffee in our outdoor corner."
     },
     "insurance": {
       "question": "Which insurance companies do you work with?",
-      "answer": "We work with Serbia's leading insurers, including Dunav, DDOR, Generali, Triglav, Wiener Städtische, Sava, Uniqa, Grawe, AMS, Milenijum and Globos. We will help you choose the right policy."
+      "answer": "We work with the insurers Dunav and Generali. We will help you choose the right policy."
     },
     "fullService": {
       "question": "What if I don't have time to come in person?",

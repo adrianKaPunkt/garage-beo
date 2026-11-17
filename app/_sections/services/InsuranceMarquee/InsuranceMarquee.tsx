@@ -7,16 +7,14 @@ import styles from "./InsuranceMarquee.module.css";
 const insurers = [
   { name: "Dunav osiguranje", file: "dunav-osiguranje.svg" },
   { name: "Generali Srbija", file: "generali.svg" },
-  { name: "DDOR osiguranje", file: "ddor.svg" },
-  { name: "Wiener Städtische", file: "wiener-staedtische.svg" },
-  { name: "UNIQA", file: "uniqa.svg" },
-  { name: "Triglav osiguranje", file: "triglav.svg" },
-  { name: "Sava osiguranje", file: "sava.svg" },
-  { name: "AMS osiguranje", file: "ams-osiguranje.svg" },
-  { name: "Milenijum osiguranje", file: "milenijum-osiguranje.svg" },
-  { name: "Globos osiguranje", file: "globos.svg" },
-  { name: "GRAWE", file: "grawe.svg" },
 ];
+
+// Mit nur zwei Logos wäre eine Gruppe schmaler als der Bildschirm und das
+// Band hätte Lücken. Deshalb wiederholen wir die Logos innerhalb jeder Gruppe.
+const REPEAT = 5;
+const items = Array.from({ length: REPEAT }, (_, copy) =>
+  insurers.map((insurer) => ({ ...insurer, copy })),
+).flat();
 
 export default function InsuranceMarquee() {
   const t = useTranslations("insurance");
@@ -38,10 +36,16 @@ export default function InsuranceMarquee() {
               className={styles.group}
               aria-hidden={duplicate ? true : undefined}
             >
-              {insurers.map((insurer) => (
+              {items.map((insurer) => (
                 <li
-                  key={insurer.file}
-                  className={`${styles.item} cursor-pointer`}
+                  key={`${insurer.file}-${insurer.copy}`}
+                  // Wiederholungen nur fürs Auge; ohne Animation ausgeblendet
+                  aria-hidden={insurer.copy > 0 ? true : undefined}
+                  className={[
+                    styles.item,
+                    "cursor-pointer",
+                    insurer.copy > 0 ? "motion-reduce:hidden" : "",
+                  ].join(" ")}
                   onClick={() =>
                     setActiveFile((file) =>
                       file === insurer.file ? null : insurer.file,
@@ -53,7 +57,7 @@ export default function InsuranceMarquee() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`/logos/insurance/${insurer.file}`}
-                    alt={duplicate ? "" : insurer.name}
+                    alt={duplicate || insurer.copy > 0 ? "" : insurer.name}
                     width={168}
                     height={64}
                     className={[
