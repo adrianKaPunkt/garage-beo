@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site-config";
 import { htmlLang, localePath, routing } from "@/i18n/routing";
 
+export const dynamic = "force-static";
+
 // Jede Fassung als eigener Eintrag, jeweils mit Verweis auf die anderen
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (path: string) => new URL(path, site.url).toString();

@@ -1,20 +1,18 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+import { useState, type FormEvent } from "react";
 import { CircleAlert, CircleCheck, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
+
 import Button from "@/components/Button";
 import { contactTopics, site } from "@/lib/site-config";
 import { MAX_MESSAGE_LENGTH, MIN_MESSAGE_LENGTH } from "./limits";
-import {
-  sendContactMessage,
-  type ContactError,
-  type ContactField,
-  type ContactFormState,
-} from "./actions";
 
-const initialState: ContactFormState = { status: "idle" };
+import type { ContactError, ContactField, ContactFormState } from "./types";
+
+const initialState: ContactFormState = {
+  status: "idle",
+};
 
 const inputStyles = `
   w-full rounded-xl
@@ -58,13 +56,15 @@ function FieldError({ id, error }: { id: string; error?: ContactError }) {
 
   return (
     <span id={id} className="mt-2 block text-sm font-semibold text-orange">
-      {t(error, { min: MIN_MESSAGE_LENGTH, max: MAX_MESSAGE_LENGTH })}
+      {t(error, {
+        min: MIN_MESSAGE_LENGTH,
+        max: MAX_MESSAGE_LENGTH,
+      })}
     </span>
   );
 }
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
+function SubmitButton({ pending }: { pending: boolean }) {
   const t = useTranslations("contact.form");
 
   return (
@@ -85,14 +85,63 @@ function SubmitButton() {
 
 const ContactForm = () => {
   const t = useTranslations("contact");
-  const [state, formAction] = useActionState(sendContactMessage, initialState);
 
-  // Verbindet ein Feld mit seiner Fehlermeldung für Screenreader
+  // Formularstatus ohne Next.js Server Actions
+  const [state, setState] = useState<ContactFormState>(initialState);
+
+  const [pending, setPending] = useState(false);
+
+  // Versand über Cloudflare Pages Function
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (pending) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setPending(true);
+    setState(initialState);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok && response.status !== 400) {
+        throw new Error("Contact request failed");
+      }
+
+      const result: ContactFormState = await response.json();
+
+      if (result.status !== "success" && result.status !== "error") {
+        throw new Error("Invalid contact response");
+      }
+
+      setState(result);
+
+      if (result.status === "success") {
+        form.reset();
+      }
+    } catch (error) {
+      console.error("Kontaktformular: Versand fehlgeschlagen", error);
+
+      setState({
+        status: "error",
+        message: "sendFailed",
+      });
+    } finally {
+      setPending(false);
+    }
+  }
+
+  // Verbindet ein Feld mit seiner Fehlermeldung
+  // für Screenreader
   const fieldProps = (field: ContactField) => ({
     id: `contact-${field}`,
     name: field,
-    defaultValue: state.values?.[field] ?? "",
-    "aria-invalid": state.errors?.[field] ? true : undefined,
+    "aria-invalid": state.errors?.[field] ? (true as const) : undefined,
     "aria-describedby": state.errors?.[field]
       ? `contact-${field}-error`
       : undefined,
@@ -102,14 +151,14 @@ const ContactForm = () => {
     <div className="container relative z-10 mt-6" id="termin">
       <div className="rounded-2xl border border-white/15 bg-white/5 p-7 sm:p-9">
         <h3 className="m-0 mb-2 text-2xl font-bold">{t("form.title")}</h3>
-        <p className="mb-7 text-slate-200">
-          {t("form.intro")}
-        </p>
 
-        <form action={formAction} noValidate>
-          {/* Honeypot gegen Spam-Bots: für Besucher unsichtbar */}
+        <p className="mb-7 text-slate-200">{t("form.intro")}</p>
+
+        <form onSubmit={handleSubmit} noValidate>
+          {/* Honeypot gegen Spam-Bots */}
           <div aria-hidden="true" className="absolute -left-[9999px]">
             <label htmlFor="contact-website">Website</label>
+
             <input
               id="contact-website"
               type="text"
@@ -120,8 +169,10 @@ const ContactForm = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {/* Name */}
             <div>
               <FieldLabel htmlFor="contact-name">{t("form.name")}</FieldLabel>
+
               <input
                 {...fieldProps("name")}
                 type="text"
@@ -129,14 +180,14 @@ const ContactForm = () => {
                 maxLength={100}
                 className={inputStyles}
               />
-              <FieldError
-                id="contact-name-error"
-                error={state.errors?.name}
-              />
+
+              <FieldError id="contact-name-error" error={state.errors?.name} />
             </div>
 
+            {/* Telefonnummer */}
             <div>
               <FieldLabel htmlFor="contact-phone">{t("form.phone")}</FieldLabel>
+
               <input
                 {...fieldProps("phone")}
                 type="tel"
@@ -144,16 +195,19 @@ const ContactForm = () => {
                 maxLength={20}
                 className={inputStyles}
               />
+
               <FieldError
                 id="contact-phone-error"
                 error={state.errors?.phone}
               />
             </div>
 
+            {/* E-Mail */}
             <div>
               <FieldLabel htmlFor="contact-email" optional>
                 {t("form.email")}
               </FieldLabel>
+
               <input
                 {...fieldProps("email")}
                 type="email"
@@ -161,42 +215,51 @@ const ContactForm = () => {
                 maxLength={150}
                 className={inputStyles}
               />
+
               <FieldError
                 id="contact-email-error"
                 error={state.errors?.email}
               />
             </div>
 
+            {/* Anliegen */}
             <div>
               <FieldLabel htmlFor="contact-topic">{t("form.topic")}</FieldLabel>
+
               <select
-                key={state.values?.topic ?? "empty"}
                 {...fieldProps("topic")}
                 className={`${inputStyles} cursor-pointer`}
               >
                 <option value="" className="text-[#14332a]">
                   {t("form.chooseTopic")}
                 </option>
+
                 {contactTopics.map((topic) => (
                   <option key={topic} value={topic} className="text-[#14332a]">
                     {t(`topics.${topic}`)}
                   </option>
                 ))}
               </select>
+
               <FieldError
                 id="contact-topic-error"
                 error={state.errors?.topic}
               />
             </div>
 
+            {/* Nachricht */}
             <div className="md:col-span-2">
-              <FieldLabel htmlFor="contact-message">{t("form.message")}</FieldLabel>
+              <FieldLabel htmlFor="contact-message">
+                {t("form.message")}
+              </FieldLabel>
+
               <textarea
                 {...fieldProps("message")}
                 rows={5}
                 maxLength={MAX_MESSAGE_LENGTH}
                 className={`${inputStyles} resize-y`}
               />
+
               <FieldError
                 id="contact-message-error"
                 error={state.errors?.message}
@@ -228,11 +291,15 @@ const ContactForm = () => {
                     aria-hidden="true"
                   />
                 )}
-                {t(`errors.${state.message}`, { phone: site.phone })}
+
+                {t(`errors.${state.message}`, {
+                  phone: site.phone,
+                })}
               </p>
             )}
           </div>
 
+          {/* Datenschutz und Senden */}
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="mb-0 text-xs leading-relaxed text-slate-300 sm:max-w-md">
               {t.rich("form.privacy", {
@@ -246,7 +313,8 @@ const ContactForm = () => {
                 ),
               })}
             </p>
-            <SubmitButton />
+
+            <SubmitButton pending={pending} />
           </div>
         </form>
       </div>

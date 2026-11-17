@@ -8,29 +8,29 @@ import {
   MIN_MESSAGE_LENGTH,
 } from "./limits";
 
-export type ContactField = "name" | "phone" | "email" | "topic" | "message";
+import type { ContactField, ContactError, ContactFormState } from "./types";
 
-// Keys aus contact.errors im Dictionary: Das Formular zeigt sie in der
-// Sprache des Besuchers an
-export type ContactError =
-  | "name"
-  | "phone"
-  | "email"
-  | "topic"
-  | "messageTooShort"
-  | "messageTooLong";
+// export type ContactField = "name" | "phone" | "email" | "topic" | "message";
 
-export type ContactFormState = {
-  status: "idle" | "success" | "error";
-  message?: "sent" | "sendFailed";
-  errors?: Partial<Record<ContactField, ContactError>>;
-  values?: Partial<Record<ContactField, string>>;
-};
+// // Keys aus contact.errors im Dictionary: Das Formular zeigt sie in der
+// // Sprache des Besuchers an
+// export type ContactError =
+//   | "name"
+//   | "phone"
+//   | "email"
+//   | "topic"
+//   | "messageTooShort"
+//   | "messageTooLong";
 
+// export type ContactFormState = {
+//   status: "idle" | "success" | "error";
+//   message?: "sent" | "sendFailed";
+//   errors?: Partial<Record<ContactField, ContactError>>;
+//   values?: Partial<Record<ContactField, string>>;
+// };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_PATTERN = /^\+?[\d\s()/-]{6,20}$/;
-
 
 const isTopic = (value: string): value is ContactTopic =>
   (contactTopics as readonly string[]).includes(value);
