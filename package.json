@@ -53,5 +53,8 @@
       "postcss": "8.5.32"
     },
     "fflate": "0.7.5"
+  },
+  "optionalDependencies": {
+    "@swc/core-linux-x64-gnu": "1.16.22"
   }
 }
