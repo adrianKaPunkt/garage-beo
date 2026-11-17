@@ -129,11 +129,7 @@ export function PrivacyPolicy() {
       </Section>
 
       <Section title={t("retention.title")}>
-        <p>
-          {t.rich("retention.text", {
-            period: () => <Value field="retentionPeriod" />,
-          })}
-        </p>
+        <p>{t("retention.text")}</p>
       </Section>
 
       <Section title={t("rights.title")}>

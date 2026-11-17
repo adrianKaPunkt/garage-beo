@@ -17,8 +17,7 @@
     "registrationNumber": "Registration number (Matični broj)",
     "activityCode": "Activity code",
     "inspectionLicense": "Number and date of the inspection licence",
-    "hostingProvider": "Hosting provider",
-    "retentionPeriod": "Retention period"
+    "hostingProvider": "Hosting provider"
   },
   "privacy": {
     "lastUpdated": "Last updated: {date}",
@@ -54,7 +53,7 @@
     },
     "retention": {
       "title": "7. Retention period",
-      "text": "We keep data from inquiries for <period></period>, unless the law requires longer retention."
+      "text": "We keep data from inquiries until your inquiry has been handled and then delete it, at the latest after 12 months, unless the law requires longer retention."
     },
     "rights": {
       "title": "8. Your rights",

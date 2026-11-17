@@ -17,8 +17,7 @@
     "registrationNumber": "Matični broj",
     "activityCode": "Šifra delatnosti",
     "inspectionLicense": "Broj i datum rešenja o ovlašćenju",
-    "hostingProvider": "Pružalac hostinga",
-    "retentionPeriod": "Rok čuvanja"
+    "hostingProvider": "Pružalac hostinga"
   },
   "privacy": {
     "lastUpdated": "Poslednje ažuriranje: {date}",
@@ -54,7 +53,7 @@
     },
     "retention": {
       "title": "7. Rok čuvanja",
-      "text": "Podatke iz upita čuvamo <period></period>, osim ako zakon nalaže duže čuvanje."
+      "text": "Podatke iz upita čuvamo dok ne obradimo vaš upit, a zatim ih brišemo, najkasnije nakon 12 meseci, osim ako zakon nalaže duže čuvanje."
     },
     "rights": {
       "title": "8. Vaša prava",

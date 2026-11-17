@@ -17,8 +17,7 @@
     "registrationNumber": "Registernummer (Matični broj)",
     "activityCode": "Tätigkeitsschlüssel",
     "inspectionLicense": "Nummer und Datum der Zulassung als Prüfstelle",
-    "hostingProvider": "Hosting-Anbieter",
-    "retentionPeriod": "Speicherdauer"
+    "hostingProvider": "Hosting-Anbieter"
   },
   "privacy": {
     "lastUpdated": "Zuletzt aktualisiert: {date}",
@@ -54,7 +53,7 @@
     },
     "retention": {
       "title": "7. Speicherdauer",
-      "text": "Daten aus Anfragen speichern wir <period></period>, sofern das Gesetz keine längere Aufbewahrung vorschreibt."
+      "text": "Daten aus Anfragen speichern wir, bis Ihre Anfrage erledigt ist, und löschen sie dann, spätestens nach 12 Monaten, sofern das Gesetz keine längere Aufbewahrung vorschreibt."
     },
     "rights": {
       "title": "8. Ihre Rechte",
