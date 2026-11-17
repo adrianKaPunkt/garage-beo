@@ -40,7 +40,7 @@
     "recipients": {
       "title": "4. Recipients and transfers abroad",
       "intro": "We do not sell your data. We use the following service providers:",
-      "hosting": "<strong>Website hosting:</strong> <provider></provider>, processes technical data about visits.",
+      "hosting": "<strong>Website hosting:</strong> <provider></provider> (USA). The website is delivered through Cloudflare's global server network. In doing so, Cloudflare processes technical data about visits, such as the IP address, and protects the website against attacks.",
       "resend": "<strong>Resend (USA):</strong> delivers messages from the contact form to us by email.",
       "abroad": "These providers may process data outside the Republic of Serbia, including in the USA."
     },

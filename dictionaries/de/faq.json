@@ -10,7 +10,7 @@
     },
     "appointment": {
       "question": "Muss ich einen Termin vereinbaren?",
-      "answer": "Ja, bitte vereinbaren Sie vorab einen Termin. Wenn Sie vorher Fragen haben, rufen Sie uns an oder schreiben Sie uns auf Viber. Die Öffnungszeiten finden Sie im Bereich <hours>Öffnungszeiten</hours>."
+      "answer": "Ja, bitte vereinbaren Sie vorab einen Termin – telefonisch oder über Viber. Dabei beantworten wir auch gern Ihre Fragen vor dem Besuch. Die Öffnungszeiten finden Sie im Bereich <hours>Öffnungszeiten</hours>."
     },
     "documents": {
       "question": "Welche Unterlagen brauche ich für die Zulassung?",

@@ -40,7 +40,7 @@
     "recipients": {
       "title": "4. Empfänger und Übermittlung ins Ausland",
       "intro": "Wir verkaufen Ihre Daten nicht. Wir nutzen folgende Dienstleister:",
-      "hosting": "<strong>Hosting der Website:</strong> <provider></provider>, verarbeitet die technischen Daten des Besuchs.",
+      "hosting": "<strong>Hosting der Website:</strong> <provider></provider> (USA). Die Website wird über das weltweite Servernetz von Cloudflare ausgeliefert. Cloudflare verarbeitet dabei die technischen Daten des Besuchs, etwa die IP-Adresse, und schützt die Website vor Angriffen.",
       "resend": "<strong>Resend (USA):</strong> stellt uns die Nachrichten aus dem Kontaktformular per E-Mail zu.",
       "abroad": "Diese Dienstleister können Daten außerhalb der Republik Serbien verarbeiten, auch in den USA."
     },

@@ -40,7 +40,7 @@
     "recipients": {
       "title": "4. Primaoci podataka i prenos u inostranstvo",
       "intro": "Vaše podatke ne prodajemo. Koristimo sledeće pružaoce usluga:",
-      "hosting": "<strong>Hosting sajta:</strong> <provider></provider>, obrađuje tehničke podatke o poseti.",
+      "hosting": "<strong>Hosting sajta:</strong> <provider></provider> (SAD). Sajt se isporučuje preko globalne mreže servera kompanije Cloudflare, koja pri tome obrađuje tehničke podatke o poseti, kao što je IP adresa, i štiti sajt od napada.",
       "resend": "<strong>Resend (SAD):</strong> dostavlja nam poruke iz kontakt formulara e-mailom.",
       "abroad": "Ovi pružaoci mogu obrađivati podatke van Republike Srbije, uključujući SAD."
     },

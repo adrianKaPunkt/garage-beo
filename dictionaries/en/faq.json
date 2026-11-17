@@ -10,7 +10,7 @@
     },
     "appointment": {
       "question": "Do I need to book an appointment?",
-      "answer": "Yes, please book an appointment in advance. If you have questions before you come, call us or message us on Viber. You can find our hours in the <hours>Opening hours</hours> section."
+      "answer": "Yes, please book an appointment in advance – by phone or on Viber. We are also happy to answer any questions before your visit. You can find our hours in the <hours>Opening hours</hours> section."
     },
     "documents": {
       "question": "Which documents do I need for vehicle registration?",
