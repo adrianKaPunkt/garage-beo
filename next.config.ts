@@ -5,8 +5,11 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 
 const nextConfig: NextConfig = {
   images: {
-    // AVIF zuerst (deutlich kleiner), WebP für Browser ohne AVIF
-    formats: ["image/avif", "image/webp"],
+    // Bilder direkt aus /public ausliefern (/images/name.webp) statt über
+    // /_next/image?url=…: Auf Cloudflare verkleinert der Optimierer nichts,
+    // versteckt aber den Dateinamen (wichtig für die Google-Bildersuche).
+    // Die Dateien sind deshalb selbst schon als WebP in passender Größe abgelegt.
+    unoptimized: true,
   },
 };
 

@@ -45,14 +45,16 @@ export default function Home({
     alt: tImages("building"),
     sizes: "(min-width: 1280px) 1280px, 100vw",
   };
+  // Ohne Optimierer (unoptimized) gibt es kein srcSet, dann direkt die Datei
   const {
-    props: { srcSet: buildingDesktop },
+    props: { srcSet: desktopSrcSet, src: desktopSrc },
   } = getImageProps({
     ...buildingCommon,
     src: "/images/tehnicki-pregled-garage-beograd-zvezdara.webp",
     width: 1756,
     height: 895,
   });
+  const buildingDesktop = desktopSrcSet ?? desktopSrc;
   const { props: buildingMobile } = getImageProps({
     ...buildingCommon,
     src: "/images/tehnicki-pregled-garage-beograd-zvezdara-mob.webp",
