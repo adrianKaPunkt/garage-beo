@@ -10,7 +10,7 @@
     },
     "appointment": {
       "question": "Do I need to book an appointment?",
-      "answer": "Yes, please book an appointment in advance – by phone or on Viber. We are also happy to answer any questions before your visit. You can find our hours in the <hours>Opening hours</hours> section."
+      "answer": "Yes, please book an appointment in advance – by phone, on Viber or via our <form>contact form</form>. We are also happy to answer any questions before your visit. You can find our hours in the <hours>Opening hours</hours> section."
     },
     "documents": {
       "question": "Which documents do I need for vehicle registration?",
@@ -22,7 +22,7 @@
     },
     "insurance": {
       "question": "Which insurance companies do you work with?",
-      "answer": "We work with the insurers Dunav and Generali. We will help you choose the right policy."
+      "answer": "We work with the insurers Generali Osiguranje Srbija and Dunav osiguranje. We will help you choose the right policy."
     },
     "fullService": {
       "question": "What if I don't have time to come in person?",

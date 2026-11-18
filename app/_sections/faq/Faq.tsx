@@ -40,6 +40,15 @@ const links = {
       {chunks}
     </a>
   ),
+  // Springt direkt zum Kontaktformular statt zum Anfang der Kontakt-Sektion
+  form: (chunks: ReactNode) => (
+    <a
+      href="#termin"
+      className="font-bold text-[#a3115f] underline! transition-colors hover:text-[#14332a]"
+    >
+      {chunks}
+    </a>
+  ),
 };
 
 /**
@@ -65,6 +74,7 @@ export default function Faq() {
         text: t.markup(`items.${key}.answer`, {
           hours: (chunks) => chunks,
           contact: (chunks) => chunks,
+          form: (chunks) => chunks,
         }),
       },
     })),

@@ -10,7 +10,7 @@
     },
     "appointment": {
       "question": "Muss ich einen Termin vereinbaren?",
-      "answer": "Ja, bitte vereinbaren Sie vorab einen Termin – telefonisch oder über Viber. Dabei beantworten wir auch gern Ihre Fragen vor dem Besuch. Die Öffnungszeiten finden Sie im Bereich <hours>Öffnungszeiten</hours>."
+      "answer": "Ja, bitte vereinbaren Sie vorab einen Termin – telefonisch, über Viber oder über das <form>Kontaktformular</form>. Dabei beantworten wir auch gern Ihre Fragen vor dem Besuch. Die Öffnungszeiten finden Sie im Bereich <hours>Öffnungszeiten</hours>."
     },
     "documents": {
       "question": "Welche Unterlagen brauche ich für die Zulassung?",
@@ -22,7 +22,7 @@
     },
     "insurance": {
       "question": "Mit welchen Versicherungen arbeiten Sie zusammen?",
-      "answer": "Wir arbeiten mit den Versicherungen Dunav und Generali zusammen. Wir helfen Ihnen, die passende Police zu finden."
+      "answer": "Wir arbeiten mit den Versicherungen Generali Osiguranje Srbija und Dunav osiguranje zusammen. Wir helfen Ihnen, die passende Police zu finden."
     },
     "fullService": {
       "question": "Was, wenn ich keine Zeit habe, selbst zu kommen?",

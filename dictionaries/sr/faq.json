@@ -10,7 +10,7 @@
     },
     "appointment": {
       "question": "Da li je potrebno zakazati termin?",
-      "answer": "Da, potrebno je unapred zakazati termin – telefonom ili putem Vibera. Tako vam možemo odgovoriti i na pitanja pre dolaska. Radno vreme pogledajte u odeljku <hours>Radno vreme</hours>."
+      "answer": "Da, potrebno je unapred zakazati termin – telefonom, putem Vibera ili preko <form>kontakt forme</form>. Tako vam možemo odgovoriti i na pitanja pre dolaska. Radno vreme pogledajte u odeljku <hours>Radno vreme</hours>."
     },
     "documents": {
       "question": "Koja dokumenta su potrebna za registraciju vozila?",
@@ -22,7 +22,7 @@
     },
     "insurance": {
       "question": "Sa kojim osiguravajućim kućama sarađujete?",
-      "answer": "Sarađujemo sa osiguravajućim kućama Dunav i Generali. Pomoći ćemo vam da izaberete odgovarajuću polisu."
+      "answer": "Sarađujemo sa osiguravajućim kućama Generali Osiguranje Srbija i Dunav osiguranje. Pomoći ćemo vam da izaberete odgovarajuću polisu."
     },
     "fullService": {
       "question": "Šta ako nemam vremena da dođem lično?",
