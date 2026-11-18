@@ -41,7 +41,7 @@ const RegistrationMascot = ({ className = "" }: RegistrationMascotProps) => {
         fill
         // Kein priority: liegt weit unten, Vorladen würde dem Hero Bandbreite nehmen
         sizes="(max-width: 768px) 70vw, 640px"
-        className="pointer-events-none select-none !object-contain"
+        className="pointer-events-none select-none object-contain!"
       />
 
       {/* Overlay Kennzeichen 1 */}
@@ -51,7 +51,7 @@ const RegistrationMascot = ({ className = "" }: RegistrationMascotProps) => {
         fill
         sizes="(max-width: 768px) 70vw, 640px"
         aria-hidden="true"
-        className={`pointer-events-none select-none !object-contain transition-opacity duration-300 ${
+        className={`pointer-events-none select-none object-contain! transition-opacity duration-300 ${
           activePlate === 0 ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -63,7 +63,7 @@ const RegistrationMascot = ({ className = "" }: RegistrationMascotProps) => {
         fill
         sizes="(max-width: 768px) 70vw, 640px"
         aria-hidden="true"
-        className={`pointer-events-none select-none !object-contain transition-opacity duration-300 ${
+        className={`pointer-events-none select-none object-contain! transition-opacity duration-300 ${
           activePlate === 1 ? "opacity-100" : "opacity-0"
         }`}
       />

@@ -91,8 +91,8 @@ const Us = () => {
 
         <div className="lg:col-span-1">
           <VideoPreview
-            src="/videos/reception.mp4"
-            poster="/images/video-thumbnail.webp"
+            src={site.video.src}
+            poster={site.video.poster}
             title={t("videoTitle")}
             className="w-full"
           />

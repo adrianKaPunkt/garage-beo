@@ -6,7 +6,8 @@
     "payment": "Garage Beograd mascot – smiling green car with a bank card and a bill to pay",
     "contact": "Garage Beograd mascot – smiling green car in a cap talking on the phone",
     "inspection": "Garage Beograd mascot – smiling green car with a wrench and a checklist for the vehicle inspection",
-    "registration": "Garage Beograd mascot – smiling green car holding a licence plate and a stamp, vehicle registration"
+    "registration": "Garage Beograd mascot – smiling green car holding a licence plate and a stamp, vehicle registration",
+    "fullService": "Garage Beograd mascot – smiling green car in a cap giving a thumbs up, full service"
   },
   "address": {
     "street": "Nabokovljeva 1a",
@@ -48,7 +49,8 @@
     "unsupported": "Your browser does not support video.",
     "unavailable": "The video is currently unavailable.",
     "openDirectly": "Open the video directly",
-    "play": "Play video: {title}"
+    "play": "Play video: {title}",
+    "description": "The Garage Beograd team waving in front of the vehicle inspection station in Zvezdara"
   },
   "buildingImages": {
     "building": "Garage Beograd building for vehicle inspection and registration, Nabokovljeva 1a, Zvezdara",

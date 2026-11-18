@@ -6,7 +6,8 @@
     "payment": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Bankkarte und Rechnung zum Bezahlen",
     "contact": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Kappe beim Telefonieren",
     "inspection": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Schraubenschlüssel und Checkliste für die technische Prüfung",
-    "registration": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Kennzeichen und Stempel, Fahrzeugzulassung"
+    "registration": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Kennzeichen und Stempel, Fahrzeugzulassung",
+    "fullService": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Kappe zeigt Daumen hoch, Komplettservice"
   },
   "address": {
     "street": "Nabokovljeva 1a",
@@ -48,7 +49,8 @@
     "unsupported": "Ihr Browser unterstützt keine Videos.",
     "unavailable": "Das Video ist derzeit nicht verfügbar.",
     "openDirectly": "Video direkt öffnen",
-    "play": "Video abspielen: {title}"
+    "play": "Video abspielen: {title}",
+    "description": "Das Team von Garage Beograd winkt vor der Prüfstation in Zvezdara"
   },
   "buildingImages": {
     "building": "Gebäude von Garage Beograd für technische Prüfung und Fahrzeugzulassung, Nabokovljeva 1a, Zvezdara",

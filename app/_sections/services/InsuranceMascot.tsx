@@ -81,7 +81,7 @@ export default function InsuranceMascot({ alt, className = "" }: InsuranceMascot
           alt={alt}
           fill
           sizes="(max-width: 1024px) 85vw, 440px"
-          className="!object-contain drop-shadow-2xl"
+          className="object-contain! drop-shadow-2xl"
         />
       </div>
 

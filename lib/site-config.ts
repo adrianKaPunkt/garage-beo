@@ -78,6 +78,13 @@ export const site = {
   // Google-Bewertung: wird live aus der Places API geladen (siehe .env.example),
   // diese Werte gelten nur ohne API-Key oder wenn Google nicht erreichbar ist
   googleRating: { rating: 5.0, reviewCount: 72 },
+  // Video im Bereich „O nama“; die Angaben nutzen auch die strukturierten
+  // Daten (VideoObject). uploadDate = seit wann das Video auf der Seite ist.
+  video: {
+    src: "/videos/garage-beograd-tim-tehnicki-pregled-zvezdara.mp4",
+    poster: "/images/garage-beograd-tim-tehnicki-pregled-zvezdara.webp",
+    uploadDate: "2026-11-07T12:00:00+01:00",
+  },
   // Profil-Adressen: Ohne Eintrag ist das Icon im Footer nicht klickbar
   social: {
     facebook: "",

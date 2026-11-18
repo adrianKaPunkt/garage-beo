@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useTranslations } from "next-intl";
 
 type FullServiceMascotProps = {
   className?: string;
@@ -13,6 +14,7 @@ export default function FullServiceMascot({
   className = "",
   size = 440,
 }: FullServiceMascotProps) {
+  const tCommon = useTranslations("common");
   const containerRef = useRef<HTMLDivElement>(null);
   const keyRef = useRef<HTMLDivElement>(null);
 
@@ -75,8 +77,6 @@ export default function FullServiceMascot({
   return (
     <div
       ref={containerRef}
-      role="img"
-      aria-label="Maskota Garage Beograd pokazuje ključ vozila"
       className={`relative mx-auto aspect-square w-full ${className}`}
       style={{ maxWidth: size }}
     >
@@ -94,18 +94,18 @@ export default function FullServiceMascot({
           alt=""
           fill
           sizes="(max-width: 768px) 85vw, 440px"
-          className="!object-contain"
+          className="object-contain!"
         />
       </div>
 
-      {/* Unbewegtes Maskottchen im Vordergrund */}
+      {/* Unbewegtes Maskottchen im Vordergrund: vollständig, deshalb mit Alt-Text */}
       <div className="pointer-events-none absolute inset-0 z-10">
         <Image
-          src="/images/services/fullService-body.webp"
-          alt=""
+          src="/images/garage-beograd-maskota-kompletna-usluga.webp"
+          alt={tCommon("mascotImages.fullService")}
           fill
           sizes="(max-width: 768px) 85vw, 440px"
-          className="!object-contain drop-shadow-xl"
+          className="object-contain! drop-shadow-xl"
         />
       </div>
     </div>

@@ -6,7 +6,8 @@
     "payment": "Maskota Garage Beograd – nasmejani zeleni automobil sa platnom karticom i računom za plaćanje",
     "contact": "Maskota Garage Beograd – nasmejani zeleni automobil sa kačketom razgovara telefonom",
     "inspection": "Maskota Garage Beograd – nasmejani zeleni automobil sa ključem i kontrolnom listom za tehnički pregled",
-    "registration": "Maskota Garage Beograd – nasmejani zeleni automobil sa registarskom tablicom i pečatom, registracija vozila"
+    "registration": "Maskota Garage Beograd – nasmejani zeleni automobil sa registarskom tablicom i pečatom, registracija vozila",
+    "fullService": "Maskota Garage Beograd – nasmejani zeleni automobil sa kačketom pokazuje palac gore, kompletna usluga"
   },
   "address": {
     "street": "Nabokovljeva 1a",
@@ -48,7 +49,8 @@
     "unsupported": "Vaš pregledač ne podržava video.",
     "unavailable": "Video trenutno nije dostupan.",
     "openDirectly": "Otvorite video direktno",
-    "play": "Pusti video: {title}"
+    "play": "Pusti video: {title}",
+    "description": "Tim Garage Beograd pozdravlja ispred stanice za tehnički pregled na Zvezdari"
   },
   "buildingImages": {
     "building": "Zgrada Garage Beograd za tehnički pregled i registraciju vozila, Nabokovljeva 1a, Zvezdara",

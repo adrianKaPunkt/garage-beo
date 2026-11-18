@@ -18,6 +18,8 @@ export default async function StructuredData() {
   const locale = await getLocale();
   const tMeta = await getTranslations("meta");
   const tContact = await getTranslations("contact");
+  const tVideo = await getTranslations("about.video");
+  const tCommon = await getTranslations("common");
 
   const business = {
     "@context": "https://schema.org",
@@ -72,11 +74,24 @@ export default async function StructuredData() {
       })),
   };
 
+  // Video im Bereich „O nama“, damit Google Titel, Vorschaubild und Datei kennt
+  const video = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: tVideo("videoTitle"),
+    description: tCommon("video.description"),
+    thumbnailUrl: new URL(site.video.poster, site.url).toString(),
+    contentUrl: new URL(site.video.src, site.url).toString(),
+    uploadDate: site.video.uploadDate,
+    inLanguage: htmlLang[locale],
+    publisher: { "@id": `${site.url}/#business` },
+  };
+
   return (
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(business).replace(/</g, "\\u003c"),
+        __html: JSON.stringify([business, video]).replace(/</g, "\\u003c"),
       }}
     />
   );

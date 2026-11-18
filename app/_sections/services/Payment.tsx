@@ -236,7 +236,7 @@ export default function Payment() {
                   alt={tCommon("mascotImages.payment")}
                   fill
                   sizes="(max-width: 1024px) 85vw, 440px"
-                  className="!object-contain drop-shadow-2xl"
+                  className="object-contain! drop-shadow-2xl"
                 />
               </div>
             </div>

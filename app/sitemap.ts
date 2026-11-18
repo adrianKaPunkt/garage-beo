@@ -9,6 +9,7 @@ export const dynamic = "force-static";
 const images = [
   "garage-beograd-maskota-tehnicki-pregled.webp",
   "garage-beograd-maskota-registracija.webp",
+  "garage-beograd-maskota-kompletna-usluga.webp",
   "garage-beograd-maskota-osiguranje.webp",
   "garage-beograd-maskota-placanje-racuna.webp",
   "garage-beograd-maskota-kontakt.webp",
@@ -24,6 +25,7 @@ const images = [
   "garage-beograd-kancelarija-cekaonica.webp",
   "garage-beograd-dvoriste-klupe-vinova-loza.webp",
   "garage-beograd-dvoriste-sto-vocnjak.webp",
+  "garage-beograd-tim-tehnicki-pregled-zvezdara.webp",
 ];
 
 // Jede Fassung als eigener Eintrag, jeweils mit Verweis auf die anderen
