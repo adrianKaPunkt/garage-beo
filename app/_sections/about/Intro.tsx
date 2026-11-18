@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 
 // Alt-Texte in tehnicki.images im Dictionary (dieselben Fotos wie in Tehnicki.tsx)
 const images = [
-  { src: "/images/tehnicki01.jpeg", key: "station" },
-  { src: "/images/tehnicki02.jpeg", key: "vehicle" },
+  { src: "/images/tehnicki-pregled-garage-beograd-linija.webp", key: "station" },
+  { src: "/images/tehnicki-pregled-garage-beograd-hala.webp", key: "vehicle" },
 ] as const;
 
 const Intro = () => {
@@ -40,7 +40,7 @@ const Intro = () => {
           {/* Mobile/Tablet: Zeichnung zwischen dem ersten und zweiten Absatz */}
           <div data-reveal className="my-5 flex justify-center lg:hidden">
             <Image
-              src="/images/about/intro.png"
+              src="/images/about/intro.webp"
               alt={t("drawingAlt")}
               width={515}
               height={440}
@@ -75,7 +75,7 @@ const Intro = () => {
           className="hidden justify-center lg:col-span-1 lg:flex"
         >
           <Image
-            src="/images/about/intro.png"
+            src="/images/about/intro.webp"
             alt={t("drawingAlt")}
             width={515}
             height={440}

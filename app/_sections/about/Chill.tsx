@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 
 // Alt-Texte in about.images im Dictionary
 const images = [
-  { src: "/images/outside01.jpeg", key: "bench" },
-  { src: "/images/outside02.jpeg", key: "table" },
+  { src: "/images/garage-beograd-dvoriste-klupe-vinova-loza.webp", key: "bench" },
+  { src: "/images/garage-beograd-dvoriste-sto-vocnjak.webp", key: "table" },
 ] as const;
 
 const Chill = () => {
@@ -29,7 +29,7 @@ const Chill = () => {
           {/* Mobile/Tablet: Zeichnung zwischen dem ersten und zweiten Absatz */}
           <div data-reveal className="my-5 flex justify-center lg:hidden">
             <Image
-              src="/images/about/chill.png"
+              src="/images/about/chill.webp"
               alt={t("chill.drawingAlt")}
               width={478}
               height={358}
@@ -52,7 +52,7 @@ const Chill = () => {
         {/* Desktop: Zeichnung in der rechten Spalte */}
         <div data-reveal className="hidden justify-center lg:col-span-1 lg:flex">
           <Image
-            src="/images/about/chill.png"
+            src="/images/about/chill.webp"
             alt={t("chill.drawingAlt")}
             width={478}
             height={358}

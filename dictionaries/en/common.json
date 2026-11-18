@@ -43,5 +43,10 @@
     "unavailable": "The video is currently unavailable.",
     "openDirectly": "Open the video directly",
     "play": "Play video: {title}"
+  },
+  "buildingImages": {
+    "building": "Garage Beograd building for vehicle inspection and registration, Nabokovljeva 1a, Zvezdara",
+    "entranceFront": "Garage Beograd in Zvezdara – entrance to the inspection station with parking in front",
+    "entranceStreet": "Street entrance to Garage Beograd, Nabokovljeva 1a – vehicle inspection and bill payment"
   }
 }

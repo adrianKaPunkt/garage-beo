@@ -7,11 +7,11 @@ import TehnickiMaskot from "./TehnickiMaskot";
 
 // Alt-Texte in tehnicki.images im Dictionary
 const tehnickiImages = [
-  { src: "/images/tehnicki01.jpeg", key: "station" },
-  { src: "/images/tehnicki02.jpeg", key: "vehicle" },
-  { src: "/images/tehnicki03.jpeg", key: "inspection" },
-  { src: "/images/tehnicki04.jpeg", key: "front" },
-  { src: "/images/tehnicki05.jpeg", key: "equipment" },
+  { src: "/images/tehnicki-pregled-garage-beograd-linija.webp", key: "station" },
+  { src: "/images/tehnicki-pregled-garage-beograd-hala.webp", key: "vehicle" },
+  { src: "/images/tehnicki-pregled-garage-beograd-vozilo-na-liniji.webp", key: "inspection" },
+  { src: "/images/tehnicki-pregled-garage-beograd-vozilo-ceka.webp", key: "front" },
+  { src: "/images/tehnicki-pregled-garage-beograd-izduvni-gasovi.webp", key: "equipment" },
 ] as const;
 
 // Texte in tehnicki.points im Dictionary

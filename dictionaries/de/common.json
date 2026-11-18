@@ -43,5 +43,10 @@
     "unavailable": "Das Video ist derzeit nicht verfügbar.",
     "openDirectly": "Video direkt öffnen",
     "play": "Video abspielen: {title}"
+  },
+  "buildingImages": {
+    "building": "Gebäude von Garage Beograd für technische Prüfung und Fahrzeugzulassung, Nabokovljeva 1a, Zvezdara",
+    "entranceFront": "Garage Beograd in Zvezdara – Eingang zur Prüfstation mit Parkplätzen davor",
+    "entranceStreet": "Eingang von der Straße zu Garage Beograd, Nabokovljeva 1a – technische Prüfung und Rechnungszahlung"
   }
 }

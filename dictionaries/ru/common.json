@@ -43,5 +43,10 @@
     "unavailable": "Видео сейчас недоступно.",
     "openDirectly": "Открыть видео напрямую",
     "play": "Воспроизвести видео: {title}"
+  },
+  "buildingImages": {
+    "building": "Здание Garage Beograd для технического осмотра и регистрации автомобилей, Nabokovljeva 1a, Звездара",
+    "entranceFront": "Garage Beograd на Звездаре – въезд на станцию техосмотра с парковкой перед ней",
+    "entranceStreet": "Вход с улицы в Garage Beograd, Nabokovljeva 1a – технический осмотр и оплата счетов"
   }
 }

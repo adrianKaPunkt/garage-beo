@@ -8,10 +8,10 @@
     "equipment": "Savremena oprema za pregled"
   },
   "images": {
-    "station": "Kontrolna stanica Garage Beograd",
-    "vehicle": "Vozilo na tehničkom pregledu",
-    "inspection": "Pregled vozila",
-    "front": "Vozilo ispred kontrolne stanice",
-    "equipment": "Oprema za tehnički pregled"
+    "station": "Linija za tehnički pregled sa kanalom u Garage Beograd na Zvezdari",
+    "vehicle": "Automobil na tehničkom pregledu u hali Garage Beograd",
+    "inspection": "Sportski automobil na liniji za tehnički pregled u Garage Beograd",
+    "front": "Automobil čeka na tehnički pregled ispred stanice Garage Beograd",
+    "equipment": "Merenje izduvnih gasova na tehničkom pregledu u Garage Beograd"
   }
 }

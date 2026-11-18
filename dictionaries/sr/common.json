@@ -43,5 +43,10 @@
     "unavailable": "Video trenutno nije dostupan.",
     "openDirectly": "Otvorite video direktno",
     "play": "Pusti video: {title}"
+  },
+  "buildingImages": {
+    "building": "Zgrada Garage Beograd za tehnički pregled i registraciju vozila, Nabokovljeva 1a, Zvezdara",
+    "entranceFront": "Garage Beograd na Zvezdari – ulaz u stanicu za tehnički pregled sa parkingom ispred",
+    "entranceStreet": "Ulaz sa ulice u Garage Beograd, Nabokovljeva 1a – tehnički pregled i plaćanje računa"
   }
 }

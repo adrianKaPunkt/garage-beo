@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 
 // Alt-Texte in about.images im Dictionary
 const images = [
-  { src: "/images/inside01.jpeg", key: "counter" },
-  { src: "/images/inside02.jpeg", key: "chill" },
+  { src: "/images/garage-beograd-kancelarija-registracija.webp", key: "counter" },
+  { src: "/images/garage-beograd-kancelarija-cekaonica.webp", key: "chill" },
 ] as const;
 
 const paragraph = "text-base leading-relaxed text-[#5b646b]";
@@ -17,7 +17,7 @@ const Location = () => {
   // Zeichnung – je nach Ansicht an einer anderen Stelle eingebunden
   const drawing = (
     <Image
-      src="/images/about/location.png"
+      src="/images/about/location.webp"
       alt={t("location.drawingAlt")}
       width={507}
       height={338}
