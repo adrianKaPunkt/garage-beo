@@ -1,7 +1,13 @@
 {
   "brandSubtitle": "TECHNISCHE PRÜFUNG",
   "introSubtitle": "Technische Prüfung & Zulassung",
-  "mascotAlt": "Garage Beograd Maskottchen",
+  "mascotImages": {
+    "insurance": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Regenschirm, Symbol für die Kfz-Versicherung",
+    "payment": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Bankkarte und Rechnung zum Bezahlen",
+    "contact": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Kappe beim Telefonieren",
+    "inspection": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Schraubenschlüssel und Checkliste für die technische Prüfung",
+    "registration": "Maskottchen von Garage Beograd – lachendes grünes Auto mit Kennzeichen und Stempel, Fahrzeugzulassung"
+  },
   "address": {
     "street": "Nabokovljeva 1a",
     "cityLine": "11150 Belgrad, Serbien"

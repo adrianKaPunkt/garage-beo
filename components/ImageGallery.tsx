@@ -277,7 +277,7 @@ export default function ImageGallery({
                 fill
                 priority
                 sizes="90vw"
-                className="object-contain"
+                className="!object-contain"
               />
             </div>
 

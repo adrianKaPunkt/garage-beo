@@ -27,7 +27,11 @@ export default async function StructuredData() {
     description: tMeta("intro"),
     url: new URL(localePath(locale), site.url).toString(),
     inLanguage: htmlLang[locale],
-    image: `${site.url}/images/og-image.jpg`,
+    image: [
+      `${site.url}/images/og-image.jpg`,
+      // Maskottchen, das Gesicht der Garage
+      `${site.url}/images/garage-beograd-maskota-tehnicki-pregled.webp`,
+    ],
     // BG-Monogramm (aus app/icon.svg erzeugt, 512 × 512)
     logo: `${site.url}/images/logo.png`,
     // Profile desselben Unternehmens, damit Google sie zuordnet;

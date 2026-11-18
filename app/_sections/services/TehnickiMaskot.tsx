@@ -74,7 +74,7 @@ export default function TehnickiMaskot({
           alt=""
           fill
           sizes="(max-width: 640px) 80vw, 360px"
-          className="object-contain select-none"
+          className="!object-contain select-none"
           draggable={false}
         />
       </div>
@@ -88,7 +88,7 @@ export default function TehnickiMaskot({
           alt=""
           fill
           sizes="(max-width: 640px) 80vw, 360px"
-          className="object-contain select-none"
+          className="!object-contain select-none"
           draggable={false}
         />
       </div>

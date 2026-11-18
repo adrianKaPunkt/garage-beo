@@ -1,7 +1,13 @@
 {
   "brandSubtitle": "TEHNIČKI PREGLED",
   "introSubtitle": "Tehnički pregled i registracija",
-  "mascotAlt": "Garage Beograd maskota",
+  "mascotImages": {
+    "insurance": "Maskota Garage Beograd – nasmejani zeleni automobil sa kišobranom, simbol osiguranja vozila",
+    "payment": "Maskota Garage Beograd – nasmejani zeleni automobil sa platnom karticom i računom za plaćanje",
+    "contact": "Maskota Garage Beograd – nasmejani zeleni automobil sa kačketom razgovara telefonom",
+    "inspection": "Maskota Garage Beograd – nasmejani zeleni automobil sa ključem i kontrolnom listom za tehnički pregled",
+    "registration": "Maskota Garage Beograd – nasmejani zeleni automobil sa registarskom tablicom i pečatom, registracija vozila"
+  },
   "address": {
     "street": "Nabokovljeva 1a",
     "cityLine": "11150 Beograd, Srbija"

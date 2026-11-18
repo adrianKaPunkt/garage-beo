@@ -181,7 +181,7 @@ export default function Insurance() {
               "
             >
               {/* Maskottchen mit Ball, der vom Schirm abprallt */}
-              <InsuranceMascot alt={tCommon("mascotAlt")} />
+              <InsuranceMascot alt={tCommon("mascotImages.insurance")} />
             </div>
           </div>
 

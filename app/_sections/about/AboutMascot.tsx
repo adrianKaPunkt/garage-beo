@@ -17,7 +17,7 @@ const checks = [
 ];
 
 export default function AboutMascot({ className = "" }: AboutMascotProps) {
-  const t = useTranslations("about");
+  const tCommon = useTranslations("common");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -68,17 +68,15 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
     <div
       ref={containerRef}
       className={`relative mx-auto w-full max-w-75 sm:max-w-95 lg:max-w-115 ${className}`}
-      role="img"
-      aria-label={t("mascotAlt")}
     >
       <div className="relative aspect-[657/599] w-full">
-        {/* Maskottchen */}
+        {/* Maskottchen. ! nötig: vinext setzt bei fill inline object-fit: cover */}
         <Image
-          src="/images/about/car-about.webp"
-          alt=""
+          src="/images/garage-beograd-maskota-tehnicki-pregled.webp"
+          alt={tCommon("mascotImages.inspection")}
           fill
           sizes="(max-width: 640px) 300px, (max-width: 1023px) 380px, 460px"
-          className="object-contain"
+          className="!object-contain"
         />
 
         {/* Nacheinander animierte Häkchen */}
@@ -94,7 +92,7 @@ export default function AboutMascot({ className = "" }: AboutMascotProps) {
               alt=""
               fill
               sizes="(max-width: 640px) 300px, (max-width: 1023px) 380px, 460px"
-              className="object-contain"
+              className="!object-contain"
             />
           </div>
         ))}

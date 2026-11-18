@@ -1,7 +1,13 @@
 {
   "brandSubtitle": "VEHICLE INSPECTION",
   "introSubtitle": "Vehicle inspection & registration",
-  "mascotAlt": "Garage Beograd mascot",
+  "mascotImages": {
+    "insurance": "Garage Beograd mascot – smiling green car holding an umbrella, symbol of vehicle insurance",
+    "payment": "Garage Beograd mascot – smiling green car with a bank card and a bill to pay",
+    "contact": "Garage Beograd mascot – smiling green car in a cap talking on the phone",
+    "inspection": "Garage Beograd mascot – smiling green car with a wrench and a checklist for the vehicle inspection",
+    "registration": "Garage Beograd mascot – smiling green car holding a licence plate and a stamp, vehicle registration"
+  },
   "address": {
     "street": "Nabokovljeva 1a",
     "cityLine": "11150 Belgrade, Serbia"

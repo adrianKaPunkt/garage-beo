@@ -263,10 +263,10 @@ export default function Contact({ hours }: { hours: OpeningHours }) {
               </div>
               <div className="absolute right-7 bottom-7 hidden min-[701px]:block">
                 <Image
-                  src="/images/car/contact.webp"
-                  alt={tCommon("mascotAlt")}
+                  src="/images/garage-beograd-maskota-kontakt.webp"
+                  alt={tCommon("mascotImages.contact")}
                   width={160}
-                  height={160}
+                  height={146}
                 />
               </div>
             </div>

@@ -94,7 +94,7 @@ export default function FullServiceMascot({
           alt=""
           fill
           sizes="(max-width: 768px) 85vw, 440px"
-          className="object-contain"
+          className="!object-contain"
         />
       </div>
 
@@ -105,7 +105,7 @@ export default function FullServiceMascot({
           alt=""
           fill
           sizes="(max-width: 768px) 85vw, 440px"
-          className="object-contain drop-shadow-xl"
+          className="!object-contain drop-shadow-xl"
         />
       </div>
     </div>
